@@ -1,0 +1,16 @@
+Han_2016:
+  validity_limit: 2600
+  L8:
+    switch_inf: 0.03
+    switch_sup: 0.04
+    a_low: 346.353
+    c_low: 0.5
+    a_high: 1221.39
+    c_high: 0.3329
+  S2:
+    switch_inf: 0.03
+    switch_sup: 0.045
+    a_low: 396.005
+    c_low: 0.5
+    a_high: 1208.481
+    c_high: 0.3375

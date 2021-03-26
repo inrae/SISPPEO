@@ -1,0 +1,14 @@
+GET_2018:
+  validity_limit: 3500
+  switch_inf: 0.07
+  switch_sup: 0.14
+  L8:
+    a_nechad: 526.82
+    c_nechad: 0.2365
+    coef_br: 691.13
+    exp_br: 2.5411
+  S2:
+    a_nechad: 610.94
+    c_nechad: 0.2324
+    coef_br: 691.13
+    exp_br: 2.5411

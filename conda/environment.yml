@@ -1,0 +1,32 @@
+name: sisppeo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip
+  - affine
+  - click
+  - colorcet
+  - datashader
+  - fiona
+  - lxml
+  - matplotlib
+  - netcdf4
+  - numpy
+  - pandas
+  - pillow
+  - plotly
+  - psutil
+  - pyproj
+  - pyyaml
+  - rasterio
+  - s2cloudless
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - shapely
+  - tqdm
+  - xarray
+
+  - pip:
+    - ray

@@ -1,0 +1,14 @@
+Dogliotti_2015:
+  validity_limit: 1500
+  switch_inf: 0.05
+  switch_sup: 0.07
+  L8:
+    a_low: 228.1
+    c_low: 0.1641
+    a_high: 3078.9
+    c_high: 0.2112
+  S2:
+    a_low: 228.1
+    c_low: 0.1641
+    a_high: 3078.9
+    c_high: 0.2112

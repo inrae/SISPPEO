@@ -1,0 +1,3 @@
+include sisppeo/workspace.yaml
+include sisppeo/masks/waterdetect/WaterDetect.ini
+recursive-include sisppeo/resources *

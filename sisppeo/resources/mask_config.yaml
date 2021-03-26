@@ -1,0 +1,25 @@
+s2cloudless:
+  long_name: Sentinel Hub's cloud detector for Sentinel-2 imagery
+  S2:
+    - B1
+    - B2
+    - B4
+    - B5
+    - B8
+    - B8A
+    - B9
+    - B10
+    - B11
+    - B12
+waterdetect:
+  long_name: OOBS2CO's water detector for satellite imagery
+  L8:
+    - B3
+    - B5
+    - B6
+    - B7
+  S2:
+    - B3
+    - B8
+    - B11
+    - B12

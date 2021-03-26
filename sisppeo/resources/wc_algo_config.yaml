@@ -1,0 +1,88 @@
+ndwi:
+  long_name: Normalized Difference Water Index
+  L8:
+    - B3
+    - B5
+  S2:
+    - B3
+    - B8
+spm-nechad:
+  long_name: Suspended particulate matter (mg/l) from Nechad et al., 2010, 2016
+  L8:
+    - B2
+    - B3
+    - B4
+    - B5
+  S2:
+    - B3
+    - B4
+    - B5
+    - B6
+    - B7
+    - B8
+    - B8A
+spm-han:
+  long_name: Suspended particulate matter (mg/l) from Han et al., 2016
+  L8:
+    - B4
+  S2:
+    - B4
+spm-get:
+  long_name: Suspended particulate matter (mg/l) from GET radiometric calibration 2018
+  L8:
+    - B4
+    - B5
+  S2:
+    - B4
+    - B8
+turbi-dogliotti:
+  long_name: Turbidity (FNU) from Dogliotti et al., 2015
+  L8:
+    - B4
+    - B5
+  S2:
+    - B4
+    - B8
+chla-gons:
+  long_name: Chlo-a (mg/m3) from Gons et al., 1999, 2002, 2004
+  S2:
+    - B4
+    - B5
+    - B7
+chla-gitelson:
+  long_name: Chlo-a (mg/m3) from Gitelson et al., 2008
+  S2:
+    - B4
+    - B5
+    - B6
+chla-gurlin:
+  long_name: Chlo-a (mg/m3) from Gurlin et al., 2017
+  S2:
+    - B4
+    - B5
+chla-lins:
+  long_name: Chlo-a (mg/m3) from Lins et al., 2017
+  S2:
+    - B4
+    - B5
+chla-oc:
+  long_name: Chlo-a (mg/m3) from OC O'Reilly et al., 1998, 2000 and updates
+  S2:
+    - B1
+    - B2
+    - B3
+  L8:
+    - B1
+    - B2
+    - B3
+acdom-brezonik:
+  long_name: CDOM absorption (m-1) at 440 nm from Brezonik et al., 2015
+  S2:
+    - B2
+    - B6
+  L8:
+    - B3
+    - B4
+  S3:
+    - B5
+    - B12
