@@ -1,0 +1,46 @@
+sisppeo.products.L3AlgoProduct
+==============================
+
+.. currentmodule:: sisppeo.products
+
+.. autoclass:: L3AlgoProduct
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~L3AlgoProduct.__init__
+      ~L3AlgoProduct.extract_point
+      ~L3AlgoProduct.extract_points
+      ~L3AlgoProduct.from_file
+      ~L3AlgoProduct.index
+      ~L3AlgoProduct.plot
+      ~L3AlgoProduct.save
+      ~L3AlgoProduct.xy
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~L3AlgoProduct.algo
+      ~L3AlgoProduct.bounds
+      ~L3AlgoProduct.data_vars
+      ~L3AlgoProduct.dataset
+      ~L3AlgoProduct.product_type
+      ~L3AlgoProduct.res
+      ~L3AlgoProduct.title
+      ~L3AlgoProduct.x
+      ~L3AlgoProduct.y
+   
+   

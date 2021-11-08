@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Create a L3 product (L3AlgoProduct)</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Create a mask (L3MaskProduct)" href="create_mask.html" />
+    <link rel="prev" title="User guide" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Create a L3 product (L3AlgoProduct)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_mask.html">
+   Create a mask (L3MaskProduct)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_time_series.html">
+   Create and analize a time series (TimeSeries)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="user_workspace.html">
+   User Workspace
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#via-la-cli">
+   Via la CLI
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arguments-specifiques-a-certains-readers">
+     Arguments spécifiques à certains readers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grs">
+       GRS
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#s2-theia">
+       S2_THEIA
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#theia-bands">
+         theia_bands
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#theia-mask">
+         theia_mask
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#c2rcc">
+       C2RCC
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arguments-relatifs-aux-algorithmes-utilises">
+     Arguments relatifs aux algorithmes utilisés
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generation-de-produits-masques">
+     Génération de produits masqués
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traitement-sur-une-zone-d-interet">
+     Traitement sur une zone d’intérêt
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#un-shapefile-shp">
+       un shapefile (.shp)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#un-wkt-pour-well-known-text">
+       un wkt (pour well-known text)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reechantillonnage">
+     Rééchantillonnage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optimisation-mutualisation-de-l-extraction-des-bandes">
+     Optimisation : mutualisation de l’extraction des bandes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fichiers-de-sortie">
+     Fichiers de sortie
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#raccourcis-fichiers-d-inputs">
+     Raccourcis : fichiers d’inputs
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#algos-list">
+       “algos_list”
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#masks-list">
+       “masks_list”
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#via-le-module">
+   Via le module
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#argu-readers-2">
+     Arguments spécifiques à certains readers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       GRS
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       S2_THEIA
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id4">
+         theia_bands
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#theia-masks">
+         theia_masks
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       C2RCC
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#argu-algos-2">
+     Arguments relatifs aux algorithmes utilisés
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Génération de produits masqués
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roi-2">
+     Traitement sur une zone d’intérêt
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resampling-2">
+     Rééchantillonnage
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mutualisation2">
+       Optimisation : mutualisation de l’extraction des bandes
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remarque">
+   Remarque
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="create-a-l3-product-l3algoproduct">
+<h1>Create a L3 product (L3AlgoProduct)<a class="headerlink" href="#create-a-l3-product-l3algoproduct" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial will soon be available in English.</p>
+</div>
+<p>Il existe différents moyens de créer un produit L3 (indice coloré, élément biogéochimique, etc) avec SISPPEO.</p>
+<section id="via-la-cli">
+<h2>Via la CLI<a class="headerlink" href="#via-la-cli" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La commande <code class="docutils literal notranslate"><span class="pre">create-l3</span></code> permet de créer des produits masqués en générant les masques à la volée (contrairement à <code class="docutils literal notranslate"><span class="pre">create-l3algo</span></code>, cf. après). Ce tutoriel sera bientôt mis à jour pour en parler.</p>
+</div>
+<p>En utilisant la CLI, il est possible de créer un produit L3 (masqué ou non) à partir de produits L1 ou L2.</p>
+<p>Pour cela, il suffit de faire :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sisppeo create-l3algo --input_product path1 --product_type S2_GRS <span class="o">[</span>--glint<span class="o">]</span> --algo spm-nechad <span class="o">[</span>--algo_band spm-nechad B5<span class="o">]</span> <span class="o">[</span>--algo_calib spm-nechad Nechad_2010<span class="o">]</span> --out_product path2
+</pre></div>
+</div>
+<p>Ici, un objet L3AlgoProduct contenant une variable “spm-nechad” sera calculé à partir de l’image S2_GRS “path1” et enregistré sous le nom “path2”.</p>
+<p>Les arguments entre crochets (“[…]”) sont optionnels. D’autres arguments, ainsi que des raccourcis sont disponibles. Pour plus d’information, se référer à la suite de ce tutoriel, au reste de la documentation ou bien taper <strong class="command">sisppeo --help</strong> / <strong class="command">sisppeo create-l3algo --help</strong>.</p>
+<section id="arguments-specifiques-a-certains-readers">
+<span id="argu-readers-1"></span><h3>Arguments spécifiques à certains readers<a class="headerlink" href="#arguments-specifiques-a-certains-readers" title="Permalink to this headline">¶</a></h3>
+<section id="grs">
+<h4>GRS<a class="headerlink" href="#grs" title="Permalink to this headline">¶</a></h4>
+<p>Le flag <code class="docutils literal notranslate"><span class="pre">--glint_corrected</span></code>/<code class="docutils literal notranslate"><span class="pre">--glint</span></code> est utilisé pour choisir si le reader des produits GRS va extraire les Rrs corrigées du glint (“Rrs”, par défaut) ou non corrigées de ce phénomène (“Rrs_g”).</p>
+</section>
+<section id="s2-theia">
+<h4>S2_THEIA<a class="headerlink" href="#s2-theia" title="Permalink to this headline">¶</a></h4>
+<section id="theia-bands">
+<h5>theia_bands<a class="headerlink" href="#theia-bands" title="Permalink to this headline">¶</a></h5>
+<p>L’argument <code class="docutils literal notranslate"><span class="pre">--theia_bands</span></code> permet de choisir si le reader des produits THEIA va extraire les bandes “SRE” (pour Surface REflectance) ou “FRE” (pour Flat REflectance ; corrigées des <a class="reference external" href="https://labo.obs-mip.fr/multitemp/la-correction-des-variations-declairement-dues-au-relief/">effets des pentes</a>).</p>
+</section>
+<section id="theia-mask">
+<h5>theia_mask<a class="headerlink" href="#theia-mask" title="Permalink to this headline">¶</a></h5>
+<p>L’argument <code class="docutils literal notranslate"><span class="pre">--theia_mask</span></code> permet d’utiliser les masques THEIA (CLM, MG2 et SAT) et le cas échéant de préciser quels bits prendre en compte (cf. <a class="reference external" href="https://labo.obs-mip.fr/multitemp/sentinel-2/theias-sentinel-2-l2a-product-format/">cette description</a>).</p>
+<p>Par exemple :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>--theia_mask <span class="s2">&quot;CLM 012467&quot;</span>
+</pre></div>
+</div>
+<p>ou encore :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>--theia_mask <span class="s2">&quot;MG2&quot;</span>
+</pre></div>
+</div>
+<p>Si aucun bit n’est précisé, ils sont par défaut tous utilisés (masque le plus restrictif).</p>
+</section>
+</section>
+<section id="c2rcc">
+<h4>C2RCC<a class="headerlink" href="#c2rcc" title="Permalink to this headline">¶</a></h4>
+<p>L’argument <code class="docutils literal notranslate"><span class="pre">--sensing_date</span></code> permet d’indiquer la date d’acquisition du produit L1C dont est issu le produit C2RCC. C’est un argument temporaire, qui est là pour palier l’absence de métadonnées des produits C2RCC générés avec Snap. Le format attendu est “YYYY-MM-DD”.</p>
+</section>
+</section>
+<section id="arguments-relatifs-aux-algorithmes-utilises">
+<span id="argu-algos-1"></span><h3>Arguments relatifs aux algorithmes utilisés<a class="headerlink" href="#arguments-relatifs-aux-algorithmes-utilises" title="Permalink to this headline">¶</a></h3>
+<p>Pour spécifier un algorithme, on utilise l’argument <code class="docutils literal notranslate"><span class="pre">--algo</span></code> suivi du nom dudit algorithme (e.g. <code class="docutils literal notranslate"><span class="pre">--algo</span> <span class="pre">ndwi</span></code>).</p>
+<p>Certains algorithmes peuvent utiliser plusieurs bandes au choix et peuvent avoir plusieurs jeux de calibration. Par exemple, “spm-nechad” peut utiliser les bandes B2, B3, B4 et B5 (pour L8 ; pour S2, se référer au fichier “resources/wc_algo_config.yaml”) et a 2 jeux de calibration disponibles : “Nechad_2010” et “Nechad_2016”. Les valeurs par défaut sont respectivement “B4” et “Nechad_2016”. Cependant, il est possible d’en choisir d’autres en utilisant les arguments <code class="docutils literal notranslate"><span class="pre">--algo_band</span></code> et <code class="docutils literal notranslate"><span class="pre">--algo_calib</span></code></p>
+<p>Par exemple :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>--algo spm-nechad --algo_band spm-nechad B5 --algo_calib spm-nechad Nechad_2010
+</pre></div>
+</div>
+<p><em>Rq: il est nécessaire de préciser le nom de l’algorithme concerné pour ces deux arguments, afin de pouvoir rendre possible l’utilisation simultanée de plusieurs algorithmes (cf.</em> <a class="reference internal" href="#mutualisation1"><span class="std std-ref">ci-après</span></a><em>).</em></p>
+<p>Par ailleurs, il est possible d’utiliser son propre jeu de calibration en utilisant l’argument <code class="docutils literal notranslate"><span class="pre">--algo_custom_calib</span></code> suivi du nom de l’algorithme employé et du chemin d’accès du fichier YAML de calibration (pour la structure à respecter, se référer aux calibrations fournies avec SISPPEO et situées dans le dossier “sisppeo/resources/wc_algocalibration”).</p>
+</section>
+<section id="generation-de-produits-masques">
+<h3>Génération de produits masqués<a class="headerlink" href="#generation-de-produits-masques" title="Permalink to this headline">¶</a></h3>
+<p>Il est possible de générer des produits L3 masqués. Pour cela, il faut utiliser les arguments <code class="docutils literal notranslate"><span class="pre">--mask_path</span></code> et <code class="docutils literal notranslate"><span class="pre">--mask_type</span></code>, resp. le path du masque et s’il est utilisé pour inclure ou exclure les zones masquées. L’utilisation de plusieurs masques de manière combinée est possible.</p>
+<p>Exemple (pour conserver les zones d’eau sans nuages):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>--mask_path path/to/watermask --mask_type IN --mask_path path/to/cloudmask --mask_type OUT
+</pre></div>
+</div>
+<p>Les masques utilisées doivent être au format netCDF (avec une variable binaire ; dans l’idéal générés via SISPPEO pour des raisons évidentes de compatibilités). Plusieurs masques sont disponibles :</p>
+<ul class="simple">
+<li><p>masque eau : <a class="reference external" href="https://github.com/cordmaur/WaterDetect">WaterDetect</a> ;</p></li>
+<li><p>masque nuage : <a class="reference external" href="https://github.com/sentinel-hub/sentinel2-cloud-detector">s2cloudless</a>.</p></li>
+</ul>
+</section>
+<section id="traitement-sur-une-zone-d-interet">
+<span id="roi-1"></span><h3>Traitement sur une zone d’intérêt<a class="headerlink" href="#traitement-sur-une-zone-d-interet" title="Permalink to this headline">¶</a></h3>
+<p>Il est possible d’extraire et de traiter une zone limitée en lieu et place de toute l’image (pour des questions de performances/temps, d’intérêt, etc). Pour cela, il suffit de fournir au choix :</p>
+<section id="un-shapefile-shp">
+<h4>un shapefile (.shp)<a class="headerlink" href="#un-shapefile-shp" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>--shp path/to/shapefile.shp
+</pre></div>
+</div>
+</section>
+<section id="un-wkt-pour-well-known-text">
+<h4>un wkt (pour well-known text)<a class="headerlink" href="#un-wkt-pour-well-known-text" title="Permalink to this headline">¶</a></h4>
+<p>Directement sous forme de chaîne de caractères…</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>--wkt <span class="s1">&#39;POLYGON ((lon1 lat1, lon2 lat2, ..., lonN latN))&#39;</span>
+</pre></div>
+</div>
+<p>… ou bien de fichier texte :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>--wkt_file path/to/wkt/file.txt
+</pre></div>
+</div>
+<p>Par défaut, il est considéré que le SRID du WKT fourni est “4326” (code EPSG pour le système géodésique WGS84 associé à des coordonnées géographiques) mais il est possible d’en spécifier un autre en utilisant l’argument <code class="docutils literal notranslate"><span class="pre">--srid</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">--srid</span> <span class="pre">32622</span></code> pour le système de coordonnées projetées WGS84 / UTM zone 22N).</p>
+</section>
+</section>
+<section id="reechantillonnage">
+<span id="resampling-1"></span><h3>Rééchantillonnage<a class="headerlink" href="#reechantillonnage" title="Permalink to this headline">¶</a></h3>
+<p>Dans le cas où des bandes de résolutions différentes sont extraites (readers “S2_ESA” et “S2_THEIA”) et utilisées au sein du même algorithme, il est possible de spécifier la résolution voulue en sortie en utilisant l’argument <code class="docutils literal notranslate"><span class="pre">--res</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">--res</span> <span class="pre">20</span></code>). Seules les valeurs appartenant à l’union des résolutions des bandes utilisées sont autorisées. Par défaut, la résolution la plus grossière est utilisée.</p>
+</section>
+<section id="optimisation-mutualisation-de-l-extraction-des-bandes">
+<span id="mutualisation1"></span><h3>Optimisation : mutualisation de l’extraction des bandes<a class="headerlink" href="#optimisation-mutualisation-de-l-extraction-des-bandes" title="Permalink to this headline">¶</a></h3>
+<p>Si plusieurs traitements sont envisagés pour la même zone/image, il est possible de mutualiser l’étape d’extraction en spécifiant plusieurs algorithmes.</p>
+<p>Par exemple :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sisppeo create-l3algo --input_product path1 --product_type S2_GRS --algo ndwi --algo spm-nechad --out_product path_out_ndwi --out_product path_out_spm
+</pre></div>
+</div>
+<p>L’argument “algo” peut être appelé plusieurs fois (auquel cas, <code class="docutils literal notranslate"><span class="pre">--out_product</span></code> devra lui aussi-être appelé plusieurs fois [à moins d’utiliser <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code>, cf. <a class="reference internal" href="#sortie1"><span class="std std-ref">ci-après</span></a>] et dans le même ordre).</p>
+</section>
+<section id="fichiers-de-sortie">
+<span id="sortie1"></span><h3>Fichiers de sortie<a class="headerlink" href="#fichiers-de-sortie" title="Permalink to this headline">¶</a></h3>
+<p>Il est possible de fournir au choix un nom de fichier (un par algo/produit) ou le chemin d’un dossier (auquel cas les noms des produits L3 sont générés automatiquement [en fonction des différents paramètres/arguments] dans ce dossier). Les arguments à utiliser sont respectivement <code class="docutils literal notranslate"><span class="pre">--out_product</span></code> et <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code>.</p>
+</section>
+<section id="raccourcis-fichiers-d-inputs">
+<h3>Raccourcis : fichiers d’inputs<a class="headerlink" href="#raccourcis-fichiers-d-inputs" title="Permalink to this headline">¶</a></h3>
+<section id="algos-list">
+<span id="algoslist"></span><h4>“algos_list”<a class="headerlink" href="#algos-list" title="Permalink to this headline">¶</a></h4>
+<p>Dans le cas où l’on souhaite appliquer de nombreux algorithmes, avec ou sans calibrations particulières, il peut être intéressant et plus rapide (génération automatique par ex) d’utiliser un fichier texte regroupant les différentes entrées et qui sera appelé par l’argument <code class="docutils literal notranslate"><span class="pre">--algos_list</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">--algos_list</span> <span class="pre">path/to/text/file.txt</span></code>). Il devra contenir un en-tête (cf. exemples ci-après) ainsi que les valeurs de ces différents arguments pour chaque produit attendu (une ligne par produit), en laissant vide les arguments non pertinents.</p>
+<p>Par exemple :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">algo</span> <span class="n">band</span> <span class="n">calib</span> <span class="n">custom_calib</span> <span class="n">design</span>
+<span class="n">ndwi</span>
+<span class="n">spm</span><span class="o">-</span><span class="n">nechad</span> <span class="n">B4</span>  <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">custom</span><span class="o">/</span><span class="n">calib</span><span class="o">.</span><span class="n">yaml</span>
+<span class="n">chla</span><span class="o">-</span><span class="n">gons</span>  <span class="n">Gernez_2017</span>
+<span class="n">chla</span><span class="o">-</span><span class="n">gitelson</span>    <span class="mi">2</span><span class="n">_bands</span>
+</pre></div>
+</div>
+<p>… ou encore :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">algo</span> <span class="n">calib</span>
+<span class="n">ndwi</span>
+<span class="n">chla</span><span class="o">-</span><span class="n">gons</span> <span class="n">Gernez_2017</span>
+</pre></div>
+</div>
+<p>Toute les colonnes (excepté “algo”) sont optionnelles (cf. les exemples précédents).</p>
+<p>Si utilisé, l’argument <code class="docutils literal notranslate"><span class="pre">--algos_list</span></code> remplace les arguments <code class="docutils literal notranslate"><span class="pre">--algo</span></code>, <code class="docutils literal notranslate"><span class="pre">--algo_band</span></code>, <code class="docutils literal notranslate"><span class="pre">--algo_calib</span></code> et <code class="docutils literal notranslate"><span class="pre">--algo_custom_calib</span></code>.</p>
+</section>
+<section id="masks-list">
+<span id="maskslist"></span><h4>“masks_list”<a class="headerlink" href="#masks-list" title="Permalink to this headline">¶</a></h4>
+<p>De la même manière, il est possible d’utiliser l’argument <code class="docutils literal notranslate"><span class="pre">--masks_list</span></code> (suivi d’un path) pour remplacer les arguments <code class="docutils literal notranslate"><span class="pre">--mask_path</span></code> et <code class="docutils literal notranslate"><span class="pre">--mask_type</span></code>.</p>
+<p>Exemple :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="nb">type</span>
+<span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">watermask</span> <span class="n">IN</span>
+<span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cloudmask</span> <span class="n">OUT</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="via-le-module">
+<h2>Via le module<a class="headerlink" href="#via-le-module" title="Permalink to this headline">¶</a></h2>
+<p>SISPPEO peut aussi être importé au sein d’un script Python afin de créer des produits L3 à partir de produits L1 ou L2.</p>
+<p>Pour cela, il suffit de procéder de la manière suivante :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sisppeo</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">&#39;input_product&#39;</span><span class="p">:</span> <span class="n">path1</span><span class="p">,</span>
+<span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="s1">&#39;S2_GRS&#39;</span><span class="p">,</span>
+<span class="s1">&#39;glint_corrected&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="s1">&#39;algo&#39;</span><span class="p">:</span> <span class="s1">&#39;spm-nechad&#39;</span>
+<span class="p">}</span>
+<span class="n">l3algo_product</span> <span class="o">=</span> <span class="n">sisppeo</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;l3 algo&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Ici, un objet <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.l3.L3AlgoProduct" title="sisppeo.products.l3.L3AlgoProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">L3AlgoProduct</span></code></a> contenant une variable “spm-nechad” sera calculé à partir de l’image S2_GRS “path1”. Pour l’enregistrer à l’emplacement “path2”, il suffit d’ajouter une clé <code class="docutils literal notranslate"><span class="pre">out_product</span></code> ou <code class="docutils literal notranslate"><span class="pre">output_dir</span></code> au dictionnaire “params” et de modifier la dernière ligne :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;out_product&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path2</span>
+<span class="n">l3algo_product</span> <span class="o">=</span> <span class="n">sisppeo</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;l3 algo&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># ou &quot;save=True&quot;</span>
+</pre></div>
+</div>
+<p><em>Rq: il est aussi possible de sauvegarder un produit L3 déjà généré en faisant</em> <code class="code docutils literal notranslate"><span class="pre">l3algo_product.save(path2)</span></code>. <em>Pour bénéficier de la génération automatique du nom permise par la méthode précédente (avec la clé</em> <code class="docutils literal notranslate"><span class="pre">output_dir</span></code> <em>en lieu et place de</em> <code class="docutils literal notranslate"><span class="pre">out_product</span></code><em>), il faut écrire :</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sisppeo.utils.naming</span> <span class="kn">import</span> <span class="p">(</span><span class="n">extract_info_from_input_product</span><span class="p">,</span>
+                                  <span class="n">generate_l3_filename</span><span class="p">)</span>
+
+<span class="n">code_image</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extract_info_from_input_product</span><span class="p">(</span>
+    <span class="n">path1</span><span class="p">,</span> <span class="s1">&#39;S2_GRS&#39;</span><span class="p">,</span>
+    <span class="c1"># optionnels : params.get(&#39;code_site&#39;, None), params.get(&#39;geom&#39;, None)</span>
+<span class="p">)</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">generate_l3_filename</span><span class="p">(</span><span class="n">l3algo_product</span><span class="p">,</span> <span class="n">code_image</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span><span class="p">)</span>
+<span class="n">l3algo_product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">dirname</span> <span class="o">/</span> <span class="n">filename</span><span class="p">)</span>    <span class="c1"># type(dirname) == pathlib.Path</span>
+</pre></div>
+</div>
+<p>De nombreuses autres clés sont disponibles pour le dictionnaire “params”, cf. la suite de ce tutoriel.</p>
+<section id="argu-readers-2">
+<span id="id1"></span><h3>Arguments spécifiques à certains readers<a class="headerlink" href="#argu-readers-2" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h4>GRS<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Le booléen <code class="docutils literal notranslate"><span class="pre">glint_corrected</span></code> est utilisé pour choisir si le reader GRS va extraire les Rrs corrigées du glint (“Rrs”, si <code class="docutils literal notranslate"><span class="pre">glint_corrected=True</span></code> [par défaut]) ou non corrigées de ce phénomène (“Rrs_g”, si <code class="docutils literal notranslate"><span class="pre">glint_corrected=False</span></code>).</p>
+</section>
+<section id="id3">
+<h4>S2_THEIA<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<section id="id4">
+<h5>theia_bands<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
+<p>La clé <code class="docutils literal notranslate"><span class="pre">theia_bands</span></code> permet de choisir si le reader des produits THEIA va extraire les bandes “SRE” (pour Surface REflectance) ou “FRE” (pour Flat REflectance ; corrigées des <a class="reference external" href="https://labo.obs-mip.fr/multitemp/la-correction-des-variations-declairement-dues-au-relief/">effets des pentes</a> [par défaut]).</p>
+</section>
+<section id="theia-masks">
+<h5>theia_masks<a class="headerlink" href="#theia-masks" title="Permalink to this headline">¶</a></h5>
+<p>La clé <code class="docutils literal notranslate"><span class="pre">theia_mask</span></code> permet d’utiliser les masques THEIA (CLM, MG2 et SAT) et le cas échéant de préciser quel bits prendre en compte (cf. <a class="reference external" href="https://labo.obs-mip.fr/multitemp/sentinel-2/theias-sentinel-2-l2a-product-format/">cette description</a>).</p>
+<p>Par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;theia_masks&#39;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;CLM&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="s1">&#39;MG2&#39;</span><span class="p">:</span> <span class="kc">None</span>
+<span class="p">}})</span>
+</pre></div>
+</div>
+<p>Si <code class="docutils literal notranslate"><span class="pre">lst_theia_mask_bits=None</span></code>, tous les bits sont utilisés par défaut pour l’ensemble des masques donnés dans <code class="docutils literal notranslate"><span class="pre">lst_theia_mask</span></code>. Dans le cas où, comme dans l’exemple ci-dessus, une entrée de la liste <code class="docutils literal notranslate"><span class="pre">lst_theia_mask_bits</span></code> vaut “None”, alors le comportement par défaut (utilisation de tous les bits) ne sera appliqué que pour le masque correspondant.</p>
+</section>
+</section>
+<section id="id7">
+<h4>C2RCC<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>La clé <code class="docutils literal notranslate"><span class="pre">sensing_date</span></code> permet d’indiquer la date d’acquisition du produit L1C dont est issu le produit C2RCC. C’est un argument temporaire, qui est là pour palier l’absence de métadonnées des produits C2RCC générés avec Snap. La date attendue doit être une chaîne de caractère au format “YYYY-MM-DD” ou bien un objet <code class="docutils literal notranslate"><span class="pre">datetime.datetime</span></code>.</p>
+</section>
+</section>
+<section id="argu-algos-2">
+<span id="id8"></span><h3>Arguments relatifs aux algorithmes utilisés<a class="headerlink" href="#argu-algos-2" title="Permalink to this headline">¶</a></h3>
+<p>Pour spécifier un algorithme, on utilise la clé <code class="docutils literal notranslate"><span class="pre">algo</span></code> et on lui associe le nom dudit algorithme (e.g., <code class="docutils literal notranslate"><span class="pre">algo=ndwi</span></code>).</p>
+<p>Certains algorithmes peuvent utiliser plusieurs bandes au choix et peuvent avoir plusieurs jeux de calibration. Par exemple, “spm-nechad” peut utiliser les bandes B2, B3, B4 et B5 (pour L8 ; pour S2, se référer au fichier “resources/wc_algo_config.yaml”) et a 2 jeux de calibration disponibles : “Nechad_2010” et “Nechad_2016”. Les valeurs par défaut sont respectivement “B4” et “Nechad_2016”. Cependant, il est possible d’en choisir d’autres en utilisant les clés <code class="docutils literal notranslate"><span class="pre">algo_band</span></code> et <code class="docutils literal notranslate"><span class="pre">algo_calib</span></code>.</p>
+<p>Par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;algo&#39;</span><span class="p">:</span> <span class="s1">&#39;spm-nechad&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;algo_band&#39;</span><span class="p">:</span> <span class="s1">&#39;B5&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;algo_calib&#39;</span><span class="p">:</span> <span class="s1">&#39;Nechad_2010&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p><em>Rq: il est aussi possible d’utiliser les clés</em> <code class="docutils literal notranslate"><span class="pre">lst_algo</span></code>, <code class="docutils literal notranslate"><span class="pre">lst_algo_band</span></code> <em>et</em> <code class="docutils literal notranslate"><span class="pre">lst_calib</span></code> <em>et de fournir des listes d’un seul élément (e.g.,</em> <code class="docutils literal notranslate"><span class="pre">lst_algo=['spm-nechad']</span></code><em>). Cela prend tous son sens lorsque l’on veut mutualiser la phase d’extraction des bandes et appliqués plusieurs algorithmes simultanément (cf.</em> <a class="reference internal" href="#mutualisation2"><span class="std std-ref">ci-après</span></a><em>).</em></p>
+<p>Par ailleurs, il est possible d’utiliser son propre jeu de calibration en utilisant la même clé <code class="docutils literal notranslate"><span class="pre">algo_calib</span></code> mais en spécifiant le chemin vers son propre fichier YAML de calibration au lieu du nom de l’une des calibrations délivrées avec SISPPEO (situées dans le dossier “sisppeo/resources/wc_algocalibration”).</p>
+</section>
+<section id="id9">
+<h3>Génération de produits masqués<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Il est possible de générer des produits L3 masqués. Pour cela, il faut utiliser les clés <code class="docutils literal notranslate"><span class="pre">l3mask</span></code>/<code class="docutils literal notranslate"><span class="pre">l3mask_path</span></code> et <code class="docutils literal notranslate"><span class="pre">l3mask_type</span></code>, resp. un objet <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.l3.L3MaskProduct" title="sisppeo.products.l3.L3MaskProduct"><code class="xref py py-class docutils literal notranslate"><span class="pre">L3MaskProduct</span></code></a> (i.e., un masque créé avec SISPPEO et chargé en mémoire) / le path du masque (i.e., un masque créé avec SISPPEO [ou binaire et respectant les mêmes conventions] et sauvegardé sur le disque) et s’il est utilisé pour inclure ou exclure les zones masquées.</p>
+<p>Par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;l3mask&#39;</span><span class="p">:</span> <span class="n">l3mask_product</span><span class="p">,</span> <span class="c1"># ou &#39;l3mask_path: path/to/l3mask/product.nc</span>
+    <span class="s1">&#39;l3mask_type&#39;</span><span class="p">:</span> <span class="s1">&#39;IN&#39;</span> <span class="c1"># or &#39;OUT&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Il n’est pas possible d’utiliser à la fois des masques chargés en mémoire (via <code class="docutils literal notranslate"><span class="pre">l3mask</span></code>) et des masques sauvegardés sur le disque (via <code class="docutils literal notranslate"><span class="pre">l3mask_type</span></code>). Cependant, il est possible de masquer des produits a posteriori grâce à la fonction <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.l3.mask_product" title="sisppeo.products.l3.mask_product"><code class="xref py py-func docutils literal notranslate"><span class="pre">mask_product()</span></code></a>.</p>
+<p>Les masques chargés depuis le disque doivent être au format netCDF (et dans l’idéal générés via SISPPEO pour des raisons évidentes de compatibilités). Plusieurs masques sont disponibles :</p>
+<ul class="simple">
+<li><p>masque eau : <a class="reference external" href="https://github.com/cordmaur/WaterDetect">WaterDetect</a> ;</p></li>
+<li><p>masque nuage : <a class="reference external" href="https://github.com/sentinel-hub/sentinel2-cloud-detector">s2cloudless</a>.</p></li>
+</ul>
+<p>L’utilisation de plusieurs masques de manière combinée est possible, auquel cas on utilisera les clés <code class="docutils literal notranslate"><span class="pre">lst_l3mask</span></code>/<code class="docutils literal notranslate"><span class="pre">lst_l3mask_path</span></code> et <code class="docutils literal notranslate"><span class="pre">lst_l3mask_type</span></code> (de la même manière que pour les algorithmes, il est possible d’utiliser ces clés et de fournir des listes d’un seul élément).</p>
+<p>Par exemple, afin de conserver les zones d’eau sans nuages :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;lst_l3mask&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">watermask</span><span class="p">,</span> <span class="n">cloudmask</span><span class="p">],</span> <span class="c1"># ou &#39;lst_l3mask_path: [path/to/watermask, path/to/cloudmask]</span>
+    <span class="s1">&#39;lst_l3mask_type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IN&#39;</span><span class="p">,</span> <span class="s1">&#39;OUT&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="roi-2">
+<span id="id12"></span><h3>Traitement sur une zone d’intérêt<a class="headerlink" href="#roi-2" title="Permalink to this headline">¶</a></h3>
+<p>Il est possible d’extraire et de traiter une zone limitée en lieu et place de toute l’image (pour des questions de performances/temps, d’intérêt, etc). Pour cela, il suffit de fournir un dictionnaire (optionnel) <code class="docutils literal notranslate"><span class="pre">geom</span></code> contenant les clés (optionnelles) suivantes :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> doit être associée à un objet géométrique déjà chargé en mémoire (cf. <a class="reference external" href="https://shapely.readthedocs.io/en/stable/manual.html">Shapely</a>) ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shp</span></code> doit être associée à un chemin d’accès à n shapefile (.shp) ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wkt</span></code> doit être associée à un chemin d’accès à un fichier texte contenant une chaîne de caractère au format WKT (Well-Known Text).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">srid</span></code> doit être associée à un code EPSG (correspondant au système de coordonnées dans lequel est fournie la zone d’intérêt] ; à utiliser avec <code class="docutils literal notranslate"><span class="pre">geometry</span></code> ou <code class="docutils literal notranslate"><span class="pre">wkt</span></code> si différent de “4326” (code EPSG pour le système géodésique WGS84 associé à des coordonnées géographiques [défaut]).</p></li>
+</ul>
+<p>Par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;geom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;wkt&#39;</span><span class="p">:</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">wkt</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span>
+    <span class="s1">&#39;srid&#39;</span><span class="p">:</span> <span class="mi">32622</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="resampling-2">
+<span id="id13"></span><h3>Rééchantillonnage<a class="headerlink" href="#resampling-2" title="Permalink to this headline">¶</a></h3>
+<p>Dans le cas où des bandes de résolutions différentes sont extraites (readers “S2_ESA” et “S2_THEIA”) et utilisées au sein du même algorithme, il est possible de spécifier la résolution voulue en sortie en utilisant la clé <code class="docutils literal notranslate"><span class="pre">out_resolution</span></code>. Seules les valeurs appartenant à l’union des résolutions des bandes utilisées sont autorisées. Par défaut, la résolution la plus grossière est utilisée.</p>
+<p>Par exemple:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;out_resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<section id="mutualisation2">
+<span id="id14"></span><h4>Optimisation : mutualisation de l’extraction des bandes<a class="headerlink" href="#mutualisation2" title="Permalink to this headline">¶</a></h4>
+<p>Si plusieurs traitements sont envisagé pour la même zone/image, il est possible de mutualiser l’étape d’extraction en spécifiant plusieurs algorithmes.</p>
+<p>Par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;lst_algo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ndwi&#39;</span><span class="p">,</span> <span class="s1">&#39;spm-nechad&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;lst_algo_band&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;B5&#39;</span><span class="p">],</span> <span class="c1"># optionnel</span>
+    <span class="s1">&#39;lst_calib&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Nechad_2010&#39;</span><span class="p">]</span> <span class="c1"># optionnel</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p><em>Rq: il est possible de charger en mémoire un produit L3 depuis un fichier netCDF préalablement généré et enregistré sur le disque en utilisant la méthode de classe</em> <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.l3.L3AlgoProduct.from_file" title="sisppeo.products.l3.L3AlgoProduct.from_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_file()</span></code></a>.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="remarque">
+<h2>Remarque<a class="headerlink" href="#remarque" title="Permalink to this headline">¶</a></h2>
+<p>Si vous avez une question ou si vous avez besoin d’informations complémentaires, i) consultez le reste de la documentation, ii) référez-vous au code de SISPPEO puis si besoin iii) contactez <a class="reference external" href="mailto:arthur&#46;coque&#37;&#52;&#48;inrae&#46;fr">moi</a>.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">User guide</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="create_mask.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Create a mask (L3MaskProduct)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>sisppeo.utils package</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.algos">
+   sisppeo.utils.algos module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.builders">
+   sisppeo.utils.builders module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.cli">
+   sisppeo.utils.cli module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.config">
+   sisppeo.utils.config module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.exceptions">
+   sisppeo.utils.exceptions module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.lazy_loader">
+   sisppeo.utils.lazy_loader module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.main">
+   sisppeo.utils.main module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.naming">
+   sisppeo.utils.naming module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.products">
+   sisppeo.utils.products module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.readers">
+   sisppeo.utils.readers module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils.registration">
+   sisppeo.utils.registration module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.utils">
+   Module contents
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="sisppeo-utils-package">
+<h1>sisppeo.utils package<a class="headerlink" href="#sisppeo-utils-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-sisppeo.utils.algos">
+<span id="sisppeo-utils-algos-module"></span><h2>sisppeo.utils.algos module<a class="headerlink" href="#module-sisppeo.utils.algos" title="Permalink to this headline">¶</a></h2>
+<p>Contains various useful functions used by algorithms.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.algos.load_calib">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.algos.</span></span><span class="sig-name descname"><span class="pre">load_calib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calibration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_calibration_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_calibration_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/algos.html#load_calib"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.algos.load_calib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads parameters for a given calibration name/file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>calibration</strong> – calibration name or path.
+1. If ‘calibration’ is a string, it refers to a calibration
+included in SISPPEO (this calibration name is an entry of
+the ‘default_calibration_file’).
+2. If ‘calibration’ is a path, it refers to a calibration
+given by the user, embedded in a standalone file
+(see the docs for the detailed structure of this file).</p></li>
+<li><p><strong>default_calibration_file</strong> – path of the default calibration file
+(for a given algorithm).</p></li>
+<li><p><strong>default_calibration_name</strong> – name of the default calibration
+(for a given algorithm).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dict of parameters (model coefficients) and the name of
+the chosen calibration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.algos.producttype_to_sat">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.algos.</span></span><span class="sig-name descname"><span class="pre">producttype_to_sat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/algos.html#producttype_to_sat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.algos.producttype_to_sat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the satellite for the given product_type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>product_type</strong> – The type of the input satellite product
+(e.g. S2_ESA_L2A or L8_USGS_L1)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The name of the satellite that matches the input product_type.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.builders">
+<span id="sisppeo-utils-builders-module"></span><h2>sisppeo.utils.builders module<a class="headerlink" href="#module-sisppeo.utils.builders" title="Permalink to this headline">¶</a></h2>
+<p>Contains a useful function used in main.py.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.builders.get_variables">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.builders.</span></span><span class="sig-name descname"><span class="pre">get_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algo_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algo_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/builders.html#get_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.builders.get_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read variable (=output of a given algorithm) (<a href="#id1"><span class="problematic" id="id2">long_</span></a>)names from config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>algo_config</strong> – A configuration dict (loaded from a YAML file,
+e.g. wc_algo_config.yaml).</p></li>
+<li><p><strong>algo_name</strong> – The name of the algorithm.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.cli">
+<span id="sisppeo-utils-cli-module"></span><h2>sisppeo.utils.cli module<a class="headerlink" href="#module-sisppeo.utils.cli" title="Permalink to this headline">¶</a></h2>
+<p>Contains various useful functions and classes used in the CLI.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.Mutex">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.utils.cli.</span></span><span class="sig-name descname"><span class="pre">Mutex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#Mutex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.Mutex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">click.core.Option</span></code></p>
+<p>Mutually exclusive options (with at least one required).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.Mutex.handle_parse_result">
+<span class="sig-name descname"><span class="pre">handle_parse_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#Mutex.handle_parse_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.Mutex.handle_parse_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.Mutin">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.utils.cli.</span></span><span class="sig-name descname"><span class="pre">Mutin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#Mutin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.Mutin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">click.core.Option</span></code></p>
+<p>Mutually inclusive options.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.Mutin.handle_parse_result">
+<span class="sig-name descname"><span class="pre">handle_parse_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#Mutin.handle_parse_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.Mutin.handle_parse_result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.PathPath">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.utils.cli.</span></span><span class="sig-name descname"><span class="pre">PathPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_okay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir_okay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">writable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">readable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolve_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_dash</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#PathPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.PathPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">click.types.Path</span></code></p>
+<p>A Click path argument that returns a pathlib Path, not a string</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.PathPath.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#PathPath.convert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.PathPath.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the value to the correct type. This is not called if
+the value is <code class="docutils literal notranslate"><span class="pre">None</span></code> (the missing value).</p>
+<p>This must accept string values from the command line, as well as
+values that are already the correct type. It may also convert
+other compatible types.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">param</span></code> and <code class="docutils literal notranslate"><span class="pre">ctx</span></code> arguments may be <code class="docutils literal notranslate"><span class="pre">None</span></code> in certain
+situations, such as when converting prompt input.</p>
+<p>If the value cannot be converted, call <code class="xref py py-meth docutils literal notranslate"><span class="pre">fail()</span></code> with a
+descriptive message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – The value to convert.</p></li>
+<li><p><strong>param</strong> – The parameter that is using this type to convert
+its value. May be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>ctx</strong> – The current context that arrived at this value. May
+be <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.PathPath.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#sisppeo.utils.cli.PathPath.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>the descriptive name of this type</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.read_algos_list">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.cli.</span></span><span class="sig-name descname"><span class="pre">read_algos_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#read_algos_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.read_algos_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a text file and return a config dictionnary.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.read_masks_list">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.cli.</span></span><span class="sig-name descname"><span class="pre">read_masks_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#read_masks_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.read_masks_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a text file and return a config dictionnary.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.cli.read_products_list">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.cli.</span></span><span class="sig-name descname"><span class="pre">read_products_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_ts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/cli.html#read_products_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.cli.read_products_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a text file and return a config dictionnary.</p>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.config">
+<span id="sisppeo-utils-config-module"></span><h2>sisppeo.utils.config module<a class="headerlink" href="#module-sisppeo.utils.config" title="Permalink to this headline">¶</a></h2>
+<p>Contains paths and configs used in other parts of the code.</p>
+</section>
+<section id="module-sisppeo.utils.exceptions">
+<span id="sisppeo-utils-exceptions-module"></span><h2>sisppeo.utils.exceptions module<a class="headerlink" href="#module-sisppeo.utils.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Contains custom exceptions used in other parts of the code.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="sisppeo.utils.exceptions.GeometryError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">GeometryError</span></span><a class="reference internal" href="../_modules/sisppeo/utils/exceptions.html#GeometryError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.exceptions.GeometryError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception raised for errors related to geometry objects.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="sisppeo.utils.exceptions.InputError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">InputError</span></span><a class="reference internal" href="../_modules/sisppeo/utils/exceptions.html#InputError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.exceptions.InputError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception raised for errors in inputs.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="sisppeo.utils.exceptions.ProductError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.utils.exceptions.</span></span><span class="sig-name descname"><span class="pre">ProductError</span></span><a class="reference internal" href="../_modules/sisppeo/utils/exceptions.html#ProductError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.exceptions.ProductError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception raised for errors with the input product.</p>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.lazy_loader">
+<span id="sisppeo-utils-lazy-loader-module"></span><h2>sisppeo.utils.lazy_loader module<a class="headerlink" href="#module-sisppeo.utils.lazy_loader" title="Permalink to this headline">¶</a></h2>
+<p>A LazyLoader class.</p>
+<p>Slightly adapted from the one of TensorFlow,
+see: <a class="reference external" href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/util/lazy_loader.py">https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/util/lazy_loader.py</a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.utils.lazy_loader.LazyLoader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.utils.lazy_loader.</span></span><span class="sig-name descname"><span class="pre">LazyLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_module_globals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/lazy_loader.html#LazyLoader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.lazy_loader.LazyLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">module</span></code></p>
+<p>Lazily import a module, mainly to avoid pulling in large dependencies.</p>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.main">
+<span id="sisppeo-utils-main-module"></span><h2>sisppeo.utils.main module<a class="headerlink" href="#module-sisppeo.utils.main" title="Permalink to this headline">¶</a></h2>
+<p>Contains various useful functions used in main.py.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.main.parse_params">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.main.</span></span><span class="sig-name descname"><span class="pre">parse_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/main.html#parse_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.main.parse_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse and verify params given to the function generate (main.py).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.main.series_to_batch">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.main.</span></span><span class="sig-name descname"><span class="pre">series_to_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/main.html#series_to_batch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.main.series_to_batch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.main.str_to_path">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.main.</span></span><span class="sig-name descname"><span class="pre">str_to_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/main.html#str_to_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.main.str_to_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a path string to a pathlib.Path object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_str</strong> – a path string.</p></li>
+<li><p><strong>exists</strong> – a boolean whether to check if this path exists or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.naming">
+<span id="sisppeo-utils-naming-module"></span><h2>sisppeo.utils.naming module<a class="headerlink" href="#module-sisppeo.utils.naming" title="Permalink to this headline">¶</a></h2>
+<p>Contains various useful functions used for naming products.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.naming.extract_info_from_input_product">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.naming.</span></span><span class="sig-name descname"><span class="pre">extract_info_from_input_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_site</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/naming.html#extract_info_from_input_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.naming.extract_info_from_input_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts some information from the given input product.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.naming.generate_l3_filename">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.naming.</span></span><span class="sig-name descname"><span class="pre">generate_l3_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l3prod</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/naming.html#generate_l3_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.naming.generate_l3_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a filename for a L3 product based on the provided arguments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.naming.generate_ts_filename">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.naming.</span></span><span class="sig-name descname"><span class="pre">generate_ts_filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/naming.html#generate_ts_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.naming.generate_ts_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a filename for time series based on the provided arguments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.naming.geom_to_str">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.naming.</span></span><span class="sig-name descname"><span class="pre">geom_to_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geom_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/naming.html#geom_to_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.naming.geom_to_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the (lat, lon) of top-left point of a geometry.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.naming.topleftlatlon_from_wkt">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.naming.</span></span><span class="sig-name descname"><span class="pre">topleftlatlon_from_wkt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wkt_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/naming.html#topleftlatlon_from_wkt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.naming.topleftlatlon_from_wkt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the (lat, lon) of the top-left point of a WKT string.</p>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.products">
+<span id="sisppeo-utils-products-module"></span><h2>sisppeo.utils.products module<a class="headerlink" href="#module-sisppeo.utils.products" title="Permalink to this headline">¶</a></h2>
+<p>Contains useful stuff for products.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.utils.products.</span></span><span class="sig-name descname"><span class="pre">CoordinatesMixin</span></span><a class="reference internal" href="../_modules/sisppeo/utils/products.html#CoordinatesMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A Mixin which adds extra properties and methods related to coordinates.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin.bounds">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">bounds</span></span><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin.bounds" title="Permalink to this definition">¶</a></dt>
+<dd><p>(xmin, ymin, xmax, ymax).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Returns the boundaries of this product</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin.extract_point">
+<span class="sig-name descname"><span class="pre">extract_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4326</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xy'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/products.html#CoordinatesMixin.extract_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin.extract_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns value(s) at the given coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_var</strong> – The name of the variable/DataArray of interest (e.g., a
+band, aCDOM, etc).</p></li>
+<li><p><strong>coordinates</strong> – A tuple of geographic or projected coordinates; see
+“mode”.</p></li>
+<li><p><strong>buffer</strong> – Optional; The radius (in pixels) of the circle (centered on
+coordinates) to extract. Defaults to None.</p></li>
+<li><p><strong>epsg</strong> – Optional; The EPSG code. Defaults to 4326.</p></li>
+<li><p><strong>mode</strong> – Optional; Either ‘xy’ or ‘latlon’. Defaults to ‘xy’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An xr.DataArray containing the wanted information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin.extract_points">
+<span class="sig-name descname"><span class="pre">extract_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_coordinates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4326</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xy'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/products.html#CoordinatesMixin.extract_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin.extract_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns value(s) at each tuple of coordinates of the given list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_var</strong> – The name of the variable/DataArray of interest (e.g., a
+band, aCDOM, etc).</p></li>
+<li><p><strong>lst_coordinates</strong> – A list of tuples of geographic or projected
+coordinates; see “mode”.</p></li>
+<li><p><strong>buffer</strong> – Optional; The radius (in pixels) of the circle (centered on
+coordinates) to extract. Defaults to None.</p></li>
+<li><p><strong>epsg</strong> – Optional; The EPSG code. Defaults to 4326.</p></li>
+<li><p><strong>mode</strong> – Optional; Either ‘xy’ or ‘latlon’. Defaults to ‘xy’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of xr.DataArray (one per coordinates tuple) containing the
+wanted information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin.index">
+<span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/products.html#CoordinatesMixin.index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets (i, j) from (x, y)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin.res">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">res</span></span><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin.res" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the spatial resolution of this product.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin.x">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns x-coords.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin.xy">
+<span class="sig-name descname"><span class="pre">xy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/products.html#CoordinatesMixin.xy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin.xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets (x, y) from (i, j).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.utils.products.CoordinatesMixin.y">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#sisppeo.utils.products.CoordinatesMixin.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns y-coords.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.products.get_enc">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.products.</span></span><span class="sig-name descname"><span class="pre">get_enc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/products.html#get_enc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.products.get_enc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.products.get_grid">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.products.</span></span><span class="sig-name descname"><span class="pre">get_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/products.html#get_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.products.get_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the number of rows and columns needed according the number of subplots.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.products.normalize_arr">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.products.</span></span><span class="sig-name descname"><span class="pre">normalize_arr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">255</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/products.html#normalize_arr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.products.normalize_arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize an array between 0 and new_max.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – The input array.</p></li>
+<li><p><strong>min</strong> – The value to consider as being the min of the array.</p></li>
+<li><p><strong>max</strong> – The value to consider as being the min of the array.</p></li>
+<li><p><strong>new_max</strong> – The maximum value of the output array.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.readers">
+<span id="sisppeo-utils-readers-module"></span><h2>sisppeo.utils.readers module<a class="headerlink" href="#module-sisppeo.utils.readers" title="Permalink to this headline">¶</a></h2>
+<p>Contains various useful functions used by readers.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.readers.decode_data">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.readers.</span></span><span class="sig-name descname"><span class="pre">decode_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/readers.html#decode_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.readers.decode_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads and decodes encoded data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – The input encoded array of values.</p></li>
+<li><p><strong>scale_factor</strong> – coefficient.</p></li>
+<li><p><strong>fill_value</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">[type]</span></code>) – coefficient.</p></li>
+<li><p><strong>offset</strong> – Optional; coefficient.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The decoded array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.readers.get_ij_bbox">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.readers.</span></span><span class="sig-name descname"><span class="pre">get_ij_bbox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subdataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/readers.html#get_ij_bbox"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.readers.get_ij_bbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clips the subdataset with the geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subdataset</strong> – An open rasterio.io DatasetReader.</p></li>
+<li><p><strong>geom</strong> – A shapley geometry object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corresponding bbox.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.readers.resample_band_array">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.readers.</span></span><span class="sig-name descname"><span class="pre">resample_band_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tqdm_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/readers.html#resample_band_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.readers.resample_band_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resamples an array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – An array of (radiometric) values.</p></li>
+<li><p><strong>in_res</strong> – The input resolution.</p></li>
+<li><p><strong>out_res</strong> – The output resolution.</p></li>
+<li><p><strong>tqdm</strong> – Optional; True if in a tqdm loop.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resampled array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.readers.resize_and_resample_band_array">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.readers.</span></span><span class="sig-name descname"><span class="pre">resize_and_resample_band_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ij_bbox</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_tqdm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/readers.html#resize_and_resample_band_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.readers.resize_and_resample_band_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resamples and resizes an array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> – An array of (radiometric) values.</p></li>
+<li><p><strong>ij_bbox</strong> – The bbox of the ROI.</p></li>
+<li><p><strong>in_res</strong> – The input resolution.</p></li>
+<li><p><strong>out_res</strong> – The output resolution.</p></li>
+<li><p><strong>_tqdm</strong> – Optional; True if in a tqdm loop.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resampled ROI.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils.registration">
+<span id="sisppeo-utils-registration-module"></span><h2>sisppeo.utils.registration module<a class="headerlink" href="#module-sisppeo.utils.registration" title="Permalink to this headline">¶</a></h2>
+<p>Contains functions related to algorithm&amp;mask registration.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.registration.check_algoconfig">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.registration.</span></span><span class="sig-name descname"><span class="pre">check_algoconfig</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/registration.html#check_algoconfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.registration.check_algoconfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a warning message if an algorithm lacks its configuration file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.registration.register_algos">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.registration.</span></span><span class="sig-name descname"><span class="pre">register_algos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/registration.html#register_algos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.registration.register_algos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register each algorithm into a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>catalog</strong> – the dictionary in which will be stored algorithms.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.utils.registration.register_masks">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.utils.registration.</span></span><span class="sig-name descname"><span class="pre">register_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catalog</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/utils/registration.html#register_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.utils.registration.register_masks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register each mask into a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>catalog</strong> – the dictionary in which will be stored masks.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sisppeo.utils" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+sisppeo.check\_algoconfig
+=========================
+
+.. currentmodule:: sisppeo
+
+.. autofunction:: check_algoconfig

@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sisppeo.utils.naming</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../../index.html">
+  <img src="../../../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for sisppeo.utils.naming</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+
+<span class="sd">&quot;&quot;&quot;Contains various useful functions used for naming products.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">tarfile</span>
+
+<span class="kn">import</span> <span class="nn">fiona</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">shape</span>
+
+<span class="kn">from</span> <span class="nn">sisppeo.utils.exceptions</span> <span class="kn">import</span> <span class="n">InputError</span>
+
+<span class="n">product_type_to_source</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;L8_USGS_L1C1&#39;</span><span class="p">:</span> <span class="s1">&#39;USGS-C1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;L8_USGS_L2&#39;</span><span class="p">:</span> <span class="s1">&#39;LaSRC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2_ESA_L1C&#39;</span><span class="p">:</span> <span class="s1">&#39;ESA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2_ESA_L2A&#39;</span><span class="p">:</span> <span class="s1">&#39;Sen2Cor&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;L8_GRS&#39;</span><span class="p">:</span> <span class="s1">&#39;GRS&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2_GRS&#39;</span><span class="p">:</span> <span class="s1">&#39;GRS&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2_THEIA&#39;</span><span class="p">:</span> <span class="s1">&#39;MAIA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;S2_C2RCC&#39;</span><span class="p">:</span> <span class="s1">&#39;C2RCC&#39;</span>
+<span class="p">}</span>
+
+<span class="n">mask_types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;s2cloudless&#39;</span><span class="p">:</span> <span class="s1">&#39;cloudmask&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;waterdetect&#39;</span><span class="p">:</span> <span class="s1">&#39;watermask&#39;</span>
+<span class="p">}</span>
+
+<span class="n">masks_to_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;watermask&#39;</span><span class="p">:</span> <span class="s1">&#39;wm&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;cloudmask&#39;</span><span class="p">:</span> <span class="s1">&#39;cm&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;suppl_masks&#39;</span><span class="p">:</span> <span class="s1">&#39;sm&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;masks&#39;</span><span class="p">:</span> <span class="s1">&#39;m&#39;</span>
+<span class="p">}</span>
+
+<span class="n">algoparams_to_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;band&#39;</span><span class="p">:</span> <span class="s1">&#39;band&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;calibration&#39;</span><span class="p">:</span> <span class="s1">&#39;calib&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;design&#39;</span><span class="p">:</span> <span class="s1">&#39;design&#39;</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="topleftlatlon_from_wkt"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.naming.topleftlatlon_from_wkt">[docs]</a><span class="k">def</span> <span class="nf">topleftlatlon_from_wkt</span><span class="p">(</span><span class="n">wkt_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the (lat, lon) of the top-left point of a WKT string.&quot;&quot;&quot;</span>
+    <span class="n">wkt_type</span> <span class="o">=</span> <span class="n">wkt_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">coord_string</span> <span class="o">=</span> <span class="n">wkt_string</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="n">wkt_type</span> <span class="o">+</span> <span class="s1">&#39; (&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">wkt_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;POINT&#39;</span><span class="p">,</span> <span class="s1">&#39;LINESTRING&#39;</span><span class="p">,</span> <span class="s1">&#39;POLYGON&#39;</span><span class="p">,</span> <span class="s1">&#39;MULTIPOINT&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;MULTILINESTRING&#39;</span><span class="p">,</span> <span class="s1">&#39;MULTIPOLYGON&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s1">&#39;Invalid WKT&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">wkt_type</span> <span class="o">==</span> <span class="s1">&#39;POINT&#39;</span><span class="p">:</span>
+        <span class="n">topleftlatlon</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">_</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span>
+                         <span class="ow">in</span> <span class="n">coord_string</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="n">wkt_type</span> <span class="o">==</span> <span class="s1">&#39;MULTIPOINT&#39;</span><span class="p">:</span>
+        <span class="n">topleftlatlon</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">_</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">)),</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span>
+                         <span class="ow">in</span> <span class="n">coord_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">topleftlatlon</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">_</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span>
+                         <span class="ow">in</span> <span class="n">coord_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">topleftlatlon</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">topleftlatlon</span> <span class="o">=</span> <span class="n">topleftlatlon</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">topleftlatlon</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="geom_to_str"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.naming.geom_to_str">[docs]</a><span class="k">def</span> <span class="nf">geom_to_str</span><span class="p">(</span><span class="n">geom_dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the (lat, lon) of top-left point of a geometry.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">geom</span> <span class="o">:=</span> <span class="n">geom_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;geom&#39;</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">wkt_str</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">wkt_file</span> <span class="o">:=</span> <span class="n">geom_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;wkt&#39;</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">wkt_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">wkt_str</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">shp_file</span> <span class="o">:=</span> <span class="n">geom_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;shp&#39;</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">shp_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">collection</span><span class="p">:</span>
+            <span class="n">geom</span> <span class="o">=</span> <span class="n">shape</span><span class="p">(</span><span class="n">collection</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;geometry&#39;</span><span class="p">])</span>
+        <span class="n">wkt_str</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">to_wkt</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s1">&#39;wrong geom&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">topleftlatlon_from_wkt</span><span class="p">(</span><span class="n">wkt_str</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="generate_l3_filename"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.naming.generate_l3_filename">[docs]</a><span class="k">def</span> <span class="nf">generate_l3_filename</span><span class="p">(</span><span class="n">l3prod</span><span class="p">,</span> <span class="n">code_image</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a filename for a L3 product based on the provided arguments.&quot;&quot;&quot;</span>
+    <span class="n">algo</span> <span class="o">=</span> <span class="n">l3prod</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">algo</span> <span class="ow">in</span> <span class="n">mask_types</span><span class="p">:</span>
+        <span class="n">algo</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mask_types</span><span class="p">[</span><span class="n">algo</span><span class="p">]</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">algo</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">l3prod</span><span class="o">.</span><span class="n">data_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">bands</span> <span class="o">=</span> <span class="p">(</span><span class="n">l3prod</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;grs_bands&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+             <span class="o">+</span> <span class="n">l3prod</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;theia_bands&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">bands</span><span class="p">:</span>
+        <span class="n">bands</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;-bands=</span><span class="si">{</span><span class="n">bands</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">algoparams</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">algoparam</span> <span class="ow">in</span> <span class="n">algoparams_to_args</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">algoparam</span> <span class="ow">in</span> <span class="n">l3prod</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">algoparams</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">algoparams_to_args</span><span class="p">[</span><span class="n">algoparam</span><span class="p">]</span><span class="si">}</span><span class="s1">=&#39;</span>
+                              <span class="o">+</span> <span class="n">l3prod</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">algoparam</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">algoparams</span><span class="p">:</span>
+        <span class="n">algoparams</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;-</span><span class="si">{</span><span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">algoparams</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">algoparams</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">maskparams</span> <span class="o">=</span> <span class="n">l3prod</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;processing_resolution&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">maskparams</span><span class="p">:</span>
+        <span class="n">maskparams</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;-proc_res=</span><span class="si">{</span><span class="n">maskparams</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;_params</span><span class="si">{</span><span class="n">bands</span><span class="si">}</span><span class="s1">-res=</span><span class="si">{</span><span class="n">l3prod</span><span class="o">.</span><span class="n">res</span><span class="si">}</span><span class="s1">m</span><span class="si">{</span><span class="n">algoparams</span><span class="si">}{</span><span class="n">maskparams</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">masks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="n">masks_to_args</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">in</span> <span class="n">l3prod</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">masks_to_args</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                         <span class="o">+</span> <span class="n">l3prod</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">masks</span><span class="p">:</span>
+        <span class="n">masks</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;_masks-</span><span class="si">{</span><span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">masks</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">code_image</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">roi</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">algo</span><span class="si">}{</span><span class="n">params</span><span class="si">}{</span><span class="n">masks</span><span class="si">}</span><span class="s1">.nc&#39;</span>
+    <span class="k">return</span> <span class="n">filename</span></div>
+
+
+<div class="viewcode-block" id="generate_ts_filename"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.naming.generate_ts_filename">[docs]</a><span class="k">def</span> <span class="nf">generate_ts_filename</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">sat</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a filename for time series based on the provided arguments.&quot;&quot;&quot;</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">data_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">end_date</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">algo</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">algoparams</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">algoparam</span> <span class="ow">in</span> <span class="n">algoparams_to_args</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">algoparam</span> <span class="ow">in</span> <span class="n">ts</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">algoparams</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">algoparams_to_args</span><span class="p">[</span><span class="n">algoparam</span><span class="p">]</span><span class="si">}</span><span class="s1">=&#39;</span>
+                              <span class="o">+</span> <span class="n">ts</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">algoparam</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">algoparams</span><span class="p">:</span>
+        <span class="n">algoparams</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;-</span><span class="si">{</span><span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">algoparams</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">algoparams</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">maskparams</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">dataset</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;processing_resolution&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">maskparams</span><span class="p">:</span>
+        <span class="n">maskparams</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;-proc_res=</span><span class="si">{</span><span class="n">maskparams</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;_params-res=</span><span class="si">{</span><span class="n">ts</span><span class="o">.</span><span class="n">res</span><span class="si">}</span><span class="s1">m</span><span class="si">{</span><span class="n">algoparams</span><span class="si">}{</span><span class="n">maskparams</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">masks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="n">masks_to_args</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">in</span> <span class="n">ts</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+            <span class="n">masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">masks_to_args</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="n">ts</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">masks</span><span class="p">:</span>
+        <span class="n">masks</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;_masks-</span><span class="si">{</span><span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">masks</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">sat</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">roi</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">algo</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">end_date</span><span class="si">}{</span><span class="n">params</span><span class="si">}{</span><span class="n">masks</span><span class="si">}</span><span class="s1">.nc&#39;</span>
+    <span class="k">return</span> <span class="n">filename</span></div>
+
+
+<div class="viewcode-block" id="extract_info_from_input_product"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.naming.extract_info_from_input_product">[docs]</a><span class="k">def</span> <span class="nf">extract_info_from_input_product</span><span class="p">(</span><span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span>
+                                    <span class="n">code_site</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Extracts some information from the given input product.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;GRS&#39;</span> <span class="ow">in</span> <span class="n">product_type</span><span class="p">:</span>
+        <span class="n">code_image</span> <span class="o">=</span> <span class="n">input_product</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">product_type</span> <span class="o">==</span> <span class="s1">&#39;S2_GRS&#39;</span><span class="p">:</span>
+            <span class="n">sat</span> <span class="o">=</span> <span class="s1">&#39;S2&#39;</span>
+        <span class="k">else</span><span class="p">:</span>   <span class="c1"># product_type == &#39;L8_GRS&#39;</span>
+            <span class="n">sat</span> <span class="o">=</span> <span class="s1">&#39;LC8&#39;</span>
+        <span class="n">tile</span> <span class="o">=</span> <span class="n">code_image</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">product_type</span> <span class="o">==</span> <span class="s1">&#39;L8_USGS_L1C1&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">input_product</span><span class="o">.</span><span class="n">suffix</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.tgz&#39;</span><span class="p">,</span> <span class="s1">&#39;.gz&#39;</span><span class="p">):</span>
+            <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">input_product</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">([</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">archive</span><span class="o">.</span><span class="n">getnames</span><span class="p">()</span>
+                           <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;MTL.txt&#39;</span><span class="p">)][</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">input_product</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*MTL.txt&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="n">code_image</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;LC8</span><span class="si">{</span><span class="n">tmp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}{</span><span class="n">tmp</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">sat</span> <span class="o">=</span> <span class="s1">&#39;LC8&#39;</span>
+        <span class="n">tile</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">product_type</span> <span class="o">==</span> <span class="s1">&#39;L8_USGS_L2&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">input_product</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.gz&#39;</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">input_product</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">archive</span><span class="o">.</span><span class="n">getnames</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;MTL.txt&#39;</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">TextIOWrapper</span><span class="p">(</span><span class="n">archive</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">path</span><span class="p">))</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">input_product</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*MTL.txt&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="n">landsat_scene_id</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+            <span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; = &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">date_acquired</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+            <span class="s1">&#39;&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; = &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">code_image</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;LC8</span><span class="si">{</span><span class="n">landsat_scene_id</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span><span class="si">}{</span><span class="n">date_acquired</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">sat</span> <span class="o">=</span> <span class="s1">&#39;LC8&#39;</span>
+        <span class="n">tile</span> <span class="o">=</span> <span class="n">landsat_scene_id</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s1">&#39;S2_ESA&#39;</span> <span class="ow">in</span> <span class="n">product_type</span> <span class="ow">or</span> <span class="n">product_type</span> <span class="o">==</span> <span class="s1">&#39;S2_C2RCC&#39;</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">input_product</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="n">code_image</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}{</span><span class="n">tmp</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span><span class="si">}{</span><span class="n">tmp</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">sat</span> <span class="o">=</span> <span class="s1">&#39;S2&#39;</span>
+        <span class="n">tile</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">elif</span> <span class="n">product_type</span> <span class="o">==</span> <span class="s1">&#39;S2_THEIA&#39;</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">input_product</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+        <span class="n">code_image</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;S</span><span class="si">{</span><span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="si">}{</span><span class="n">tmp</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span><span class="si">}{</span><span class="n">tmp</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="mi">8</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">sat</span> <span class="o">=</span> <span class="s1">&#39;S2&#39;</span>
+        <span class="n">tile</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;unknown product_type&#39;</span><span class="p">)</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">product_type_to_source</span><span class="p">[</span><span class="n">product_type</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">code_site</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">geom</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">roi</span> <span class="o">=</span> <span class="n">tile</span>
+    <span class="k">elif</span> <span class="n">code_site</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">roi</span> <span class="o">=</span> <span class="n">code_site</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">roi</span> <span class="o">=</span> <span class="n">geom_to_str</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">code_image</span><span class="p">,</span> <span class="n">sat</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span></div>
+</pre></div>
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

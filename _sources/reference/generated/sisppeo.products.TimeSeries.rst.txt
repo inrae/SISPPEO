@@ -1,0 +1,56 @@
+sisppeo.products.TimeSeries
+===========================
+
+.. currentmodule:: sisppeo.products
+
+.. autoclass:: TimeSeries
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~TimeSeries.__init__
+      ~TimeSeries.compute_stats
+      ~TimeSeries.extract_point
+      ~TimeSeries.extract_points
+      ~TimeSeries.from_file
+      ~TimeSeries.from_files
+      ~TimeSeries.from_l3products
+      ~TimeSeries.get_max_map
+      ~TimeSeries.get_mean_map
+      ~TimeSeries.get_min_map
+      ~TimeSeries.index
+      ~TimeSeries.plot_1d
+      ~TimeSeries.plot_2d
+      ~TimeSeries.plot_hists
+      ~TimeSeries.plot_stats_maps
+      ~TimeSeries.save
+      ~TimeSeries.timelapse
+      ~TimeSeries.xy
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~TimeSeries.dataset
+      ~TimeSeries.bounds
+      ~TimeSeries.data_vars
+      ~TimeSeries.end_date
+      ~TimeSeries.res
+      ~TimeSeries.start_date
+      ~TimeSeries.title
+      ~TimeSeries.x
+      ~TimeSeries.y
+   
+   

@@ -1,0 +1,588 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Create and analize a time series (TimeSeries)</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User Workspace" href="user_workspace.html" />
+    <link rel="prev" title="Create a mask (L3MaskProduct)" href="create_mask.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_l3algo.html">
+   Create a L3 product (L3AlgoProduct)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_mask.html">
+   Create a mask (L3MaskProduct)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Create and analize a time series (TimeSeries)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="user_workspace.html">
+   User Workspace
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creation">
+   Création
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-la-cli">
+     Via la CLI
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#arguments-specifiques-a-certains-reader">
+       Arguments spécifiques à certains reader
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#arguments-relatifs-aux-algorithmes-utilises">
+       Arguments relatifs aux algorithmes utilisés
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#generation-de-produits-masques">
+       Génération de produits masqués
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#traitement-sur-une-zone-d-interet">
+       Traitement sur une zone d’intérêt
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reechantillonnage">
+       Rééchantillonnage
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#optimisation-mutualisation-de-l-extraction-des-bandes">
+       Optimisation : mutualisation de l’extraction des bandes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fichiers-de-sortie">
+       Fichiers de sortie
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#raccourcis-fichiers-d-inputs">
+       Raccourcis : fichiers d’inputs
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#products-list">
+         “products_list”
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#algos-list">
+         “algos_list”
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-le-module">
+     Via le module
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#depuis-des-produits-l1-ou-l2">
+       Depuis des produits L1 ou L2
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#arguments-specifiques-a-certains-readers">
+         Arguments spécifiques à certains readers
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#arguments-relatifs-aux-algorithes-utilises">
+         Arguments relatifs aux algorithes utilisés
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id1">
+         Génération de produits masqués
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id2">
+         Traitement sur une zone d’intérêt
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id3">
+         Rééchantillonnage
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id4">
+         Optimisation : mutualisation de l’extraction des bandes
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#depuis-des-produits-l3">
+       Depuis des produits L3
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#en-memoire">
+         … en mémoire
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#stockes-sur-le-disque">
+         … stockés sur le disque
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyse">
+   Analyse
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remarque">
+   Remarque
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="create-and-analize-a-time-series-timeseries">
+<h1>Create and analize a time series (TimeSeries)<a class="headerlink" href="#create-and-analize-a-time-series-timeseries" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial will soon be available in English.</p>
+</div>
+<section id="creation">
+<h2>Création<a class="headerlink" href="#creation" title="Permalink to this headline">¶</a></h2>
+<p>Il existe différents moyens de créer une série temporelle avec SISPPEO.</p>
+<section id="via-la-cli">
+<h3>Via la CLI<a class="headerlink" href="#via-la-cli" title="Permalink to this headline">¶</a></h3>
+<p>En utilisant la CLI, il est possible de créer une série temporelle (masquée ou non) à partir de produits L1 ou L2.</p>
+<p>Pour cela, il suffit de faire :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sisppeo create-timeseries --input_product path1 --input_product path2 --product_type S2_GRS <span class="o">[</span>--glint<span class="o">]</span> --algo spm-nechad <span class="o">[</span>--algo_band spm-nechad B5<span class="o">]</span> <span class="o">[</span>--algo_calib spm-nechad Nechad_2010<span class="o">]</span> <span class="o">[</span>--num_cpus <span class="m">2</span><span class="o">]</span> --out_product path3
+</pre></div>
+</div>
+<p>Ici, un objet TimeSeries contenant une variable “spm-nechad” sera calculé à partir des images S2_GRS “path1” et “path2” et enregistré sous le nom “path3”.</p>
+<p>Les arguments entre crochets (“[…]”) sont optionnels. D’autres arguments, ainsi que des raccourcis (par exemple <code class="docutils literal notranslate"><span class="pre">-i</span></code> pour <code class="docutils literal notranslate"><span class="pre">--input_product</span></code> ou <code class="docutils literal notranslate"><span class="pre">-a</span></code> pour <code class="docutils literal notranslate"><span class="pre">--algo</span></code>) sont disponibles. Pour plus d’information, faire <strong class="command">sisppeo --help</strong> / <strong class="command">sisppeo create-timeseries --help</strong>.</p>
+<section id="arguments-specifiques-a-certains-reader">
+<h4>Arguments spécifiques à certains reader<a class="headerlink" href="#arguments-specifiques-a-certains-reader" title="Permalink to this headline">¶</a></h4>
+<p>cf. <a class="reference internal" href="create_l3algo.html#argu-readers-1"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="arguments-relatifs-aux-algorithmes-utilises">
+<h4>Arguments relatifs aux algorithmes utilisés<a class="headerlink" href="#arguments-relatifs-aux-algorithmes-utilises" title="Permalink to this headline">¶</a></h4>
+<p>cf. <a class="reference internal" href="create_l3algo.html#argu-algos-1"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="generation-de-produits-masques">
+<h4>Génération de produits masqués<a class="headerlink" href="#generation-de-produits-masques" title="Permalink to this headline">¶</a></h4>
+<p>Il est possible de générer des séries temporelles masquées. Pour cela, il faut utiliser les arguments <code class="docutils literal notranslate"><span class="pre">--tsmask_path</span></code> et <code class="docutils literal notranslate"><span class="pre">--tsmask_type</span></code>, de la même manière que l’on utilise <code class="docutils literal notranslate"><span class="pre">--mask_path</span></code> et <code class="docutils literal notranslate"><span class="pre">--mask_type</span></code> pour des produits L3 (à l’exception que le masque ici utilisé est un objet TimeSeries et non L3MaskProduct).</p>
+<p>Il est aussi possible d’utiliser, <a class="reference internal" href="create_l3algo.html#maskslist"><span class="std std-ref">comme lors de la génération de produits L3</span></a>, l’argument <cite>–masks_list`</cite>, à la seul différene qu’ici il faudra l’appeler une fois par “input_product”.</p>
+</section>
+<section id="traitement-sur-une-zone-d-interet">
+<h4>Traitement sur une zone d’intérêt<a class="headerlink" href="#traitement-sur-une-zone-d-interet" title="Permalink to this headline">¶</a></h4>
+<p>cf. <a class="reference internal" href="create_l3algo.html#roi-1"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="reechantillonnage">
+<h4>Rééchantillonnage<a class="headerlink" href="#reechantillonnage" title="Permalink to this headline">¶</a></h4>
+<p>cf. <a class="reference internal" href="create_l3algo.html#resampling-1"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="optimisation-mutualisation-de-l-extraction-des-bandes">
+<h4>Optimisation : mutualisation de l’extraction des bandes<a class="headerlink" href="#optimisation-mutualisation-de-l-extraction-des-bandes" title="Permalink to this headline">¶</a></h4>
+<p>Si plusieurs traitements sont envisagés pour la même série temporelle d’images, il est possible de mutualiser l’étape d’extraction en spécifiant plusieurs algorithmes.</p>
+<p>Par exemple :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sisppeo create-timeseries --input_product path1 --input_product path2 --product_type S2_GRS --algo ndwi --algo spm-nechad --out_product path_out_ndwi --out_product path_out_spm
+</pre></div>
+</div>
+<p>L’argument “algo” peut être appelé plusieurs fois (auquel cas, <code class="docutils literal notranslate"><span class="pre">--out_product</span></code> devra lui aussi-être appelé plusieurs fois [à moins d’utiliser <code class="docutils literal notranslate"><span class="pre">--output_dir</span></code>, cf. <a class="reference external" href="#fichiers-de-sortie">ci-après</a>] et dans le même ordre).</p>
+</section>
+<section id="fichiers-de-sortie">
+<h4>Fichiers de sortie<a class="headerlink" href="#fichiers-de-sortie" title="Permalink to this headline">¶</a></h4>
+<p>cf. <a class="reference internal" href="create_l3algo.html#sortie1"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="raccourcis-fichiers-d-inputs">
+<h4>Raccourcis : fichiers d’inputs<a class="headerlink" href="#raccourcis-fichiers-d-inputs" title="Permalink to this headline">¶</a></h4>
+<section id="products-list">
+<h5>“products_list”<a class="headerlink" href="#products-list" title="Permalink to this headline">¶</a></h5>
+<p>Dans le cas où l’on souhaite compiler de nombreux produits (i.e. beaucoup de dates) au sein de notre série temporelle, il peut être intéressant et plus rapide (génération automatique par ex) d’utiliser un fichier texte regroupant les différentes entrées et qui sera appelé par l’argument <code class="docutils literal notranslate"><span class="pre">--products_list</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">--products_list</span> <span class="pre">path/to/text/file.txt</span></code>). Il devra contenir un en-tête (cf. exemple ci-après) ainsi que les valeurs de ces différents arguments pour chaque produit attendu (une ligne par produit), en laissant vide les arguments non pertinents.</p>
+<p>Par exemple ::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_product</span> <span class="n">masks_list</span>
+<span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">input_product1</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">masks_listA</span>
+<span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">input_product2</span>
+<span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">input_product3</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">masks_listB</span>
+</pre></div>
+</div>
+<p>La colonne “input_product” est obligatoire ; “masks_list” est optionnelle.</p>
+<p>Si utilisé, l’argument <code class="docutils literal notranslate"><span class="pre">--products_list</span></code> remplace les arguments <code class="docutils literal notranslate"><span class="pre">--input_product</span></code> (et potentiellement <code class="docutils literal notranslate"><span class="pre">--masks_list</span></code>)</p>
+</section>
+<section id="algos-list">
+<h5>“algos_list”<a class="headerlink" href="#algos-list" title="Permalink to this headline">¶</a></h5>
+<p>cf. <a class="reference internal" href="create_l3algo.html#algoslist"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+</section>
+</section>
+<section id="via-le-module">
+<h3>Via le module<a class="headerlink" href="#via-le-module" title="Permalink to this headline">¶</a></h3>
+<p>SISPPEO peut aussi être importé au sein d’un script Python afin de créer des séries temporelles à partir de produits L1-2, ou bien compiler des produits L3 déjà existants.</p>
+<section id="depuis-des-produits-l1-ou-l2">
+<h4>Depuis des produits L1 ou L2<a class="headerlink" href="#depuis-des-produits-l1-ou-l2" title="Permalink to this headline">¶</a></h4>
+<p>Il suffit de procéder de la manière suivante :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sisppeo</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;input_products&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">path1</span><span class="p">,</span> <span class="n">path2</span><span class="p">],</span>
+    <span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="s1">&#39;S2_GRS&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;glint_corrected&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;algo&#39;</span><span class="p">:</span> <span class="s1">&#39;spm-nechad&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">timeseries</span> <span class="o">=</span> <span class="n">sisppeo</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;time series&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Ici, un objet TimeSeries contenant une variable “spm-nechad” sera calculé à partir des images S2_GRS  “path1” et “path2”. Pour l’enregistré à l’emplacement “path3”, il suffit d’ajouter une clé <code class="docutils literal notranslate"><span class="pre">out_product</span></code> ou <code class="docutils literal notranslate"><span class="pre">output_dir</span></code> au dictionnaire “params” et de modifier la dernière ligne :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;out_product&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path3</span>
+<span class="n">timeseries</span> <span class="o">=</span> <span class="n">sisppeo</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s1">&#39;time series&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># ou &quot;save=True&quot;</span>
+</pre></div>
+</div>
+<p><em>Rq: il est aussi possible de sauvegarder une série temporelle déjà générée en faisant</em> <code class="code docutils literal notranslate"><span class="pre">timeseries.save(path3)</span></code>. <em>Pour bénéficier de la génération automatique du nom permise par la méthode précédente (avec la clé</em> <code class="docutils literal notranslate"><span class="pre">output_dir</span></code> <em>en lieu et place de</em> <code class="docutils literal notranslate"><span class="pre">out_product</span></code><em>), il faut écrire :</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sisppeo.utils.naming</span> <span class="kn">import</span> <span class="p">(</span><span class="n">extract_info_from_input_product</span><span class="p">,</span>
+                                                   <span class="n">generate_ts_filename</span><span class="p">)</span>
+
+<span class="n">_</span><span class="p">,</span> <span class="n">sat</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extract_info_from_input_product</span><span class="p">(</span>
+    <span class="n">path1</span><span class="p">,</span> <span class="s1">&#39;S2_GRS&#39;</span><span class="p">,</span>
+    <span class="c1"># optionnels : params.get(&#39;code_site&#39;, None), params.get(&#39;geom&#39;, None)</span>
+<span class="p">)</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">generate_ts_filename</span><span class="p">(</span><span class="n">l3algo_product</span><span class="p">,</span> <span class="n">sat</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span><span class="p">)</span>
+<span class="n">l3algo_product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">dirname</span> <span class="o">/</span> <span class="n">filename</span><span class="p">)</span>    <span class="c1"># type(dirname) == pathlib.Path</span>
+</pre></div>
+</div>
+<p>De nombreuses autres clés sont disponibles pour le dictionnaire “params”, cf. la suite de ce tutoriel.</p>
+<section id="arguments-specifiques-a-certains-readers">
+<h5>Arguments spécifiques à certains readers<a class="headerlink" href="#arguments-specifiques-a-certains-readers" title="Permalink to this headline">¶</a></h5>
+<p>cf. <a class="reference internal" href="create_l3algo.html#argu-readers-2"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="arguments-relatifs-aux-algorithes-utilises">
+<h5>Arguments relatifs aux algorithes utilisés<a class="headerlink" href="#arguments-relatifs-aux-algorithes-utilises" title="Permalink to this headline">¶</a></h5>
+<p>cf. <a class="reference internal" href="create_l3algo.html#argu-algos-2"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="id1">
+<h5>Génération de produits masqués<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<p>Il est possible de générer des séries temporelles masquées. Pour cela, il faut utiliser les clés <code class="docutils literal notranslate"><span class="pre">ts_mask</span></code> / <code class="docutils literal notranslate"><span class="pre">ts_mask_path</span></code> et <code class="docutils literal notranslate"><span class="pre">tsmask_type</span></code>, resp. un objet TimeSeries (i.e., une série temporelle de masques créée avec SISPPEO et chargée en mémoire) / le path de la série temporelle de masques (i.e., une série temporelle de masques créée avec SISPPEO et sauvegardée sur le disque) et si elle est utilisée pour inclure ou exclure les zones masquées.</p>
+<p>Par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;tsmask&#39;</span><span class="p">:</span> <span class="n">tsmask_product</span><span class="p">,</span> <span class="c1"># ou &#39;tsmask_path: path/to/tsmask/product.nc</span>
+    <span class="s1">&#39;tsmask_type&#39;</span><span class="p">:</span> <span class="s1">&#39;IN&#39;</span> <span class="c1"># or &#39;OUT&#39;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Il n’est pas possible d’utiliser à la fois des masques chargés en mémoire (via <code class="docutils literal notranslate"><span class="pre">tsmask</span></code>) et des masques sauvegardés sur le disque (via <code class="docutils literal notranslate"><span class="pre">tsmask_path</span></code>). Cependant, il est possible de masquer des séries temporelles a posteriori grâce à la fonction <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.mask_time_series" title="sisppeo.products.timeseries.mask_time_series"><code class="xref py py-func docutils literal notranslate"><span class="pre">mask_time_series()</span></code></a>.</p>
+<p>L’utilisation de plusieurs séries temporelles de masques de manière combinée est possible, auquel cas on utilisera les clés <code class="docutils literal notranslate"><span class="pre">lst_tsmask</span></code> / <code class="docutils literal notranslate"><span class="pre">lst_tsmask_path</span></code> et <code class="docutils literal notranslate"><span class="pre">lst_tsmask_type</span></code> (de la même manière que pour les algorithmes, il est possible d’utiliser ces clés et de fournir des listes d’un seul élément).</p>
+<p>Par exemple, afin de conserver les zones d’eau sans nuages :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;lst_tsmask&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">watermask</span><span class="p">,</span> <span class="n">cloudmask</span><span class="p">],</span> <span class="c1"># ou &#39;lst_tsmask_path: [path/to/watermask, path/to/cloudmask]</span>
+    <span class="s1">&#39;lst_tsmask_type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IN&#39;</span><span class="p">,</span> <span class="s1">&#39;OUT&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Il est aussi possible de fournir des listes de listes de masques qui ne sont pas encore compilés en séries temporelles avec les arguments <code class="docutils literal notranslate"><span class="pre">lst_l3masks</span></code> / <code class="docutils literal notranslate"><span class="pre">lst_l3masks_paths</span></code> et <code class="docutils literal notranslate"><span class="pre">lst_l3masks_types</span></code>.</p>
+</section>
+<section id="id2">
+<h5>Traitement sur une zone d’intérêt<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<p>cf. <a class="reference internal" href="create_l3algo.html#roi-2"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="id3">
+<h5>Rééchantillonnage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<p>cf. <a class="reference internal" href="create_l3algo.html#resampling-2"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+<section id="id4">
+<h5>Optimisation : mutualisation de l’extraction des bandes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
+<p>cf. <a class="reference internal" href="create_l3algo.html#mutualisation2"><span class="std std-ref">le tuto relatif à la création de produits L3</span></a>.</p>
+</section>
+</section>
+<section id="depuis-des-produits-l3">
+<h4>Depuis des produits L3<a class="headerlink" href="#depuis-des-produits-l3" title="Permalink to this headline">¶</a></h4>
+<section id="en-memoire">
+<h5>… en mémoire<a class="headerlink" href="#en-memoire" title="Permalink to this headline">¶</a></h5>
+<p>Il suffit de procéder de la manière suivante :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sisppeo.products</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+
+<span class="n">timeseries</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">from_l3products</span><span class="p">([</span><span class="n">pdt1</span><span class="p">,</span> <span class="n">pdt2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">pdtN</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="stockes-sur-le-disque">
+<h5>… stockés sur le disque<a class="headerlink" href="#stockes-sur-le-disque" title="Permalink to this headline">¶</a></h5>
+<p>Il suffit de procéder de la manière suivante :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sisppeo.products</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+
+<span class="n">timeseries</span> <span class="o">=</span> <span class="n">TimeSeries</span><span class="o">.</span><span class="n">from_files</span><span class="p">([</span><span class="n">path1</span><span class="p">,</span> <span class="n">path2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">pathN</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><em>Rq: il est possible de charger en mémoire une série temporelles depuis un fichier netCDF préalablement généré et enregistré sur le disque en utilisant la méthode de classe</em> <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.from_file" title="sisppeo.products.timeseries.TimeSeries.from_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_file()</span></code></a>.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="analyse">
+<h2>Analyse<a class="headerlink" href="#analyse" title="Permalink to this headline">¶</a></h2>
+<p>Il est possible :</p>
+<ul class="simple">
+<li><p>d’extraire un ou plusieurs points, avec ou sans buffer : <a class="reference internal" href="../reference/sisppeo.utils.html#sisppeo.utils.products.CoordinatesMixin.extract_point" title="sisppeo.utils.products.CoordinatesMixin.extract_point"><code class="xref py py-func docutils literal notranslate"><span class="pre">extract_point()</span></code></a>, <a class="reference internal" href="../reference/sisppeo.utils.html#sisppeo.utils.products.CoordinatesMixin.extract_points" title="sisppeo.utils.products.CoordinatesMixin.extract_points"><code class="xref py py-func docutils literal notranslate"><span class="pre">extract_points()</span></code></a>;</p></li>
+<li><p>de calculer une poignée d’indicateurs statistiques classiques sur les différentes variables et images de la série temporelle : <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.compute_stats" title="sisppeo.products.timeseries.TimeSeries.compute_stats"><code class="xref py py-func docutils literal notranslate"><span class="pre">compute_stats()</span></code></a>;</p></li>
+<li><p>de plot une série temporelle pour un ou plusieurs points, pour une ou plusieurs variables : <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.plot_1d" title="sisppeo.products.timeseries.TimeSeries.plot_1d"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_1d()</span></code></a>;</p></li>
+<li><p>de plot un timelapse (sous la forme d’une mosaïque d’images) pour une ou plusieurs variables : <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.plot_2d" title="sisppeo.products.timeseries.TimeSeries.plot_2d"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_2d()</span></code></a>;</p></li>
+<li><p>de plot une carte des moyennes sur la série temporelle (pour une ou plusieurs variables) : <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.get_mean_map" title="sisppeo.products.timeseries.TimeSeries.get_mean_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_mean_map()</span></code></a>, <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.plot_stats_maps" title="sisppeo.products.timeseries.TimeSeries.plot_stats_maps"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_stats_maps()</span></code></a>;</p></li>
+<li><p>de plot une carte des valeurs min/max sur la série temporelle (pour une ou plusieurs variables) : <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.get_min_map" title="sisppeo.products.timeseries.TimeSeries.get_min_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_min_map()</span></code></a>, <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.get_max_map" title="sisppeo.products.timeseries.TimeSeries.get_max_map"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_max_map()</span></code></a>, <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.plot_stats_maps" title="sisppeo.products.timeseries.TimeSeries.plot_stats_maps"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_stats_maps()</span></code></a>;</p></li>
+<li><p>d’étudier la répartition des valeurs pour une variable donnée à une date t (sous la forme d’un histogramme) : <a class="reference internal" href="../reference/sisppeo.products.html#sisppeo.products.timeseries.TimeSeries.plot_hists" title="sisppeo.products.timeseries.TimeSeries.plot_hists"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_hists()</span></code></a>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="remarque">
+<h2>Remarque<a class="headerlink" href="#remarque" title="Permalink to this headline">¶</a></h2>
+<p>Si vous avez une question ou si vous avez besoin d’informations complémentaires, i) consultez le reste de la documentation, ii) référez-vous au code de SISPPEO puis si besoin iii) contactez <a class="reference external" href="mailto:arthur&#46;coque&#37;&#52;&#48;inrae&#46;fr">moi</a>.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="create_mask.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Create a mask (L3MaskProduct)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="user_workspace.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">User Workspace</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

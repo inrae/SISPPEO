@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>sisppeo.products package</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.products.l3">
+   sisppeo.products.l3 module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.products.timeseries">
+   sisppeo.products.timeseries module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.products">
+   Module contents
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="sisppeo-products-package">
+<h1>sisppeo.products package<a class="headerlink" href="#sisppeo-products-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-sisppeo.products.l3">
+<span id="sisppeo-products-l3-module"></span><h2>sisppeo.products.l3 module<a class="headerlink" href="#module-sisppeo.products.l3" title="Permalink to this headline">¶</a></h2>
+<p>This module gathers classes related to L3 products.</p>
+<p>In this module are defined L3 products : the abstract class L3Product and its
+child classes L3AlgoProduct and L3MaskProduct. Basically, these classes wrap
+a well formated xarray Dataset and offer a few useful methods.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S2_ndvi</span> <span class="o">=</span> <span class="n">L3AlgoProduct</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">S2_ndvi</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">S2_ndvi</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path_to_file</span><span class="p">)</span>
+
+<span class="n">s2cloudless_mask</span> <span class="o">=</span> <span class="n">L3MaskProduct</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">s2cloudless_mask</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path_to_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3AlgoProduct">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.products.l3.</span></span><span class="sig-name descname"><span class="pre">L3AlgoProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3AlgoProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3AlgoProduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sisppeo.products.l3.L3Product" title="sisppeo.products.l3.L3Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.products.l3.L3Product</span></code></a></p>
+<p>An L3Product embedding data obtained by using a wc/land algorithm.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3AlgoProduct.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.products.l3.L3AlgoProduct.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing processed data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>xarray.core.dataset.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3AlgoProduct.algo">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">algo</span></span><a class="headerlink" href="#sisppeo.products.l3.L3AlgoProduct.algo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the algorithm used to get this dataset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3AlgoProduct.from_file">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3AlgoProduct.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3AlgoProduct.from_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3AlgoProduct.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3AlgoProduct.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3AlgoProduct.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3MaskProduct">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.products.l3.</span></span><span class="sig-name descname"><span class="pre">L3MaskProduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3MaskProduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3MaskProduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sisppeo.products.l3.L3Product" title="sisppeo.products.l3.L3Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.products.l3.L3Product</span></code></a></p>
+<p>An L3Product embedding data obtained by using a mask algorithm.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3MaskProduct.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.products.l3.L3MaskProduct.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing processed data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>xarray.core.dataset.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3MaskProduct.from_file">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3MaskProduct.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3MaskProduct.from_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3MaskProduct.mask">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">mask</span></span><a class="headerlink" href="#sisppeo.products.l3.L3MaskProduct.mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the mask used to get this dataset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3MaskProduct.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3MaskProduct.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3MaskProduct.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3Product">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.products.l3.</span></span><span class="sig-name descname"><span class="pre">L3Product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3Product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3Product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code>, <a class="reference internal" href="sisppeo.utils.html#sisppeo.utils.products.CoordinatesMixin" title="sisppeo.utils.products.CoordinatesMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.utils.products.CoordinatesMixin</span></code></a></p>
+<p>Abstract class inherited by both L3AlgoProduct and L3MaskProduct.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3Product.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.products.l3.L3Product.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing processed data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>xarray.core.dataset.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3Product.data_vars">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">data_vars</span></span><a class="headerlink" href="#sisppeo.products.l3.L3Product.data_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of DataArrays corresponding to variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3Product.from_file">
+<em class="property"><span class="pre">abstract</span> <span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3Product.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3Product.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads and returns a L3Product from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – The path to the L3Product (saved as a netCDF file).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3Product.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_var</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3Product.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3Product.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a given variable.</p>
+<dl class="simple">
+<dt>data_var: The name of the variable/DataArray of interest (e.g., a</dt><dd><p>band, aCDOM, etc).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3Product.product_type">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">product_type</span></span><a class="headerlink" href="#sisppeo.products.l3.L3Product.product_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the product_type of the product used to get this dataset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3Product.save">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#L3Product.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.L3Product.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves this product into a netCDF file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – Path of the output file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.l3.L3Product.title">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#sisppeo.products.l3.L3Product.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the title of the underlying dataset.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.products.l3.mask_product">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.products.l3.</span></span><span class="sig-name descname"><span class="pre">mask_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l3_algo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l3_masks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_mask_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/l3.html#mask_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.l3.mask_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Masks an L3AlgoProduct.</p>
+<p>Masks an L3AlgoProduct with one or more L3MaskProducts. It can be used for
+instance to get rid of clouds or to extract only water areas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l3_algo</strong> – The L3AlgoProduct to be masked.</p></li>
+<li><p><strong>l3_masks</strong> – The mask or list of masks to use.</p></li>
+<li><p><strong>lst_mask_type</strong> – The type of the input mask (or the list of the types of
+input masks). Can either be ‘IN’ or ‘OUT’, indicating if the
+corresponding mask is inclusive or exclusive.</p></li>
+<li><p><strong>inplace</strong> – If True, do operation inplace and return None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A masked L3AlgoProduct.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.products.timeseries">
+<span id="sisppeo-products-timeseries-module"></span><h2>sisppeo.products.timeseries module<a class="headerlink" href="#module-sisppeo.products.timeseries" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the TimeSeries class.</p>
+<p>A TimeSeries object is a new kind of product, made from either L1, L2, or L3
+products, and allowing one to build a time series:</p>
+<ul class="simple">
+<li><p>Masks can be used to clip data.</p></li>
+<li><p>Basic statistics can be calculated.</p></li>
+<li><p>Generic plots can easily be made.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">first</span> <span class="n">S2_ESA_L2A</span> <span class="n">product</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">second</span> <span class="n">S2_ESA_L2A</span> <span class="n">product</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span>
+       <span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="n">th</span> <span class="n">S2_ESA_L2A</span> <span class="n">product</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="n">mask_paths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="o">&lt;</span><span class="n">first</span> <span class="n">water_mask</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">second</span> <span class="n">water_mask</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="n">th</span> <span class="n">water_mask</span><span class="o">&gt;</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">&lt;</span><span class="n">first</span> <span class="n">mask2</span><span class="o">&gt;</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;paths&#39;</span><span class="p">:</span> <span class="n">paths</span><span class="p">,</span>
+    <span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="s1">&#39;S2_ESA_L2A&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;requested_bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B6&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;wkt&#39;</span><span class="p">:</span> <span class="n">wkt</span><span class="p">,</span>
+    <span class="s1">&#39;srid&#39;</span><span class="p">:</span> <span class="mi">4326</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">S2L2A_ts</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s1">&#39;TS&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">)</span>
+<span class="n">S2L2A_ts</span><span class="o">.</span><span class="n">compute_stats</span><span class="p">(</span><span class="o">&lt;</span><span class="n">filename</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">S2L2A_ts</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.products.timeseries.</span></span><span class="sig-name descname"><span class="pre">TimeSeries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="sisppeo.utils.html#sisppeo.utils.products.CoordinatesMixin" title="sisppeo.utils.products.CoordinatesMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.utils.products.CoordinatesMixin</span></code></a></p>
+<p>A ‘L4’ product, made from either L1, L2, or L3 products.</p>
+<p>This product contain one or more DataArrays (e.g., one for ndwi, one for
+each band extracted…). Each DataArrays is a data cube (i.e. 3D: x, y,
+time). It allows one to study time series of data, and compute and plot
+statistics over time and/or space.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing one or more 3D-dataarrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>xarray.core.dataset.Dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.compute_stats">
+<span class="sig-name descname"><span class="pre">compute_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.compute_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.compute_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes (and save on disk) statistics about embedded data at each date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> – The path of the output product (a CSV file).</p></li>
+<li><p><strong>plot</strong> – A boolean flag that indicates if computed statistics should
+be plotted or not.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.data_vars">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">data_vars</span></span><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.data_vars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of DataArrays corresponding to variables.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.end_date">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">end_date</span></span><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.end_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the end date.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.from_file">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a TimeSeries object from disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> – The path of the netCDF file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>time, x, y).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A TimeSeries object (i.e. a 3D dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.from_files">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.from_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.from_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load and merge a list of L3 products from disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>paths</strong> – A list of paths (to L3 products saved as netCDF files).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>time, x, y).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A TimeSeries object (i.e. a 3D dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.from_l3products">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_l3products</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.from_l3products"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.from_l3products" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load and merge a list of L3 products.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lst</strong> – A list of L3 products (loaded in memory).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>time, x, y).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A TimeSeries object (i.e. a 3D dataset</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.get_max_map">
+<span class="sig-name descname"><span class="pre">get_max_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jpeg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.get_max_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.get_max_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the map of (temporal) max values for a given data_var.</p>
+<p>Compute a map (a dataarray of dimension N * M) from a dataarray of
+dimension t * N * M. Each pixel of this map is the max value of the
+N * M t-vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>var</strong> – The name of the dataarray to use.</p></li>
+<li><p><strong>plot</strong> – A boolean flag that indicates if the figure should be
+plotted or not.</p></li>
+<li><p><strong>filename</strong> – Optional; The path of the output product (a figure and/or
+a netCDF file).</p></li>
+<li><p><strong>save</strong> – Optional; A boolean flag that indicates if the mean map
+should be saved on disk or not.</p></li>
+<li><p><strong>savefig</strong> – Optional; A boolean flag that indicates if the figure
+should be saved or not.</p></li>
+<li><p><strong>fmt</strong> – The format of the static image that is saved on disk. Can be
+either “png”, “jpeg”, “webp”, “svg” or “pdf”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A map (a dataarray of dimension N * M) of max values for a given
+data_var.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.get_mean_map">
+<span class="sig-name descname"><span class="pre">get_mean_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jpeg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.get_mean_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.get_mean_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the map of (temporal) mean values for a given data_var.</p>
+<p>Compute a map (a DataArray of dimension N * M) from a DataArray of
+dimension t * N * M. Each pixel of this map is the mean value of the
+N * M t-vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>var</strong> – The name of the DataArray to use.</p></li>
+<li><p><strong>plot</strong> – A boolean flag that indicates if the figure should be
+plotted or not.</p></li>
+<li><p><strong>filename</strong> – Optional; The path of the output product (a figure and/or
+a netCDF file).</p></li>
+<li><p><strong>save</strong> – Optional; A boolean flag that indicates if the mean map
+should be saved on disk or not.</p></li>
+<li><p><strong>savefig</strong> – Optional; A boolean flag that indicates if the figure
+should be saved or not.</p></li>
+<li><p><strong>fmt</strong> – The format of the static image that is saved on disk. Can be
+either “png”, “jpeg”, “webp”, “svg” or “pdf”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A map (a dataarray of dimension N * M) of mean values for a given
+data_var.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.get_min_map">
+<span class="sig-name descname"><span class="pre">get_min_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jpeg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.get_min_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.get_min_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the map of (temporal) min values for a given data_var.</p>
+<p>Compute a map (a dataarray of dimension N * M) from a dataarray of
+dimension t * N * M. Each pixel of this map is the min value of the
+N * M t-vectors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>var</strong> – The name of the dataarray to use.</p></li>
+<li><p><strong>plot</strong> – A boolean flag that indicates if the figure should be
+plotted or not.</p></li>
+<li><p><strong>filename</strong> – Optional; The path of the output product (a figure and/or
+a netCDF file).</p></li>
+<li><p><strong>save</strong> – Optional; A boolean flag that indicates if the mean map
+should be saved on disk or not.</p></li>
+<li><p><strong>savefig</strong> – Optional; A boolean flag that indicates if the figure
+should be saved or not.</p></li>
+<li><p><strong>fmt</strong> – The format of the static image that is saved on disk. Can be
+either “png”, “jpeg”, “webp”, “svg” or “pdf”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A map (a dataarray of dimension N * M) of min values for a given
+data_var.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.plot_1d">
+<span class="sig-name descname"><span class="pre">plot_1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst_coordinates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_var</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4326</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'xy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jpeg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.plot_1d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.plot_1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots time series of data_var(s) for one or more given points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lst_coordinates</strong> – A tuple of coordinates (x, y) that locates the
+point to extract (/a list of tuples of coordinates, locating
+points of interest).</p></li>
+<li><p><strong>data_var</strong> – Optional; A variable (e.g. “aCDOM”) or a list of
+variables to plot.</p></li>
+<li><p><strong>buffer</strong> – </p></li>
+<li><p><strong>epsg</strong> – </p></li>
+<li><p><strong>mode</strong> – </p></li>
+<li><p><strong>filename</strong> – Optional; If a filename is provided, the figure will be
+saved using this path.</p></li>
+<li><p><strong>fmt</strong> – The format of the exported figure. Can be either “png”,
+“jpeg”, “webp”, “svg” or “pdf”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.plot_2d">
+<span class="sig-name descname"><span class="pre">plot_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jpeg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.plot_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.plot_2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots timelapse as a mosaic (one per data_var).</p>
+<p>For each data_var, create a figure composed of multiples subplots, each
+one of them being a image of the given data_var at a given date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_vars</strong> – A variable (e.g. “aCDOM”) or a list for variables to
+plot. If ‘all’, creates a figure for each variable (i.e.
+DataArray) embedded into this dataset.</p></li>
+<li><p><strong>filename</strong> – Optional; If a filename is provided, the figure will be
+saved using this path.</p></li>
+<li><p><strong>fmt</strong> – The format of the exported figure. Can be either “png”,
+“jpeg”, “webp”, “svg” or “pdf”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.plot_hists">
+<span class="sig-name descname"><span class="pre">plot_hists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jpeg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.plot_hists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.plot_hists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots an histogram (per data_var, per date).</p>
+<p>For each data_var, at each date, plots an histogram using the right
+array of values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_vars</strong> – The name of the dataarray to plot. If ‘all’, create a
+figure for each dataarray (i.e. for each data_var in
+data_vars).</p></li>
+<li><p><strong>dates</strong> – The wanted date. If ‘all’, create a histogram for each date.</p></li>
+<li><p><strong>plot</strong> – A boolean flag that indicates if the figure should be
+plotted or not.</p></li>
+<li><p><strong>filename</strong> – Optional; The path of the output figure.</p></li>
+<li><p><strong>fmt</strong> – The format of the static image that is saved on disk. Can be
+either “png”, “jpeg”, “webp”, “svg” or “pdf”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.plot_stats_maps">
+<span class="sig-name descname"><span class="pre">plot_stats_maps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_vars</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jpeg'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.plot_stats_maps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.plot_stats_maps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a figure of stats (temporal mean/min/max) map (one per data_var).</p>
+<p>For each data_var, create a figure composed of 3 subplots : a mean-,
+min-, and max-map.
+See ‘get_mean_map’, ‘get_min_map’, and ‘get_max_map’ for more
+information about what the so-called maps are.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_vars</strong> – The name of the dataarray to plot. If ‘all’, create a
+figure for each dataarray (i.e. for each data_var in
+data_vars).</p></li>
+<li><p><strong>filename</strong> – Optional; The path of the output figure.</p></li>
+<li><p><strong>savefig</strong> – Optional; A boolean flag that indicates if the figure
+should be saved or not.</p></li>
+<li><p><strong>fmt</strong> – The format of the static image that is saved on disk. Can be
+either “png”, “jpeg”, “webp”, “svg” or “pdf”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.start_date">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">start_date</span></span><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.start_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the start date.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.timelapse">
+<span class="sig-name descname"><span class="pre">timelapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_vars</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">write_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#TimeSeries.timelapse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.timelapse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a timelapse and save it on disk (as a GIF file).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_vars</strong> – The data_var(s) to plot; 1 for a grayscale image, and a
+list of 3 for a RGB one.</p></li>
+<li><p><strong>filename</strong> – The path of the output gif.</p></li>
+<li><p><strong>out_res</strong> – The resolution of the timelapse; must be coarser than the
+one of the time series.</p></li>
+<li><p><strong>write_time</strong> – If True, the corresponding date will be written on each
+frame.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.TimeSeries.title">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#sisppeo.products.timeseries.TimeSeries.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the title of the underlying dataset.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.cond_resample">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.products.timeseries.</span></span><span class="sig-name descname"><span class="pre">cond_resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_res</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#cond_resample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.cond_resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>See resample_band_array(…).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.products.timeseries.mask_time_series">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.products.timeseries.</span></span><span class="sig-name descname"><span class="pre">mask_time_series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ts_algo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ts_masks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_mask_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/products/timeseries.html#mask_time_series"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.products.timeseries.mask_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Masks time series of L3AlgoProducts.</p>
+<p>Masks a TimeSeries made of L3AlgoProducts with one (or multiple ones)
+made of L3MaskProducts. It can be used for instance to get rid of clouds
+or to extract only water areas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts_algo</strong> – The TimeSeries to be masked.</p></li>
+<li><p><strong>ts_masks</strong> – The TimeSeries or list of TimeSeries to use as mask (/list of
+masks).</p></li>
+<li><p><strong>lst_mask_type</strong> – The type of the input mask (or the list of the types of
+input masks). Can either be ‘IN’ or ‘OUT’, indicating if the
+corresponding mask is inclusive or exclusive.</p></li>
+<li><p><strong>inplace</strong> – If True, do operation inplace and return None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A masked TimeSeries.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.products">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sisppeo.products" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

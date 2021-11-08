@@ -1,0 +1,38 @@
+sisppeo.utils.products.CoordinatesMixin
+=======================================
+
+.. currentmodule:: sisppeo.utils.products
+
+.. autoclass:: CoordinatesMixin
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~CoordinatesMixin.__init__
+      ~CoordinatesMixin.extract_point
+      ~CoordinatesMixin.extract_points
+      ~CoordinatesMixin.index
+      ~CoordinatesMixin.xy
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~CoordinatesMixin.bounds
+      ~CoordinatesMixin.res
+      ~CoordinatesMixin.x
+      ~CoordinatesMixin.y
+   
+   

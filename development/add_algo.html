@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Write and add a new algorithm to SISPPEO</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Team" href="../team.html" />
+    <link rel="prev" title="Write and add a new reader to SISPPEO" href="add_reader.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="add_reader.html">
+   Write and add a new reader to SISPPEO
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Write and add a new algorithm to SISPPEO
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structure-minimale">
+   Structure minimale
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logique-metier-python">
+     Logique métier (python)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configuration-yaml">
+     Configuration (yaml)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exemples">
+   Exemples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cas-trivial-i-e-pas-de-bande-ni-de-calibration-a-specifier-ndwi">
+     1. Cas “trivial” (i.e. pas de bande ni de calibration à spécifier) : NDWI
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#initialisation-init">
+       1. Initialisation :
+       <em>
+        __init__
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#methode-call">
+       2. Méthode
+       <em>
+        __call__
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#configuration">
+       3. Configuration
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cas-ou-plusieurs-calibrations-et-bandes-utilisables-possibles-spmnechad">
+     2. Cas où plusieurs calibrations et bandes utilisables possibles : SPMNechad
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       1. Initialisation :
+       <em>
+        __init__
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       2. Méthode
+       <em>
+        __call__
+       </em>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#aa-config">
+       3. Configuration
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calibration">
+       4. Calibration
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithmes-mutli-sorties">
+     3. Algorithmes mutli-sorties
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-de-l-algorithme">
+   “Intégration” de l’algorithme
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remarque">
+   Remarque
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="write-and-add-a-new-algorithm-to-sisppeo">
+<h1>Write and add a new algorithm to SISPPEO<a class="headerlink" href="#write-and-add-a-new-algorithm-to-sisppeo" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Dans SISPPEO, les algorithmes de télédétection se présentent sous la forme d’une classe. Cette dernière comporte deux méthodes à implémenter :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__</span></code>, pour initialiser un algorithme pour un type de produit satellitaire donné (e.g., “S2_GRS”) et optionnellement pour une calibration (i.e. un ensemble de paramètres) et une bande données ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__call__</span></code>, qui permet d’appeler directement l’instance de classe (à la manière d’une fonction). Cette méthode renvoie le tableau de résultats (ainsi que les paramètres/coefficients utilisés lors des calculs).</p></li>
+</ul>
+<p>Chaque algorithme contient par ailleurs 3 attributs publics :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>, qui est le “label” (i.e. court nom en camel_case, ~id de l’algo utilisé pour le sélectionner lors de la création d’un produit L3) de l’algorithme ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requested_bands</span></code>, qui est la liste des bandes utilisées par l’algorithme.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meta</span></code>, qui est un dictionnaire dans lequel sont stockées différentes métadonnées (nom de la calibration utilisée, coefficients, etc).</p></li>
+</ul>
+<p>De plus, chaque algorithme implémenté se doit d’avoir une entrée dans l’un des fichiers YAML de configuration (<em>“resources/land_algo_config.yaml”</em>, <em>“resources/wc_algo_config.yaml”</em> ou le fichier <em>“resources/algo_config.yaml”</em> du user workspace).</p>
+</section>
+<section id="structure-minimale">
+<h2>Structure minimale<a class="headerlink" href="#structure-minimale" title="Permalink to this headline">¶</a></h2>
+<section id="logique-metier-python">
+<h3>Logique métier (python)<a class="headerlink" href="#logique-metier-python" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dummy</span><span class="p">:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dummy&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="n">algo_config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">band</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+        <span class="c1"># traitement spécifique à l&#39;algo -&gt; result</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration-yaml">
+<h3>Configuration (yaml)<a class="headerlink" href="#configuration-yaml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">dummy</span><span class="p">:</span>
+  <span class="nt">long_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Dummy variable from Dummy et al., 2021</span>
+  <span class="nt">output</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ymmub</span>
+  <span class="nt">L8</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B5</span>
+  <span class="nt">S2</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B8</span>
+</pre></div>
+</div>
+<p>Ici, l’on définit l’algorithme “dummy”, qui peut être appliquer à des images Landsat 8 (L8) et Sentinel-2 (S2), desquelles seront resp. extraites les bandes B5 et B8. Le nom de la variable dans le dataset (/netCDF) en sortie sera “ymmub”, et cette variable aura un attribut “long_name: Dummy variable from Dummy et al., 2021” qui sert à correctement référencer l’algorithme employé.</p>
+</section>
+</section>
+<section id="exemples">
+<h2>Exemples<a class="headerlink" href="#exemples" title="Permalink to this headline">¶</a></h2>
+<section id="cas-trivial-i-e-pas-de-bande-ni-de-calibration-a-specifier-ndwi">
+<h3>1. Cas “trivial” (i.e. pas de bande ni de calibration à spécifier) : NDWI<a class="headerlink" href="#cas-trivial-i-e-pas-de-bande-ni-de-calibration-a-specifier-ndwi" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Ndwi</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Normalized Difference Water Index.</span>
+
+<span class="sd">    Algorithm computing the NDWI from green and nir bands, using either surface</span>
+<span class="sd">    reflectances (rh   o, unitless) or remote sensing reflectances (Rrs,</span>
+<span class="sd">    in sr-1).</span>
+<span class="sd">    This index was presented by McFeeters (1996).</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name: The name of the algorithm used. This is the key used by</span>
+<span class="sd">          L3AlgoBuilder and that you must provide in config or when using</span>
+<span class="sd">          the CLI.</span>
+<span class="sd">        requested_bands: A list of bands further used by the algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ndwi&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inits an &#39;Ndwi&#39; instance for a given &#39;product_type&#39;.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">              S2_ESA_L2A or L8_USGS_L1GT)</span>
+<span class="sd">            **_ignored: Unused kwargs send to trash.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="n">algo_config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                <span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">green</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">nir</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs the algorithm on input arrays (green and nir).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            green: An array (dimension 1 * N * M) of reflectances in the green</span>
+<span class="sd">              part of the spectrum (B3 @ 560 nm for S2 &amp; @ 563 nm for L8).</span>
+<span class="sd">            nir: An array (dimension 1 * N * M) of reflectances in the NIR part</span>
+<span class="sd">              of the spectrum (B8 @ 833 nm for S2, B5 @ 865 nm for L8).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A tuple of:</span>
+<span class="sd">              - an array (dimension 1 * N * M) of NDVI values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ndwi</span> <span class="o">=</span> <span class="p">(</span><span class="n">green</span> <span class="o">-</span> <span class="n">nir</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">green</span> <span class="o">+</span> <span class="n">nir</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ndwi</span>
+</pre></div>
+</div>
+<section id="initialisation-init">
+<span id="aa-ini"></span><h4>1. Initialisation : <em>__init__</em><a class="headerlink" href="#initialisation-init" title="Permalink to this headline">¶</a></h4>
+<p>L’initialisation de cet algorithme requiert un paramètre nommé <code class="docutils literal notranslate"><span class="pre">product_type</span></code>, qui permet de renseigner le type de produit que l’algorithme va être amené à traiter. Cela permet d’aller automatiquement chercher dans le fichier de configuration (ici <em>“resources/wc_algo_config.yaml”</em>) dudit algorithme les bandes nécessaires (i.e. à extraire).</p>
+<p>Dans le cas où cet algorithme n’est pas fait pour ce produit satellitaire, un message d’erreur est renvoyé.</p>
+</section>
+<section id="methode-call">
+<h4>2. Méthode <em>__call__</em><a class="headerlink" href="#methode-call" title="Permalink to this headline">¶</a></h4>
+<p>Cette méthode prend en entrée les tableaux (<code class="code docutils literal notranslate"><span class="pre">xarray.DataArray</span></code>) des bandes précédemment extraites (par le reader) et renvoie le tableau (<code class="code docutils literal notranslate"><span class="pre">xarray.DataArray</span></code>) de résultats (ici, du NDWI).</p>
+</section>
+<section id="configuration">
+<h4>3. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
+<p>L’entrée dans <em>resources/wc_algo_config.yaml</em> est la suivante :</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ndwi</span><span class="p">:</span>
+  <span class="nt">long_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Normalized Difference Water Index</span>
+  <span class="nt">output</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ndwi</span>
+  <span class="nt">L8</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B3</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B5</span>
+  <span class="nt">S2</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B3</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B8</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="cas-ou-plusieurs-calibrations-et-bandes-utilisables-possibles-spmnechad">
+<h3>2. Cas où plusieurs calibrations et bandes utilisables possibles : SPMNechad<a class="headerlink" href="#cas-ou-plusieurs-calibrations-et-bandes-utilisables-possibles-spmnechad" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SPMNechad</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Semi-analytical algorithm to retrieve SPM concentration (in mg/l) from reflectance.</span>
+
+<span class="sd">    Semi-analytical algorithm to retrieve SPM concentrations (in mg/L) from</span>
+<span class="sd">    surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,</span>
+<span class="sd">    in sr-1).</span>
+<span class="sd">    This algorithm was presented in Nechad et al., 2010 and 2016.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name: The name of the algorithm used. This is the key used by</span>
+<span class="sd">          L3AlgoBuilder and that you must provide in config or when using</span>
+<span class="sd">          the CLI.</span>
+<span class="sd">        requested_bands: A list of bands further used by the algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_default_band</span> <span class="o">=</span> <span class="s1">&#39;B4&#39;</span>
+    <span class="n">_default_calibration_file</span> <span class="o">=</span> <span class="n">wc_calib</span> <span class="o">/</span> <span class="s1">&#39;spm_nechad.yaml&#39;</span>
+    <span class="n">_default_calibration_name</span> <span class="o">=</span> <span class="s1">&#39;Nechad_2016&#39;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;spm-nechad&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">requested_band</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">_default_band</span><span class="p">,</span>
+                 <span class="n">calibration</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inits an &#39;SPMNechad&#39; instance with specific settings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">              S2_ESA_L2A or L8_USGS_L1GT).</span>
+<span class="sd">            requested_band: Optional; The band used by the algorithm (</span>
+<span class="sd">              default=_default_band).</span>
+<span class="sd">            calibration: Optional; The calibration (set of parameters) used</span>
+<span class="sd">              by the algorithm (default=_default_calibration_name).</span>
+<span class="sd">            **_ignored: Unused kwargs send to trash.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="p">[</span><span class="n">requested_band</span><span class="p">]</span>
+        <span class="n">calibration_dict</span><span class="p">,</span> <span class="n">calibration_name</span> <span class="o">=</span> <span class="n">load_calib</span><span class="p">(</span>
+            <span class="n">calibration</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_file</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_name</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="s1">&#39;validity_limit&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)][</span>
+                <span class="n">requested_band</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_input</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> or </span><span class="si">{</span><span class="n">requested_band</span><span class="si">}</span><span class="s1"> is not allowed with &#39;</span>
+                   <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">/this calibration&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;band&#39;</span><span class="p">:</span> <span class="n">requested_band</span><span class="p">,</span>
+                     <span class="s1">&#39;calibration&#39;</span><span class="p">:</span> <span class="n">calibration_name</span><span class="p">,</span>
+                     <span class="s1">&#39;validity_limit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">params</span><span class="p">}</span>
+</pre></div>
+</div>
+<section id="id1">
+<h4>1. Initialisation : <em>__init__</em><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Cf. <a class="reference internal" href="../extending/add_algo.html#aa-ini"><span class="std std-ref">le cas simple</span></a>.</p>
+<p>Ici, en plus de précédemment, il faut spécifier une bande à utiliser (parmi celles autorisées dans <a class="reference internal" href="../extending/add_algo.html#aa-config"><span class="std std-ref">le fichier de configuration de l’algorithme</span></a>, ici : de “B4” à “B8A”). Si aucune bande n’est précisée par l’utilisateur, <code class="docutils literal notranslate"><span class="pre">_default_band</span></code> (ici, “B4”) est utilisée.</p>
+<p>En plus de cela, différentes calibrations sont disponibles. Elles peuvent être :</p>
+<ul class="simple">
+<li><p>fournies par l’utilisateur sous la forme d’un chemin d’accès à un fichier de configuration correctement formaté (pour cela, se référer à ceux déjà fournis avec SISPPEO) ;</p></li>
+<li><p>choisies parmis celles disponible “de base” et à retrouver dans le fichier de calibration de l’algorithme (ici <em>“resources/wc_algo_calibration/spm_nechad.yaml”</em>). Pour spm-nechad par exemple, les calibrations disponibles sont <a class="reference internal" href="../extending/add_algo.html#aa-calib"><span class="std std-ref">“Nechad_2010”</span></a> et “Nechad_2016”.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h4>2. Méthode <em>__call__</em><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+             <span class="n">rho</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+             <span class="n">data_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+             <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Runs the algorithm on the input array (&#39;rho&#39;).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        rho: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">        data_type: Either &#39;rho&#39; or &#39;rrs&#39; (respectively surface reflectance</span>
+<span class="sd">            and remote sensing reflectance).</span>
+<span class="sd">        **_ignored: Unused kwargs sent to trash.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        An array (dimension 1 * N * M) of SPM concentration (in mg/L).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;rrs&#39;</span><span class="p">:</span>
+        <span class="n">rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">rho</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+    <span class="c1"># pylint: disable=no-member</span>
+    <span class="c1"># Loaded in __init__ with &quot;__dict__.update&quot;.</span>
+    <span class="n">spm</span> <span class="o">=</span> <span class="n">_nechad</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">spm</span> <span class="o">=</span> <span class="n">spm</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">rho</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">spm</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">spm</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">spm</span>
+</pre></div>
+</div>
+</section>
+<section id="aa-config">
+<span id="id3"></span><h4>3. Configuration<a class="headerlink" href="#aa-config" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">spm-nechad</span><span class="p">:</span>
+  <span class="nt">long_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Suspended particulate matter (mg/l) from Nechad et al., 2010, 2016</span>
+  <span class="nt">output</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">spm</span>
+  <span class="nt">L8</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B2</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B3</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B4</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B5</span>
+  <span class="nt">S2</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B3</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B4</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B5</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B6</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B7</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B8</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B8A</span>
+</pre></div>
+</div>
+</section>
+<section id="calibration">
+<span id="aa-calib"></span><h4>4. Calibration<a class="headerlink" href="#calibration" title="Permalink to this headline">¶</a></h4>
+<p>Ceci est un exemple de calibration (stockée dans <em>resources/wc_algo_calibration/spm-nechad.yaml</em>) :</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Nechad_2010</span><span class="p">:</span>
+  <span class="nt">validity_limit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">100</span>
+  <span class="nt">L8</span><span class="p">:</span>
+    <span class="nt">B4</span><span class="p">:</span>
+      <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">346.32</span>
+      <span class="nt">c</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.19905</span>
+    <span class="nt">B5</span><span class="p">:</span>
+      <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2929.49</span>
+      <span class="nt">c</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.21135</span>
+  <span class="nt">S2</span><span class="p">:</span>
+    <span class="nt">B4</span><span class="p">:</span>
+      <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">342.1</span>
+      <span class="nt">c</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.19563</span>
+    <span class="nt">B5</span><span class="p">:</span>
+      <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">444.36</span>
+      <span class="nt">c</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.18753</span>
+    <span class="nt">B6</span><span class="p">:</span>
+      <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1517.0</span>
+      <span class="nt">c</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.19736</span>
+    <span class="nt">B7</span><span class="p">:</span>
+      <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1510.12</span>
+      <span class="nt">c</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.20535</span>
+    <span class="nt">B8</span><span class="p">:</span>
+      <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1801.52</span>
+      <span class="nt">c</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1913</span>
+    <span class="nt">B8A</span><span class="p">:</span>
+      <span class="nt">a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2932.21</span>
+      <span class="nt">c</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.21151</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="algorithmes-mutli-sorties">
+<h3>3. Algorithmes mutli-sorties<a class="headerlink" href="#algorithmes-mutli-sorties" title="Permalink to this headline">¶</a></h3>
+<p>Un algorithme peut permettre d’estimer plusieurs paramètres (=&gt; plusieurs variables dans le dataset de sortie). Par exemple, QAA (Lee et al., 2002) et ses variantes permettent de calculer “a” et “bbp”.</p>
+<p>Pour cela, il suffit :</p>
+<ol class="arabic simple">
+<li><p>de renvoyer une liste de tableau (au lieu d’un unique tableau) avec la méthode <code class="docutils literal notranslate"><span class="pre">__call__</span></code> ;</p></li>
+<li><p>de spécifier plusieurs “long_name” (afin de décrire les variables) et sorties (/”output”) dans le fichier de configuration (cf. ci-après).</p></li>
+</ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">qaa</span><span class="p">:</span>
+  <span class="nt">long_name</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Absorption coefficient (m-1) from Lee et al., 2009 (Quasi-Analytical Algorithm QAA_v5)</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Backscattering coefficient (m-1) from Lee et al., 2009 (Quasi-Analytical Algorithm QAA_v5)</span>
+  <span class="nt">output</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">a</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bbp</span>
+  <span class="nt">L8</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B1</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B2</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B4</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B3</span>
+  <span class="nt">S2</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B1</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B2</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B4</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">B3</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integration-de-l-algorithme">
+<h2>“Intégration” de l’algorithme<a class="headerlink" href="#integration-de-l-algorithme" title="Permalink to this headline">¶</a></h2>
+<p>Il faut ensuite importer la classe (i.e. l’algorithme) nouvellement créée dans le fichier <em>__init__.py</em> du package auquel il appartient (e.g. <code class="xref py py-mod docutils literal notranslate"><span class="pre">wcproducts</span></code>). Ex :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sisppeo.wcproducts.spm</span> <span class="kn">import</span> <span class="n">SPMGet</span><span class="p">,</span> <span class="n">SPMHan</span><span class="p">,</span> <span class="n">SPMNechad</span><span class="p">,</span> <span class="n">TURBIDogliotti</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="remarque">
+<h2>Remarque<a class="headerlink" href="#remarque" title="Permalink to this headline">¶</a></h2>
+<p>Si vous avez une question ou si vous avez besoin d’informations complémentaires, i) référez-vous aux différents algorithmes fournis avec le package <code class="xref py py-mod docutils literal notranslate"><span class="pre">sisppeo.wcproducts</span></code> puis si besoin ii) contactez <a class="reference external" href="mailto:arthur&#46;coque&#37;&#52;&#48;inrae&#46;fr">moi</a>.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="add_reader.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Write and add a new reader to SISPPEO</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../team.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Team</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>sisppeo package</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subpackages">
+   Subpackages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.builders">
+   sisppeo.builders module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.catalogs">
+   sisppeo.catalogs module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.cli">
+   sisppeo.cli module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.main">
+   sisppeo.main module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo">
+   Module contents
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="sisppeo-package">
+<h1>sisppeo package<a class="headerlink" href="#sisppeo-package" title="Permalink to this headline">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sisppeo.landproducts.html">sisppeo.landproducts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/sisppeo.landproducts.Nbr.html">sisppeo.landproducts.Nbr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sisppeo.landproducts.Ndvi.html">sisppeo.landproducts.Ndvi</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sisppeo.masks.html">sisppeo.masks package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.masks.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sisppeo.masks.waterdetect.html">sisppeo.masks.waterdetect package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="sisppeo.masks.waterdetect.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sisppeo.masks.waterdetect.html#module-sisppeo.masks.waterdetect.Common">sisppeo.masks.waterdetect.Common module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sisppeo.masks.waterdetect.html#module-sisppeo.masks.waterdetect.Image">sisppeo.masks.waterdetect.Image module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sisppeo.masks.waterdetect.html#module-sisppeo.masks.waterdetect">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.masks.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.masks.html#module-sisppeo.masks.obs2co_s2wm">sisppeo.masks.obs2co_s2wm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.masks.html#module-sisppeo.masks.sh_s2cloudless">sisppeo.masks.sh_s2cloudless module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.masks.html#module-sisppeo.masks">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sisppeo.products.html">sisppeo.products package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.products.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.products.html#module-sisppeo.products.l3">sisppeo.products.l3 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.products.html#module-sisppeo.products.timeseries">sisppeo.products.timeseries module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.products.html#module-sisppeo.products">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sisppeo.readers.html">sisppeo.readers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.readers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.readers.html#module-sisppeo.readers.GRS">sisppeo.readers.GRS module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.readers.html#module-sisppeo.readers.L8_USGS_L1C1">sisppeo.readers.L8_USGS_L1C1 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.readers.html#module-sisppeo.readers.L8_USGS_L2">sisppeo.readers.L8_USGS_L2 module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.readers.html#module-sisppeo.readers.S2_ESA">sisppeo.readers.S2_ESA module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.readers.html#module-sisppeo.readers.S2_THEIA">sisppeo.readers.S2_THEIA module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.readers.html#module-sisppeo.readers.reader">sisppeo.readers.reader module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.readers.html#module-sisppeo.readers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sisppeo.utils.html">sisppeo.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.algos">sisppeo.utils.algos module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.builders">sisppeo.utils.builders module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.cli">sisppeo.utils.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.config">sisppeo.utils.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.exceptions">sisppeo.utils.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.lazy_loader">sisppeo.utils.lazy_loader module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.main">sisppeo.utils.main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.naming">sisppeo.utils.naming module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.products">sisppeo.utils.products module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.readers">sisppeo.utils.readers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils.registration">sisppeo.utils.registration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.utils.html#module-sisppeo.utils">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sisppeo.wcproducts.html">sisppeo.wcproducts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.wcproducts.html#sisppeo-wcproducts-algos">sisppeo.wcproducts.algos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.Ndwi.html">sisppeo.wcproducts.Ndwi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.wcproducts.html#sisppeo-wcproducts-acdom">sisppeo.wcproducts.acdom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.wcproducts.html#sisppeo-wcproducts-chla">sisppeo.wcproducts.chla</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.CHLAGons.html">sisppeo.wcproducts.CHLAGons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.CHLAGitelson.html">sisppeo.wcproducts.CHLAGitelson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.CHLAOC.html">sisppeo.wcproducts.CHLAOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.CHLALins.html">sisppeo.wcproducts.CHLALins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.NDCI.html">sisppeo.wcproducts.NDCI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.wcproducts.html#sisppeo-wcproducts-spm">sisppeo.wcproducts.spm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.SPMNechad.html">sisppeo.wcproducts.SPMNechad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.SPMHan.html">sisppeo.wcproducts.SPMHan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.SPMGet.html">sisppeo.wcproducts.SPMGet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sisppeo.wcproducts.TURBIDogliotti.html">sisppeo.wcproducts.TURBIDogliotti</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sisppeo.wcproducts.html#sisppeo-wcproducts-transparency">sisppeo.wcproducts.transparency</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-sisppeo.builders">
+<span id="sisppeo-builders-module"></span><h2>sisppeo.builders module<a class="headerlink" href="#module-sisppeo.builders" title="Permalink to this headline">¶</a></h2>
+<p>Contains the ProductBuilder class.</p>
+<p>The builder pattern organizes object construction into a set of steps
+(extract_data, apply_algos, get_products, etc). To create an object,
+you execute a series of these steps on a builder object (here,
+a ProductBuilder instance). The important part is that you don’t need
+to call all of the steps. You can call only the steps that are necessary
+for producing a particular configuration of an object.</p>
+<p>If the client code needs to assemble a special, fine-tuned L3
+or L4 product, it can work with the builder directly.
+Otherwise, the user can delegate the assembly to the generate method
+(or dictely one of the recipes), which knows how to use a builder
+to construct several of the most standard products (e.g., L3AlgoProduct,
+L3MaskProduct, TimeSeries, Matchup, etc).</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.builders.</span></span><span class="sig-name descname"><span class="pre">ProductBuilder</span></span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The builder used to create L3 and L4 objects.</p>
+<p>It specifies methods for creating the different parts (or
+building steps) of the product objects, and provides
+their implementations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder.compute_algos">
+<span class="sig-name descname"><span class="pre">compute_algos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder.compute_algos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder.compute_algos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs every algorithms using extracted data and stores the results.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder.compute_masks">
+<span class="sig-name descname"><span class="pre">compute_masks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder.compute_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder.compute_masks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs every masks using extracted data and stores the results.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder.create_l3products">
+<span class="sig-name descname"><span class="pre">create_l3products</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder.create_l3products"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder.create_l3products" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the wanted products and stores them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>product_type</strong> – The type of the input satellite product
+(e.g. “S2_ESA_L2A” or “L8_USGS_L1”).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder.extract_data">
+<span class="sig-name descname"><span class="pre">extract_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder.extract_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder.extract_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts (meta)data from the input product.</p>
+<p>Selects the right Reader and use it to extract the needed bands
+and metadata. Then, creates and returns a xr.Dataset containing
+these information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>product_type</strong> – The type of the input satellite product
+(e.g. “S2_ESA_L2A” or “L8_USGS_L1”).</p></li>
+<li><p><strong>input_product</strong> – The path of the input product (multispectral
+spaceborne imagery).</p></li>
+<li><p><strong>geom</strong> – Optional; A dict containing geographical information
+that define the ROI.
+4 keys: geom (a shapely.geom object), shp (a path to
+an ESRI shapefile), wkt (a path to a wkt file) and srid
+(an EPSG code).</p></li>
+<li><p><strong>kwargs</strong> – Args specific to the selected Reader.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder.get_products">
+<span class="sig-name descname"><span class="pre">get_products</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder.get_products"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder.get_products" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns products and resets itself.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder.mask_l3algosproduct">
+<span class="sig-name descname"><span class="pre">mask_l3algosproduct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">masks_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masks_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder.mask_l3algosproduct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder.mask_l3algosproduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Masks the previously generated products.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>masks_types</strong> – The list of the type of the masks to use.
+Values can either be “IN” (area to include) or “OUT”
+(area to exclude).</p></li>
+<li><p><strong>masks</strong> – Optional; A list of masks to use.</p></li>
+<li><p><strong>masks_paths</strong> – Optional; A list of paths (of L3MaskProducts)
+to use.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder.set_algos">
+<span class="sig-name descname"><span class="pre">set_algos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst_algo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_band</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_calib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_design</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder.set_algos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder.set_algos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates and inits algo objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lst_algo</strong> – A list of algorithms to use.</p></li>
+<li><p><strong>product_type</strong> – The type of the input satellite product (e.g.
+S2_ESA_L2A or L8_USGS_L1GT).</p></li>
+<li><p><strong>lst_band</strong> – A list of “requested_band” args (a param used
+by some algorithms).</p></li>
+<li><p><strong>lst_calib</strong> – A list of “calibration” args (a param used
+by some algorithms).</p></li>
+<li><p><strong>lst_design</strong> – A list of “design” args (a param used
+by some algorithms).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.builders.ProductBuilder.set_masks">
+<span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lst_masks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/builders.html#ProductBuilder.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.builders.ProductBuilder.set_masks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates mask objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lst_masks</strong> – A list of masks to use.</p></li>
+<li><p><strong>product_type</strong> – The type of the input satellite product
+(e.g. S2_ESA_L1C).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.catalogs">
+<span id="sisppeo-catalogs-module"></span><h2>sisppeo.catalogs module<a class="headerlink" href="#module-sisppeo.catalogs" title="Permalink to this headline">¶</a></h2>
+<p>Defines dicts containing algos, masks and readers.</p>
+</section>
+<section id="module-sisppeo.cli">
+<span id="sisppeo-cli-module"></span><h2>sisppeo.cli module<a class="headerlink" href="#module-sisppeo.cli" title="Permalink to this headline">¶</a></h2>
+<p>Defines the CLI of SISPPEO (powered by click).</p>
+</section>
+<section id="module-sisppeo.main">
+<span id="sisppeo-main-module"></span><h2>sisppeo.main module<a class="headerlink" href="#module-sisppeo.main" title="Permalink to this headline">¶</a></h2>
+<p>Contains “generate” (a function) and some standard recipes.</p>
+<p>The “generate” function is the user-friendly way of using SISPPEO.
+You give the type of products you want, a config dictionary
+and that’s all: you can then get the products you asked for !
+It will automatically call the right recipe, parse parameters
+(values in the config dict), and save generated products if asked.</p>
+<p>Each recipe is responsible for executing the building steps
+in a particular sequence (while the builder provides the implementation
+for those steps). Strictly speaking, these recipes are optionals, since
+the client can control the builder directly.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.main.create_algotimeseries">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.main.</span></span><span class="sig-name descname"><span class="pre">create_algotimeseries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_products</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_algo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3masks_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3masks_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_tsmask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_tsmask_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_tsmask_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/main.html#create_algotimeseries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.main.create_algotimeseries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of TimeSeries (one per algo in lst_algo).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_products</strong> – The list of paths of input products (multispectral
+spaceborne imagery).</p></li>
+<li><p><strong>product_type</strong> – The type of input satellite products
+(e.g. “S2_ESA_L2A” or “L8_USGS_L1GT”).</p></li>
+<li><p><strong>lst_algo</strong> – A list of algorithms to use.</p></li>
+<li><p><strong>lst_l3masks</strong> – A list of lists of masks (L3MaskProduct) to use.</p></li>
+<li><p><strong>lst_l3masks_paths</strong> – A list of lists of paths (of L3MaskProducts)
+to use.</p></li>
+<li><p><strong>lst_l3masks_types</strong> – The list of lists of the type of the masks
+to use. Values can either be “IN” (area to include) or “OUT”
+(area to exclude).</p></li>
+<li><p><strong>lst_tsmask</strong> – A list of time series of masks to use.</p></li>
+<li><p><strong>lst_tsmask_path</strong> – A list of paths (of TimeSeries) to use.</p></li>
+<li><p><strong>lst_tsmask_type</strong> – The list of the type of the time series
+of masks used. Values can either be “IN” (area to include)
+or “OUT” (area to exclude).</p></li>
+<li><p><strong>geom</strong> – A dict containing geographical information that define
+the ROI. 4 keys: geom (a shapely.geom object), shp (a path
+to an ESRI shapefile), wkt (a path to a wkt file) and srid
+(an EPSG code).</p></li>
+<li><p><strong>save</strong> – If True, write output products on disk.</p></li>
+<li><p><strong>dirname</strong> – The path of the directory in which output products
+will be written (using automatically generated names).</p></li>
+<li><p><strong>filenames</strong> – A list of wanted paths for output products.</p></li>
+<li><p><strong>**kwargs</strong> – Args specific to the Reader that will be used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.main.create_batch_l3algoproducts">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.main.</span></span><span class="sig-name descname"><span class="pre">create_batch_l3algoproducts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_products</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_algo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3masks_paths</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3masks_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cpus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_tb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_tm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_gc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/main.html#create_batch_l3algoproducts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.main.create_batch_l3algoproducts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of lists of L3AlgoProducts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_products</strong> – The list of paths of input products
+(multispectral spaceborne imagery).</p></li>
+<li><p><strong>product_types</strong> – The list of types of input satellite products
+(e.g., [“S2_ESA_L2A”, “L8_USGS_L1GT”]).</p></li>
+<li><p><strong>lst_algo</strong> – A list of algorithms to use.</p></li>
+<li><p><strong>lst_l3masks</strong> – A list of lists of masks (L3MaskProduct) to use.</p></li>
+<li><p><strong>lst_l3masks_paths</strong> – A list of lists of paths (of L3MaskProducts)
+to use.</p></li>
+<li><p><strong>lst_l3masks_types</strong> – The list of lists of the type of the masks
+to use. Values can either be “IN” (area to include) or “OUT”
+(area to exclude).</p></li>
+<li><p><strong>num_cpus</strong> – The number of central processing units to use.</p></li>
+<li><p><strong>lst_tb</strong> – A list of “theia_bands” args (one per input product).
+See S2THEIAReader.</p></li>
+<li><p><strong>lst_tm</strong> – A list of “theia_masks” args (one per input product).
+See S2THEIAReader.</p></li>
+<li><p><strong>lst_gc</strong> – A list of “glint_corrected” args (one per input
+product). See GRSReader.</p></li>
+<li><p><strong>lst_flags</strong> – A list of “flags” args (one per input product).
+See GRSReader.</p></li>
+<li><p><strong>lst_geom</strong> – A list of “geom” args (one per input product).
+See Reader.</p></li>
+<li><p><strong>lst_res</strong> – A list of “out_resolution” args (one per input
+product). See either S2ESAREader or S2THEIAReader.</p></li>
+<li><p><strong>save</strong> – If True, write output products on disk.</p></li>
+<li><p><strong>dirname</strong> – The path of the directory in which output products
+will be written (using automatically generated names).</p></li>
+<li><p><strong>filenames</strong> – A list of wanted paths for output products.</p></li>
+<li><p><strong>**kwargs</strong> – Args specific to Readers that will be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>A list of lists of L3AlgoProducts. Each list corresponds to one
+input product.</p>
+<p>input_products = [&lt;path1&gt;, &lt;path2&gt;]
+lst_algo = [&lt;algo1&gt;, &lt;algo2&gt;, &lt;algo3&gt;]
+-&gt; [[res_p1_a1, …, res_p1_a3], [res_p2_a1, …, res_p2_a3]]</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.main.create_batch_l3maskproducts">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.main.</span></span><span class="sig-name descname"><span class="pre">create_batch_l3maskproducts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_products</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_types</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_cpus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_tb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_tm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_gc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_proc_res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/main.html#create_batch_l3maskproducts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.main.create_batch_l3maskproducts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of lists of L3MaskProducts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_products</strong> – The list of paths of input products
+(multispectral spaceborne imagery).</p></li>
+<li><p><strong>product_types</strong> – The list of types of input satellite producs
+(e.g., [“S2_ESA_L1C”, “S2_GRS”]).</p></li>
+<li><p><strong>lst_mask</strong> – A list of masks to use.</p></li>
+<li><p><strong>num_cpus</strong> – The number of central processing units to use.</p></li>
+<li><p><strong>lst_tb</strong> – A list of “theia_bands” args (one per input product).
+See S2THEIAReader.</p></li>
+<li><p><strong>lst_tm</strong> – A list of “theia_masks” args (one per input product).
+See S2THEIAReader.</p></li>
+<li><p><strong>lst_gc</strong> – A list of “glint_corrected” args (one per input product).
+See GRSReader.</p></li>
+<li><p><strong>lst_flags</strong> – A list of “flags” args (one per input product).
+See GRSReader.</p></li>
+<li><p><strong>lst_geom</strong> – A list of “geom” args (one per input product).
+See Reader.</p></li>
+<li><p><strong>lst_res</strong> – A list of “out_resolution” args (one per input
+product). See either S2ESAREader or S2THEIAReader.</p></li>
+<li><p><strong>lst_proc_res</strong> – A list of “proc_res” args (one per input product).
+See ProductBuilder.compute_masks.</p></li>
+<li><p><strong>save</strong> – If True, write output products on disk.</p></li>
+<li><p><strong>dirname</strong> – The path of the directory in which output products
+will be written (using automatically generated names).</p></li>
+<li><p><strong>filenames</strong> – A list of wanted paths for output products.</p></li>
+<li><p><strong>**kwargs</strong> – Args specific to Readers that will be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>A list of lists of L3AlgoMasks. Each list corresponds to one
+input product.</p>
+<p>input_products = [&lt;path1&gt;, &lt;path2&gt;]
+lst_mask = [&lt;mask1&gt;, &lt;mask2&gt;, &lt;mask3&gt;]
+-&gt; [[res_p1_m1, …, res_p1_m3], [res_p2_m1, …, res_p2_m3]]</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.main.create_l3algoproducts">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.main.</span></span><span class="sig-name descname"><span class="pre">create_l3algoproducts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_algo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3mask_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_l3mask_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_band</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_calib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_design</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/main.html#create_l3algoproducts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.main.create_l3algoproducts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of L3AlgoProducts (one per algo in lst_algo).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_product</strong> – The path of the input product (multispectral
+spaceborne imagery).</p></li>
+<li><p><strong>product_type</strong> – The type of the input satellite product
+(e.g. “S2_ESA_L2A” or “L8_USGS_L1GT”).</p></li>
+<li><p><strong>lst_algo</strong> – A list of algorithms to use.</p></li>
+<li><p><strong>lst_l3mask</strong> – A list of masks (L3MaskProduct) to use.</p></li>
+<li><p><strong>lst_l3mask_path</strong> – A list of paths (of L3MaskProducts) to use.</p></li>
+<li><p><strong>lst_l3mask_type</strong> – The list of the type of the masks used.
+Values can either be “IN” (area to include) or “OUT” (area
+to exclude).</p></li>
+<li><p><strong>geom</strong> – A dict containing geographical information that define
+the ROI. 4 keys: geom (a shapely.geom object), shp (a path
+to an ESRI shapefile), wkt (a path to a wkt file) and srid
+(an EPSG code).</p></li>
+<li><p><strong>lst_band</strong> – A list of “requested_band” args (a param used by some
+algorithms).</p></li>
+<li><p><strong>lst_calib</strong> – A list of “calibration” args (a param used by some
+algorithms).</p></li>
+<li><p><strong>lst_design</strong> – A list of “design” args (a param used by some
+algorithms).</p></li>
+<li><p><strong>save</strong> – If True, write output products on disk.</p></li>
+<li><p><strong>dirname</strong> – The path of the directory in which output products
+will be written (using automatically generated names).</p></li>
+<li><p><strong>filenames</strong> – A list of wanted paths for output products.</p></li>
+<li><p><strong>**kwargs</strong> – Args specific to the Reader that will be used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.main.create_l3maskproducts">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.main.</span></span><span class="sig-name descname"><span class="pre">create_l3maskproducts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/main.html#create_l3maskproducts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.main.create_l3maskproducts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of L3MaskProducts (one per mask in lst_mask).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_product</strong> – The path of the input product (multispectral
+spaceborne imagery).</p></li>
+<li><p><strong>product_type</strong> – The type of the input satellite product
+(e.g. “S2_ESA_L1C” or “S2_GRS”).</p></li>
+<li><p><strong>lst_mask</strong> – A list of masks to use.</p></li>
+<li><p><strong>geom</strong> – A dict containing geographical information that define
+the ROI. 4 keys: geom (a shapely.geom object), shp (a path
+to an ESRI shapefile), wkt (a path to a wkt file) and srid
+(an EPSG code).</p></li>
+<li><p><strong>save</strong> – If True, write output products on disk.</p></li>
+<li><p><strong>dirname</strong> – The path of the directory in which output products
+will be written (using automatically generated names).</p></li>
+<li><p><strong>filenames</strong> – A list of wanted paths for output products.</p></li>
+<li><p><strong>**kwargs</strong> – Args specific to the Reader that will be used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.main.create_masktimeseries">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.main.</span></span><span class="sig-name descname"><span class="pre">create_masktimeseries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_products</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lst_mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/main.html#create_masktimeseries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.main.create_masktimeseries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of TimeSeries (one per mask in lst_mask).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_products</strong> – The list of paths of input products (multispectral
+spaceborne imagery).</p></li>
+<li><p><strong>product_type</strong> – The type of input satellite products
+(e.g. “S2_ESA_L2A” or “L8_USGS_L1GT”).</p></li>
+<li><p><strong>lst_mask</strong> – A list of masks to use.</p></li>
+<li><p><strong>geom</strong> – A dict containing geographical information that define
+the ROI. 4 keys: geom (a shapely.geom object), shp (a path
+to an ESRI shapefile), wkt (a path to a wkt file) and srid
+(an EPSG code).</p></li>
+<li><p><strong>save</strong> – If True, write output products on disk.</p></li>
+<li><p><strong>dirname</strong> – The path of the directory in which output products
+will be written (using automatically generated names).</p></li>
+<li><p><strong>filenames</strong> – A list of wanted paths for output products.</p></li>
+<li><p><strong>**kwargs</strong> – Args specific to Readers that will be used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.main.generate">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.main.</span></span><span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parse_params_</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/main.html#generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.main.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wanted (L3/L4) products. Can also save them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – What product to generate.</p></li>
+<li><p><strong>params</strong> – A dict of params.</p></li>
+<li><p><strong>save</strong> – If True, write them on disk.</p></li>
+<li><p><strong>parse_params</strong> – If True, the params dict is checked (using
+the parse_params function).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-sisppeo">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sisppeo" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sisppeo.wcproducts.chla</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../../index.html">
+  <img src="../../../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for sisppeo.wcproducts.chla</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2020 Arthur Coqué, Guillaume Morin, Pôle OFB-INRAE ECLA, UR RECOVER</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+
+<span class="sd">&quot;&quot;&quot;This module gathers wc algorithms used for estimating Chl-a concentrations.</span>
+
+<span class="sd">Each class of this module correspond to one algorithm. An algorithm can have</span>
+<span class="sd">several calibrations (a calibration is a set of parameters), either</span>
+<span class="sd">packaged within SISPPEO (these default calibrations are located in</span>
+<span class="sd">&#39;resources/wc_algo_calibration&#39;) or provided by the user.</span>
+<span class="sd">Before its utilisation, an algorithm has to be instantiate with specific</span>
+<span class="sd">settings like the product_type of further input products, the calibration</span>
+<span class="sd">used, the band used (if needed), etc.</span>
+
+<span class="sd">Example:</span>
+
+<span class="sd">    algo1 = CHLAGons(&#39;S2_GRS&#39;, &#39;Gons_2004&#39;)</span>
+<span class="sd">    out_array1 = algo1(red_array, rededge_array, nir_array, &#39;rho&#39;)</span>
+
+<span class="sd">    algo2 = CHLAGittelson(&#39;L8_GRS&#39;, &#39;3_bands&#39;, &#39;Gitelson_2008&#39;)</span>
+<span class="sd">    out_array2 = algo2(red_array, rededge_array, nir_array, &#39;rrs&#39;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="kn">from</span> <span class="nn">sisppeo.utils.algos</span> <span class="kn">import</span> <span class="n">load_calib</span><span class="p">,</span> <span class="n">producttype_to_sat</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.config</span> <span class="kn">import</span> <span class="n">wc_algo_config</span> <span class="k">as</span> <span class="n">algo_config</span><span class="p">,</span> <span class="n">wc_calib</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.exceptions</span> <span class="kn">import</span> <span class="n">InputError</span>
+
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="c1"># Ok for a custom type.</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="CHLAGons"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.CHLAGons.html#sisppeo.wcproducts.CHLAGons">[docs]</a><span class="k">class</span> <span class="nc">CHLAGons</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Chlorophyll-a concentration (in mg/m3) from 3 red bands after Gons et al., 1999, 2002, 2004</span>
+
+<span class="sd">    Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from</span>
+<span class="sd">    surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,</span>
+<span class="sd">    in sr-1) at 665nm B4 MSI, 704nm B5 MSI and 783nm B7 MSI.</span>
+<span class="sd">    This algorithm was published in Gons et al., 1999, 2002, 2004</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name: The name of the algorithm used. This is the key used by</span>
+<span class="sd">            L3AlgoBuilder and that you must provide in config or when using</span>
+<span class="sd">            the CLI.</span>
+<span class="sd">        requested_bands: A list of bands further used by the algorithm.</span>
+<span class="sd">        meta: A dict of metadata (calibration name, model coefficients, etc).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_default_calibration_file</span> <span class="o">=</span> <span class="n">wc_calib</span> <span class="o">/</span> <span class="s1">&#39;chla-gons.yaml&#39;</span>
+    <span class="n">_default_calibration_name</span> <span class="o">=</span> <span class="s1">&#39;Gons_2004&#39;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;chla-gons&#39;</span>
+
+<div class="viewcode-block" id="CHLAGons.__init__"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.CHLAGons.html#sisppeo.wcproducts.CHLAGons.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">calibration</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inits an &#39;CHLAGons&#39; instance with specific settings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">                S2_ESA_L2A or L8_USGS_L1GT)</span>
+<span class="sd">            calibration: Optional; The calibration (set of parameters) used by</span>
+<span class="sd">                the algorithm (default=_default_calibration_name).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="n">algo_config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                <span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="n">calibration_dict</span><span class="p">,</span> <span class="n">calibration_name</span> <span class="o">=</span> <span class="n">load_calib</span><span class="p">(</span>
+            <span class="n">calibration</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_file</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_name</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="s1">&#39;validity_limit&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with this calibration&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;calibration&#39;</span><span class="p">:</span> <span class="n">calibration_name</span><span class="p">,</span>
+                     <span class="s1">&#39;validity_limit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">params</span><span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">ref_red</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_rededge</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_nir</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">data_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs the algorithm on the input array (&#39;ref&#39;).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ref_red: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_redegde: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_nir: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            data_type: Either &#39;ref&#39; or &#39;rrs&#39; (respectively surface reflectance</span>
+<span class="sd">                and remote sensing reflectance).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An array (dimension 1 * N * M) of chl-a (in mg/m3).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span>
+            <span class="n">ref_red</span> <span class="o">=</span> <span class="n">ref_red</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+            <span class="n">ref_rededge</span> <span class="o">=</span> <span class="n">ref_rededge</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+            <span class="n">ref_nir</span> <span class="o">=</span> <span class="n">ref_nir</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+        <span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+        <span class="n">ref_red</span> <span class="o">=</span> <span class="n">ref_red</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">ref_rededge</span> <span class="o">=</span> <span class="n">ref_rededge</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">ref_nir</span> <span class="o">=</span> <span class="n">ref_red</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_nir</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">bb783</span> <span class="o">=</span> <span class="n">ref_nir</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_nir</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># pylint: disable=no-member</span>
+        <span class="c1"># Loaded in __init__ whit &quot;__dict__.update&quot;.</span>
+        <span class="n">bb783</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">*</span> <span class="n">bb783</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.082</span> <span class="o">-</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">bb783</span><span class="p">)</span>
+        <span class="n">aphy</span> <span class="o">=</span> <span class="n">ref_rededge</span> <span class="o">/</span> <span class="n">ref_red</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aw705</span> <span class="o">+</span> <span class="n">bb783</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">aw665</span> \
+            <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">bb783</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="n">aphy</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">aphy_star</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="n">chla</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">chla</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">chla</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">chla</span></div>
+
+
+<div class="viewcode-block" id="CHLAGitelson"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.CHLAGitelson.html#sisppeo.wcproducts.CHLAGitelson">[docs]</a><span class="k">class</span> <span class="nc">CHLAGitelson</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Chlorophyll-a concentration (in mg/m3) from 3 red bands after Gitelson et al., 2008</span>
+
+<span class="sd">    Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from</span>
+<span class="sd">    surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,</span>
+<span class="sd">    in sr-1) at 665nm B4 MSI, 705nm B5 MSI and 740nm B6 MSI.</span>
+<span class="sd">    This algorithm was published in Gitelson et al., 2008</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name: The name of the algorithm used. This is the key used by</span>
+<span class="sd">            L3AlgoBuilder and that you must provide in config or when using</span>
+<span class="sd">            the CLI.</span>
+<span class="sd">        requested_bands: A list of bands further used by the algorithm.</span>
+<span class="sd">        meta: A dict of metadata (calibration name, model coefficients, etc).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_default_calibration_file</span> <span class="o">=</span> <span class="n">wc_calib</span> <span class="o">/</span> <span class="s1">&#39;chla-gitelson.yaml&#39;</span>
+    <span class="n">_default_calibration_name</span> <span class="o">=</span> <span class="s1">&#39;Gitelson_2008&#39;</span>
+    <span class="n">_default_design</span> <span class="o">=</span> <span class="s1">&#39;3_bands&#39;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;chla-gitelson&#39;</span>
+
+<div class="viewcode-block" id="CHLAGitelson.__init__"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.CHLAGitelson.html#sisppeo.wcproducts.CHLAGitelson.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">design</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">_default_design</span><span class="p">,</span>
+                 <span class="n">calibration</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inits an &#39;CHLAGitelson&#39; instance with specific settings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">                S2_ESA_L2A or L8_USGS_L1GT)</span>
+<span class="sd">            calibration: The calibration (set of parameters) used by the</span>
+<span class="sd">                algorithm (default=_default_calibration_name).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_design</span> <span class="o">=</span> <span class="n">design</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="n">algo_config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                <span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="n">calibration_dict</span><span class="p">,</span> <span class="n">calibration_name</span> <span class="o">=</span> <span class="n">load_calib</span><span class="p">(</span>
+            <span class="n">calibration</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_file</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_name</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="s1">&#39;validity_limit&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with this calibration&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;calibration&#39;</span><span class="p">:</span> <span class="n">calibration_name</span><span class="p">,</span>
+                     <span class="s1">&#39;design&#39;</span><span class="p">:</span> <span class="n">design</span><span class="p">,</span>
+                     <span class="s1">&#39;validity_limit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">params</span><span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">ref_red</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_rededge</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_nir</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">data_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs the algorithm on the input array (&#39;ref&#39;).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ref_red: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_redegde: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_nir: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            data_type: Either &#39;rho&#39; or &#39;rrs&#39; (respectively surface reflectance</span>
+<span class="sd">                and remote sensing reflectance).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An array (dimension 1 * N * M) of chl-a (in mg/m3).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span>
+            <span class="n">ref_red</span> <span class="o">=</span> <span class="n">ref_red</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+            <span class="n">ref_rededge</span> <span class="o">=</span> <span class="n">ref_rededge</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+            <span class="n">ref_nir</span> <span class="o">=</span> <span class="n">ref_nir</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+        <span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+        <span class="n">ref_red</span> <span class="o">=</span> <span class="n">ref_red</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">ref_rededge</span> <span class="o">=</span> <span class="n">ref_rededge</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">ref_nir</span> <span class="o">=</span> <span class="n">ref_red</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_nir</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_design</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_design</span> <span class="o">==</span> <span class="s1">&#39;3_bands&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3 bands selected&#39;</span><span class="p">)</span>
+            <span class="c1"># pylint: disable=no-member</span>
+            <span class="c1"># Loaded in __init__ whit &quot;__dict__.update&quot;.</span>
+            <span class="n">chla</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_3bands</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_3bands</span> \
+                <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">ref_red</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">ref_rededge</span><span class="p">)</span> <span class="o">*</span> <span class="n">ref_nir</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2 bands selected&#39;</span><span class="p">)</span>
+            <span class="c1"># pylint: disable=no-member</span>
+            <span class="c1"># Loaded in __init__ whit &quot;__dict__.update&quot;.</span>
+            <span class="n">chla</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_2bands</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_2bands</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">ref_red</span><span class="p">)</span> <span class="o">*</span> <span class="n">ref_nir</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="n">chla</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">chla</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">chla</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">chla</span></div>
+
+
+<span class="k">class</span> <span class="nc">CHLAGurlin</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Chlorophyll-a concentration (in mg/m3) from 3 red bands after Gurlin et al., 2011</span>
+
+<span class="sd">    Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from</span>
+<span class="sd">    surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,</span>
+<span class="sd">    in sr-1) at 665nm B4 MSI, 704nm B5 MSI and 783nm B7 MSI.</span>
+<span class="sd">    This algorithm was published in Gons et al., 1999, 2002, 2004</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name: The name of the algorithm used. This is the key used by</span>
+<span class="sd">            L3AlgoBuilder and that you must provide in config or when using</span>
+<span class="sd">            the CLI.</span>
+<span class="sd">        requested_bands: A list of bands further used by the algorithm.</span>
+<span class="sd">        meta: A dict of metadata (calibration name, model coefficients, etc).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_default_calibration_file</span> <span class="o">=</span> <span class="n">wc_calib</span> <span class="o">/</span> <span class="s1">&#39;chla-gurlin.yaml&#39;</span>
+    <span class="n">_default_calibration_name</span> <span class="o">=</span> <span class="s1">&#39;Gurlin_2011&#39;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;chla-gurlin&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">calibration</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inits an &#39;CHLAGurlin&#39; instance with specific settings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">                S2_ESA_L2A or L8_USGS_L1GT)</span>
+<span class="sd">            calibration: The calibration (set of parameters) used by the</span>
+<span class="sd">                algorithm (default=_default_calibration_name).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="n">algo_config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                <span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="n">calibration_dict</span><span class="p">,</span> <span class="n">calibration_name</span> <span class="o">=</span> <span class="n">load_calib</span><span class="p">(</span>
+            <span class="n">calibration</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_file</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_name</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="s1">&#39;validity_limit&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with this calibration&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;calibration&#39;</span><span class="p">:</span> <span class="n">calibration_name</span><span class="p">,</span>
+                     <span class="s1">&#39;validity_limit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">params</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">ref_red</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_rededge</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">data_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs the algorithm on the input array (&#39;ref&#39;).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ref_red: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_redegde: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            data_type: Either &#39;rho&#39; or &#39;rrs&#39; (respectively surface reflectance</span>
+<span class="sd">                and remote sensing reflectance).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An array (dimension 1 * N * M) of chl-a (in mg/m3).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+        <span class="n">ref_red</span> <span class="o">=</span> <span class="n">ref_red</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">ref_rededge</span> <span class="o">=</span> <span class="n">ref_rededge</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># pylint: disable=no-member</span>
+        <span class="c1"># Loaded in __init__ whit &quot;__dict__.update&quot;.</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="n">ref_rededge</span> <span class="o">/</span> <span class="n">ref_red</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> \
+            <span class="o">*</span> <span class="p">(</span><span class="n">ref_rededge</span> <span class="o">/</span> <span class="n">ref_red</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">c</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="n">chla</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">chla</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">chla</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">chla</span>
+
+
+<div class="viewcode-block" id="CHLAOC"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.CHLAOC.html#sisppeo.wcproducts.CHLAOC">[docs]</a><span class="k">class</span> <span class="nc">CHLAOC</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Chlorophyll-a concentration (in mg/m3) from polynomial maximum band ratio by O&#39;Reilly et al., 1998 and updates</span>
+
+<span class="sd">    Blue/green algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from</span>
+<span class="sd">    surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,</span>
+<span class="sd">    in sr-1)</span>
+<span class="sd">    This algorithm was published in O&#39;Reilly 1998, 2000</span>
+<span class="sd">    calibration OC2 for OLI from Franz et al., 2015, OC3 for OLI O&#39;Reilly and Werdell, 2019</span>
+<span class="sd">    MSI Pahlevan et al., 2020 after O&#39;Reilly and Werdell, 2019</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name: The name of the algorithm used. This is the key used by</span>
+<span class="sd">            L3AlgoBuilder and that you must provide in config or when using</span>
+<span class="sd">            the CLI.</span>
+<span class="sd">        requested_bands: A list of bands further used by the algorithm.</span>
+<span class="sd">        meta: A dict of metadata (calibration name, model coefficients, etc).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_default_calibration_file</span> <span class="o">=</span> <span class="n">wc_calib</span> <span class="o">/</span> <span class="s1">&#39;chla-oc.yaml&#39;</span>
+    <span class="n">_default_calibration_name</span> <span class="o">=</span> <span class="s1">&#39;OC3&#39;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;chla-oc&#39;</span>
+
+<div class="viewcode-block" id="CHLAOC.__init__"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.CHLAOC.html#sisppeo.wcproducts.CHLAOC.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">calibration</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inits an &#39;CHLAOC&#39; instance with specific settings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">                S2_ESA_L2A or L8_USGS_L1GT)</span>
+<span class="sd">            calibration: The calibration (set of parameters) used by the</span>
+<span class="sd">                algorithm (default=_default_calibration_name).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="n">algo_config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                <span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="n">calibration_dict</span><span class="p">,</span> <span class="n">calibration_name</span> <span class="o">=</span> <span class="n">load_calib</span><span class="p">(</span>
+            <span class="n">calibration</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_file</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_name</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="s1">&#39;validity_limit&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">=</span> <span class="n">calibration_name</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with this calibration&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;calibration&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="p">,</span>
+                     <span class="s1">&#39;validity_limit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">params</span><span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">ref_violet</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_blue</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_green</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">data_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs the algorithm on the input array (&#39;ref&#39;).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ref_violet: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_blue: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_green: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            data_type: Either &#39;ref&#39; or &#39;rrs&#39; (respectively surface reflectance</span>
+<span class="sd">                and remote sensing reflectance).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An array (dimension 1 * N * M) of chl-a (in mg/m3).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data_type</span> <span class="o">==</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span>
+            <span class="n">ref_violet</span> <span class="o">=</span> <span class="n">ref_violet</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+            <span class="n">ref_blue</span> <span class="o">=</span> <span class="n">ref_blue</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+            <span class="n">ref_green</span> <span class="o">=</span> <span class="n">ref_green</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_version</span> <span class="o">==</span> <span class="s1">&#39;OC3&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="si">}</span><span class="s1"> is used&#39;</span><span class="p">)</span>
+            <span class="n">max_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">ref_violet</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">ref_blue</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+                               <span class="o">/</span> <span class="n">ref_green</span><span class="p">)</span>
+            <span class="c1"># np.log(max(Rrs_B1, Rrs_B2) / Rrs_B3))</span>
+        <span class="k">else</span><span class="p">:</span>   <span class="c1"># self._version == &#39;OC2&#39;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_version</span><span class="si">}</span><span class="s1"> is used&#39;</span><span class="p">)</span>
+            <span class="n">max_ratio</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ref_blue</span><span class="o">.</span><span class="n">values</span> <span class="o">/</span> <span class="n">ref_green</span><span class="p">)</span>
+        <span class="c1"># pylint: disable=no-member</span>
+        <span class="c1"># Loaded in __init__ whit &quot;__dict__.update&quot;.</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">a1</span> <span class="o">*</span> <span class="n">max_ratio</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">a2</span>
+                        <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">max_ratio</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">a3</span>
+                        <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">max_ratio</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">a4</span>
+                        <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">max_ratio</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="n">chla</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">chla</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">chla</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">chla</span></div>
+
+
+<div class="viewcode-block" id="CHLALins"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.CHLALins.html#sisppeo.wcproducts.CHLALins">[docs]</a><span class="k">class</span> <span class="nc">CHLALins</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Chlorophyll-a concentration (in mg/m3) from NIR/Red bands ratio after Lins et al., 2017</span>
+
+<span class="sd">    Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from</span>
+<span class="sd">    surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,</span>
+<span class="sd">    in sr-1) at 665nm B4 MSI, 705nm B5 MSI</span>
+<span class="sd">    This algorithm was published in Lins et al., 2017</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name: The name of the algorithm used. This is the key used by</span>
+<span class="sd">          L3AlgoBuilder and that you must provide in config or when using</span>
+<span class="sd">          the CLI.</span>
+<span class="sd">        requested_bands: A list of bands further used by the algorithm.</span>
+<span class="sd">        meta: A dict of metadata (calibration name, model coefficients, etc).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_default_calibration_file</span> <span class="o">=</span> <span class="n">wc_calib</span> <span class="o">/</span> <span class="s1">&#39;chla-lins.yaml&#39;</span>
+    <span class="n">_default_calibration_name</span> <span class="o">=</span> <span class="s1">&#39;Lins_2017&#39;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;chla-lins&#39;</span>
+
+<div class="viewcode-block" id="CHLALins.__init__"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.CHLALins.html#sisppeo.wcproducts.CHLALins.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="n">calibration</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inits an &#39;CHLALins&#39; instance with specific settings.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">                S2_ESA_L2A or L8_USGS_L1GT)</span>
+<span class="sd">            calibration: The calibration (set of parameters) used by the</span>
+<span class="sd">                algorithm (default=_default_calibration_name).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="n">algo_config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                <span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="n">calibration_dict</span><span class="p">,</span> <span class="n">calibration_name</span> <span class="o">=</span> <span class="n">load_calib</span><span class="p">(</span>
+            <span class="n">calibration</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_file</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_default_calibration_name</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="s1">&#39;validity_limit&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">calibration_dict</span><span class="p">[</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">invalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with this calibration&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">invalid_product</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;calibration&#39;</span><span class="p">:</span> <span class="n">calibration_name</span><span class="p">,</span>
+                     <span class="s1">&#39;validity_limit&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">,</span>
+                     <span class="o">**</span><span class="n">params</span><span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">ref_red</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_rededge</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">data_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs the algorithm on the input array (&#39;ref&#39;).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ref_red: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_redegde: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            data_type: Either &#39;rho&#39; or &#39;rrs&#39; (respectively surface reflectance</span>
+<span class="sd">                and remote sensing reflectance).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An array (dimension 1 * N * M) of chl-a (in mg/m3).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+        <span class="n">ref_red</span> <span class="o">=</span> <span class="n">ref_red</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">ref_rededge</span> <span class="o">=</span> <span class="n">ref_rededge</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># pylint: disable=no-member</span>
+        <span class="c1"># Loaded in __init__ whit &quot;__dict__.update&quot;.</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">ref_rededge</span> <span class="o">/</span> <span class="n">ref_red</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">q</span>
+        <span class="n">chla</span> <span class="o">=</span> <span class="n">chla</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">chla</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">chla</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_valid_limit</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">chla</span></div>
+
+
+<div class="viewcode-block" id="NDCI"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.NDCI.html#sisppeo.wcproducts.NDCI">[docs]</a><span class="k">class</span> <span class="nc">NDCI</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Normalized Difference Chlorophyll Index</span>
+
+<span class="sd">    NDCI from surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,</span>
+<span class="sd">    in sr-1) at 665nm B4 MSI, 704nm B5 MSI</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name: The name of the algorithm used. This is the key used by</span>
+<span class="sd">            L3AlgoBuilder and that you must provide in config or when using</span>
+<span class="sd">            the CLI.</span>
+<span class="sd">        requested_bands: A list of bands further used by the algorithm.</span>
+<span class="sd">        meta: An empty dict, since there is no parametrisation for NDWI.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ndci&#39;</span>
+
+<div class="viewcode-block" id="NDCI.__init__"><a class="viewcode-back" href="../../../reference/generated/sisppeo.wcproducts.NDCI.html#sisppeo.wcproducts.NDCI.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Inits an &#39;Ndci&#39; instance for a given &#39;product_type&#39;.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">              S2_ESA_L2A or L8_USGS_L1GT)</span>
+<span class="sd">            **_ignored: Unused kwargs send to trash.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">requested_bands</span> <span class="o">=</span> <span class="n">algo_config</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">][</span>
+                <span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">unvalid_product</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1"> is not allowed with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">unvalid_product</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">ref_red</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="n">ref_nir</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs the algorithm on the input array (&#39;ref&#39;).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ref_red: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            ref_nir: An array (dimension 1 * N * M) of &#39;data_type&#39;.</span>
+<span class="sd">            data_type: Either &#39;rho&#39; or &#39;rrs&#39; (respectively surface reflectance</span>
+<span class="sd">                and remote sensing reflectance).</span>
+<span class="sd">            **_ignored: Unused kwargs sent to trash.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            An array (dimension 1 * N * M) of NDCI values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+        <span class="n">red</span> <span class="o">=</span> <span class="n">ref_red</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_red</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">nir</span> <span class="o">=</span> <span class="n">ref_nir</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ref_nir</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">nir</span> <span class="o">-</span> <span class="n">red</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">nir</span> <span class="o">+</span> <span class="n">red</span><span class="p">)</span></div>
+</pre></div>
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

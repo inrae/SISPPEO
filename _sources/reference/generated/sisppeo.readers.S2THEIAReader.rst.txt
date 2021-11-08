@@ -1,0 +1,27 @@
+sisppeo.readers.S2THEIAReader
+=============================
+
+.. currentmodule:: sisppeo.readers
+
+.. autoclass:: S2THEIAReader
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~S2THEIAReader.__init__
+      ~S2THEIAReader.create_ds
+      ~S2THEIAReader.extract_bands
+   
+   
+
+   
+   
+   

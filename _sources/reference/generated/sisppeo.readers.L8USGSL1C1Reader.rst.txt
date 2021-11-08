@@ -1,0 +1,27 @@
+sisppeo.readers.L8USGSL1C1Reader
+================================
+
+.. currentmodule:: sisppeo.readers
+
+.. autoclass:: L8USGSL1C1Reader
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~L8USGSL1C1Reader.__init__
+      ~L8USGSL1C1Reader.create_ds
+      ~L8USGSL1C1Reader.extract_bands
+   
+   
+
+   
+   
+   

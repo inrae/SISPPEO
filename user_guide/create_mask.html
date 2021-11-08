@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Create a mask (L3MaskProduct)</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Create and analize a time series (TimeSeries)" href="create_time_series.html" />
+    <link rel="prev" title="Create a L3 product (L3AlgoProduct)" href="create_l3algo.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_l3algo.html">
+   Create a L3 product (L3AlgoProduct)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Create a mask (L3MaskProduct)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_time_series.html">
+   Create and analize a time series (TimeSeries)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="user_workspace.html">
+   User Workspace
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remarque">
+   Remarque
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="create-a-mask-l3maskproduct">
+<h1>Create a mask (L3MaskProduct)<a class="headerlink" href="#create-a-mask-l3maskproduct" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial will soon be available in English.</p>
+</div>
+<p><em>Rq: lire au préalable les tutoriels sur</em> <a class="reference internal" href="create_l3algo.html"><span class="doc">la création de produits L3</span></a> <em>et de</em> <a class="reference internal" href="create_time_series.html"><span class="doc">séries temporelles</span></a> <em>afin de prendre en main SISPPEO.</em></p>
+<p>Il est possible de créer des masques (binaires) avec SISPPEO, que ce soit via la CLI ou bien en important SISPPEO dans une console ou un script Python.</p>
+<p>2 masques sont actuellement disponibles :</p>
+<ul class="simple">
+<li><p>masque eau : <a class="reference external" href="https://github.com/cordmaur/WaterDetect">WaterDetect</a> ;</p></li>
+<li><p>masque nuage : <a class="reference external" href="https://github.com/sentinel-hub/sentinel2-cloud-detector">s2cloudless</a>.</p></li>
+</ul>
+<p>Avec la CLI, il faut utiliser la commande <strong class="command">sisppeo create-l3mask</strong>, tandis qu’en tant que module, il faut utiliser la clé “l3 mask” lors de l’appel de la fonction <a class="reference internal" href="../reference/sisppeo.html#sisppeo.main.generate" title="sisppeo.main.generate"><code class="xref py py-func docutils literal notranslate"><span class="pre">sisppeo.generate()</span></code></a>.</p>
+<p>Les arguments utilisés sont similaires à ceux utilisés lors de la création de produits L3 ou de séries temporelles, exceptés :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--mask</span></code> | <code class="docutils literal notranslate"><span class="pre">mask</span></code>/<code class="docutils literal notranslate"><span class="pre">lst_mask</span></code> au lieu de (resp.) <code class="docutils literal notranslate"><span class="pre">--algo</span></code> | <code class="docutils literal notranslate"><span class="pre">algo</span></code>/<code class="docutils literal notranslate"><span class="pre">lst_algo</span></code> ;</p></li>
+<li><p>un nouvel argument spécifique : <code class="docutils literal notranslate"><span class="pre">--proc_res</span></code> | <code class="docutils literal notranslate"><span class="pre">processing_resolution</span></code>/<code class="docutils literal notranslate"><span class="pre">lst_proc_res</span></code>. Cet argument optionnel permet de spécifier la résolution utilisée lors du traitement, si on la veut différente (= moins fine) que celle du ou des produits en sortie (-&gt; permet de fortement alléger les calculs pour des résultats parfois comparables).</p></li>
+</ul>
+<p>De même que pour les produits L3, on peut compiler des masques en séries temporelles (ou bien créer directement des séries temporelles de masques). Il suffit pour cela d’utiliser la commande <code class="docutils literal notranslate"><span class="pre">sisppeo</span> <span class="pre">create-timeseries-mask</span></code> (CLI) ou la clé “time series (mask)” lors de l’appel de la commande <code class="docutils literal notranslate"><span class="pre">sisppeo.generate</span></code>.</p>
+<p><em>Rq: il est recommandé par l’auteur de WaterDetect d’utiliser des images L2A obtenues avec MAJA (bandes “SRE”), avec les masques CLM (bits 1 et 5) et MG2 (bits 4, 5, 6, 7 et 8).</em></p>
+<hr class="docutils" />
+<section id="remarque">
+<h2>Remarque<a class="headerlink" href="#remarque" title="Permalink to this headline">¶</a></h2>
+<p>Si vous avez une question ou si vous avez besoin d’information complémentaire, i) consultez le reste de la documentation, ii) référez-vous au code de SISPPEO puis si besoin iii) contactez <a class="reference external" href="mailto:arthur&#46;coque&#37;&#52;&#48;inrae&#46;fr">moi</a>.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="create_l3algo.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Create a L3 product (L3AlgoProduct)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="create_time_series.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Create and analize a time series (TimeSeries)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

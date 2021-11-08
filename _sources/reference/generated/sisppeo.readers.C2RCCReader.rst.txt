@@ -1,0 +1,27 @@
+sisppeo.readers.C2RCCReader
+===========================
+
+.. currentmodule:: sisppeo.readers
+
+.. autoclass:: C2RCCReader
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~C2RCCReader.__init__
+      ~C2RCCReader.create_ds
+      ~C2RCCReader.extract_bands
+   
+   
+
+   
+   
+   

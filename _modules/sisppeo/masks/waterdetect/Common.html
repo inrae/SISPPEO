@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sisppeo.masks.waterdetect.Common</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../../../index.html">
+  <img src="../../../../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for sisppeo.masks.waterdetect.Common</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">ast</span>
+<span class="kn">import</span> <span class="nn">configparser</span>
+<span class="kn">from</span> <span class="nn">importlib.resources</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="k">with</span> <span class="n">path</span><span class="p">(</span><span class="n">__package__</span><span class="p">,</span> <span class="s1">&#39;WaterDetect.ini&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+    <span class="n">config_file</span> <span class="o">=</span> <span class="n">p</span>
+
+
+<div class="viewcode-block" id="DWConfig"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWConfig">[docs]</a><span class="k">class</span> <span class="nc">DWConfig</span><span class="p">:</span>
+    <span class="n">_config_file</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;reference_band&#39;</span><span class="p">:</span> <span class="s1">&#39;Red&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;maximum_invalid&#39;</span><span class="p">:</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;create_composite&#39;</span><span class="p">:</span> <span class="s1">&#39;True&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;pdf_reports&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;save_indices&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;texture_streching&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;clustering_method&#39;</span><span class="p">:</span> <span class="s1">&#39;aglomerative&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;min_clusters&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;max_clusters&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;clip_band&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;clip_value&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;classifier&#39;</span><span class="p">:</span> <span class="s1">&#39;naive_bayes&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;train_size&#39;</span><span class="p">:</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;min_train_size&#39;</span><span class="p">:</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;max_train_size&#39;</span><span class="p">:</span> <span class="s1">&#39;10000&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;score_index&#39;</span><span class="p">:</span> <span class="s1">&#39;calinsk&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;detectwatercluster&#39;</span><span class="p">:</span> <span class="s1">&#39;maxmndwi&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;clustering_bands&#39;</span><span class="p">:</span> <span class="s2">&quot;[[&#39;ndwi&#39;, &#39;Nir&#39;]]&quot;</span><span class="p">,</span>
+                 <span class="s1">&#39;graphs_bands&#39;</span><span class="p">:</span> <span class="s2">&quot;[[&#39;mbwi&#39;, &#39;mndwi&#39;], [&#39;ndwi&#39;, &#39;mbwi&#39;]]&quot;</span><span class="p">,</span>
+                 <span class="s1">&#39;plot_ts&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span>
+                 <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_config_file</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DWConfig.return_defaults"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWConfig.return_defaults">[docs]</a>    <span class="k">def</span> <span class="nf">return_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+
+        <span class="n">default_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaults</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Key </span><span class="si">{}</span><span class="s1"> not found in section </span><span class="si">{}</span><span class="s1">: using default value </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">default_value</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">default_value</span></div>
+
+<div class="viewcode-block" id="DWConfig.get_option"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWConfig.get_option">[docs]</a>    <span class="k">def</span> <span class="nf">get_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">str_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">str_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_defaults</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">evaluate</span> <span class="ow">and</span> <span class="nb">str</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="n">str_value</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">str_value</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">str_value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">str_value</span></div>
+
+<div class="viewcode-block" id="DWConfig.load_config_file"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWConfig.load_config_file">[docs]</a>    <span class="k">def</span> <span class="nf">load_config_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">config_file</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span> <span class="o">=</span> <span class="n">config_file</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loading configuration file </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span><span class="p">))</span>
+
+        <span class="n">DWutils</span><span class="o">.</span><span class="n">check_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span><span class="p">)</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">config</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">average_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;average_results&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">min_positive_pixels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;min_positive_pixels&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">clustering_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;clustering_method&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">linkage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;linkage&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">train_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;train_size&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">min_train_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;min_train_size&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">max_train_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;max_train_size&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">score_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;score_index&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;classifier&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">detect_water_cluster</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;detectwatercluster&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">min_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;min_clusters&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">max_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;max_clusters&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">clustering_bands</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">bands_lst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;clustering_bands&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># if bands_keys is not a list of lists, transform it</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">bands_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="n">bands_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">bands_lst</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">bands_lst</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">clip_band</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">bands_lst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;clip_band&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">bands_lst</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">bands_lst</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">bands_lst</span> <span class="k">if</span> <span class="n">bands_lst</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">clip_inf_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;clip_inf_value&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span> <span class="k">else</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">clip_sup_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;Clustering&#39;</span><span class="p">,</span> <span class="s1">&#39;clip_sup_value&#39;</span><span class="p">,</span> <span class="n">evaluate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span> <span class="k">else</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span></div>
+
+
+<div class="viewcode-block" id="DWutils"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWutils">[docs]</a><span class="k">class</span> <span class="nc">DWutils</span><span class="p">:</span>
+<div class="viewcode-block" id="DWutils.check_path"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWutils.check_path">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">check_path</span><span class="p">(</span><span class="n">path_str</span><span class="p">,</span> <span class="n">is_dir</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the path/file exists and returns a Path variable with it</span>
+<span class="sd">        :param path_str: path string to test</span>
+<span class="sd">        :param is_dir: whether if it is a directory or a file</span>
+<span class="sd">        :return: Path type variable</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">path_str</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path_str</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">is_dir</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s1">&#39;The specified folder </span><span class="si">{}</span><span class="s1"> does not exist&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path_str</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span><span class="s1">&#39;The specified file </span><span class="si">{}</span><span class="s1"> does not exist&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path_str</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">((</span><span class="s1">&#39;Folder&#39;</span> <span class="k">if</span> <span class="n">is_dir</span> <span class="k">else</span> <span class="s1">&#39;File&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; </span><span class="si">{}</span><span class="s1"> verified.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path_str</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">path</span></div>
+
+<div class="viewcode-block" id="DWutils.calc_normalized_difference"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWutils.calc_normalized_difference">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">calc_normalized_difference</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calc the normalized difference of given arrays (img1 - img2)/(img1 + img2).</span>
+<span class="sd">        Updates the mask if any invalid numbers (ex. np.inf or np.nan) are encountered</span>
+<span class="sd">        :param img1: first array</span>
+<span class="sd">        :param img2: second array</span>
+<span class="sd">        :param mask: initial mask, that will be updated</span>
+<span class="sd">        :return: nd array filled with -9999 in the mask and the mask itself</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># changement for negative SRE scenes</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">min_cte</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">img1</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">img2</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">])])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">min_cte</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">img1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">img2</span><span class="p">)])</span>
+
+        <span class="k">if</span> <span class="n">min_cte</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">min_cte</span> <span class="o">=</span> <span class="o">-</span><span class="n">min_cte</span> <span class="o">+</span> <span class="mf">0.001</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">min_cte</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">nd</span> <span class="o">=</span> <span class="p">((</span><span class="n">img1</span> <span class="o">+</span> <span class="n">min_cte</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">img2</span> <span class="o">+</span> <span class="n">min_cte</span><span class="p">))</span> <span class="o">/</span> <span class="p">((</span><span class="n">img1</span> <span class="o">+</span> <span class="n">min_cte</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">img2</span> <span class="o">+</span> <span class="n">min_cte</span><span class="p">))</span>
+
+        <span class="c1"># if any of the bands is set to zero in the pixel, makes a small shift upwards, as proposed by olivier hagole</span>
+        <span class="c1"># https://github.com/olivierhagolle/modified_NDVI</span>
+        <span class="c1"># nd = np.where((img1 &gt; 0) &amp; (img2 &gt; 0), (img1-img2) / (img1 + img2), np.nan)</span>
+        <span class="c1"># (img1+0.005-img2-0.005) / (img1+0.005 + img2+0.005))</span>
+
+        <span class="c1"># nd = np.where((img1 &lt;= 0) &amp; (img2 &lt;= 0), np.nan, (img1-img2) / (img1 + img2))</span>
+
+        <span class="c1"># nd = (img1-img2) / (img1 + img2)</span>
+
+        <span class="c1"># nd[~mask] = MinMaxScaler(feature_range=(-1,1), copy=False).fit_transform(nd[~mask].reshape(-1,1)).reshape(-1)</span>
+
+        <span class="n">nd</span><span class="p">[</span><span class="n">nd</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">nd</span><span class="p">[</span><span class="n">nd</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="c1"># if result is infinite, result should be 1</span>
+        <span class="n">nd</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">nd</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># nd_mask = np.isinf(nd) | np.isnan(nd) | mask</span>
+        <span class="n">nd_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span> <span class="o">|</span> <span class="n">mask</span>
+
+        <span class="n">nd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">nd_mask</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=-</span><span class="mi">9999</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">nd</span><span class="o">.</span><span class="n">filled</span><span class="p">(),</span> <span class="n">nd</span><span class="o">.</span><span class="n">mask</span></div>
+
+<div class="viewcode-block" id="DWutils.get_train_test_data"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWutils.get_train_test_data">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_train_test_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">train_size</span><span class="p">,</span> <span class="n">min_train_size</span><span class="p">,</span> <span class="n">max_train_size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Split the provided data in train-test bunches</span>
+<span class="sd">        :param min_train_size: minimum data quantity for train set</span>
+<span class="sd">        :param max_train_size: maximum data quantity for train set</span>
+<span class="sd">        :param train_size: percentage of the data to be used as train dataset</span>
+<span class="sd">        :param data: data to be split</span>
+<span class="sd">        :return: train and test datasets</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dataset_size</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">dataset_size</span> <span class="o">*</span> <span class="n">train_size</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_train_size</span><span class="p">:</span>
+            <span class="n">train_size</span> <span class="o">=</span> <span class="n">min_train_size</span> <span class="o">/</span> <span class="n">dataset_size</span>
+            <span class="n">train_size</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">train_size</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">train_size</span>
+
+        <span class="k">elif</span> <span class="p">(</span><span class="n">dataset_size</span> <span class="o">*</span> <span class="n">train_size</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_train_size</span><span class="p">:</span>
+            <span class="n">train_size</span> <span class="o">=</span> <span class="n">max_train_size</span> <span class="o">/</span> <span class="n">dataset_size</span>
+
+        <span class="k">return</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DWutils.create_bands_dict"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWutils.create_bands_dict">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create_bands_dict</span><span class="p">(</span><span class="n">bands_array</span><span class="p">,</span> <span class="n">bands_order</span><span class="p">):</span>
+
+        <span class="n">bands_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">band</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bands_order</span><span class="p">):</span>
+            <span class="n">bands_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">band</span><span class="p">:</span> <span class="n">bands_array</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]})</span>
+
+        <span class="k">return</span> <span class="n">bands_dict</span></div>
+
+<div class="viewcode-block" id="DWutils.listify"><a class="viewcode-back" href="../../../../reference/sisppeo.masks.waterdetect.html#sisppeo.masks.waterdetect.Common.DWutils.listify">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">listify</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">uniques</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="c1"># pdb.set_trace()</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">uniques</span> <span class="o">=</span> <span class="n">DWutils</span><span class="o">.</span><span class="n">listify</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">uniques</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">uniques</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">uniques</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div></div>
+</pre></div>
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

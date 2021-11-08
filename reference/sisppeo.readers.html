@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>sisppeo.readers package</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.readers.GRS">
+   sisppeo.readers.GRS module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.readers.L8_USGS_L1C1">
+   sisppeo.readers.L8_USGS_L1C1 module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.readers.L8_USGS_L2">
+   sisppeo.readers.L8_USGS_L2 module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.readers.S2_ESA">
+   sisppeo.readers.S2_ESA module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.readers.S2_THEIA">
+   sisppeo.readers.S2_THEIA module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.readers.reader">
+   sisppeo.readers.reader module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-sisppeo.readers">
+   Module contents
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="sisppeo-readers-package">
+<h1>sisppeo.readers package<a class="headerlink" href="#sisppeo-readers-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-sisppeo.readers.GRS">
+<span id="sisppeo-readers-grs-module"></span><h2>sisppeo.readers.GRS module<a class="headerlink" href="#module-sisppeo.readers.GRS" title="Permalink to this headline">¶</a></h2>
+<p>This module contains a reader for GRS products.</p>
+<p>This reader is dedicated to extract data from S2_GRS, L4_GRS, L5_GRS, L7_GRS
+and L8_GRS products.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reader</span> <span class="o">=</span> <span class="n">GRSReader</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+<span class="n">reader</span><span class="o">.</span><span class="n">extract_bands</span><span class="p">()</span>
+<span class="n">reader</span><span class="o">.</span><span class="n">create_ds</span><span class="p">()</span>
+<span class="n">extracted_dataset</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">dataset</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSInputs">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.GRS.</span></span><span class="sig-name descname"><span class="pre">GRSInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ROI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grs_bands</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sisppeo.readers.GRS.GRSInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSInputs.ROI">
+<span class="sig-name descname"><span class="pre">ROI</span></span><a class="headerlink" href="#sisppeo.readers.GRS.GRSInputs.ROI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSInputs.flags">
+<span class="sig-name descname"><span class="pre">flags</span></span><a class="headerlink" href="#sisppeo.readers.GRS.GRSInputs.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSInputs.grs_bands">
+<span class="sig-name descname"><span class="pre">grs_bands</span></span><a class="headerlink" href="#sisppeo.readers.GRS.GRSInputs.grs_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSInputs.input_product">
+<span class="sig-name descname"><span class="pre">input_product</span></span><a class="headerlink" href="#sisppeo.readers.GRS.GRSInputs.input_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSInputs.product_type">
+<span class="sig-name descname"><span class="pre">product_type</span></span><a class="headerlink" href="#sisppeo.readers.GRS.GRSInputs.product_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSInputs.requested_bands">
+<span class="sig-name descname"><span class="pre">requested_bands</span></span><a class="headerlink" href="#sisppeo.readers.GRS.GRSInputs.requested_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSReader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.GRS.</span></span><span class="sig-name descname"><span class="pre">GRSReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">product_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">glint_corrected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_ignored</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/GRS.html#GRSReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.GRS.GRSReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sisppeo.readers.reader.Reader" title="sisppeo.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.readers.reader.Reader</span></code></a></p>
+<p>A reader dedicated to extract data from both S2_GRS, L4_GRS, L5_GRS,
+L7_GRS and L8_GRS products.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSReader.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.readers.GRS.GRSReader.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing extracted data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSReader.create_ds">
+<span class="sig-name descname"><span class="pre">create_ds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/GRS.html#GRSReader.create_ds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.GRS.GRSReader.create_ds" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.GRS.GRSReader.extract_bands">
+<span class="sig-name descname"><span class="pre">extract_bands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/GRS.html#GRSReader.extract_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.GRS.GRSReader.extract_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.readers.L8_USGS_L1C1">
+<span id="sisppeo-readers-l8-usgs-l1c1-module"></span><h2>sisppeo.readers.L8_USGS_L1C1 module<a class="headerlink" href="#module-sisppeo.readers.L8_USGS_L1C1" title="Permalink to this headline">¶</a></h2>
+<p>This module contains a reader for L8_USGS_L1C1 products.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reader</span> <span class="o">=</span> <span class="n">L8USGSL1C1Reader</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+<span class="n">reader</span><span class="o">.</span><span class="n">extract_bands</span><span class="p">()</span>
+<span class="n">reader</span><span class="o">.</span><span class="n">create_ds</span><span class="p">()</span>
+<span class="n">extracted_dataset</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">dataset</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L1C1.L8USGSL1C1Reader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.L8_USGS_L1C1.</span></span><span class="sig-name descname"><span class="pre">L8USGSL1C1Reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_ignored</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/L8_USGS_L1C1.html#L8USGSL1C1Reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.L8_USGS_L1C1.L8USGSL1C1Reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sisppeo.readers.reader.Reader" title="sisppeo.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.readers.reader.Reader</span></code></a></p>
+<p>A reader dedicated to extract data from L8_USGS_L1C1 products.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L1C1.L8USGSL1C1Reader.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.readers.L8_USGS_L1C1.L8USGSL1C1Reader.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing extracted data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L1C1.L8USGSL1C1Reader.create_ds">
+<span class="sig-name descname"><span class="pre">create_ds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/L8_USGS_L1C1.html#L8USGSL1C1Reader.create_ds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.L8_USGS_L1C1.L8USGSL1C1Reader.create_ds" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L1C1.L8USGSL1C1Reader.extract_bands">
+<span class="sig-name descname"><span class="pre">extract_bands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/L8_USGS_L1C1.html#L8USGSL1C1Reader.extract_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.L8_USGS_L1C1.L8USGSL1C1Reader.extract_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L1C1.format_zippath">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.readers.L8_USGS_L1C1.</span></span><span class="sig-name descname"><span class="pre">format_zippath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/L8_USGS_L1C1.html#format_zippath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.L8_USGS_L1C1.format_zippath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-sisppeo.readers.L8_USGS_L2">
+<span id="sisppeo-readers-l8-usgs-l2-module"></span><h2>sisppeo.readers.L8_USGS_L2 module<a class="headerlink" href="#module-sisppeo.readers.L8_USGS_L2" title="Permalink to this headline">¶</a></h2>
+<p>This module contains a reader for L8_USGS_L2C1 products with hdf files.</p>
+<p>Typical usage example:</p>
+<p>reader = L8USGSL2C1HDFReader(**config)
+reader.extract_bands()
+reader.create_ds()
+extracted_dataset = reader.dataset</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L2.L8USGSL2Reader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.L8_USGS_L2.</span></span><span class="sig-name descname"><span class="pre">L8USGSL2Reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_ignored</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/L8_USGS_L2.html#L8USGSL2Reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.L8_USGS_L2.L8USGSL2Reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sisppeo.readers.reader.Reader" title="sisppeo.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.readers.reader.Reader</span></code></a></p>
+<p>A reader dedicated to extract data from L8_USGS_L2C1 products (.hdf).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L2.L8USGSL2Reader.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.readers.L8_USGS_L2.L8USGSL2Reader.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing extracted data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L2.L8USGSL2Reader.create_ds">
+<span class="sig-name descname"><span class="pre">create_ds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/L8_USGS_L2.html#L8USGSL2Reader.create_ds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.L8_USGS_L2.L8USGSL2Reader.create_ds" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L2.L8USGSL2Reader.extract_bands">
+<span class="sig-name descname"><span class="pre">extract_bands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/L8_USGS_L2.html#L8USGSL2Reader.extract_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.L8_USGS_L2.L8USGSL2Reader.extract_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.readers.L8_USGS_L2.format_zippath">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.readers.L8_USGS_L2.</span></span><span class="sig-name descname"><span class="pre">format_zippath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/L8_USGS_L2.html#format_zippath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.L8_USGS_L2.format_zippath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-sisppeo.readers.S2_ESA">
+<span id="sisppeo-readers-s2-esa-module"></span><h2>sisppeo.readers.S2_ESA module<a class="headerlink" href="#module-sisppeo.readers.S2_ESA" title="Permalink to this headline">¶</a></h2>
+<p>This module contains a reader for S2_ESA products.</p>
+<p>This reader is dedicated to extract data from both S2_ESA_L1C and S2_ESA_L2A.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reader</span> <span class="o">=</span> <span class="n">S2ESAReader</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+<span class="n">reader</span><span class="o">.</span><span class="n">extract_bands</span><span class="p">()</span>
+<span class="n">reader</span><span class="o">.</span><span class="n">create_ds</span><span class="p">()</span>
+<span class="n">extracted_dataset</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">dataset</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAInputs">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.S2_ESA.</span></span><span class="sig-name descname"><span class="pre">S2ESAInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ROI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_resolution</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAInputs.ROI">
+<span class="sig-name descname"><span class="pre">ROI</span></span><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAInputs.ROI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAInputs.input_product">
+<span class="sig-name descname"><span class="pre">input_product</span></span><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAInputs.input_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAInputs.out_resolution">
+<span class="sig-name descname"><span class="pre">out_resolution</span></span><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAInputs.out_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAInputs.requested_bands">
+<span class="sig-name descname"><span class="pre">requested_bands</span></span><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAInputs.requested_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAReader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.S2_ESA.</span></span><span class="sig-name descname"><span class="pre">S2ESAReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_ignored</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/S2_ESA.html#S2ESAReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sisppeo.readers.reader.Reader" title="sisppeo.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.readers.reader.Reader</span></code></a></p>
+<p>A reader dedicated to extract data from both S2_ESA_L1C and S2_ESA_L2A products.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAReader.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAReader.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing extracted data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAReader.create_ds">
+<span class="sig-name descname"><span class="pre">create_ds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/S2_ESA.html#S2ESAReader.create_ds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAReader.create_ds" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.S2ESAReader.extract_bands">
+<span class="sig-name descname"><span class="pre">extract_bands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/S2_ESA.html#S2ESAReader.extract_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.S2_ESA.S2ESAReader.extract_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_ESA.format_zippath">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.readers.S2_ESA.</span></span><span class="sig-name descname"><span class="pre">format_zippath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/S2_ESA.html#format_zippath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.S2_ESA.format_zippath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-sisppeo.readers.S2_THEIA">
+<span id="sisppeo-readers-s2-theia-module"></span><h2>sisppeo.readers.S2_THEIA module<a class="headerlink" href="#module-sisppeo.readers.S2_THEIA" title="Permalink to this headline">¶</a></h2>
+<p>This module contains a reader for S2_THEIA products.</p>
+<p>This reader is dedicated to extract data from S2_THEIA_L2A.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reader</span> <span class="o">=</span> <span class="n">S2THEIAReader</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+<span class="n">reader</span><span class="o">.</span><span class="n">extract_bands</span><span class="p">()</span>
+<span class="n">reader</span><span class="o">.</span><span class="n">create_ds</span><span class="p">()</span>
+<span class="n">extracted_dataset</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">dataset</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAInputs">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.S2_THEIA.</span></span><span class="sig-name descname"><span class="pre">S2THEIAInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ROI</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_resolution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theia_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theia_masks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAInputs.ROI">
+<span class="sig-name descname"><span class="pre">ROI</span></span><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAInputs.ROI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAInputs.input_product">
+<span class="sig-name descname"><span class="pre">input_product</span></span><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAInputs.input_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAInputs.out_resolution">
+<span class="sig-name descname"><span class="pre">out_resolution</span></span><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAInputs.out_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAInputs.requested_bands">
+<span class="sig-name descname"><span class="pre">requested_bands</span></span><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAInputs.requested_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAInputs.theia_bands">
+<span class="sig-name descname"><span class="pre">theia_bands</span></span><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAInputs.theia_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAInputs.theia_masks">
+<span class="sig-name descname"><span class="pre">theia_masks</span></span><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAInputs.theia_masks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAReader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.S2_THEIA.</span></span><span class="sig-name descname"><span class="pre">S2THEIAReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theia_bands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FRE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theia_masks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_ignored</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/S2_THEIA.html#S2THEIAReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#sisppeo.readers.reader.Reader" title="sisppeo.readers.reader.Reader"><code class="xref py py-class docutils literal notranslate"><span class="pre">sisppeo.readers.reader.Reader</span></code></a></p>
+<p>A reader dedicated to extract data from S2_THEIA_L2A products.</p>
+<p>For more information about THEIA S2 L2A products, please see:
+<a class="reference external" href="https://labo.obs-mip.fr/multitemp/sentinel-2/theias-sentinel-2-l2a-product-format/">https://labo.obs-mip.fr/multitemp/sentinel-2/theias-sentinel-2-l2a-product-format/</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAReader.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAReader.dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset containing extracted data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAReader.create_ds">
+<span class="sig-name descname"><span class="pre">create_ds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/S2_THEIA.html#S2THEIAReader.create_ds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAReader.create_ds" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.S2THEIAReader.extract_bands">
+<span class="sig-name descname"><span class="pre">extract_bands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/S2_THEIA.html#S2THEIAReader.extract_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.S2_THEIA.S2THEIAReader.extract_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>See base class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sisppeo.readers.S2_THEIA.format_zippath">
+<span class="sig-prename descclassname"><span class="pre">sisppeo.readers.S2_THEIA.</span></span><span class="sig-name descname"><span class="pre">format_zippath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/S2_THEIA.html#format_zippath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.S2_THEIA.format_zippath" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-sisppeo.readers.reader">
+<span id="sisppeo-readers-reader-module"></span><h2>sisppeo.readers.reader module<a class="headerlink" href="#module-sisppeo.readers.reader" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the Reader class.</p>
+<p>The Reader class is an abstract class (a blueprint) inherited by every readers.
+A reader is an object used to extract bands (radiometric data) and metadata
+from satellite products (or a subset of products). It also allows one to
+perform resampling operations. There is a reader for each ‘product_type’.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.Inputs">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.reader.</span></span><span class="sig-name descname"><span class="pre">Inputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ROI</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sisppeo.readers.reader.Inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.Inputs.ROI">
+<span class="sig-name descname"><span class="pre">ROI</span></span><a class="headerlink" href="#sisppeo.readers.reader.Inputs.ROI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.Inputs.input_product">
+<span class="sig-name descname"><span class="pre">input_product</span></span><a class="headerlink" href="#sisppeo.readers.reader.Inputs.input_product" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.Inputs.requested_bands">
+<span class="sig-name descname"><span class="pre">requested_bands</span></span><a class="headerlink" href="#sisppeo.readers.reader.Inputs.requested_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.ROI">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.reader.</span></span><span class="sig-name descname"><span class="pre">ROI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">srid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sisppeo.readers.reader.ROI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.ROI.geom">
+<span class="sig-name descname"><span class="pre">geom</span></span><a class="headerlink" href="#sisppeo.readers.reader.ROI.geom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.ROI.srid">
+<span class="sig-name descname"><span class="pre">srid</span></span><a class="headerlink" href="#sisppeo.readers.reader.ROI.srid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.Reader">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">sisppeo.readers.reader.</span></span><span class="sig-name descname"><span class="pre">Reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_product</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested_bands</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_ignored</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/reader.html#Reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.reader.Reader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract class inherited by every specific reader.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.Reader.create_ds">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">create_ds</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/reader.html#Reader.create_ds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.reader.Reader.create_ds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a xr.Dataset out of Reader params and extracted information.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sisppeo.readers.reader.Reader.extract_bands">
+<em class="property"><span class="pre">abstract</span> </em><span class="sig-name descname"><span class="pre">extract_bands</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sisppeo/readers/reader.html#Reader.extract_bands"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sisppeo.readers.reader.Reader.extract_bands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens the input product and extracts bands and metadata.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-sisppeo.readers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-sisppeo.readers" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

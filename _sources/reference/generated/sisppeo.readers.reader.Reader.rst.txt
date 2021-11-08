@@ -1,0 +1,27 @@
+sisppeo.readers.reader.Reader
+=============================
+
+.. currentmodule:: sisppeo.readers.reader
+
+.. autoclass:: Reader
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Reader.__init__
+      ~Reader.create_ds
+      ~Reader.extract_bands
+   
+   
+
+   
+   
+   

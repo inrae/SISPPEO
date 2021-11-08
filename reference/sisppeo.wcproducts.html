@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>sisppeo.wcproducts</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sisppeo.wcproducts.Ndwi" href="generated/sisppeo.wcproducts.Ndwi.html" />
+    <link rel="prev" title="sisppeo.landproducts.Ndvi" href="generated/sisppeo.landproducts.Ndvi.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.Ndwi.html">
+   sisppeo.wcproducts.Ndwi
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.CHLAGons.html">
+   sisppeo.wcproducts.CHLAGons
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.CHLAGitelson.html">
+   sisppeo.wcproducts.CHLAGitelson
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.CHLAOC.html">
+   sisppeo.wcproducts.CHLAOC
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.CHLALins.html">
+   sisppeo.wcproducts.CHLALins
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.NDCI.html">
+   sisppeo.wcproducts.NDCI
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.SPMNechad.html">
+   sisppeo.wcproducts.SPMNechad
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.SPMHan.html">
+   sisppeo.wcproducts.SPMHan
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.SPMGet.html">
+   sisppeo.wcproducts.SPMGet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generated/sisppeo.wcproducts.TURBIDogliotti.html">
+   sisppeo.wcproducts.TURBIDogliotti
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sisppeo-wcproducts-algos">
+   sisppeo.wcproducts.algos
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sisppeo-wcproducts-acdom">
+   sisppeo.wcproducts.acdom
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sisppeo-wcproducts-chla">
+   sisppeo.wcproducts.chla
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sisppeo-wcproducts-spm">
+   sisppeo.wcproducts.spm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sisppeo-wcproducts-transparency">
+   sisppeo.wcproducts.transparency
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="sisppeo-wcproducts">
+<span id="wcproducts"></span><h1>sisppeo.wcproducts<a class="headerlink" href="#sisppeo-wcproducts" title="Permalink to this headline">¶</a></h1>
+<p>This package is made of modules in which are defined algorithms
+for water optics and water color remote sensing.</p>
+<p>Each module is dedicated to one specific water quality parameter
+(e.g. chlorophyll a) (except for <a class="reference internal" href="#sisppeo-wcproducts-algos"><span class="std std-ref">sisppeo.wcproducts.algos</span></a>).</p>
+<section id="sisppeo-wcproducts-algos">
+<span id="id1"></span><h2>sisppeo.wcproducts.algos<a class="headerlink" href="#sisppeo-wcproducts-algos" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#sisppeo-wcproducts-algos"><span class="std std-ref">sisppeo.wcproducts.algos</span></a> contains the following algorithms:</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.Ndwi.html#sisppeo.wcproducts.Ndwi" title="sisppeo.wcproducts.Ndwi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ndwi</span></code></a>(product_type, **_ignored)</p></td>
+<td><p>Normalized Difference Water Index.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sisppeo-wcproducts-acdom">
+<span id="id2"></span><h2>sisppeo.wcproducts.acdom<a class="headerlink" href="#sisppeo-wcproducts-acdom" title="Permalink to this headline">¶</a></h2>
+<p>This module gathers water colour algorithms used for retrieving aCDOM (/[DOC]).</p>
+</section>
+<section id="sisppeo-wcproducts-chla">
+<span id="id3"></span><h2>sisppeo.wcproducts.chla<a class="headerlink" href="#sisppeo-wcproducts-chla" title="Permalink to this headline">¶</a></h2>
+<p>The following algorithms are used for estimating Chl-a concentrations:</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.CHLAGons.html#sisppeo.wcproducts.CHLAGons" title="sisppeo.wcproducts.CHLAGons"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CHLAGons</span></code></a>(product_type[, calibration])</p></td>
+<td><p>Chlorophyll-a concentration (in mg/m3) from 3 red bands after Gons et al., 1999, 2002, 2004</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.CHLAGitelson.html#sisppeo.wcproducts.CHLAGitelson" title="sisppeo.wcproducts.CHLAGitelson"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CHLAGitelson</span></code></a>(product_type[, design, calibration])</p></td>
+<td><p>Chlorophyll-a concentration (in mg/m3) from 3 red bands after Gitelson et al., 2008</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.CHLAOC.html#sisppeo.wcproducts.CHLAOC" title="sisppeo.wcproducts.CHLAOC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CHLAOC</span></code></a>(product_type[, calibration])</p></td>
+<td><p>Chlorophyll-a concentration (in mg/m3) from polynomial maximum band ratio by O'Reilly et al., 1998 and updates</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.CHLALins.html#sisppeo.wcproducts.CHLALins" title="sisppeo.wcproducts.CHLALins"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CHLALins</span></code></a>(product_type[, calibration])</p></td>
+<td><p>Chlorophyll-a concentration (in mg/m3) from NIR/Red bands ratio after Lins et al., 2017</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.NDCI.html#sisppeo.wcproducts.NDCI" title="sisppeo.wcproducts.NDCI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NDCI</span></code></a>(product_type, **_ignored)</p></td>
+<td><p>Normalized Difference Chlorophyll Index</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sisppeo-wcproducts-spm">
+<span id="id4"></span><h2>sisppeo.wcproducts.spm<a class="headerlink" href="#sisppeo-wcproducts-spm" title="Permalink to this headline">¶</a></h2>
+<p>The following algorithms are used for estimating suspended particulate matter
+(SPM) concentrations:</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.SPMNechad.html#sisppeo.wcproducts.SPMNechad" title="sisppeo.wcproducts.SPMNechad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPMNechad</span></code></a>(product_type[, requested_band, ...])</p></td>
+<td><p>Semi-analytical algorithm to retrieve SPM concentration (in mg/l) from reflectance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.SPMHan.html#sisppeo.wcproducts.SPMHan" title="sisppeo.wcproducts.SPMHan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPMHan</span></code></a>(product_type[, calibration])</p></td>
+<td><p>Switching Semi-analytical algorithm to retrieve SPM (in mg/l) from reflectance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.SPMGet.html#sisppeo.wcproducts.SPMGet" title="sisppeo.wcproducts.SPMGet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPMGet</span></code></a>(product_type[, calibration])</p></td>
+<td><p>Switching Semi-analytical algorithm to retrieve SPM (in mg/l) from reflectance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/sisppeo.wcproducts.TURBIDogliotti.html#sisppeo.wcproducts.TURBIDogliotti" title="sisppeo.wcproducts.TURBIDogliotti"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TURBIDogliotti</span></code></a>(product_type[, calibration])</p></td>
+<td><p>Switching Semi-analytical algorithm to retrieve Turbidity (in FNU) from reflectance.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sisppeo-wcproducts-transparency">
+<span id="id5"></span><h2>sisppeo.wcproducts.transparency<a class="headerlink" href="#sisppeo-wcproducts-transparency" title="Permalink to this headline">¶</a></h2>
+<p>The following algorithms are used for estimating transparency:</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="generated/sisppeo.landproducts.Ndvi.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">sisppeo.landproducts.Ndvi</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="generated/sisppeo.wcproducts.Ndwi.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">sisppeo.wcproducts.Ndwi</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

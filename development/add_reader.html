@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Write and add a new reader to SISPPEO</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Write and add a new algorithm to SISPPEO" href="add_algo.html" />
+    <link rel="prev" title="Extending SISPPEO" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Write and add a new reader to SISPPEO
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="add_algo.html">
+   Write and add a new algorithm to SISPPEO
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initialisation-init">
+   1. Initialisation :
+   <em>
+    __init__
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methode-extract-bands">
+   2. Méthode
+   <em>
+    extract_bands
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methode-extract-ds">
+   3. Méthode
+   <em>
+    extract_ds
+   </em>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creation-du-dataset">
+     3.1 Création du dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#renseigner-les-variables-de-coordonnees">
+     3.2 Renseigner les variables de coordonnées
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parametrisation-de-la-variable-crs">
+     3.3 Paramétrisation de la variable “crs”
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conserver-les-metadonnees-du-produit-satellitaire">
+     3.4 conserver les métadonnées du produit satellitaire.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preciser-le-type-de-donnees-radiometriques">
+     3.5 Préciser le type de données radiométriques.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-du-reader">
+   “Intégration” du reader
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remarque">
+   Remarque
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#annexe">
+   Annexe
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geom">
+     geom
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gestion-des-fichiers-compresses">
+     Gestion des fichiers compressés
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="write-and-add-a-new-reader-to-sisppeo">
+<h1>Write and add a new reader to SISPPEO<a class="headerlink" href="#write-and-add-a-new-reader-to-sisppeo" title="Permalink to this headline">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Un reader est une classe permettant de lire et d’extraire des informations (radiométriques + métadonnées) d’un produit satellitaire donné.</p>
+<p>Pour cela, un reader doit tout d’abord hériter de la classe abstraite <code class="xref py py-class docutils literal notranslate"><span class="pre">Reader`</span></code>. Cette dernière précise l’interface minimale à implémenter (quels arguments sont nécessaires lors d’une instanciation, quelles fonctions doivent obligatoirement être implémentées, etc).</p>
+<p>Exemple de notre nouveau reader (pour les produits Sentinel-2 fournis par l’ESA) :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">S2ESAReader</span><span class="p">(</span><span class="n">Reader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A reader dedicated to extract data from both S2_ESA_L1C and S2_ESA_L2A products.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        dataset: A dataset containing extracted data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="initialisation-init">
+<h2>1. Initialisation : <em>__init__</em><a class="headerlink" href="#initialisation-init" title="Permalink to this headline">¶</a></h2>
+<p>Par défaut, les arguments nécessaire dans l’<code class="docutils literal notranslate"><span class="pre">__init__</span></code> sont les suivants :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">input_product</span></code> : le chemin d’accès au produit satellitaire ;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requested_bands</span></code> : la liste des bandes à extraire (e.g., <code class="docutils literal notranslate"><span class="pre">['B3',</span> <span class="pre">'B4',</span> <span class="pre">'B5']</span></code>).</p></li>
+</ul>
+<p>Un argument optionnel peut aussi être demandé : <a class="reference internal" href="../extending/add_reader.html#geom"><span class="std std-ref">geom</span></a>. Il sera utilisé si l’utilisateur s’intéresse seulement à une zone restreinte (à extraire) et non pas à l’image entière.</p>
+<p>Si notre reader ne nécessite pas de paramètres supplémentaires, l’on peut passer à l’implémentation de la méthode <a class="reference internal" href="../reference/sisppeo.readers.html#sisppeo.readers.reader.Reader.extract_bands" title="sisppeo.readers.reader.Reader.extract_bands"><code class="xref py py-meth docutils literal notranslate"><span class="pre">extract_bands()</span></code></a> (cf. <a class="reference internal" href="../extending/add_reader.html#extract-bands"><span class="std std-ref">2. Méthode extract_bands</span></a>). Sinon, il faut redéfinir la fonction <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
+<p>Ici, notre reader nécessite 1 argument supplémentaire : <code class="docutils literal notranslate"><span class="pre">out_resolution</span></code>. Ce dernier sera utilisé pour forcer la résolution de sortie (parmi les résolutions des différentes bandes extraites).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">input_product</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+            <span class="n">requested_bands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+            <span class="n">geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;dict&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">out_resolution</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;See base class.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        out_resolution: The wanted resolution of the output product. Used</span>
+<span class="sd">            when performing resampling operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">input_product</span><span class="p">,</span> <span class="n">requested_bands</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>  <span class="c1"># Appel de l&#39;__init__ de la classe parente &quot;Reader&quot;</span>
+    <span class="k">if</span> <span class="n">out_resolution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">):</span>    <span class="c1"># Filtrage des valeurs autorisées pour le nouveau paramètre &quot;out_resolution&quot;</span>
+        <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s1">&#39;&quot;out_resolution&quot; must be in (10, 20, 60)&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">[</span><span class="s1">&#39;out_resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out_resolution</span>     <span class="c1"># Stockage de la valeur donnée par l&#39;utilisateur</span>
+</pre></div>
+</div>
+</section>
+<section id="methode-extract-bands">
+<span id="extract-bands"></span><h2>2. Méthode <em>extract_bands</em><a class="headerlink" href="#methode-extract-bands" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">extract_bands</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Opens the input product and extracts bands and metadata.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Cette méthode ouvre un produit satellitaire et extrait les bandes demandées (paramètre <code class="docutils literal notranslate"><span class="pre">requested_bands</span></code>) ainsi que diverses metadonnées (utilisées par exemple pour convertir les comptes numériques en réflectances, ou bien tout simplement pour renseigner le produit L3 final).</p>
+<p>Habituellement, cette méthode peut être structurée de la manière suivante :</p>
+<ol class="arabic simple">
+<li><p>charger les données (i.e. le dataset) ;</p></li>
+<li><p>extraire/lire les métadonnées ;</p></li>
+<li><p>filtrer les bandes à extraire ;</p></li>
+<li><p>extraire les données (i.e. boucle sur les bandes à extraire, calcul du ROI si besoin…) ;</p></li>
+<li><p>stocker les données et métadonnées.</p></li>
+</ol>
+<p>En fonction du produits, cette structure est amenée à évoluer légèrement. Par ex :</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../reference/sisppeo.readers.html#sisppeo.readers.GRS.GRSReader" title="sisppeo.readers.GRS.GRSReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">GRSReader</span></code></a> n’a pas besoin de l’étape 3 (contrairement à un produit où l’on devrait aller lire le chemin de chaque bande à extraire dans les métadonnées) ;</p></li>
+<li><p>un reader pour les produits Landsat 8 fournis par l’USGS n’aurait pas d’étape 1 (pas de dataset à charger, uniquement un fichier de métadonnées à lire dans lequel on va récuper les chemins des bandes qui nous intéressent dans l’étape 3).</p></li>
+</ol>
+<p>Il y a priori 3 types de cas :</p>
+<ol class="arabic simple">
+<li><p>produit sous la forme d’un dataset (par ex un fichier .netCDF, comme pour GRS), à charger directement en utilisant la bibliothèque <code class="docutils literal notranslate"><span class="pre">xarray</span></code>.</p></li>
+<li><p>produit dans un format bénéficiant d’un reader <code class="docutils literal notranslate"><span class="pre">GDAL</span></code> (par exemple les produits Sentinel-2 fournis par l’ESA en .SAFE) : i) chargement du produit satellitaire en utilisant la bibliothèque <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> (interface Python pour l’API C GDAL) puis ii) chargement des différentes bandes d’intérêt, toujours avec la même blibliothèque (fonction <em>open</em> et <em>read</em>).</p></li>
+<li><p>autres (par exemple les produit Landsat 8 fournis par l’USGS) : i) chargement et lecture des métadonnées puis ii) lecture des différentes bandes en utilisant la bibliothèque <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>.</p></li>
+</ol>
+</section>
+<section id="methode-extract-ds">
+<h2>3. Méthode <em>extract_ds</em><a class="headerlink" href="#methode-extract-ds" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@abstractmethod</span>
+<span class="k">def</span> <span class="nf">create_ds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Creates a xr.DataSet out of Reader params and extracted information.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Cette méthode crée et stocke un objet <code class="code docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> à partir des données et métadonnées précédemment extraites.</p>
+<p>Cette méthode peut être structurée de la manière suivante :</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../extending/add_reader.html#id1"><span class="std std-ref">création du dataset</span></a> ;</p></li>
+<li><p><a class="reference internal" href="../extending/add_reader.html#id2"><span class="std std-ref">renseigner les variables de coordonnées</span></a> ;</p></li>
+<li><p><a class="reference internal" href="../extending/add_reader.html#id3"><span class="std std-ref">correctement paramétrer la variable “crs”</span></a> ;</p></li>
+<li><p><a class="reference internal" href="../extending/add_reader.html#id4"><span class="std std-ref">renseigner les métadonnées</span></a> ;</p></li>
+<li><p><a class="reference internal" href="../extending/add_reader.html#id5"><span class="std std-ref">préciser le type de données radiométriques</span></a>.</p></li>
+</ol>
+<section id="creation-du-dataset">
+<span id="id1"></span><h3>3.1 Création du dataset<a class="headerlink" href="#creation-du-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
+    <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="p">([</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span>
+        <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()},</span>
+    <span class="n">coords</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]),</span>
+        <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span>
+            <span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;tags&#39;</span><span class="p">][</span><span class="s1">&#39;PRODUCT_START_TIME&#39;</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Le 1er dictionnaire <code class="docutils literal notranslate"><span class="pre">{key:</span> <span class="pre">...</span> <span class="pre">['data'].itesms()}</span></code> contient les différentes bandes extraites sous forme de <em>numpy.ndarray</em> 3D (image 2D + axe temporel ; shape=(1, M, N)).</p>
+<p>Les coordonnées sont :</p>
+<ul class="simple">
+<li><p>un <code class="code docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> (N,) <strong>x</strong> de coordonnées projetées sur une grille UTM ;</p></li>
+<li><p>un <code class="code docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> (M,) <strong>y</strong> de coordonnées projetées sur une grille UTM ;</p></li>
+<li><p>une liste de longueur 1 <strong>time</strong> contenant la date d’acquisition du produit satellitaire sous la forme d’une objet datetime (du module datetime contenu dans la bibliothèque standard).</p></li>
+</ul>
+</section>
+<section id="renseigner-les-variables-de-coordonnees">
+<span id="id2"></span><h3>3.2 Renseigner les variables de coordonnées<a class="headerlink" href="#renseigner-les-variables-de-coordonnees" title="Permalink to this headline">¶</a></h3>
+<p>Pendant cette étape, l’on renseigne les axes, <em>long_name</em>, <em>standard_name</em> (si existe, cf. <a class="reference external" href="https://cfconventions.org/Data/cf-conventions/cf-conventions-1.8/cf-conventions.html">netCDF CF-1.8</a>) ainsi que l’unité des ces 3 variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">crs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span>
+<span class="c1"># Set up coordinate variables</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;x-coordinate (</span><span class="si">{</span><span class="n">crs</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">)&#39;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;standard_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;projection_x_coordinate&quot;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;m&#39;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;y-coordinate (</span><span class="si">{</span><span class="n">crs</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">)&#39;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;standard_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;projection_y_coordinate&quot;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;m&#39;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="parametrisation-de-la-variable-crs">
+<span id="id3"></span><h3>3.3 Paramétrisation de la variable “crs”<a class="headerlink" href="#parametrisation-de-la-variable-crs" title="Permalink to this headline">¶</a></h3>
+<p>Cette variable sert à correctement géo-référencer le produit final (par exemple lors de l’utilisation dudit produit dans QGIS).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up the &#39;grid mapping variable&#39;</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;crs&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">to_cf</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="conserver-les-metadonnees-du-produit-satellitaire">
+<span id="id4"></span><h3>3.4 conserver les métadonnées du produit satellitaire.<a class="headerlink" href="#conserver-les-metadonnees-du-produit-satellitaire" title="Permalink to this headline">¶</a></h3>
+<p>Il faut les enregistrer dans une nouvelle variable “product_metadata”.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Store metadata</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;product_metadata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;tags&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">ds</span><span class="o">.</span><span class="n">product_metadata</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+</pre></div>
+</div>
+</section>
+<section id="preciser-le-type-de-donnees-radiometriques">
+<span id="id5"></span><h3>3.5 Préciser le type de données radiométriques.<a class="headerlink" href="#preciser-le-type-de-donnees-radiometriques" title="Permalink to this headline">¶</a></h3>
+<p>L’on précise ici si ce sont des réflectances de télédétection (Rrs) ou bien des réflectances BOA (‘rho’) au sein du métadonnées temporaire (elle sera supprimée lors de la création du produit final et n’est utilisée que par les algos en ayant besoin).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;rrs&#39;</span>   <span class="c1"># ou &#39;rho&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integration-du-reader">
+<h2>“Intégration” du reader<a class="headerlink" href="#integration-du-reader" title="Permalink to this headline">¶</a></h2>
+<p>Il faut ensuite importer la classe (i.e. le reader) nouvellement créée dans le fichier <em>__init__.py</em> du module <em>readers</em>. Ex :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.GRS</span> <span class="kn">import</span> <span class="n">GRSReader</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="remarque">
+<h2>Remarque<a class="headerlink" href="#remarque" title="Permalink to this headline">¶</a></h2>
+<p>Si vous avez une question ou si vous avez besoin d’informations complémentaires, i) référez-vous aux différents readers contenus dans le package <a class="reference internal" href="../reference/sisppeo.readers.html#module-sisppeo.readers" title="sisppeo.readers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sisppeo.readers</span></code></a> puis si besoin ii) contactez <a class="reference external" href="mailto:arthur&#46;coque&#37;&#52;&#48;inrae&#46;fr">moi</a>.</p>
+</section>
+<hr class="docutils" />
+<section id="annexe">
+<h2>Annexe<a class="headerlink" href="#annexe" title="Permalink to this headline">¶</a></h2>
+<section id="geom">
+<span id="id6"></span><h3>geom<a class="headerlink" href="#geom" title="Permalink to this headline">¶</a></h3>
+<p>Le paramètre <em>geom</em> peut être :</p>
+<ul class="simple">
+<li><p>“None”, si l’utilisateur veut traiter l’image dans son entier ;</p></li>
+<li><p>un dictionnaire, comprenant un code EPSG (associé à la clé “srid” ; optionnel) et au choix :</p>
+<ul>
+<li><p>une géométrie shapely (a priori un polygone) ;</p></li>
+<li><p>un chemin d’accès vers i) un fichier .txt contenant une représentation géographique en wkt (le chemin est associé à la clé “wkt”) ou ii) vers un .shp (le chemin est associé à la clé “shp”).</p></li>
+</ul>
+</li>
+</ul>
+<p>Exemple (les champs ayant pour valeur “None” peuvent ne pas être inclus) :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">geom</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;geom&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;wkt&#39;</span><span class="p">:</span> <span class="s1">&#39;data/wkt.txt&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shp&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;srid&#39;</span><span class="p">:</span> <span class="mi">4326</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="gestion-des-fichiers-compresses">
+<h3>Gestion des fichiers compressés<a class="headerlink" href="#gestion-des-fichiers-compresses" title="Permalink to this headline">¶</a></h3>
+<p>Tous les readers actuellement implémentés dans SISPPEO peuvent lire et extraire des informations depuis des archives (.tar.gz, .tgz ou .zip). Uniquement les bandes et les métadonnées nécessaires sont extraites (en mémoire). Se référer au code pour plus de détails.</p>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Extending SISPPEO</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="add_algo.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Write and add a new algorithm to SISPPEO</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

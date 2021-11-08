@@ -1,0 +1,554 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sisppeo.readers.S2_THEIA</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../../index.html">
+  <img src="../../../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for sisppeo.readers.S2_THEIA</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2020 Arthur Coqué, Valentine Aubard, Pôle OFB-INRAE ECLA, UR RECOVER</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+
+<span class="sd">&quot;&quot;&quot;This module contains a reader for S2_THEIA products.</span>
+
+<span class="sd">This reader is dedicated to extract data from S2_THEIA_L2A.</span>
+
+<span class="sd">Example::</span>
+
+<span class="sd">    reader = S2THEIAReader(**config)</span>
+<span class="sd">    reader.extract_bands()</span>
+<span class="sd">    reader.create_ds()</span>
+<span class="sd">    extracted_dataset = reader.dataset</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span><span class="p">,</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">CRS</span>
+<span class="kn">from</span> <span class="nn">rasterio.windows</span> <span class="kn">import</span> <span class="n">Window</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">sisppeo.readers.reader</span> <span class="kn">import</span> <span class="n">Reader</span><span class="p">,</span> <span class="n">Inputs</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.exceptions</span> <span class="kn">import</span> <span class="n">InputError</span><span class="p">,</span> <span class="n">ProductError</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.readers</span> <span class="kn">import</span> <span class="p">(</span><span class="n">get_ij_bbox</span><span class="p">,</span> <span class="n">decode_data</span><span class="p">,</span>
+                                   <span class="n">resample_band_array</span><span class="p">,</span>
+                                   <span class="n">resize_and_resample_band_array</span><span class="p">)</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">NotGeoreferencedWarning</span><span class="p">)</span>
+
+<span class="n">S2THEIAInputs</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;S2THEIAInputs&#39;</span><span class="p">,</span> <span class="n">Inputs</span><span class="o">.</span><span class="n">_fields</span>
+                           <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;out_resolution&#39;</span><span class="p">,</span> <span class="s1">&#39;theia_bands&#39;</span><span class="p">,</span> <span class="s1">&#39;theia_masks&#39;</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="format_zippath"><a class="viewcode-back" href="../../../reference/sisppeo.readers.html#sisppeo.readers.format_zippath">[docs]</a><span class="k">def</span> <span class="nf">format_zippath</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;zip://</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span><span class="si">}</span><span class="s1">!/&#39;</span></div>
+
+
+<div class="viewcode-block" id="S2THEIAReader"><a class="viewcode-back" href="../../../reference/sisppeo.readers.html#sisppeo.readers.S2THEIAReader">[docs]</a><span class="k">class</span> <span class="nc">S2THEIAReader</span><span class="p">(</span><span class="n">Reader</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A reader dedicated to extract data from S2_THEIA_L2A products.</span>
+
+<span class="sd">    For more information about THEIA S2 L2A products, please see:</span>
+<span class="sd">    https://labo.obs-mip.fr/multitemp/sentinel-2/theias-sentinel-2-l2a-product-format/</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        dataset: A dataset containing extracted data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="S2THEIAReader.__init__"><a class="viewcode-back" href="../../../reference/generated/sisppeo.readers.S2THEIAReader.html#sisppeo.readers.S2THEIAReader.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">input_product</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                 <span class="n">requested_bands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                 <span class="n">geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">out_resolution</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">theia_bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;FRE&#39;</span><span class="p">,</span>
+                 <span class="n">theia_masks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">_ignored</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;See base class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            out_resolution: The wanted resolution of the output product. Used</span>
+<span class="sd">                when performing resampling operations.</span>
+<span class="sd">            theia_bands: The bands to be extracted. Must be either &quot;SRE&quot;</span>
+<span class="sd">                (for Surface REflectance) or &quot;FRE&quot; (for Flat REflectance).</span>
+<span class="sd">            theia_masks: A dict whose keys are the names of THEIA&#39;s masks to</span>
+<span class="sd">                extract (&quot;CLM&quot;, &quot;MG2&quot; or &quot;SAT&quot;) and vals are lists of bits to</span>
+<span class="sd">                use (e.g., [0, 1, 2] ; if None, all bits will be used for the</span>
+<span class="sd">                corresponding mask).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">input_product</span><span class="p">,</span> <span class="n">requested_bands</span><span class="p">,</span> <span class="n">geom</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">out_resolution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s1">&#39;&quot;out_resolution&quot; must be in (10, 20)&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">theia_bands</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;FRE&#39;</span><span class="p">,</span> <span class="s1">&#39;SRE&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s1">&#39;&quot;theia_bands&quot; must be either &quot;SRE&quot; or &quot;FRE&quot;&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span> <span class="o">=</span> <span class="n">S2THEIAInputs</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="p">,</span> <span class="n">out_resolution</span><span class="p">,</span>
+                                     <span class="n">theia_bands</span><span class="p">,</span> <span class="n">theia_masks</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="S2THEIAReader.extract_bands"><a class="viewcode-back" href="../../../reference/sisppeo.readers.html#sisppeo.readers.S2THEIAReader.extract_bands">[docs]</a>    <span class="k">def</span> <span class="nf">extract_bands</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;See base class.&quot;&quot;&quot;</span>
+        <span class="c1"># Check if data are compressed</span>
+        <span class="n">compressed</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">input_product</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.zip&#39;</span><span class="p">:</span>
+            <span class="n">compressed</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Load metadata</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_metadata_from_MTD</span><span class="p">(</span><span class="n">compressed</span><span class="p">)</span>
+        <span class="n">quantification_value</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="n">_get_product_coefs</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+
+        <span class="c1"># Filter bands</span>
+        <span class="k">if</span> <span class="n">compressed</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">input_product</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+                <span class="n">root_path</span> <span class="o">=</span> <span class="n">format_zippath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">input_product</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">requested_bands</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span> <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s1">&#39;_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_bands</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">band</span><span class="si">}</span><span class="s1">.tif&#39;</span>
+                        <span class="p">)][</span><span class="mi">0</span><span class="p">],</span> <span class="n">band</span><span class="p">)</span> <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">requested_bands</span>
+                    <span class="p">]</span>
+                <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">no_band</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;One of the requested bands is not found in the &#39;</span>
+                           <span class="s1">&#39;given product.&#39;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">ProductError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">no_band</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">requested_bands</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">input_product</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s1">&#39;*_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_bands</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">band</span><span class="si">}</span><span class="s1">.tif&#39;</span>
+                    <span class="p">))[</span><span class="mi">0</span><span class="p">],</span> <span class="n">band</span><span class="p">)</span> <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">requested_bands</span>
+                <span class="p">]</span>
+            <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">no_band</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;One of the requested bands is not found in the given &#39;</span>
+                       <span class="s1">&#39;product.&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">ProductError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">no_band</span>
+
+        <span class="n">tmp</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;R1&#39;</span> <span class="k">if</span> <span class="n">band</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;R2&#39;</span>
+               <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">requested_bands</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s1">&#39;R1&#39;</span> <span class="ow">in</span> <span class="n">tmp</span> <span class="ow">and</span> <span class="s1">&#39;R2&#39;</span> <span class="ow">in</span> <span class="n">tmp</span><span class="p">:</span>
+            <span class="n">requested_bands</span> <span class="o">=</span> <span class="p">[</span><span class="n">rband</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">rband</span>
+                               <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">requested_bands</span><span class="p">),</span>
+                                         <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="s1">&#39;R1&#39;</span> <span class="ow">in</span> <span class="n">tmp</span><span class="p">:</span>
+            <span class="n">min_res</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">min_res</span> <span class="o">=</span> <span class="mi">20</span>
+        <span class="c1"># Set the default resolution</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">out_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="n">out_resolution</span><span class="o">=</span><span class="n">min_res</span><span class="p">)</span>
+
+        <span class="c1"># Extract data</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">requested_bands</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;bands&#39;</span><span class="p">):</span>
+            <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">subdataset</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>    <span class="c1"># 1st extracted_band</span>
+                    <span class="k">if</span> <span class="p">((</span><span class="n">out_res</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">out_resolution</span><span class="p">)</span>
+                            <span class="o">&gt;</span> <span class="p">(</span><span class="n">in_res</span> <span class="o">:=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;out_resolution&quot; must be &lt;= </span><span class="si">{</span><span class="n">in_res</span><span class="si">}</span><span class="s1"> ; &#39;</span>
+                               <span class="sa">f</span><span class="s1">&#39;here, out_resolution=</span><span class="si">{</span><span class="n">out_res</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                        <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                    <span class="c1"># Store the CRS</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_epsg</span><span class="p">(</span>
+                        <span class="n">subdataset</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span>
+                    <span class="p">)</span>
+                    <span class="n">band_array</span><span class="p">,</span> <span class="n">xy_bbox</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_first_band</span><span class="p">(</span>
+                        <span class="n">subdataset</span><span class="p">,</span> <span class="n">quantification_value</span><span class="p">,</span> <span class="n">nodata</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">band_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_nth_band</span><span class="p">(</span>
+                        <span class="n">subdataset</span><span class="p">,</span> <span class="n">xy_bbox</span><span class="p">,</span> <span class="n">quantification_value</span><span class="p">,</span> <span class="n">nodata</span>
+                    <span class="p">)</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="p">]</span> <span class="o">=</span> <span class="n">band_array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">band_array</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Mask data</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_masks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">mask_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_masks</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">out_resolution</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+                    <span class="n">suffix</span> <span class="o">=</span> <span class="s1">&#39;_R1&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">suffix</span> <span class="o">=</span> <span class="s1">&#39;_R2&#39;</span>
+                <span class="k">if</span> <span class="n">compressed</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">input_product</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+                        <span class="n">mask_path</span> <span class="o">=</span> <span class="p">(</span><span class="n">root_path</span> <span class="o">+</span> <span class="p">[</span>
+                            <span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span>
+                            <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;_</span><span class="si">{</span><span class="n">mask_name</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.tif&#39;</span><span class="p">)</span>
+                        <span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">mask_path</span> <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">input_product</span> <span class="o">/</span> <span class="s1">&#39;MASKS&#39;</span>
+                                      <span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;*_</span><span class="si">{</span><span class="n">mask_name</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.tif&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mask_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">mask</span><span class="p">:</span>
+                    <span class="n">mask_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_nth_band</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">xy_bbox</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+                                                        <span class="n">mask</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_masks</span><span class="p">[</span><span class="n">mask_name</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_masks</span><span class="p">[</span><span class="n">mask_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+                <span class="n">bitmasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">mask_array</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">b</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_masks</span><span class="p">[</span><span class="n">mask_name</span><span class="p">]]</span>
+                <span class="n">mask_array</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">bitmasks</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask_array</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="p">])</span>
+
+        <span class="c1"># Store outputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata</span></div>
+
+<div class="viewcode-block" id="S2THEIAReader.create_ds"><a class="viewcode-back" href="../../../reference/sisppeo.readers.html#sisppeo.readers.S2THEIAReader.create_ds">[docs]</a>    <span class="k">def</span> <span class="nf">create_ds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;See base class.&quot;&quot;&quot;</span>
+        <span class="c1"># Create the dataset</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
+            <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="p">([</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span>
+             <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()},</span>
+            <span class="n">coords</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]),</span>
+                <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span>
+                    <span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;ACQUISITION_DATE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])]</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span>
+        <span class="c1"># Set up coordinate variables</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;x-coordinate (</span><span class="si">{</span><span class="n">crs</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;standard_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;projection_x_coordinate&quot;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;m&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;y-coordinate (</span><span class="si">{</span><span class="n">crs</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">)&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;standard_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;projection_y_coordinate&quot;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;m&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;axis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span>
+
+        <span class="c1"># Set up the &#39;grid mapping variable&#39;</span>
+        <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;crs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;crs&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">crs</span><span class="o">.</span><span class="n">to_cf</span><span class="p">())</span>
+
+        <span class="c1"># Store metadata</span>
+        <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;product_metadata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">product_metadata</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+        <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;rho&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;theia_bands&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_bands</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_masks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;suppl_masks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;THEIA_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">val</span><span class="p">])</span><span class="si">}</span><span class="s1">)&#39;</span>
+                <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">theia_masks</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">ds</span></div>
+
+    <span class="k">def</span> <span class="nf">_load_metadata_from_MTD</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">compressed</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">compressed</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">input_product</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+                <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">archive</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span> <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;MTD_ALL.xml&#39;</span><span class="p">)][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">with</span> <span class="n">archive</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">input_product</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*MTD_ALL.xml&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">getroot</span><span class="p">()</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">root</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">subelem</span> <span class="ow">in</span> <span class="n">elem</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">subelem</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                    <span class="n">metadata</span><span class="p">[</span><span class="n">subelem</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">subelem</span><span class="o">.</span><span class="n">text</span>
+                <span class="k">for</span> <span class="n">att</span> <span class="ow">in</span> <span class="n">subelem</span><span class="o">.</span><span class="n">attrib</span><span class="p">:</span>
+                    <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;:&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">subelem</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="n">att</span><span class="p">])]</span> <span class="o">=</span> <span class="n">subelem</span><span class="o">.</span><span class="n">attrib</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">att</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;Horizontal_Coordinate_System&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">subelem</span> <span class="ow">in</span> <span class="n">elem</span><span class="p">:</span>
+                <span class="n">metadata</span><span class="p">[</span><span class="n">subelem</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">subelem</span><span class="o">.</span><span class="n">text</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;SPECIAL_VALUE&#39;</span><span class="p">):</span>
+            <span class="n">metadata</span><span class="p">[</span><span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">text</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;QUALITY_INDEX&#39;</span><span class="p">):</span>
+            <span class="n">metadata</span><span class="p">[</span><span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">text</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">iter</span><span class="p">(</span><span class="s1">&#39;Processing_Information&#39;</span><span class="p">):</span>
+            <span class="n">metadata</span><span class="p">[</span><span class="n">elem</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;NAME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;VALUE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+        <span class="k">return</span> <span class="n">metadata</span>
+
+    <span class="k">def</span> <span class="nf">_compute_x_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">):</span>
+        <span class="n">out_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">out_resolution</span>
+        <span class="n">x_start</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">out_res</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">x_stop</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">-</span> <span class="n">out_res</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_start</span><span class="p">,</span> <span class="n">x_stop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">out_res</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_compute_y_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
+        <span class="n">out_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">out_resolution</span>
+        <span class="n">y_start</span> <span class="o">=</span> <span class="n">y0</span> <span class="o">-</span> <span class="n">out_res</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">y_stop</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">out_res</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_start</span><span class="p">,</span> <span class="n">y_stop</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">out_res</span><span class="p">)</span>
+
+    <span class="c1"># pylint: disable=too-many-locals</span>
+    <span class="c1"># False positive.</span>
+    <span class="k">def</span> <span class="nf">_extract_first_band</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subdataset</span><span class="p">,</span> <span class="n">quantification_value</span><span class="p">,</span> <span class="n">nodata</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">ROI</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_reproject_geom</span><span class="p">()</span>
+            <span class="n">row_start</span><span class="p">,</span> <span class="n">col_start</span><span class="p">,</span> <span class="n">row_stop</span><span class="p">,</span> <span class="n">col_stop</span> <span class="o">=</span> <span class="n">get_ij_bbox</span><span class="p">(</span>
+                <span class="n">subdataset</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_intermediate_data</span><span class="p">[</span><span class="s1">&#39;geom&#39;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+                <span class="mi">1</span><span class="p">,</span>
+                <span class="n">window</span><span class="o">=</span><span class="n">Window</span><span class="o">.</span><span class="n">from_slices</span><span class="p">((</span><span class="n">row_start</span><span class="p">,</span> <span class="n">row_stop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                                          <span class="p">(</span><span class="n">col_start</span><span class="p">,</span> <span class="n">col_stop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="p">)</span>
+            <span class="c1"># Update internal coords</span>
+            <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">transform</span> <span class="o">*</span> <span class="p">(</span><span class="n">col_start</span><span class="p">,</span> <span class="n">row_start</span><span class="p">)</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">transform</span> <span class="o">*</span> <span class="p">(</span><span class="n">col_stop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">row_stop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Update internal coords</span>
+            <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">transform</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">transform</span> <span class="o">*</span> <span class="p">(</span><span class="n">subdataset</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+                                             <span class="n">subdataset</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="c1"># Decode extracted data</span>
+        <span class="n">band_array</span> <span class="o">=</span> <span class="n">decode_data</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">quantification_value</span><span class="p">,</span> <span class="n">nodata</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">out_res</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">out_resolution</span><span class="p">)</span> <span class="o">!=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">band_array</span> <span class="o">=</span> <span class="n">resample_band_array</span><span class="p">(</span><span class="n">band_array</span><span class="p">,</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                             <span class="n">out_res</span><span class="p">)</span>
+        <span class="c1"># Compute projected coordinates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compute_x_coords</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compute_y_coords</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+        <span class="c1"># Update internal coords</span>
+        <span class="n">x1</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">y1</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">band_array</span><span class="p">,</span> <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">]</span>
+
+    <span class="c1"># pylint: disable=too-many-locals</span>
+    <span class="c1"># More readable if coordonates are explicitely extracted from the bbox.</span>
+    <span class="k">def</span> <span class="nf">_extract_nth_band</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subdataset</span><span class="p">,</span> <span class="n">xy_bbox</span><span class="p">,</span> <span class="n">quantification_value</span><span class="p">,</span>
+                          <span class="n">nodata</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">xy_bbox</span>
+        <span class="n">row_start</span><span class="p">,</span> <span class="n">col_start</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">)</span>
+        <span class="n">row_stop</span><span class="p">,</span> <span class="n">col_stop</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="n">window</span><span class="o">=</span><span class="n">Window</span><span class="o">.</span><span class="n">from_slices</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">row_start</span><span class="p">,</span> <span class="n">row_stop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="p">(</span><span class="n">col_start</span><span class="p">,</span> <span class="n">col_stop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">mask</span><span class="p">:</span>
+            <span class="n">band_array</span> <span class="o">=</span> <span class="n">arr</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Decode extracted data</span>
+            <span class="n">band_array</span> <span class="o">=</span> <span class="n">decode_data</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">quantification_value</span><span class="p">,</span> <span class="n">nodata</span><span class="p">)</span>
+            <span class="n">ij_bbox</span> <span class="o">=</span> <span class="p">[</span><span class="n">row_start</span><span class="p">,</span> <span class="n">col_start</span><span class="p">,</span> <span class="n">row_stop</span><span class="p">,</span> <span class="n">col_stop</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">out_res</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inputs</span><span class="o">.</span><span class="n">out_resolution</span><span class="p">)</span> <span class="o">!=</span> <span class="n">subdataset</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">band_array</span> <span class="o">=</span> <span class="n">resize_and_resample_band_array</span><span class="p">(</span><span class="n">band_array</span><span class="p">,</span> <span class="n">ij_bbox</span><span class="p">,</span>
+                                                            <span class="n">subdataset</span><span class="o">.</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                            <span class="n">out_res</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">band_array</span></div>
+
+
+<span class="k">def</span> <span class="nf">_get_product_coefs</span><span class="p">(</span><span class="n">metadata</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets both quantification and nodata values (to compute correct reflectances)&quot;&quot;&quot;</span>
+    <span class="n">quantification_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;REFLECTANCE_QUANTIFICATION_VALUE&#39;</span><span class="p">])</span>
+    <span class="n">nodata</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;nodata&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">quantification_value</span><span class="p">,</span> <span class="n">nodata</span>
+</pre></div>
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

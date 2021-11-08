@@ -1,0 +1,46 @@
+sisppeo.products.L3MaskProduct
+==============================
+
+.. currentmodule:: sisppeo.products
+
+.. autoclass:: L3MaskProduct
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~L3MaskProduct.__init__
+      ~L3MaskProduct.extract_point
+      ~L3MaskProduct.extract_points
+      ~L3MaskProduct.from_file
+      ~L3MaskProduct.index
+      ~L3MaskProduct.plot
+      ~L3MaskProduct.save
+      ~L3MaskProduct.xy
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~L3MaskProduct.bounds
+      ~L3MaskProduct.data_vars
+      ~L3MaskProduct.dataset
+      ~L3MaskProduct.mask
+      ~L3MaskProduct.product_type
+      ~L3MaskProduct.res
+      ~L3MaskProduct.title
+      ~L3MaskProduct.x
+      ~L3MaskProduct.y
+   
+   

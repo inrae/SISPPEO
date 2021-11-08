@@ -1,0 +1,587 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sisppeo.builders</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../index.html">
+  <img src="../../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for sisppeo.builders</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+
+<span class="sd">&quot;&quot;&quot;Contains the ProductBuilder class.</span>
+
+<span class="sd">The builder pattern organizes object construction into a set of steps</span>
+<span class="sd">(extract_data, apply_algos, get_products, etc). To create an object,</span>
+<span class="sd">you execute a series of these steps on a builder object (here,</span>
+<span class="sd">a ProductBuilder instance). The important part is that you don’t need</span>
+<span class="sd">to call all of the steps. You can call only the steps that are necessary</span>
+<span class="sd">for producing a particular configuration of an object.</span>
+
+<span class="sd">If the client code needs to assemble a special, fine-tuned L3</span>
+<span class="sd">or L4 product, it can work with the builder directly.</span>
+<span class="sd">Otherwise, the user can delegate the assembly to the generate method</span>
+<span class="sd">(or dictely one of the recipes), which knows how to use a builder</span>
+<span class="sd">to construct several of the most standard products (e.g., L3AlgoProduct,</span>
+<span class="sd">L3MaskProduct, TimeSeries, Matchup, etc).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">pyproj</span> <span class="kn">import</span> <span class="n">CRS</span>
+
+<span class="kn">from</span> <span class="nn">sisppeo._version</span> <span class="kn">import</span> <span class="n">__version__</span>
+<span class="kn">from</span> <span class="nn">sisppeo.catalogs</span> <span class="kn">import</span> <span class="n">algo_catalog</span><span class="p">,</span> <span class="n">mask_catalog</span><span class="p">,</span> <span class="n">reader_catalog</span>
+<span class="kn">from</span> <span class="nn">sisppeo.products</span> <span class="kn">import</span> <span class="n">mask_product</span><span class="p">,</span> <span class="n">L3AlgoProduct</span><span class="p">,</span> <span class="n">L3MaskProduct</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.algos</span> <span class="kn">import</span> <span class="n">producttype_to_sat</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.builders</span> <span class="kn">import</span> <span class="n">get_variables</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.config</span> <span class="kn">import</span> <span class="p">(</span><span class="n">land_algo_config</span><span class="p">,</span> <span class="n">mask_config</span><span class="p">,</span>
+                                  <span class="n">user_algo_config</span><span class="p">,</span> <span class="n">user_mask_config</span><span class="p">,</span>
+                                  <span class="n">wc_algo_config</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.exceptions</span> <span class="kn">import</span> <span class="n">InputError</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.readers</span> <span class="kn">import</span> <span class="n">resample_band_array</span>
+
+<span class="n">algo_config</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">land_algo_config</span><span class="p">,</span> <span class="o">**</span><span class="n">wc_algo_config</span><span class="p">,</span> <span class="o">**</span><span class="n">user_algo_config</span><span class="p">}</span>
+<span class="n">mask_config</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">mask_config</span><span class="p">,</span> <span class="o">**</span><span class="n">user_mask_config</span><span class="p">}</span>
+
+
+<div class="viewcode-block" id="ProductBuilder"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder">[docs]</a><span class="k">class</span> <span class="nc">ProductBuilder</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;The builder used to create L3 and L4 objects.</span>
+
+<span class="sd">    It specifies methods for creating the different parts (or</span>
+<span class="sd">    building steps) of the product objects, and provides</span>
+<span class="sd">    their implementations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_algos&#39;</span><span class="p">,</span> <span class="s1">&#39;_masks&#39;</span><span class="p">,</span> <span class="s1">&#39;_product_type&#39;</span><span class="p">,</span> <span class="s1">&#39;_requested_bands&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;_out_resolution&#39;</span><span class="p">,</span> <span class="s1">&#39;_extracted_ds&#39;</span><span class="p">,</span> <span class="s1">&#39;_results&#39;</span><span class="p">,</span> <span class="s1">&#39;_products&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_algos</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_masks</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_product_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_requested_bands</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_products</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="ProductBuilder.set_algos"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder.set_algos">[docs]</a>    <span class="k">def</span> <span class="nf">set_algos</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                  <span class="n">lst_algo</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                  <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                  <span class="n">lst_band</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                  <span class="n">lst_calib</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                  <span class="n">lst_design</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Creates and inits algo objects.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lst_algo: A list of algorithms to use.</span>
+<span class="sd">            product_type: The type of the input satellite product (e.g.</span>
+<span class="sd">                S2_ESA_L2A or L8_USGS_L1GT).</span>
+<span class="sd">            lst_band: A list of &quot;requested_band&quot; args (a param used</span>
+<span class="sd">                by some algorithms).</span>
+<span class="sd">            lst_calib: A list of &quot;calibration&quot; args (a param used</span>
+<span class="sd">                by some algorithms).</span>
+<span class="sd">            lst_design: A list of &quot;design&quot; args (a param used</span>
+<span class="sd">                by some algorithms).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">algos</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">requested_bands</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">algo_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lst_algo</span><span class="p">):</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">if</span> <span class="n">lst_band</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">lst_band</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;requested_band&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst_band</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">lst_calib</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">lst_calib</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;calibration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst_calib</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">lst_design</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">lst_design</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;design&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst_design</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">algo</span> <span class="o">=</span> <span class="n">algo_catalog</span><span class="p">[</span><span class="n">algo_name</span><span class="p">](</span><span class="n">product_type</span><span class="o">=</span><span class="n">product_type</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">)</span>
+            <span class="n">algos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">algo</span><span class="p">)</span>
+            <span class="n">requested_bands</span> <span class="o">=</span> <span class="n">requested_bands</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">algo</span><span class="o">.</span><span class="n">requested_bands</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_algos</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">algos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_requested_bands</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">requested_bands</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProductBuilder.set_masks"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder.set_masks">[docs]</a>    <span class="k">def</span> <span class="nf">set_masks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst_masks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Creates mask objects.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            lst_masks: A list of masks to use.</span>
+<span class="sd">            product_type: The type of the input satellite product</span>
+<span class="sd">                (e.g. S2_ESA_L1C).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">masks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">requested_bands</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">mask_name</span> <span class="ow">in</span> <span class="n">lst_masks</span><span class="p">:</span>
+            <span class="n">mask_func</span> <span class="o">=</span> <span class="n">mask_catalog</span><span class="p">[</span><span class="n">mask_name</span><span class="p">]</span>
+            <span class="n">masks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">mask_name</span><span class="p">,</span> <span class="n">mask_func</span><span class="p">))</span>
+            <span class="n">requested_bands</span> <span class="o">=</span> <span class="n">requested_bands</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
+                <span class="n">mask_config</span><span class="p">[</span><span class="n">mask_name</span><span class="p">][</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="n">product_type</span><span class="p">)])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_masks</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_product_type</span> <span class="o">=</span> <span class="n">product_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_requested_bands</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">requested_bands</span><span class="p">)</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_set_resolution</span><span class="p">(</span><span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                        <span class="n">out_resolution</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">processing_resolution</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+        <span class="k">if</span> <span class="s1">&#39;S2_ESA&#39;</span> <span class="ow">in</span> <span class="n">product_type</span><span class="p">:</span>
+            <span class="n">authorized_res</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">out_resolution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">authorized_res</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&quot;out_resolution&quot; must either be set to None, 10, 20 &#39;</span>
+                       <span class="s1">&#39;or 60.&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">processing_resolution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">authorized_res</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&quot;processing_resolution&quot; must either be set to None, &#39;</span>
+                       <span class="s1">&#39;10, 20 or 60.&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">out_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">out_resolution</span> <span class="o">=</span> <span class="n">processing_resolution</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">processing_resolution</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span>
+                        <span class="n">processing_resolution</span> <span class="o">&lt;</span> <span class="n">out_resolution</span><span class="p">):</span>
+                    <span class="nb">print</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s1">&#39;&quot;processing_resolution&quot; must be &gt;= </span><span class="si">{</span><span class="n">out_resolution</span><span class="si">}</span><span class="s1">&#39;</span>
+                        <span class="s1">&#39;m (&quot;out_resolution&quot;); here, &quot;processing_resolution&quot;=&#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">processing_resolution</span><span class="si">}</span><span class="s1">m. Therefore, it will be &#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;ignored.&#39;</span>
+                    <span class="p">)</span>
+                    <span class="n">processing_resolution</span> <span class="o">=</span> <span class="n">out_resolution</span>
+        <span class="k">elif</span> <span class="n">product_type</span> <span class="o">==</span> <span class="s1">&#39;S2_THEIA&#39;</span><span class="p">:</span>
+            <span class="n">authorized_res</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">out_resolution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">authorized_res</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;&quot;out_resolution&quot; must either be set to None, 10 or 20.&#39;</span>
+                <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">processing_resolution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">authorized_res</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;&quot;processing_resolution&quot; must either be set to None, &#39;</span>
+                       <span class="s1">&#39;10 or 20.&#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">out_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">out_resolution</span> <span class="o">=</span> <span class="n">processing_resolution</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">processing_resolution</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span>
+                        <span class="n">processing_resolution</span> <span class="o">&lt;</span> <span class="n">out_resolution</span><span class="p">):</span>
+                    <span class="nb">print</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s1">&#39;&quot;processing_resolution&quot; must be &gt;= </span><span class="si">{</span><span class="n">out_resolution</span><span class="si">}</span><span class="s1">&#39;</span>
+                        <span class="s1">&#39;m (&quot;out_resolution&quot;); here, &quot;processing_resolution&quot;=&#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">processing_resolution</span><span class="si">}</span><span class="s1">m. Therefore, it will be &#39;</span>
+                        <span class="sa">f</span><span class="s1">&#39;ignored.&#39;</span>
+                    <span class="p">)</span>
+                    <span class="n">processing_resolution</span> <span class="o">=</span> <span class="n">out_resolution</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">out_resolution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">processing_resolution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Both &quot;out_resolution&quot; and &quot;processing_resolution&quot; &#39;</span>
+                      <span class="s1">&#39;parameters can only be used with S2_ESA and S2_THEIA &#39;</span>
+                      <span class="s1">&#39;products. Therefore, they will be ignored.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out_resolution</span><span class="p">,</span> <span class="n">processing_resolution</span>
+
+<div class="viewcode-block" id="ProductBuilder.extract_data"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder.extract_data">[docs]</a>    <span class="k">def</span> <span class="nf">extract_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">input_product</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                     <span class="n">geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Extracts (meta)data from the input product.</span>
+
+<span class="sd">        Selects the right Reader and use it to extract the needed bands</span>
+<span class="sd">        and metadata. Then, creates and returns a xr.Dataset containing</span>
+<span class="sd">        these information.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product</span>
+<span class="sd">                (e.g. &quot;S2_ESA_L2A&quot; or &quot;L8_USGS_L1&quot;).</span>
+<span class="sd">            input_product: The path of the input product (multispectral</span>
+<span class="sd">                spaceborne imagery).</span>
+<span class="sd">            geom: Optional; A dict containing geographical information</span>
+<span class="sd">                that define the ROI.</span>
+<span class="sd">                4 keys: geom (a shapely.geom object), shp (a path to</span>
+<span class="sd">                an ESRI shapefile), wkt (a path to a wkt file) and srid</span>
+<span class="sd">                (an EPSG code).</span>
+<span class="sd">            kwargs: Args specific to the selected Reader.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_requested_bands</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">requested_bands</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_requested_bands</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">requested_bands</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;requested_bands&#39;</span><span class="p">)</span>
+        <span class="n">o_res</span><span class="p">,</span> <span class="n">p_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_resolution</span><span class="p">(</span>
+            <span class="n">product_type</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;out_resolution&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;processing_resolution&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span> <span class="o">=</span> <span class="n">o_res</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">reader_catalog</span><span class="p">[</span><span class="n">product_type</span><span class="p">](</span><span class="n">input_product</span><span class="o">=</span><span class="n">input_product</span><span class="p">,</span>
+                                              <span class="n">product_type</span><span class="o">=</span><span class="n">product_type</span><span class="p">,</span>
+                                              <span class="n">requested_bands</span><span class="o">=</span><span class="n">requested_bands</span><span class="p">,</span>
+                                              <span class="n">geom</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span>
+                                              <span class="n">out_resolution</span><span class="o">=</span><span class="n">p_res</span><span class="p">,</span>
+                                              <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">reader</span><span class="o">.</span><span class="n">extract_bands</span><span class="p">()</span>
+        <span class="n">reader</span><span class="o">.</span><span class="n">create_ds</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">dataset</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_compute_algo</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span>
+                      <span class="n">input_dataarrays</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">],</span>
+                      <span class="n">data_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                      <span class="n">epsg_code</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">algo</span><span class="p">(</span><span class="o">*</span><span class="n">input_dataarrays</span><span class="p">,</span> <span class="n">data_type</span><span class="o">=</span><span class="n">data_type</span><span class="p">,</span>
+                      <span class="n">epsg_code</span><span class="o">=</span><span class="n">epsg_code</span><span class="p">)</span>
+        <span class="n">variables</span><span class="p">,</span> <span class="n">long_names</span> <span class="o">=</span> <span class="n">get_variables</span><span class="p">(</span><span class="n">algo_config</span><span class="p">,</span> <span class="n">algo</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="p">[</span><span class="n">output</span><span class="p">]</span>
+        <span class="n">out_dataarrays</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">out_dataarray</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">long_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span>
+                                                      <span class="n">long_names</span><span class="p">):</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">out_dataarray</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+            <span class="n">out_dataarray</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                <span class="s1">&#39;grid_mapping&#39;</span><span class="p">:</span> <span class="s1">&#39;crs&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;long_name&#39;</span><span class="p">:</span> <span class="n">long_name</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">algo</span><span class="o">.</span><span class="n">meta</span>
+            <span class="p">})</span>
+            <span class="n">out_dataarray</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">variable</span>
+            <span class="n">out_dataarrays</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">out_dataarray</span>
+        <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">out_dataarrays</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ProductBuilder.compute_algos"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder.compute_algos">[docs]</a>    <span class="k">def</span> <span class="nf">compute_algos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs every algorithms using extracted data and stores the results.&quot;&quot;&quot;</span>
+        <span class="n">out_algos</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">data_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;data_type&#39;</span><span class="p">]</span>
+        <span class="n">epsg_code</span> <span class="o">=</span> <span class="n">CRS</span><span class="o">.</span><span class="n">from_cf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span><span class="o">.</span><span class="n">to_epsg</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_algos</span><span class="p">:</span>
+            <span class="n">input_dataarrays</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="p">[</span><span class="n">band</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                                <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">algo</span><span class="o">.</span><span class="n">requested_bands</span><span class="p">]</span>
+            <span class="n">out_algos</span><span class="p">[</span><span class="n">algo</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_algo</span><span class="p">(</span><span class="n">algo</span><span class="p">,</span> <span class="n">input_dataarrays</span><span class="p">,</span>
+                                                      <span class="n">data_type</span><span class="p">,</span> <span class="n">epsg_code</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="o">=</span> <span class="n">out_algos</span></div>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_compute_mask</span><span class="p">(</span><span class="n">mask_func</span><span class="p">,</span>
+                      <span class="n">input_dataarrays</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">],</span>
+                      <span class="n">in_res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                      <span class="n">out_res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                      <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
+        <span class="n">out_ndarray</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">mask_func</span><span class="p">(</span><span class="n">input_dataarrays</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">out_res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">out_res</span> <span class="o">!=</span> <span class="n">in_res</span><span class="p">:</span>
+            <span class="n">arr</span> <span class="o">=</span> <span class="n">resample_band_array</span><span class="p">(</span><span class="n">out_ndarray</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">in_res</span><span class="p">,</span> <span class="n">out_res</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="n">out_ndarray</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">out_ndarray</span><span class="p">,</span> <span class="n">params</span>
+
+<div class="viewcode-block" id="ProductBuilder.compute_masks"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder.compute_masks">[docs]</a>    <span class="k">def</span> <span class="nf">compute_masks</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Runs every masks using extracted data and stores the results.&quot;&quot;&quot;</span>
+        <span class="n">ds_res</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                  <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">out_masks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">mask_name</span><span class="p">,</span> <span class="n">mask_func</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_masks</span><span class="p">:</span>
+            <span class="n">input_dataarrays</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="p">[</span><span class="n">band</span><span class="p">])</span> <span class="k">for</span> <span class="n">band</span>
+                <span class="ow">in</span> <span class="n">mask_config</span><span class="p">[</span><span class="n">mask_name</span><span class="p">][</span><span class="n">producttype_to_sat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_product_type</span><span class="p">)]</span>
+            <span class="p">]</span>
+            <span class="n">out_masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compute_mask</span><span class="p">(</span><span class="n">mask_func</span><span class="p">,</span> <span class="n">input_dataarrays</span><span class="p">,</span>
+                                                <span class="n">ds_res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span><span class="p">))</span>
+        <span class="n">datasets</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">mask_name</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="p">(</span><span class="n">out_ndarray</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_masks</span><span class="p">,</span>
+                                                         <span class="n">out_masks</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span> <span class="o">==</span> <span class="n">ds_res</span><span class="p">:</span>
+                <span class="n">out_dataarray</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_requested_bands</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">out_ndarray</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">offset</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span> <span class="o">-</span> <span class="n">ds_res</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">offset</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span><span class="p">)</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">offset</span><span class="p">,</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">offset</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                              <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span><span class="p">)</span>
+                <span class="n">out_dataarray</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+                    <span class="n">out_ndarray</span><span class="p">,</span>
+                    <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span>
+                    <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">out_dataarray</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+                <span class="n">out_dataarray</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+                <span class="n">out_dataarray</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+            <span class="n">out_dataarray</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+                <span class="s1">&#39;grid_mapping&#39;</span><span class="p">:</span> <span class="s1">&#39;crs&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;long_name&#39;</span><span class="p">:</span> <span class="n">mask_config</span><span class="p">[</span><span class="n">mask_name</span><span class="p">][</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span>
+            <span class="p">})</span>
+            <span class="n">out_dataarray</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ds_res</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span><span class="p">:</span>
+                <span class="n">out_dataarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;processing_resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">ds_res</span><span class="p">)</span><span class="si">}</span><span class="s1">m&#39;</span>
+            <span class="n">out_dataarray</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">mask_name</span>
+            <span class="n">datasets</span><span class="p">[</span><span class="n">mask_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">({</span><span class="n">mask_name</span><span class="p">:</span> <span class="n">out_dataarray</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="o">=</span> <span class="n">datasets</span></div>
+
+<div class="viewcode-block" id="ProductBuilder.create_l3products"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder.create_l3products">[docs]</a>    <span class="k">def</span> <span class="nf">create_l3products</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Creates the wanted products and stores them.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            product_type: The type of the input satellite product</span>
+<span class="sd">                (e.g. &quot;S2_ESA_L2A&quot; or &quot;L8_USGS_L1&quot;).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">class</span> <span class="nc">Products</span><span class="p">(</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Products&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+                                               <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">))):</span>
+            <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+            <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="s1">=&lt;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">mro</span><span class="p">()[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">8</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">&gt;&#39;</span>
+                       <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">))</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Products(</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="si">}</span><span class="s1">)&#39;</span>
+                
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_algos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">product</span> <span class="o">=</span> <span class="n">L3AlgoProduct</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_masks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">product</span> <span class="o">=</span> <span class="n">L3MaskProduct</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;You need to provide at least one algo or mask to use.&#39;</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="n">products</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">:</span>
+            <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span><span class="p">[</span><span class="n">algo</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;crs&#39;</span><span class="p">,</span> <span class="s1">&#39;product_metadata&#39;</span><span class="p">):</span>
+                <span class="n">dataset</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Convention&#39;</span><span class="p">:</span> <span class="s1">&#39;CF-1.8&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">algo</span><span class="si">}</span><span class="s1"> from </span><span class="si">{</span><span class="n">product_type</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;history&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;created with SISPPEO (v</span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span><span class="s1">) on &#39;</span>
+                           <span class="o">+</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+            <span class="p">}</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;data_type&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">products</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_products</span> <span class="o">=</span> <span class="n">Products</span><span class="p">(</span><span class="o">*</span><span class="n">products</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProductBuilder.mask_l3algosproduct"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder.mask_l3algosproduct">[docs]</a>    <span class="k">def</span> <span class="nf">mask_l3algosproduct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                            <span class="n">masks_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                            <span class="n">masks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">L3MaskProduct</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                            <span class="n">masks_paths</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Masks the previously generated products.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            masks_types: The list of the type of the masks to use.</span>
+<span class="sd">                Values can either be &quot;IN&quot; (area to include) or &quot;OUT&quot;</span>
+<span class="sd">                (area to exclude).</span>
+<span class="sd">            masks: Optional; A list of masks to use.</span>
+<span class="sd">            masks_paths: Optional; A list of paths (of L3MaskProducts)</span>
+<span class="sd">                to use.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">masks_paths</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">masks</span> <span class="o">=</span> <span class="p">[</span><span class="n">L3MaskProduct</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">masks_paths</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">l3_algo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_products</span><span class="p">:</span>
+            <span class="n">mask_product</span><span class="p">(</span><span class="n">l3_algo</span><span class="p">,</span> <span class="n">masks</span><span class="p">,</span> <span class="n">masks_types</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProductBuilder.get_products"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.builders.ProductBuilder.get_products">[docs]</a>    <span class="k">def</span> <span class="nf">get_products</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">namedtuple</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns products and resets itself.&quot;&quot;&quot;</span>
+        <span class="n">products</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_products</span>
+        <span class="c1"># Reset attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_algos</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_masks</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_product_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_requested_bands</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_out_resolution</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extracted_ds</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_products</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">products</span></div></div>
+</pre></div>
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

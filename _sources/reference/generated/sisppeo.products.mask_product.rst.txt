@@ -1,0 +1,6 @@
+sisppeo.products.mask\_product
+==============================
+
+.. currentmodule:: sisppeo.products
+
+.. autofunction:: mask_product

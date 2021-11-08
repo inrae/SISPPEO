@@ -1,0 +1,19 @@
+sisppeo.masks.obs2co\_s2wm.water\_detector
+==========================================
+
+.. currentmodule:: sisppeo.masks.obs2co_s2wm
+
+.. autoclass:: water_detector
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   

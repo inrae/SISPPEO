@@ -1,0 +1,396 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sisppeo.utils.cli</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../../index.html">
+  <img src="../../../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for sisppeo.utils.cli</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+
+<span class="sd">&quot;&quot;&quot;Contains various useful functions and classes used in the CLI.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">click</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">shapely.wkt</span> <span class="kn">import</span> <span class="n">loads</span>
+
+
+<div class="viewcode-block" id="PathPath"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.PathPath">[docs]</a><span class="k">class</span> <span class="nc">PathPath</span><span class="p">(</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A Click path argument that returns a pathlib Path, not a string&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="PathPath.convert"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.PathPath.convert">[docs]</a>    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">ctx</span><span class="p">))</span></div></div>
+
+
+<div class="viewcode-block" id="Mutex"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.Mutex">[docs]</a><span class="k">class</span> <span class="nc">Mutex</span><span class="p">(</span><span class="n">click</span><span class="o">.</span><span class="n">Option</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mutually exclusive options (with at least one required).&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">not_required_if</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;not_required_if&#39;</span><span class="p">)</span>  <span class="c1"># list</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">not_required_if</span><span class="p">,</span> <span class="s1">&#39;&quot;not_required_if&quot; parameter required&#39;</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;help&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">  [required; mutually &#39;</span>
+                          <span class="sa">f</span><span class="s1">&#39;exclusive with </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">not_required_if</span><span class="p">)</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Mutex.handle_parse_result"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.Mutex.handle_parse_result">[docs]</a>    <span class="k">def</span> <span class="nf">handle_parse_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="n">current_opt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">opts</span>  <span class="c1"># bool</span>
+        <span class="k">if</span> <span class="n">current_opt</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">mutex_opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">not_required_if</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mutex_opt</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">current_opt</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Illegal usage: &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot; is mutually &#39;</span>
+                           <span class="sa">f</span><span class="s1">&#39;exclusive with &quot;</span><span class="si">{</span><span class="n">mutex_opt</span><span class="si">}</span><span class="s1">&quot;.&#39;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">click</span><span class="o">.</span><span class="n">UsageError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">signature</span> <span class="o">=</span> <span class="s1">&#39; / &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">opts</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">secondary_opts</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing option &#39;</span><span class="si">{</span><span class="n">signature</span><span class="si">}</span><span class="s2">&#39; (or any of the following &quot;</span>
+                   <span class="sa">f</span><span class="s2">&quot;options: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">not_required_if</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">click</span><span class="o">.</span><span class="n">UsageError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_parse_result</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Mutin"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.Mutin">[docs]</a><span class="k">class</span> <span class="nc">Mutin</span><span class="p">(</span><span class="n">click</span><span class="o">.</span><span class="n">Option</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Mutually inclusive options.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">required_if</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;required_if&#39;</span><span class="p">)</span>  <span class="c1"># list</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">required_if</span><span class="p">,</span> <span class="s1">&#39;&quot;required_if&quot; parameter required&#39;</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;help&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">  [required if &#39;</span>
+                          <span class="s1">&#39;the following options are used : &#39;</span>
+                          <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">required_if</span><span class="p">)</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Mutin.handle_parse_result"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.Mutin.handle_parse_result">[docs]</a>    <span class="k">def</span> <span class="nf">handle_parse_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="n">current_opt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">opts</span>  <span class="c1"># bool</span>
+        <span class="k">for</span> <span class="n">mutin_opt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">required_if</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mutin_opt</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">current_opt</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Illegal usage: &quot;</span><span class="si">{</span><span class="n">mutin_opt</span><span class="si">}</span><span class="s1">&quot; is required &#39;</span>
+                           <span class="sa">f</span><span class="s1">&#39;if &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot; is used.&#39;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">click</span><span class="o">.</span><span class="n">UsageError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">handle_parse_result</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span></div></div>
+
+
+
+<span class="k">def</span> <span class="nf">_read_optional_column</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="read_products_list"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.read_products_list">[docs]</a><span class="k">def</span> <span class="nf">read_products_list</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">is_ts</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parse a text file and return a config dictionnary.&quot;&quot;&quot;</span>
+    <span class="n">df_products</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_ts</span><span class="p">:</span>
+        <span class="n">product_types</span> <span class="o">=</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;product_type&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">product_types</span> <span class="o">=</span> <span class="n">df_products</span><span class="p">[</span><span class="s1">&#39;product_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;input_products&#39;</span><span class="p">:</span> <span class="n">df_products</span><span class="p">[</span><span class="s1">&#39;input_product&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span>
+        <span class="s1">&#39;product_types&#39;</span><span class="p">:</span> <span class="n">product_types</span><span class="p">,</span>
+        <span class="s1">&#39;lst_tb&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;theia_bands&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;lst_gc&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;glint_corrected&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;lst_flags&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;flags&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;filenames&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;out_product&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;lst_masks_list&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;masks_list&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;lst_code_site&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;code_site&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;lst_res&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;res&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;lst_proc_res&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;proc_res&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">theia_masks</span> <span class="o">=</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;theia_masks&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">theia_masks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ll</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">theia_masks</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">dd</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                        <span class="n">dd</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">dd</span><span class="p">[</span><span class="n">_</span><span class="p">[:</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">__</span><span class="p">)</span> <span class="k">for</span> <span class="n">__</span> <span class="ow">in</span> <span class="n">_</span><span class="p">[</span><span class="mi">3</span><span class="p">:]]</span>
+                <span class="n">ll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dd</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ll</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;lst_tm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ll</span>
+    <span class="n">lst_shp</span> <span class="o">=</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;shp&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lst_shp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_shp</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_products</span><span class="p">))]</span>
+    <span class="n">lst_wkt</span> <span class="o">=</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;wkt&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lst_wkt</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_wkt</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_products</span><span class="p">))]</span>
+    <span class="n">lst_wf</span> <span class="o">=</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;wkt_file&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lst_wf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_wf</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_products</span><span class="p">))]</span>
+    <span class="n">lst_srid</span> <span class="o">=</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_products</span><span class="p">,</span> <span class="s1">&#39;srid&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lst_srid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_srid</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_products</span><span class="p">))]</span>
+    <span class="n">geoms</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">shp</span><span class="p">,</span> <span class="n">wkt</span><span class="p">,</span> <span class="n">wkt_file</span><span class="p">,</span> <span class="n">srid</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lst_shp</span><span class="p">,</span> <span class="n">lst_wkt</span><span class="p">,</span> <span class="n">lst_wf</span><span class="p">,</span> <span class="n">lst_srid</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">shp</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">wkt</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">wkt_file</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">srid</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">geoms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">geoms</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s1">&#39;geom&#39;</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">wkt</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">loads</span><span class="p">(</span><span class="n">wkt</span><span class="p">),</span>
+                <span class="s1">&#39;shp&#39;</span><span class="p">:</span> <span class="n">shp</span><span class="p">,</span>
+                <span class="s1">&#39;wkt&#39;</span><span class="p">:</span> <span class="n">wkt_file</span><span class="p">,</span>
+                <span class="s1">&#39;srid&#39;</span><span class="p">:</span> <span class="n">srid</span>
+            <span class="p">})</span>
+    <span class="k">if</span> <span class="n">geoms</span> <span class="o">!=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">geoms</span><span class="p">):</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;lst_geom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geoms</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span></div>
+
+
+<span class="k">def</span> <span class="nf">_read_calib</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+
+
+<span class="k">def</span> <span class="nf">_get_path</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="read_algos_list"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.read_algos_list">[docs]</a><span class="k">def</span> <span class="nf">read_algos_list</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parse a text file and return a config dictionnary.&quot;&quot;&quot;</span>
+    <span class="n">df_algos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;lst_algo&#39;</span><span class="p">:</span> <span class="n">df_algos</span><span class="p">[</span><span class="s1">&#39;algo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span>
+        <span class="s1">&#39;lst_band&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_algos</span><span class="p">,</span> <span class="s1">&#39;band&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;lst_design&#39;</span><span class="p">:</span> <span class="n">_read_optional_column</span><span class="p">(</span><span class="n">df_algos</span><span class="p">,</span> <span class="s1">&#39;design&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">lst_calib</span> <span class="o">=</span> <span class="n">_read_calib</span><span class="p">(</span><span class="n">df_algos</span><span class="p">,</span> <span class="s1">&#39;calib&#39;</span><span class="p">)</span>
+    <span class="n">lst_custom_calib</span> <span class="o">=</span> <span class="n">_read_calib</span><span class="p">(</span><span class="n">df_algos</span><span class="p">,</span> <span class="s1">&#39;custom_calib&#39;</span><span class="p">)</span>
+    <span class="n">lst_custom_calib</span> <span class="o">=</span> <span class="p">[</span><span class="n">_get_path</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">lst_custom_calib</span><span class="p">]</span>
+    <span class="n">merge_calib</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">calib</span><span class="p">,</span> <span class="n">custom_calib</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lst_calib</span><span class="p">,</span> <span class="n">lst_custom_calib</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">calib</span><span class="p">):</span>
+            <span class="n">merge_calib</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">calib</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">merge_calib</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">custom_calib</span><span class="p">)</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;lst_calib&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge_calib</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="read_masks_list"><a class="viewcode-back" href="../../../reference/sisppeo.utils.html#sisppeo.utils.cli.read_masks_list">[docs]</a><span class="k">def</span> <span class="nf">read_masks_list</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parse a text file and return a config dictionnary.&quot;&quot;&quot;</span>
+    <span class="n">df_l3masks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;lst_l3mask_path&#39;</span><span class="p">:</span> <span class="n">df_l3masks</span><span class="p">[</span><span class="s1">&#39;path&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span>
+        <span class="s1">&#39;lst_l3mask_type&#39;</span><span class="p">:</span> <span class="n">df_l3masks</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">config</span></div>
+</pre></div>
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

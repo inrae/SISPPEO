@@ -1,0 +1,6 @@
+sisppeo.products.mask\_time\_series
+===================================
+
+.. currentmodule:: sisppeo.products
+
+.. autofunction:: mask_time_series

@@ -1,0 +1,31 @@
+sisppeo.landproducts.Ndvi
+=========================
+
+.. currentmodule:: sisppeo.landproducts
+
+.. autoclass:: Ndvi
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Ndvi.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Ndvi.name
+   
+   

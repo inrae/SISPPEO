@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SISPPEO: Satellite Imagery &amp; Signal Processing Package for Earth Observation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting_started/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="#">
+  <img src="_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="sisppeo-satellite-imagery-signal-processing-package-for-earth-observation">
+<h1>SISPPEO: Satellite Imagery &amp; Signal Processing Package for Earth Observation<a class="headerlink" href="#sisppeo-satellite-imagery-signal-processing-package-for-earth-observation" title="Permalink to this headline">¶</a></h1>
+<p><strong>SISPPEO</strong> is an open source project and Python package (with a CLI) allowing one to extract synthetic information useful for Earth observation (Water and Land) from satellite optical imagery (e.g, Sentinel-2/MSI, Sentinel-3/OLCI, Landsat 8/OLI…).</p>
+<p><strong>SISPPEO</strong> is built on top of <a class="reference external" href="https://xarray.pydata.org">xarray</a> and uses <a class="reference external" href="https://ray.io/">Ray</a> for distributed computing. Outputs are <a class="reference external" href="http://www.unidata.ucar.edu/software/netcdf">netCDF</a> files.</p>
+<p><strong>SISPPEO</strong> is the successor of an internal processing chain previously used by members of the <a class="reference external" href="https://www.theia-land.fr/en/ceslist/colours-of-the-continental-waters-sec/">“Colours of the continental waters” SEC</a> (Scientific Expertise Centre). This tool is developed by <a class="reference external" href="https://professionnels.ofb.fr/fr/pole-ecla-ecosystemes-lacustres">“Pôle ÉCLA”</a> (<a class="reference external" href="https://ofb.gouv.fr/en/french-biodiversity-agency-ofb">OFB</a>/<a class="reference external" href="https://www.inrae.fr/en/about-us">INRAE</a>/<a class="reference external" href="https://www.univ-smb.fr/en/universite/">USMB</a>) scientists based in Aix-En-Provence.</p>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow intro-card text-center docutils">
+<img alt="img-top" class="card-img-top" src="_images/index-baby-yoda.svg" /><div class="card-header docutils">
+<p class="card-text">Getting started</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">New to <strong>SISPPEO</strong>? Check out the getting started guides. They contain an
+introduction to <em>SISPPEO’</em> main concepts.</p>
+</div>
+<div class="card-footer docutils">
+<p class="card-text"><a class="sphinx-bs btn text-wrap btn-block btn-secondary stretched-link reference internal" href="getting_started/index.html#getting-started"><span class="std std-ref">To the getting started guides</span></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow intro-card text-center docutils">
+<img alt="img-top" class="card-img-top" src="_images/index-stormtrooper.svg" /><div class="card-header docutils">
+<p class="card-text">User guide</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">The user guide provides in-depth information on the key concepts
+of <strong>SISPPEO</strong> with useful background information and explanation.</p>
+</div>
+<div class="card-footer docutils">
+<p class="card-text"><a class="sphinx-bs btn text-wrap btn-block btn-secondary stretched-link reference internal" href="user_guide/index.html#user"><span class="std std-ref">To the user guide</span></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow intro-card text-center docutils">
+<img alt="img-top" class="card-img-top" src="_images/index_book.svg" /><div class="card-header docutils">
+<p class="card-text">API reference</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">The reference guide contains a detailed description of the <strong>SISPPEO</strong>
+package. The reference describes how the methods work and which parameters
+can be used. It assumes that you have an understanding of the key concepts.</p>
+</div>
+<div class="card-footer docutils">
+<p class="card-text"><a class="sphinx-bs btn text-wrap btn-block btn-secondary stretched-link reference internal" href="reference/index.html#reference"><span class="std std-ref">To the reference guide</span></a></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow intro-card text-center docutils">
+<img alt="img-top" class="card-img-top" src="_images/index-r2-d2.svg" /><div class="card-header docutils">
+<p class="card-text">Developer guide</p>
+</div>
+<div class="card-body docutils">
+<p class="card-text">Want to add a new reader/algorithm ? This guides will show you
+how to extend SISPPEO.</p>
+</div>
+<div class="card-footer docutils">
+<p class="card-text"><a class="sphinx-bs btn text-wrap btn-block btn-secondary stretched-link reference internal" href="development/index.html#development"><span class="std std-ref">To the development guide</span></a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<section id="get-in-touch">
+<h2>Get in touch<a class="headerlink" href="#get-in-touch" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>If you have a question or need complementary information, please i) carefuly read the documentation, ii) look at <a class="reference internal" href="reference/index.html#reference"><span class="std std-ref">the API Reference</span></a> and  then iii) contact <a class="reference external" href="mailto:arthur&#46;coque&#37;&#52;&#48;inrae&#46;fr">me</a>.</p></li>
+<li><p>Report bugs, suggest features or view the source code <a class="reference external" href="https://github.com/inrae/SISPPEO">on GitHub</a>.</p></li>
+</ul>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p><strong>SISPPEO</strong> is available under the open source <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache License</a>.</p>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="getting_started/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting Started</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

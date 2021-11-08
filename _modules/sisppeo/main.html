@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sisppeo.main</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/getting_started.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../index.html">
+  <img src="../../_static/SISPPEO.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../getting_started/index.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../user_guide/index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../development/index.html">
+  Extending SISPPEO
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../team.html">
+  Team
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/inrae/SISPPEO" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1>Source code for sisppeo.main</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+
+<span class="sd">&quot;&quot;&quot;Contains &quot;generate&quot; (a function) and some standard recipes.</span>
+
+<span class="sd">The &quot;generate&quot; function is the user-friendly way of using SISPPEO.</span>
+<span class="sd">You give the type of products you want, a config dictionary</span>
+<span class="sd">and that&#39;s all: you can then get the products you asked for !</span>
+<span class="sd">It will automatically call the right recipe, parse parameters</span>
+<span class="sd">(values in the config dict), and save generated products if asked.</span>
+
+<span class="sd">Each recipe is responsible for executing the building steps</span>
+<span class="sd">in a particular sequence (while the builder provides the implementation</span>
+<span class="sd">for those steps). Strictly speaking, these recipes are optionals, since</span>
+<span class="sd">the client can control the builder directly.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span> <span class="nn">psutil</span>
+<span class="kn">import</span> <span class="nn">ray</span>
+
+<span class="kn">from</span> <span class="nn">sisppeo.builders</span> <span class="kn">import</span> <span class="n">ProductBuilder</span>
+<span class="kn">from</span> <span class="nn">sisppeo.catalogs</span> <span class="kn">import</span> <span class="n">sat_products</span><span class="p">,</span> <span class="n">theia_masks_names</span>
+<span class="kn">from</span> <span class="nn">sisppeo.products</span> <span class="kn">import</span> <span class="p">(</span><span class="n">mask_time_series</span><span class="p">,</span> <span class="n">L3AlgoProduct</span><span class="p">,</span> <span class="n">L3MaskProduct</span><span class="p">,</span>
+                              <span class="n">TimeSeries</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.main</span> <span class="kn">import</span> <span class="n">parse_params</span><span class="p">,</span> <span class="n">series_to_batch</span>
+<span class="kn">from</span> <span class="nn">sisppeo.utils.naming</span> <span class="kn">import</span> <span class="p">(</span><span class="n">extract_info_from_input_product</span><span class="p">,</span>
+                                  <span class="n">generate_l3_filename</span><span class="p">,</span> <span class="n">generate_ts_filename</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_l3algoproducts"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.create_l3algoproducts">[docs]</a><span class="k">def</span> <span class="nf">create_l3algoproducts</span><span class="p">(</span><span class="n">input_product</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                          <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                          <span class="n">lst_algo</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                          <span class="n">lst_l3mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">L3MaskProduct</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_l3mask_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_l3mask_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_band</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_calib</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_design</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                          <span class="n">dirname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">filenames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">L3AlgoProduct</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of L3AlgoProducts (one per algo in lst_algo).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_product: The path of the input product (multispectral</span>
+<span class="sd">            spaceborne imagery).</span>
+<span class="sd">        product_type: The type of the input satellite product</span>
+<span class="sd">            (e.g. &quot;S2_ESA_L2A&quot; or &quot;L8_USGS_L1GT&quot;).</span>
+<span class="sd">        lst_algo: A list of algorithms to use.</span>
+<span class="sd">        lst_l3mask: A list of masks (L3MaskProduct) to use.</span>
+<span class="sd">        lst_l3mask_path: A list of paths (of L3MaskProducts) to use.</span>
+<span class="sd">        lst_l3mask_type: The list of the type of the masks used.</span>
+<span class="sd">            Values can either be &quot;IN&quot; (area to include) or &quot;OUT&quot; (area</span>
+<span class="sd">            to exclude).</span>
+<span class="sd">        geom: A dict containing geographical information that define</span>
+<span class="sd">            the ROI. 4 keys: geom (a shapely.geom object), shp (a path</span>
+<span class="sd">            to an ESRI shapefile), wkt (a path to a wkt file) and srid</span>
+<span class="sd">            (an EPSG code).</span>
+<span class="sd">        lst_band: A list of &quot;requested_band&quot; args (a param used by some</span>
+<span class="sd">            algorithms).</span>
+<span class="sd">        lst_calib: A list of &quot;calibration&quot; args (a param used by some</span>
+<span class="sd">            algorithms).</span>
+<span class="sd">        lst_design: A list of &quot;design&quot; args (a param used by some</span>
+<span class="sd">            algorithms).</span>
+<span class="sd">        save: If True, write output products on disk.</span>
+<span class="sd">        dirname: The path of the directory in which output products</span>
+<span class="sd">            will be written (using automatically generated names).</span>
+<span class="sd">        filenames: A list of wanted paths for output products.</span>
+<span class="sd">        **kwargs: Args specific to the Reader that will be used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">ProductBuilder</span><span class="p">()</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">set_algos</span><span class="p">(</span><span class="n">lst_algo</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">lst_band</span><span class="p">,</span> <span class="n">lst_calib</span><span class="p">,</span> <span class="n">lst_design</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">extract_data</span><span class="p">(</span><span class="n">product_type</span><span class="p">,</span> <span class="n">input_product</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">compute_algos</span><span class="p">()</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">create_l3products</span><span class="p">(</span><span class="n">product_type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lst_l3mask_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">lst_l3mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">mask_l3algosproduct</span><span class="p">(</span><span class="n">lst_l3mask_type</span><span class="p">,</span> <span class="n">lst_l3mask</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">lst_l3mask_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">builder</span><span class="o">.</span><span class="n">mask_l3algosproduct</span><span class="p">(</span><span class="n">lst_l3mask_type</span><span class="p">,</span>
+                                        <span class="n">masks_paths</span><span class="o">=</span><span class="n">lst_l3mask_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You should provide a list of either L3MaskProducts or &#39;</span>
+                  <span class="s1">&#39;paths to masks (in netCDF format).&#39;</span><span class="p">)</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_products</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filenames</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">code_image</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extract_info_from_input_product</span><span class="p">(</span>
+                <span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span>
+                <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code_site&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">geom</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">generate_l3_filename</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">code_image</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
+                                                <span class="n">roi</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dirname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">filename</span> <span class="o">=</span> <span class="n">dirname</span> <span class="o">/</span> <span class="n">filename</span>
+                <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">product</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">filenames</span><span class="p">):</span>
+                <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">products</span></div>
+
+
+<span class="nd">@ray</span><span class="o">.</span><span class="n">remote</span>
+<span class="k">def</span> <span class="nf">_mp_l3algoproducts</span><span class="p">(</span><span class="n">input_product</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                       <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                       <span class="n">lst_algo</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                       <span class="n">lst_l3mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">L3MaskProduct</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">lst_l3mask_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">lst_l3mask_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">theia_bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">theia_masks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">glint_corrected</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">flags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">out_res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">L3AlgoProduct</span><span class="p">]:</span>
+    <span class="n">suppl_config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;theia_bands&#39;</span><span class="p">:</span> <span class="n">theia_bands</span><span class="p">,</span>
+        <span class="s1">&#39;theia_masks&#39;</span><span class="p">:</span> <span class="n">theia_masks</span><span class="p">,</span>
+        <span class="s1">&#39;glint_corrected&#39;</span><span class="p">:</span> <span class="n">glint_corrected</span><span class="p">,</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="n">flags</span><span class="p">,</span>
+        <span class="s1">&#39;geom&#39;</span><span class="p">:</span> <span class="n">geom</span><span class="p">,</span>
+        <span class="s1">&#39;out_resolution&#39;</span><span class="p">:</span> <span class="n">out_res</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">suppl_config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                   <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">create_l3algoproducts</span><span class="p">(</span><span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">lst_algo</span><span class="p">,</span>
+                                 <span class="n">lst_l3mask</span><span class="p">,</span> <span class="n">lst_l3mask_path</span><span class="p">,</span> <span class="n">lst_l3mask_type</span><span class="p">,</span>
+                                 <span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_l3maskproducts"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.create_l3maskproducts">[docs]</a><span class="k">def</span> <span class="nf">create_l3maskproducts</span><span class="p">(</span><span class="n">input_product</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                          <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                          <span class="n">lst_mask</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                          <span class="n">geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                          <span class="n">dirname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">filenames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">L3MaskProduct</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of L3MaskProducts (one per mask in lst_mask).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_product: The path of the input product (multispectral</span>
+<span class="sd">            spaceborne imagery).</span>
+<span class="sd">        product_type: The type of the input satellite product</span>
+<span class="sd">            (e.g. &quot;S2_ESA_L1C&quot; or &quot;S2_GRS&quot;).</span>
+<span class="sd">        lst_mask: A list of masks to use.</span>
+<span class="sd">        geom: A dict containing geographical information that define</span>
+<span class="sd">            the ROI. 4 keys: geom (a shapely.geom object), shp (a path</span>
+<span class="sd">            to an ESRI shapefile), wkt (a path to a wkt file) and srid</span>
+<span class="sd">            (an EPSG code).</span>
+<span class="sd">        save: If True, write output products on disk.</span>
+<span class="sd">        dirname: The path of the directory in which output products</span>
+<span class="sd">            will be written (using automatically generated names).</span>
+<span class="sd">        filenames: A list of wanted paths for output products.</span>
+<span class="sd">        **kwargs: Args specific to the Reader that will be used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">ProductBuilder</span><span class="p">()</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">set_masks</span><span class="p">(</span><span class="n">lst_mask</span><span class="p">,</span> <span class="n">product_type</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">extract_data</span><span class="p">(</span><span class="n">product_type</span><span class="p">,</span> <span class="n">input_product</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">compute_masks</span><span class="p">()</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">create_l3products</span><span class="p">(</span><span class="n">product_type</span><span class="p">)</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">get_products</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filenames</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">code_image</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extract_info_from_input_product</span><span class="p">(</span>
+                <span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span>
+                <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code_site&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">geom</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">generate_l3_filename</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">code_image</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
+                                                <span class="n">roi</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dirname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">filename</span> <span class="o">=</span> <span class="n">dirname</span> <span class="o">/</span> <span class="n">filename</span>
+                <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">product</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">filenames</span><span class="p">):</span>
+                <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">products</span></div>
+
+
+<span class="nd">@ray</span><span class="o">.</span><span class="n">remote</span>
+<span class="k">def</span> <span class="nf">_mp_l3maskproducts</span><span class="p">(</span><span class="n">input_product</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                       <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                       <span class="n">lst_mask</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                       <span class="n">theia_bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">theia_masks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">glint_corrected</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">flags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">geom</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">out_res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">proc_res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">L3MaskProduct</span><span class="p">]:</span>
+    <span class="n">suppl_config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;theia_bands&#39;</span><span class="p">:</span> <span class="n">theia_bands</span><span class="p">,</span>
+        <span class="s1">&#39;theia_masks&#39;</span><span class="p">:</span> <span class="n">theia_masks</span><span class="p">,</span>
+        <span class="s1">&#39;glint_corrected&#39;</span><span class="p">:</span> <span class="n">glint_corrected</span><span class="p">,</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="n">flags</span><span class="p">,</span>
+        <span class="s1">&#39;geom&#39;</span><span class="p">:</span> <span class="n">geom</span><span class="p">,</span>
+        <span class="s1">&#39;out_resolution&#39;</span><span class="p">:</span> <span class="n">out_res</span><span class="p">,</span>
+        <span class="s1">&#39;processing_resolution&#39;</span><span class="p">:</span> <span class="n">proc_res</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">suppl_config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                   <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">create_l3maskproducts</span><span class="p">(</span><span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">lst_mask</span><span class="p">,</span>
+                                 <span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_batch_l3algoproducts"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.create_batch_l3algoproducts">[docs]</a><span class="k">def</span> <span class="nf">create_batch_l3algoproducts</span><span class="p">(</span><span class="n">input_products</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span>
+                                <span class="n">product_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                                <span class="n">lst_algo</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                                <span class="n">lst_l3masks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">L3MaskProduct</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_l3masks_paths</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_l3masks_types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">num_cpus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_tb</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_tm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_gc</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_flags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                                <span class="n">dirname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">filenames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">L3AlgoProduct</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of lists of L3AlgoProducts.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_products: The list of paths of input products</span>
+<span class="sd">            (multispectral spaceborne imagery).</span>
+<span class="sd">        product_types: The list of types of input satellite products</span>
+<span class="sd">            (e.g., [&quot;S2_ESA_L2A&quot;, &quot;L8_USGS_L1GT&quot;]).</span>
+<span class="sd">        lst_algo: A list of algorithms to use.</span>
+<span class="sd">        lst_l3masks: A list of lists of masks (L3MaskProduct) to use.</span>
+<span class="sd">        lst_l3masks_paths: A list of lists of paths (of L3MaskProducts)</span>
+<span class="sd">            to use.</span>
+<span class="sd">        lst_l3masks_types: The list of lists of the type of the masks</span>
+<span class="sd">            to use. Values can either be &quot;IN&quot; (area to include) or &quot;OUT&quot;</span>
+<span class="sd">            (area to exclude).</span>
+<span class="sd">        num_cpus: The number of central processing units to use.</span>
+<span class="sd">        lst_tb: A list of &quot;theia_bands&quot; args (one per input product).</span>
+<span class="sd">            See S2THEIAReader.</span>
+<span class="sd">        lst_tm: A list of &quot;theia_masks&quot; args (one per input product).</span>
+<span class="sd">            See S2THEIAReader.</span>
+<span class="sd">        lst_gc: A list of &quot;glint_corrected&quot; args (one per input</span>
+<span class="sd">            product). See GRSReader.</span>
+<span class="sd">        lst_flags: A list of &quot;flags&quot; args (one per input product).</span>
+<span class="sd">            See GRSReader.</span>
+<span class="sd">        lst_geom: A list of &quot;geom&quot; args (one per input product).</span>
+<span class="sd">            See Reader.</span>
+<span class="sd">        lst_res: A list of &quot;out_resolution&quot; args (one per input</span>
+<span class="sd">            product). See either S2ESAREader or S2THEIAReader.</span>
+<span class="sd">        save: If True, write output products on disk.</span>
+<span class="sd">        dirname: The path of the directory in which output products</span>
+<span class="sd">            will be written (using automatically generated names).</span>
+<span class="sd">        filenames: A list of wanted paths for output products.</span>
+<span class="sd">        **kwargs: Args specific to Readers that will be used.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A list of lists of L3AlgoProducts. Each list corresponds to one</span>
+<span class="sd">        input product.</span>
+
+<span class="sd">        input_products = [&lt;path1&gt;, &lt;path2&gt;]</span>
+<span class="sd">        lst_algo = [&lt;algo1&gt;, &lt;algo2&gt;, &lt;algo3&gt;]</span>
+<span class="sd">        -&gt; [[res_p1_a1, ..., res_p1_a3], [res_p2_a1, ..., res_p2_a3]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Collection</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+        <span class="s1">&#39;Collection&#39;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">cpus</span> <span class="o">=</span> <span class="p">[</span><span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">(</span><span class="n">logical</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_products</span><span class="p">),</span> <span class="n">num_cpus</span><span class="p">]</span>
+    <span class="n">num_cpus</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">val</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">cpus</span> <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ray</span><span class="o">.</span><span class="n">is_initialized</span><span class="p">():</span>
+        <span class="n">ray</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+    <span class="n">ray</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">num_cpus</span><span class="o">=</span><span class="n">num_cpus</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">lst_l3masks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_l3masks</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_l3masks_paths</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_l3masks_paths</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_l3masks_types</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_l3masks_types</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_tb</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_tb</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_tm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_tm</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_gc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_gc</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_flags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_flags</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_geom</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_geom</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_res</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">product_type</span><span class="p">,</span> <span class="n">input_product</span><span class="p">,</span> <span class="n">lst_l3mask</span><span class="p">,</span> <span class="n">lst_l3mask_path</span><span class="p">,</span>
+         <span class="n">lst_l3mask_type</span><span class="p">,</span> <span class="n">tb</span><span class="p">,</span> <span class="n">tm</span><span class="p">,</span> <span class="n">gc</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>\
+        <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">product_types</span><span class="p">,</span> <span class="n">input_products</span><span class="p">,</span> <span class="n">lst_l3masks</span><span class="p">,</span> <span class="n">lst_l3masks_paths</span><span class="p">,</span>
+               <span class="n">lst_l3masks_types</span><span class="p">,</span> <span class="n">lst_tb</span><span class="p">,</span> <span class="n">lst_tm</span><span class="p">,</span> <span class="n">lst_gc</span><span class="p">,</span> <span class="n">lst_flags</span><span class="p">,</span> <span class="n">lst_geom</span><span class="p">,</span>
+               <span class="n">lst_res</span><span class="p">):</span>
+        <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_mp_l3algoproducts</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span>
+            <span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">lst_algo</span><span class="p">),</span>
+            <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">lst_l3mask</span><span class="p">),</span> <span class="n">lst_l3mask_path</span><span class="p">,</span> <span class="n">lst_l3mask_type</span><span class="p">,</span> <span class="n">tb</span><span class="p">,</span> <span class="n">tm</span><span class="p">,</span>
+            <span class="n">gc</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="o">**</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="p">))</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">ray</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+    <span class="n">ray</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filenames</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lst_code_site</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lst_code_site&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">lst_code_site</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">lst_code_site</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">products</span><span class="p">,</span> <span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">code_site</span><span class="p">,</span> <span class="n">geom</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                    <span class="n">res</span><span class="p">,</span> <span class="n">input_products</span><span class="p">,</span> <span class="n">product_types</span><span class="p">,</span> <span class="n">lst_code_site</span><span class="p">,</span>
+                    <span class="n">lst_geom</span><span class="p">):</span>
+                <span class="n">code_image</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extract_info_from_input_product</span><span class="p">(</span>
+                    <span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">code_site</span><span class="p">,</span> <span class="n">geom</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+                    <span class="n">filename</span> <span class="o">=</span> <span class="n">generate_l3_filename</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">code_image</span><span class="p">,</span>
+                                                    <span class="n">source</span><span class="p">,</span> <span class="n">roi</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">dirname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">filename</span> <span class="o">=</span> <span class="n">dirname</span> <span class="o">/</span> <span class="n">filename</span>
+                    <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">products</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+                    <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="create_batch_l3maskproducts"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.create_batch_l3maskproducts">[docs]</a><span class="k">def</span> <span class="nf">create_batch_l3maskproducts</span><span class="p">(</span><span class="n">input_products</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span>
+                                <span class="n">product_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                                <span class="n">lst_mask</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                                <span class="n">num_cpus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_tb</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_tm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_gc</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_flags</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">lst_proc_res</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                                <span class="n">dirname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">filenames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">L3MaskProduct</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of lists of L3MaskProducts.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_products: The list of paths of input products</span>
+<span class="sd">            (multispectral spaceborne imagery).</span>
+<span class="sd">        product_types: The list of types of input satellite producs</span>
+<span class="sd">            (e.g., [&quot;S2_ESA_L1C&quot;, &quot;S2_GRS&quot;]).</span>
+<span class="sd">        lst_mask: A list of masks to use.</span>
+<span class="sd">        num_cpus: The number of central processing units to use.</span>
+<span class="sd">        lst_tb: A list of &quot;theia_bands&quot; args (one per input product).</span>
+<span class="sd">            See S2THEIAReader.</span>
+<span class="sd">        lst_tm: A list of &quot;theia_masks&quot; args (one per input product).</span>
+<span class="sd">            See S2THEIAReader.</span>
+<span class="sd">        lst_gc: A list of &quot;glint_corrected&quot; args (one per input product).</span>
+<span class="sd">            See GRSReader.</span>
+<span class="sd">        lst_flags: A list of &quot;flags&quot; args (one per input product).</span>
+<span class="sd">            See GRSReader.</span>
+<span class="sd">        lst_geom: A list of &quot;geom&quot; args (one per input product).</span>
+<span class="sd">            See Reader.</span>
+<span class="sd">        lst_res: A list of &quot;out_resolution&quot; args (one per input</span>
+<span class="sd">            product). See either S2ESAREader or S2THEIAReader.</span>
+<span class="sd">        lst_proc_res: A list of &quot;proc_res&quot; args (one per input product).</span>
+<span class="sd">            See ProductBuilder.compute_masks.</span>
+<span class="sd">        save: If True, write output products on disk.</span>
+<span class="sd">        dirname: The path of the directory in which output products</span>
+<span class="sd">            will be written (using automatically generated names).</span>
+<span class="sd">        filenames: A list of wanted paths for output products.</span>
+<span class="sd">        **kwargs: Args specific to Readers that will be used.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A list of lists of L3AlgoMasks. Each list corresponds to one</span>
+<span class="sd">        input product.</span>
+
+<span class="sd">        input_products = [&lt;path1&gt;, &lt;path2&gt;]</span>
+<span class="sd">        lst_mask = [&lt;mask1&gt;, &lt;mask2&gt;, &lt;mask3&gt;]</span>
+<span class="sd">        -&gt; [[res_p1_m1, ..., res_p1_m3], [res_p2_m1, ..., res_p2_m3]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Collection</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span>
+        <span class="s1">&#39;Collection&#39;</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">cpus</span> <span class="o">=</span> <span class="p">[</span><span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">(</span><span class="n">logical</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_products</span><span class="p">),</span> <span class="n">num_cpus</span><span class="p">]</span>
+    <span class="n">num_cpus</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">val</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">cpus</span> <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ray</span><span class="o">.</span><span class="n">is_initialized</span><span class="p">():</span>
+        <span class="n">ray</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+    <span class="n">ray</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">num_cpus</span><span class="o">=</span><span class="n">num_cpus</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">lst_tb</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_tb</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_tm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_tm</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_gc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_gc</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_flags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_flags</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_geom</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_geom</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_res</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">lst_proc_res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lst_proc_res</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+    <span class="n">futures</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">input_product</span><span class="p">,</span> <span class="n">tb</span><span class="p">,</span> <span class="n">tm</span><span class="p">,</span> <span class="n">gc</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="n">out_res</span><span class="p">,</span> \
+        <span class="n">proc_res</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">product_types</span><span class="p">,</span> <span class="n">input_products</span><span class="p">,</span> <span class="n">lst_tb</span><span class="p">,</span> <span class="n">lst_tm</span><span class="p">,</span> <span class="n">lst_gc</span><span class="p">,</span>
+                        <span class="n">lst_flags</span><span class="p">,</span> <span class="n">lst_geom</span><span class="p">,</span> <span class="n">lst_res</span><span class="p">,</span> <span class="n">lst_proc_res</span><span class="p">):</span>
+        <span class="n">futures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_mp_l3maskproducts</span><span class="o">.</span><span class="n">remote</span><span class="p">(</span>
+            <span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">lst_mask</span><span class="p">),</span> <span class="n">tb</span><span class="p">,</span> <span class="n">tm</span><span class="p">,</span> <span class="n">gc</span><span class="p">,</span>
+            <span class="n">flags</span><span class="p">,</span> <span class="n">geom</span><span class="p">,</span> <span class="n">out_res</span><span class="p">,</span> <span class="n">proc_res</span><span class="p">,</span> <span class="o">**</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="p">))</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">ray</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+    <span class="n">ray</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filenames</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lst_code_site</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lst_code_site&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">lst_code_site</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">lst_code_site</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">input_products</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">products</span><span class="p">,</span> <span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">code_site</span><span class="p">,</span> <span class="n">geom</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                    <span class="n">res</span><span class="p">,</span> <span class="n">input_products</span><span class="p">,</span> <span class="n">product_types</span><span class="p">,</span> <span class="n">lst_code_site</span><span class="p">,</span>
+                    <span class="n">lst_geom</span><span class="p">):</span>
+                <span class="n">code_image</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extract_info_from_input_product</span><span class="p">(</span>
+                    <span class="n">input_product</span><span class="p">,</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">code_site</span><span class="p">,</span> <span class="n">geom</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+                    <span class="n">filename</span> <span class="o">=</span> <span class="n">generate_l3_filename</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">code_image</span><span class="p">,</span>
+                                                    <span class="n">source</span><span class="p">,</span> <span class="n">roi</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">dirname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">filename</span> <span class="o">=</span> <span class="n">dirname</span> <span class="o">/</span> <span class="n">filename</span>
+                    <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">products</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">products</span><span class="p">:</span>
+                    <span class="n">product</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filenames</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="create_algotimeseries"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.create_algotimeseries">[docs]</a><span class="k">def</span> <span class="nf">create_algotimeseries</span><span class="p">(</span><span class="n">input_products</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span>
+                          <span class="n">product_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                          <span class="n">lst_algo</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                          <span class="n">lst_l3masks</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">L3MaskProduct</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_l3masks_paths</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_l3masks_types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_tsmask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">TimeSeries</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_tsmask_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">lst_tsmask_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                          <span class="n">geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                          <span class="n">dirname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">filenames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">TimeSeries</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of TimeSeries (one per algo in lst_algo).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_products: The list of paths of input products (multispectral</span>
+<span class="sd">            spaceborne imagery).</span>
+<span class="sd">        product_type: The type of input satellite products</span>
+<span class="sd">            (e.g. &quot;S2_ESA_L2A&quot; or &quot;L8_USGS_L1GT&quot;).</span>
+<span class="sd">        lst_algo: A list of algorithms to use.</span>
+<span class="sd">        lst_l3masks: A list of lists of masks (L3MaskProduct) to use.</span>
+<span class="sd">        lst_l3masks_paths: A list of lists of paths (of L3MaskProducts)</span>
+<span class="sd">            to use.</span>
+<span class="sd">        lst_l3masks_types: The list of lists of the type of the masks</span>
+<span class="sd">            to use. Values can either be &quot;IN&quot; (area to include) or &quot;OUT&quot;</span>
+<span class="sd">            (area to exclude).</span>
+<span class="sd">        lst_tsmask: A list of time series of masks to use.</span>
+<span class="sd">        lst_tsmask_path: A list of paths (of TimeSeries) to use.</span>
+<span class="sd">        lst_tsmask_type: The list of the type of the time series</span>
+<span class="sd">            of masks used. Values can either be &quot;IN&quot; (area to include)</span>
+<span class="sd">            or &quot;OUT&quot; (area to exclude).</span>
+<span class="sd">        geom: A dict containing geographical information that define</span>
+<span class="sd">            the ROI. 4 keys: geom (a shapely.geom object), shp (a path</span>
+<span class="sd">            to an ESRI shapefile), wkt (a path to a wkt file) and srid</span>
+<span class="sd">            (an EPSG code).</span>
+<span class="sd">        save: If True, write output products on disk.</span>
+<span class="sd">        dirname: The path of the directory in which output products</span>
+<span class="sd">            will be written (using automatically generated names).</span>
+<span class="sd">        filenames: A list of wanted paths for output products.</span>
+<span class="sd">        **kwargs: Args specific to the Reader that will be used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">class</span> <span class="nc">Products</span><span class="p">(</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Products&#39;</span><span class="p">,</span>
+                              <span class="p">(</span><span class="n">algo</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="n">lst_algo</span><span class="p">))):</span>
+        <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+        <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="s1">=&lt;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">mro</span><span class="p">()[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">8</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">&gt;&#39;</span>
+                   <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">))</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Products(</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="si">}</span><span class="s1">)&#39;</span>
+
+    <span class="n">batch_params</span> <span class="o">=</span> <span class="n">series_to_batch</span><span class="p">({</span><span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="n">product_type</span><span class="p">,</span>
+                                    <span class="s1">&#39;geom&#39;</span><span class="p">:</span> <span class="n">geom</span><span class="p">},</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_products</span><span class="p">))</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">create_batch_l3algoproducts</span><span class="p">(</span><span class="n">input_products</span><span class="p">,</span>
+                                      <span class="n">batch_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;product_types&#39;</span><span class="p">),</span>
+                                      <span class="n">lst_algo</span><span class="p">,</span> <span class="n">lst_l3masks</span><span class="p">,</span> <span class="n">lst_l3masks_paths</span><span class="p">,</span>
+                                      <span class="n">lst_l3masks_types</span><span class="p">,</span> <span class="o">**</span><span class="n">batch_params</span><span class="p">,</span>
+                                      <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">lst_ts</span> <span class="o">=</span> <span class="n">Products</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">TimeSeries</span><span class="o">.</span><span class="n">from_l3products</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">time_series</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)])</span>
+
+    <span class="k">if</span> <span class="n">lst_tsmask_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">lst_tsmask</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">lst_tsmask_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lst_tsmask</span> <span class="o">=</span> <span class="p">[</span><span class="n">TimeSeries</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">ts_mask_path</span><span class="p">)</span>
+                          <span class="k">for</span> <span class="n">ts_mask_path</span> <span class="ow">in</span> <span class="n">lst_tsmask_path</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">lst_tsmask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ts_algo</span> <span class="ow">in</span> <span class="n">lst_ts</span><span class="p">:</span>
+                <span class="n">mask_time_series</span><span class="p">(</span><span class="n">ts_algo</span><span class="p">,</span> <span class="n">lst_tsmask</span><span class="p">,</span> <span class="n">lst_tsmask_type</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filenames</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">code_site</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code_site&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">sat</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extract_info_from_input_product</span><span class="p">(</span>
+                <span class="n">input_products</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">code_site</span><span class="p">,</span> <span class="n">geom</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">lst_ts</span><span class="p">:</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">generate_ts_filename</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">sat</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dirname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">filename</span> <span class="o">=</span> <span class="n">dirname</span> <span class="o">/</span> <span class="n">filename</span>
+                <span class="n">ts</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ts</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lst_ts</span><span class="p">,</span> <span class="n">filenames</span><span class="p">):</span>
+                <span class="n">ts</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">lst_ts</span></div>
+
+
+<div class="viewcode-block" id="create_masktimeseries"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.create_masktimeseries">[docs]</a><span class="k">def</span> <span class="nf">create_masktimeseries</span><span class="p">(</span><span class="n">input_products</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Path</span><span class="p">],</span>
+                          <span class="n">product_type</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                          <span class="n">lst_mask</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+                          <span class="n">geom</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">save</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                          <span class="n">dirname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">filenames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">TimeSeries</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of TimeSeries (one per mask in lst_mask).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        input_products: The list of paths of input products (multispectral</span>
+<span class="sd">            spaceborne imagery).</span>
+<span class="sd">        product_type: The type of input satellite products</span>
+<span class="sd">            (e.g. &quot;S2_ESA_L2A&quot; or &quot;L8_USGS_L1GT&quot;).</span>
+<span class="sd">        lst_mask: A list of masks to use.</span>
+<span class="sd">        geom: A dict containing geographical information that define</span>
+<span class="sd">            the ROI. 4 keys: geom (a shapely.geom object), shp (a path</span>
+<span class="sd">            to an ESRI shapefile), wkt (a path to a wkt file) and srid</span>
+<span class="sd">            (an EPSG code).</span>
+<span class="sd">        save: If True, write output products on disk.</span>
+<span class="sd">        dirname: The path of the directory in which output products</span>
+<span class="sd">            will be written (using automatically generated names).</span>
+<span class="sd">        filenames: A list of wanted paths for output products.</span>
+<span class="sd">        **kwargs: Args specific to Readers that will be used.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">class</span> <span class="nc">Products</span><span class="p">(</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Products&#39;</span><span class="p">,</span>
+                              <span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">mask</span> <span class="ow">in</span> <span class="n">lst_mask</span><span class="p">))):</span>
+        <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+        <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="s1">=&lt;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">mro</span><span class="p">()[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">8</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">&gt;&#39;</span>
+                   <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">))</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Products(</span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="si">}</span><span class="s1">)&#39;</span>
+
+    <span class="n">batch_params</span> <span class="o">=</span> <span class="n">series_to_batch</span><span class="p">({</span><span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="n">product_type</span><span class="p">,</span>
+                                    <span class="s1">&#39;geom&#39;</span><span class="p">:</span> <span class="n">geom</span><span class="p">},</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_products</span><span class="p">))</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">create_batch_l3maskproducts</span><span class="p">(</span><span class="n">input_products</span><span class="p">,</span>
+                                      <span class="n">batch_params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;product_types&#39;</span><span class="p">),</span>
+                                      <span class="n">lst_mask</span><span class="p">,</span> <span class="o">**</span><span class="n">batch_params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">lst_ts</span> <span class="o">=</span> <span class="n">Products</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">TimeSeries</span><span class="o">.</span><span class="n">from_l3products</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">time_series</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">res</span><span class="p">)])</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">filenames</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">code_site</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;code_site&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">sat</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span> <span class="o">=</span> <span class="n">extract_info_from_input_product</span><span class="p">(</span>
+                <span class="n">input_products</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">product_type</span><span class="p">,</span> <span class="n">code_site</span><span class="p">,</span> <span class="n">geom</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">lst_ts</span><span class="p">:</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">generate_ts_filename</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">sat</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">roi</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dirname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">filename</span> <span class="o">=</span> <span class="n">dirname</span> <span class="o">/</span> <span class="n">filename</span>
+                <span class="n">ts</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ts</span><span class="p">,</span> <span class="n">filename</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">lst_ts</span><span class="p">,</span> <span class="n">filenames</span><span class="p">):</span>
+                <span class="n">ts</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">lst_ts</span></div>
+
+
+<div class="viewcode-block" id="generate"><a class="viewcode-back" href="../../reference/sisppeo.html#sisppeo.generate">[docs]</a><span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parse_params_</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the wanted (L3/L4) products. Can also save them.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        key: What product to generate.</span>
+<span class="sd">        params: A dict of params.</span>
+<span class="sd">        save: If True, write them on disk.</span>
+<span class="sd">        parse_params_: If True, the params dict is checked (using</span>
+<span class="sd">            the parse_params function).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;l3 algo&#39;</span><span class="p">:</span> <span class="n">create_l3algoproducts</span><span class="p">,</span>
+        <span class="s1">&#39;l3 mask&#39;</span><span class="p">:</span> <span class="n">create_l3maskproducts</span><span class="p">,</span>
+        <span class="s1">&#39;batch algo&#39;</span><span class="p">:</span> <span class="n">create_batch_l3algoproducts</span><span class="p">,</span>
+        <span class="s1">&#39;batch mask&#39;</span><span class="p">:</span> <span class="n">create_batch_l3maskproducts</span><span class="p">,</span>
+        <span class="s1">&#39;time series&#39;</span><span class="p">:</span> <span class="n">create_algotimeseries</span><span class="p">,</span>
+        <span class="s1">&#39;time series (mask)&#39;</span><span class="p">:</span> <span class="n">create_masktimeseries</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">parse_params_</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">parse_params</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;save&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">save</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">params: &#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">products</span> <span class="o">=</span> <span class="n">func</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">products</span></div>
+</pre></div>
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020-2021 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+sisppeo.generate
+================
+
+.. currentmodule:: sisppeo
+
+.. autofunction:: generate

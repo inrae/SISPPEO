@@ -1,0 +1,19 @@
+sisppeo.masks.sh\_s2cloudless.cloud\_detector
+=============================================
+
+.. currentmodule:: sisppeo.masks.sh_s2cloudless
+
+.. autoclass:: cloud_detector
+   :members:                                    <-- add at least this line
+   :show-inheritance:                           <-- plus I want to show inheritance...
+   :inherited-members:                          <-- ...and inherited members too
+
+   
+   .. automethod:: __init__
+
+   
+   
+
+   
+   
+   
