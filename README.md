@@ -27,13 +27,13 @@
 useful for Earth observation (Water and Land) from satellite optical imagery (e.g, Sentinel-2/MSI, Sentinel-3/OLCI,
 Landsat 8/OLI…).
 
-**Authors:** Arthur Coqué (arthur.coque@inrae.fr)
+- **Documentation:** https://inrae.github.io/SISPPEO
+- **Source code:** https://github.com/inrae/SISPPEO
+
+**Author:** Arthur Coqué (arthur.coque@inrae.fr)
 
 **Contributors:** Guillaume Morin (guillaume.p.morin@inrae.fr), Nathalie Reynaud (nathalie.reynaud@inrae.fr), 
 Thierry Tormos (thierry.tormos@ofb.gouv.fr), Valentine Aubard (valentine.aubard@inrae.fr)
-
-- Documentation: https://inrae.github.io/SISPPEO
-- Source code: https://github.com/inrae/SISPPEO
 
 ### Requirements
 
