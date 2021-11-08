@@ -43,7 +43,9 @@ jobs:
           environment-file: conda/environment.yml
           python-version: 3.8
           use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
-      - run: |
+
+      - name: Verify Conda
+        run: |
           conda info -e
           conda list
 
@@ -57,12 +59,10 @@ jobs:
         run: |
           pip install sphinx pydata-sphinx-theme sphinx-copybutton sphinx-panels
           cd docs
-          print out the cwd
           pwd
           make html
           mv build/html/ ../public
           cd ..
-          # print out the cwd
           pwd
         
       - name: Deploy
