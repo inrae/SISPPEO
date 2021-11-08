@@ -1,0 +1,64 @@
+name: Sphinx docs to gh-pages
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2.4.0
+      
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.8
+
+      - name: Cache pip
+        uses: actions/cache@v2.1.6
+        with:
+          # This path is specific to Ubuntu
+          path: ~/.cache/pip
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+
+      - name: Add conda to system path
+        run: |
+          # $CONDA is an environment variable pointing to the root of the miniconda directory
+          echo $CONDA/bin >> $GITHUB_PATH
+
+      - name: Install dependencies
+        run: |
+          conda env create --file conda/environment.yml
+          # print out the current conda environment
+          conda info -e
+          # optionnal ?
+          conda activate sisppeo
+          python -m pip install .
+
+      - name: Test SISPPEO
+        run: sisppeo --help
+
+      - name: Setup Sphinx and build docs
+        run: |
+          pip install sphinx pydata-sphinx-theme sphinx-copybutton sphinx-panels
+          cd docs
+          print out the cwd
+          pwd
+          make html
+          mv build/html/ ../public
+          cd ..
+          # print out the cwd
+          pwd
+        
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true
