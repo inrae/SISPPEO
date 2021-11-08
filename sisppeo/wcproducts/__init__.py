@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from sisppeo.wcproducts.acdom import ACDOMBrezonik
 # flake8: noqa: F401
+from sisppeo.wcproducts.acdom import ACDOMBrezonik
 from sisppeo.wcproducts.algos import Ndwi
 from sisppeo.wcproducts.chla import (CHLAGitelson, CHLAGons, CHLAGurlin,
-                                     CHLALins, CHLAOC)
+                                     CHLALins, CHLAOC, NDCI)
 from sisppeo.wcproducts.spm import SPMGet, SPMHan, SPMNechad, TURBIDogliotti

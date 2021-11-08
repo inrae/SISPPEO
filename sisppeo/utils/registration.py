@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module gathers functions related to algorithm&mask registration."""
+"""Contains functions related to algorithm&mask registration."""
 
 import importlib.util
 import sys
@@ -21,7 +21,6 @@ from inspect import getmembers, isclass, isfunction
 import sisppeo.landproducts as land_algos
 import sisppeo.masks as masks
 import sisppeo.wcproducts as wc_algos
-from sisppeo.object_factory import ObjectFactory
 from sisppeo.utils.config import (land_algo_config, mask_config,
                                   user_algo_config, user_folder,
                                   user_mask_config, wc_algo_config)
@@ -102,34 +101,34 @@ def check_algoconfig() -> None:
             print('All custom algorithms are correctly registered.')
 
 
-def register_algos(factory: ObjectFactory) -> None:
-    """Register each algorithm into an ObjectFactory instance.
+def register_algos(catalog: dict) -> None:
+    """Register each algorithm into a dictionary.
 
     Args:
-        factory: the ObjectFactory object.
+        catalog: the dictionary in which will be stored algorithms.
     """
-    for algo, algo_class in [(e, _[1]) for _ in land_algo_classes
-                             if (e := _[1].name) in land_algo_config]:
-        factory.register_builder(algo, algo_class)
-    for algo, algo_class in [(e, _[1]) for _ in wc_algo_classes
-                             if (e := _[1].name) in wc_algo_config]:
-        factory.register_builder(algo, algo_class)
+    for algo_name, algo_class in [(e, _[1]) for _ in land_algo_classes
+                                  if (e := _[1].name) in land_algo_config]:
+        catalog[algo_name] = algo_class
+    for algo_name, algo_class in [(e, _[1]) for _ in wc_algo_classes
+                                  if (e := _[1].name) in wc_algo_config]:
+        catalog[algo_name] = algo_class
     if user_folder is not None and user_algo_config:
-        for algo, algo_class in [(e, _[1]) for _ in user_algo_classes
-                                 if (e := _[1].name) in user_algo_config]:
-            factory.register_builder(algo, algo_class)
+        for algo_name, algo_class in [(e, _[1]) for _ in user_algo_classes
+                                      if (e := _[1].name) in user_algo_config]:
+            catalog[algo_name] = algo_class
 
 
-def register_masks(factory: ObjectFactory) -> None:
-    """Register each mask into an ObjectFactory instance.
+def register_masks(catalog: dict) -> None:
+    """Register each mask into a dictionary.
 
     Args:
-        factory: the ObjectFactory object.
+        catalog: the dictionary in which will be stored masks.
     """
-    for mask, mask_func in [(e, _[1]) for _ in mask_functions if (e := _[0])
-                            in mask_config]:
-        factory.register_builder(mask, mask_func)
+    for mask_name, mask_func in [(e, _[1]) for _ in mask_functions
+                                 if (e := _[0]) in mask_config]:
+        catalog[mask_name] = mask_func
     if user_folder is not None and user_mask_config:
-        for mask, mask_func in [(e, _[1]) for _ in user_mask_functions
-                                if (e := _[0]) in user_mask_config]:
-            factory.register_builder(mask, mask_func)
+        for mask_name, mask_func in [(e, _[1]) for _ in user_mask_functions
+                                     if (e := _[0]) in user_mask_config]:
+            catalog[mask_name] = mask_func

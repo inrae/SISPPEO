@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module contains various useful functions used in main.py."""
+"""Contains various useful functions used in main.py."""
 
 from pathlib import Path
 
@@ -101,9 +101,9 @@ def parse_params(key, params):
         params['lst_l3mask_path'] = [str_to_path(l3mask_path) for l3mask_path
                                      in params['lst_l3mask_path']]
     if 'lst_l3masks_paths' in params:     # time series / batch
-        params['lst_masks_paths'] = [
-            [str_to_path(mask_path) for mask_path in lst_mask_path]
-            for lst_mask_path in params['lst_masks_paths']
+        params['lst_l3masks_paths'] = [
+            [str_to_path(l3mask_path) for l3mask_path in lst_l3mask_path]
+            for lst_l3mask_path in params['lst_l3masks_paths']
         ]
     if 'lst_tsmask_path' in params:
         params['lst_tsmask_path'] = [str_to_path(tsmask_path) for tsmask_path

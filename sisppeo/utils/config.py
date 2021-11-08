@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module contains paths and configs used in other parts of the code."""
+"""Contains paths and configs used in other parts of the code."""
 
 from pathlib import Path
 

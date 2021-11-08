@@ -22,7 +22,7 @@ Before its utilisation, an algorithm has to be instantiate with specific
 settings like the product_type of further input products, the calibration
 used, the band used (if needed), etc.
 
-    Typical usage example:
+Example:
 
     algo1 = Ndwi('L8_GRS')
     out_array1 = algo1(input_array1, input_array2)
@@ -50,8 +50,7 @@ class Ndwi:
     """Normalized Difference Water Index.
 
     Algorithm computing the NDWI from green and nir bands, using either surface
-    reflectances (rh   o, unitless) or remote sensing reflectances (Rrs,
-    in sr-1).
+    reflectances (rho, unitless) or remote sensing reflectances (Rrs, in sr-1).
     This index was presented by McFeeters (1996).
 
     Attributes:
@@ -69,7 +68,7 @@ class Ndwi:
         Args:
             product_type: The type of the input satellite product (e.g.
                 S2_ESA_L2A or L8_USGS_L1GT)
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         try:
             self.requested_bands = algo_config[self.name][

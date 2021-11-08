@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module contains various useful functions used by readers."""
+"""Contains various useful functions used by readers."""
 
 from typing import List, Union
 
@@ -89,7 +89,8 @@ def resample_band_array(arr: np.ndarray,
     im = Image.fromarray(arr)
     im_new = im.resize(
         (int(im.width * scale_factor), int(im.height * scale_factor)),
-        resample=resampling_filter)
+        resample=resampling_filter
+    )
     return np.array(im_new)
 
 

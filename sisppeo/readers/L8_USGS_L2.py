@@ -16,7 +16,7 @@
 
     Typical usage example:
 
-    reader = L8USGSL2C1HDFReader(**config)
+    reader = L8USGSL2C1HDFReader(\*\*config)
     reader.extract_bands()
     reader.create_ds()
     extracted_dataset = reader.dataset
@@ -54,17 +54,17 @@ class L8USGSL2Reader(Reader):
         """See base class."""
         # Load data
         compressed = False
-        if self._inputs['input_product'].suffix == '.gz':   # .tar.gz
+        if self._inputs.input_product.suffix == '.gz':   # .tar.gz
             compressed = True
-            root_path = format_zippath(self._inputs['input_product'])
-            with tarfile.open(self._inputs['input_product']) as archive:
+            root_path = format_zippath(self._inputs.input_product)
+            with tarfile.open(self._inputs.input_product) as archive:
                 hdf_path = [_ for _ in archive.getnames()
                             if _.endswith('.hdf')][0]
             with rasterio.Env(RAW_CHECK_FILE_SIZE=False):
                 dataset = rasterio.open(root_path + hdf_path)
         else:
             dataset = rasterio.open(
-                list(self._inputs['input_product'].glob('*.hdf'))[0]
+                list(self._inputs.input_product.glob('*.hdf'))[0]
             )
 
         # Load metadata
@@ -77,7 +77,7 @@ class L8USGSL2Reader(Reader):
         requested_bands = [(subdataset, b) for subdataset in f_subdatasets
                            if (b := subdataset.rsplit('_', 1)[1].replace(
                                'band', 'B'))
-                           in self._inputs['requested_bands']]
+                           in self._inputs.requested_bands]
 
         # Extract data
         data = {}
@@ -153,13 +153,13 @@ class L8USGSL2Reader(Reader):
     # MTL is the name given by the USGS to the file containing metadata.
     def _load_metadata_from_MTL(self, compressed):
         if compressed:
-            with tarfile.open(self._inputs['input_product']) as archive:
+            with tarfile.open(self._inputs.input_product) as archive:
                 path = [_ for _ in archive.getnames()
                         if _.endswith('MTL.txt')][0]
                 with io.TextIOWrapper(archive.extractfile(path)) as f:
                     lines = f.readlines()
         else:
-            path = list(self._inputs['input_product'].glob('*MTL.txt'))[0]
+            path = list(self._inputs.input_product.glob('*MTL.txt'))[0]
             with open(path, 'r') as f:
                 lines = f.readlines()
         metadata = defaultdict(dict)
@@ -186,7 +186,7 @@ class L8USGSL2Reader(Reader):
         self._intermediate_data['y'] = np.arange(y_start, y_stop - 1, -30)
 
     def _extract_first_band(self, subdataset):
-        if self._inputs['geom'] is not None:
+        if self._inputs.ROI is not None:
             self._reproject_geom()
             row_start, col_start, row_stop, col_stop = get_ij_bbox(
                 subdataset,

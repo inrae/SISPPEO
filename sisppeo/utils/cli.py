@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module contains various useful functions and classes used in the CLI."""
+"""Contains various useful functions and classes used in the CLI."""
 
 from pathlib import Path
 from typing import Optional
@@ -40,13 +40,48 @@ class Mutex(click.Option):
 
     def handle_parse_result(self, ctx, opts, args):
         current_opt = self.name in opts  # bool
+        if current_opt:
+            i = 1
+        else:
+            i = 0
         for mutex_opt in self.not_required_if:
             if mutex_opt in opts:
+                i += 1
                 if current_opt:
                     msg = (f'Illegal usage: "{self.name}" is mutually '
                            f'exclusive with "{mutex_opt}".')
                     raise click.UsageError(msg)
+                else:
+                    self.prompt = None
+        if i == 0:
+            signature = ' / '.join(self.opts + self.secondary_opts)
+            msg = (f"Missing option '{signature}' (or any of the following "
+                   f"options: {', '.join(self.not_required_if)})")
+            raise click.UsageError(msg)
         return super().handle_parse_result(ctx, opts, args)
+
+
+class Mutin(click.Option):
+    """Mutually inclusive options."""
+
+    def __init__(self, *args, **kwargs):
+        self.required_if = kwargs.pop('required_if')  # list
+        assert self.required_if, '"required_if" parameter required'
+        kwargs['help'] = (f'{kwargs.get("help", "")}  [required if '
+                          'the following options are used : '
+                          f'{", ".join(self.required_if)}]')
+        super().__init__(*args, **kwargs)
+
+    def handle_parse_result(self, ctx, opts, args):
+        current_opt = self.name in opts  # bool
+        for mutin_opt in self.required_if:
+            if mutin_opt not in opts:
+                if current_opt:
+                    msg = (f'Illegal usage: "{mutin_opt}" is required '
+                           f'if "{self.name}" is used.')
+                    raise click.UsageError(msg)
+        return super().handle_parse_result(ctx, opts, args)
+
 
 
 def _read_optional_column(df, key):

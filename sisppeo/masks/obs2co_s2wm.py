@@ -16,7 +16,7 @@
 
 The logic is encapsulated inside the function named 'water_detector'.
 
-    Typical usage example:
+Example::
 
     out_array = water_detector([input_arrays])
 """

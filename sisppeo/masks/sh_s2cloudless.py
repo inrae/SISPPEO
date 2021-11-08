@@ -16,7 +16,7 @@
 
 The logic is encapsulated inside the function named 'cloud_detector'.
 
-    Typical usage example:
+Example::
 
     out_array = cloud_detector([input_arrays])
 """

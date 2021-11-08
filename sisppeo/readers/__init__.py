@@ -13,6 +13,7 @@
 # limitations under the License.
 
 # flake8: noqa: F401
+from sisppeo.readers.C2RCC import C2RCCReader
 from sisppeo.readers.GRS import GRSReader
 from sisppeo.readers.L8_USGS_L1C1 import L8USGSL1C1Reader
 from sisppeo.readers.L8_USGS_L2 import L8USGSL2Reader

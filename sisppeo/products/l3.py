@@ -18,51 +18,47 @@ In this module are defined L3 products : the abstract class L3Product and its
 child classes L3AlgoProduct and L3MaskProduct. Basically, these classes wrap
 a well formated xarray Dataset and offer a few useful methods.
 
-  Typical usage example:
+Example::
 
-  S2_ndvi = L3AlgoProduct(dataset)
-  S2_ndvi.plot()
-  S2_ndvi.save(path_to_file)
+    S2_ndvi = L3AlgoProduct(dataset)
+    S2_ndvi.plot()
+    S2_ndvi.save(path_to_file)
 
-  s2cloudless_mask = L3MaskProduct(dataset)
-  s2cloudless_mask.save(path_to_file)
+    s2cloudless_mask = L3MaskProduct(dataset)
+    s2cloudless_mask.save(path_to_file)
 """
 
 import warnings
 from abc import ABC, abstractmethod
 from copy import deepcopy
+from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional, Union
 
 import numpy as np
 import xarray as xr
 from matplotlib import pyplot as plt
-from pyproj import CRS, Transformer
-from skimage.draw import disk
 
+from sisppeo.utils.exceptions import InputError
 from sisppeo.utils.products import CoordinatesMixin, get_enc
 
 warnings.filterwarnings('ignore', category=xr.SerializationWarning)
 
 # pylint: disable=invalid-name
 # Ok for a custom type.
+N = Union[int, float]
 P = List[Union[Path, str]]
 
 
+@dataclass
 class L3Product(ABC, CoordinatesMixin):
     """Abstract class inherited by both L3AlgoProduct and L3MaskProduct.
 
     Attributes:
         dataset: A dataset containing processed data.
     """
-
-    def __init__(self, dataset: xr.Dataset) -> None:
-        """Inits L3Product with a dataset.
-
-        Args:
-            dataset: A dataset containing outputs of algo/mask.
-        """
-        self.dataset = dataset
+    __slots__ = 'dataset',
+    dataset: xr.Dataset
 
     @classmethod
     @abstractmethod
@@ -74,18 +70,33 @@ class L3Product(ABC, CoordinatesMixin):
         """
 
     @property
+    def title(self) -> str:
+        """Returns the title of the underlying dataset."""
+        return self.dataset.attrs['title']
+
+    @property
     def product_type(self) -> str:
         """Returns the product_type of the product used to get this dataset."""
         return self.dataset.attrs['title'].rsplit(' ', 1)[1]
 
     @property
-    def title(self) -> str:
-        """Returns the title of the underlying dataset."""
-        return self.dataset.attrs['title']
+    def data_vars(self):
+        """Returns a list of DataArrays corresponding to variables."""
+        return [data_var for data_var in self.dataset.data_vars
+                if data_var not in ('crs', 'product_metadata')]
 
-    @abstractmethod
-    def plot(self) -> None:
-        """Plots data_vars of the dataset."""
+    def plot(self, data_var) -> None:
+        """Plots a given variable.
+
+        data_var: The name of the variable/DataArray of interest (e.g., a
+                band, aCDOM, etc).
+        """
+        if data_var not in self.data_vars:
+            msg = (f'"{data_var}" is not a variable of this product; please, '
+                   f'choose one from the following list: {self.data_vars}.')
+            raise InputError(msg)
+        self.dataset[data_var].plot()
+        plt.show()
 
     @abstractmethod
     def save(self, filename: P) -> None:
@@ -96,8 +107,14 @@ class L3Product(ABC, CoordinatesMixin):
         """
 
 
+@dataclass
 class L3AlgoProduct(L3Product):
-    """An L3Product embedding data obtained by using a wc/land algorithm."""
+    """An L3Product embedding data obtained by using a wc/land algorithm.
+
+    Attributes:
+        dataset: A dataset containing processed data.
+    """
+    __slots__ = ()
 
     @classmethod
     def from_file(cls, filename):
@@ -108,52 +125,10 @@ class L3AlgoProduct(L3Product):
         """Returns the name of the algorithm used to get this dataset."""
         return self.title.split(' ', 1)[0]
 
-    def extract_point(self, coordinates, buffer=None, epsg=4326, mode='xy'):
-        if mode == 'latlon' or epsg != 4326:
-            transformer = Transformer.from_crs(
-                CRS.from_epsg(epsg),
-                CRS.from_wkt(self.dataset.crs.attrs['crs_wkt'])
-            )
-            coordinates = transformer.transform(*coordinates)
-        i, j = self.index(*coordinates)
-        if buffer is None:
-            res = self.dataset[self.algo].isel(time=0, y=i, x=j).values
-        else:
-            res = self.dataset[self.algo].isel(
-                time=0,
-                y=slice(i - buffer, i + buffer + 1),
-                x=slice(j - buffer, j + buffer + 1)
-            ).values
-            mask = np.zeros_like(res)
-            rr, cc = disk((buffer, buffer), buffer+.5)
-            mask[rr, cc] = 1
-            res *= mask
-        return res
-
-    def extract_points(self, lst_coordinates, buffer=None, epsg=4326,
-                       mode='xy'):
-        if mode == 'latlon' or epsg != 4326:
-            transformer = Transformer.from_crs(
-                CRS.from_epsg(epsg),
-                CRS.from_wkt(self.dataset.crs.attrs['crs_wkt'])
-            )
-            lst_coordinates = [transformer.transform(*coordinates)
-                               for coordinates in lst_coordinates]
-        res = [self.extract_point(coordinates, buffer)
-               for coordinates in lst_coordinates]
-        return res
-
-    def plot(self) -> None:
-        """See base class."""
-        self.dataset[self.algo].plot()
-        plt.show()
-
     def save(self, filename: P) -> None:
         """See base class."""
-        data_vars = [data_var for data_var in self.dataset.data_vars
-                     if data_var not in ('crs', 'product_metadata')]
         enc = {data_var: get_enc(self.dataset[data_var].values, 0.001, True)
-               for data_var in data_vars}
+               for data_var in self.data_vars}
         enc.update({
             'crs': {'dtype': 'byte'},
             'product_metadata': {'dtype': 'byte'},
@@ -163,8 +138,14 @@ class L3AlgoProduct(L3Product):
         self.dataset.to_netcdf(filename, encoding=enc)
 
 
+@dataclass
 class L3MaskProduct(L3Product):
-    """An L3Product embedding data obtained by using a mask algorithm."""
+    """An L3Product embedding data obtained by using a mask algorithm.
+
+    Attributes:
+        dataset: A dataset containing processed data.
+    """
+    __slots__ = ()
 
     @classmethod
     def from_file(cls, filename):
@@ -174,11 +155,6 @@ class L3MaskProduct(L3Product):
     def mask(self):
         """Returns the name of the mask used to get this dataset."""
         return self.title.split(' ', 1)[0]
-
-    def plot(self) -> None:
-        """See base class."""
-        self.dataset[self.mask].plot()
-        plt.show()
 
     def save(self, filename: Union[Path, str]) -> None:
         """See base class."""
@@ -248,9 +224,10 @@ def mask_product(l3_algo: L3AlgoProduct,
     # Apply the previously computed mask to the product
     l3_algo.dataset = l3_algo.dataset.sel(x=slice(x_min, x_max),
                                           y=slice(y_max, y_min))
-    l3_algo.dataset[l3_algo.algo].values = np.where(
-        mask, l3_algo.dataset[l3_algo.algo].values, np.nan
-    )
+    for var in l3_algo.data_vars:
+        l3_algo.dataset[var].values = np.where(
+            mask, l3_algo.dataset[var].values, np.nan
+        )
     # Store masks' names
     masks = []
     dico = {'s2cloudless': 'cloudmask', 'waterdetect': 'watermask'}

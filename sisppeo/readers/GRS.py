@@ -14,9 +14,10 @@
 
 """This module contains a reader for GRS products.
 
-This reader is dedicated to extract data from both S2_GRS and L8_GRS.
+This reader is dedicated to extract data from S2_GRS, L4_GRS, L5_GRS, L7_GRS
+and L8_GRS products.
 
-    Typical usage example:
+Example::
 
     reader = GRSReader(**config)
     reader.extract_bands()
@@ -24,6 +25,7 @@ This reader is dedicated to extract data from both S2_GRS and L8_GRS.
     extracted_dataset = reader.dataset
 """
 
+from collections import namedtuple
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
@@ -34,12 +36,31 @@ from affine import Affine
 from pyproj import CRS
 from tqdm import tqdm
 
-from sisppeo.readers.reader import Reader
+from sisppeo.readers.reader import Reader, Inputs
 from sisppeo.utils.exceptions import GeometryError
+
+GRSInputs = namedtuple('GRSInputs',
+                       Inputs._fields + ('product_type', 'flags', 'grs_bands'))
+
+names_dict_l8 = {'B1': 'coastal_aerosol',
+                 'B2': 'blue',
+                 'B3': 'green',
+                 'B4': 'red',
+                 'B5': 'near_infrared',
+                 'B6': 'swir_1',
+                 'B7': 'swir_2'}
+
+names_dict_l457 = {'B1': 'radiance_1',
+                   'B2': 'radiance_2',
+                   'B3': 'radiance_3',
+                   'B4': 'radiance_4',
+                   'B5': 'radiance_5',
+                   'B7': 'radiance_7'}
 
 
 class GRSReader(Reader):
-    """A reader dedicated to extract data from both S2_GRS and L8_GRS products.
+    """A reader dedicated to extract data from both S2_GRS, L4_GRS, L5_GRS,
+    L7_GRS and L8_GRS products.
 
     Attributes:
         dataset: A dataset containing extracted data.
@@ -49,10 +70,11 @@ class GRSReader(Reader):
     # Six is reasonable in this case.
     def __init__(self,
                  input_product: Path,
+                 product_type: str,
                  requested_bands: List[str],
+                 geom: Optional[dict] = None,
                  glint_corrected: bool = True,
                  flags: bool = False,
-                 geom: Optional[dict] = None,
                  **_ignored) -> None:
         """See base class.
 
@@ -65,18 +87,16 @@ class GRSReader(Reader):
                 useful for extracting water surfaces.
         """
         super().__init__(input_product, requested_bands, geom)
-        if glint_corrected:
-            self._inputs['grs_bands'] = 'Rrs'
-        else:
-            self._inputs['grs_bands'] = 'Rrs_g'
-        self._inputs['flags'] = flags
+        self._inputs = GRSInputs(*self._inputs, product_type, flags,
+                                 'Rrs' if glint_corrected else 'Rrs_g')
+        self._res = 20 if 'S2' in product_type else 30
 
     # pylint: disable=too-many-locals
     # More readable if geotransform is defined.
     def extract_bands(self) -> None:
         """See base class."""
         # Load data
-        dataset = xr.open_dataset(self._inputs['input_product'])
+        dataset = xr.open_dataset(self._inputs.input_product)
 
         # Load metadata
         metadata = {'attrs': dataset.attrs, 'tags': dataset.metadata.attrs}
@@ -94,18 +114,24 @@ class GRSReader(Reader):
 
         # Get ROI and read data
         data = {}
-        ij_bbox = self._extract_ROI(dataset, xy_bbox)
-        for band in tqdm(self._inputs['requested_bands'], unit='bands'):
-            band_name = f'{self._inputs["grs_bands"]}_{band}'
-            band_array = self._extract_band(dataset, band_name, ij_bbox)
+        ij_bbox = self._extract_ROI(xy_bbox, len(dataset.x), len(dataset.y))
+        for band in tqdm(self._inputs.requested_bands, unit='bands'):
+            if 'S2' in self._inputs.product_type:
+                _band = band
+            elif 'L8' in self._inputs.product_type:
+                _band = names_dict_l8[band]
+            else:
+                _band = names_dict_l457[band]
+            band_name = f'{self._inputs.grs_bands}_{_band}'
+            band_array = _extract_band(dataset, band_name, ij_bbox)
             data[band] = band_array.reshape(1, *band_array.shape)
         print('')
 
         # Mask data
-        if self._inputs['flags']:
-            mask = self._extract_band(dataset, 'flags', ij_bbox) & 8
+        if self._inputs.flags:
+            mask = _extract_band(dataset, 'flags', ij_bbox)
             for band in data:
-                data[band] = np.where(mask, data[band], np.nan)
+                data[band] = np.where(mask == 0, data[band], np.nan)
 
         # Compute projected coordinates
         self._compute_proj_coords(fwd, ij_bbox)
@@ -153,42 +179,45 @@ class GRSReader(Reader):
             ds.product_metadata.attrs[key] = val
 
         ds.attrs['data_type'] = 'rrs'
-        ds.attrs['grs_bands'] = self._inputs['grs_bands']
-        if self._inputs['flags']:
+        ds.attrs['grs_bands'] = self._inputs.grs_bands
+        if self._inputs.flags:
             ds.attrs['suppl_masks'] = 'GRS_flags'
         self.dataset = ds
 
     # pylint: disable=invalid-name
     # ROI is a common abbreviation for a Region Of Interest.
-    def _extract_ROI(self, dataset, xy_bbox):
-        if self._inputs['geom'] is not None:
+    def _extract_ROI(self, xy_bbox, nx, ny):
+        if self._inputs.ROI is not None:
             self._reproject_geom()
             x_min, y_min, x_max, y_max = self._intermediate_data['geom'].bounds
             x0, y0, x1, y1 = xy_bbox
             if (x_max < x0 or y_min > y0) or (x_min > x1 or y_max < y1):
                 raise GeometryError('Wanted ROI is outside the input product')
-            row_start = 0 if y_max > y0 else int(np.floor((y0 - y_max) / 20))
-            col_start = 0 if x_min < x0 else int(np.floor((x_min - x0) / 20))
-            row_stop = len(dataset.y) - 1 if y_min < y1 else int(
-                np.floor((y0 - y_min) / 20))
-            col_stop = len(dataset.x) - 1 if x_max > x1 else int(
-                np.floor((x_max - x0) / 20))
+            row_start = 0 if y_max > y0 else int(np.floor((y0 - y_max)
+                                                          / self._res))
+            col_start = 0 if x_min < x0 else int(np.floor((x_min - x0)
+                                                          / self._res))
+            row_stop = ny - 1 if y_min < y1 else int(
+                np.floor((y0 - y_min) / self._res))
+            col_stop = nx - 1 if x_max > x1 else int(
+                np.floor((x_max - x0) / self._res))
         else:
             row_start, col_start = 0, 0
-            row_stop, col_stop = len(dataset.y) - 1, len(dataset.x) - 1
-        return [row_start, col_start, row_stop, col_stop]
-
-    def _extract_band(self, dataset, band, ij_bbox):
-        row_start, col_start, row_stop, col_stop = ij_bbox
-        band_array = dataset[band].values[row_start:row_stop + 1,
-                                          col_start:col_stop + 1]
-        return band_array
+            row_stop, col_stop = ny - 1, nx - 1
+        return row_start, col_start, row_stop, col_stop
 
     def _compute_proj_coords(self, fwd, ij_bbox):
         row_start, col_start, row_stop, col_stop = ij_bbox
         x_start, y_start = fwd * (col_start, row_start)
         x_stop, y_stop = fwd * (col_stop + 1, row_stop + 1)
-        x = np.arange(x_start + 10, x_stop - 1, 20)
-        y = np.arange(y_start - 10, y_stop + 1, -20)
+        x = np.arange(x_start + self._res / 2, x_stop - 1, self._res)
+        y = np.arange(y_start - self._res / 2, y_stop + 1, -self._res)
         self._intermediate_data['x'] = x
         self._intermediate_data['y'] = y
+
+
+def _extract_band(dataset, band, ij_bbox):
+    row_start, col_start, row_stop, col_stop = ij_bbox
+    band_array = dataset[band].values[row_start:row_stop + 1,
+                                      col_start:col_stop + 1]
+    return band_array

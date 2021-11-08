@@ -1,5 +1,6 @@
 ndvi:
   long_name: Normalized Difference Vegetation Index
+  output: ndvi
   L8:
     - B4
     - B5
@@ -8,6 +9,7 @@ ndvi:
     - B8
 nbr:
   long_name: Normalized Burn Ratio
+  output: nbr
   L8:
     - B7
     - B5

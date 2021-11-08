@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module contains various useful functions used for naming products."""
+"""Contains various useful functions used for naming products."""
 
 import io
 import tarfile
@@ -29,10 +29,16 @@ product_type_to_source = {
     'S2_ESA_L2A': 'Sen2Cor',
     'L8_GRS': 'GRS',
     'S2_GRS': 'GRS',
-    'S2_THEIA': 'MAIA'
+    'S2_THEIA': 'MAIA',
+    'S2_C2RCC': 'C2RCC'
 }
 
-metadata_to_args = {
+mask_types = {
+    's2cloudless': 'cloudmask',
+    'waterdetect': 'watermask'
+}
+
+masks_to_args = {
     'watermask': 'wm',
     'cloudmask': 'cm',
     'suppl_masks': 'sm',
@@ -86,61 +92,68 @@ def geom_to_str(geom_dict):
 def generate_l3_filename(l3prod, code_image, source, roi):
     """Returns a filename for a L3 product based on the provided arguments."""
     algo = l3prod.title.split(' ', 1)[0]
-    res = f'{l3prod.res}m'
+    if algo in mask_types:
+        algo = f'{mask_types[algo]}-{algo}'
+    var = l3prod.data_vars[0]
+    bands = (l3prod.dataset.attrs.get('grs_bands', '')
+             + l3prod.dataset.attrs.get('theia_bands', ''))
+    if bands:
+        bands = f'-bands={bands}'
     algoparams = []
     for algoparam in algoparams_to_args:
-        if algoparam in l3prod.dataset[algo].attrs:
-            algoparams.append(f'{algoparams_to_args[algoparam]}={l3prod.dataset[algo].attrs[algoparam]}')
+        if algoparam in l3prod.dataset[var].attrs:
+            algoparams.append(f'{algoparams_to_args[algoparam]}='
+                              + l3prod.dataset[var].attrs[algoparam])
     if algoparams:
         algoparams = f'-{"-".join(algoparams)}'
     else:
         algoparams = ''
-    if 'processing_resolution' in l3prod.dataset[algo].attrs:
-        maskparams = f'-proc_res={l3prod.dataset[algo].attrs["processing_resolution"]}'
-    else:
-        maskparams = ''
-    params = f'_params{algoparams}{maskparams}'
+    maskparams = l3prod.dataset[var].attrs.get('processing_resolution', '')
+    if maskparams:
+        maskparams = f'-proc_res={maskparams}'
+    params = f'_params{bands}-res={l3prod.res}m{algoparams}{maskparams}'
     masks = []
-    for mask in metadata_to_args:
+    for mask in masks_to_args:
         if mask in l3prod.dataset.attrs:
-            masks.append(f'{metadata_to_args[mask]}={l3prod.dataset.attrs[mask]}')
+            masks.append(f'{masks_to_args[mask]}'
+                         + l3prod.dataset.attrs[mask].split(" ")[0])
     if masks:
         masks = f'_masks-{"-".join(masks)}'
     else:
         masks = ''
-    filename = f'{code_image}_{source}_{algo}_{roi}_{res}{params}{masks}.nc'
+    filename = f'{code_image}_{source}_{roi}_{algo}{params}{masks}.nc'
     return filename
 
 
 def generate_ts_filename(ts, sat, source, roi):
     """Returns a filename for time series based on the provided arguments."""
+    var = ts.data_vars[0]
     n = len(ts.dataset.time)
     start_date = ts.start_date.date().isoformat().replace('-', '')
     end_date = ts.end_date.date().isoformat().replace('-', '')
     algo = ts.title.split(' ', 1)[0]
-    res = f'{ts.res}m'
     algoparams = []
     for algoparam in algoparams_to_args:
-        if algoparam in ts.dataset[algo].attrs:
-            algoparams.append(f'{algoparams_to_args[algoparam]}={ts.dataset[algo].attrs[algoparam]}')
+        if algoparam in ts.dataset[var].attrs:
+            algoparams.append(f'{algoparams_to_args[algoparam]}='
+                              + ts.dataset[var].attrs[algoparam])
     if algoparams:
         algoparams = f'-{"-".join(algoparams)}'
     else:
         algoparams = ''
-    if 'processing_resolution' in ts.dataset[algo].attrs:
-        maskparams = f'-proc_res={ts.dataset[algo].attrs["processing_resolution"]}'
-    else:
-        maskparams = ''
-    params = f'_params{algoparams}{maskparams}'
+    maskparams = ts.dataset[var].attrs.get('processing_resolution', '')
+    if maskparams:
+        maskparams = f'-proc_res={maskparams}'
+    params = f'_params-res={ts.res}m{algoparams}{maskparams}'
     masks = []
-    for mask in metadata_to_args:
+    for mask in masks_to_args:
         if mask in ts.dataset.attrs:
-            masks.append(f'{metadata_to_args[mask]}={ts.dataset.attrs[mask]}')
+            masks.append(f'{masks_to_args[mask]}={ts.dataset.attrs[mask]}')
     if masks:
         masks = f'_masks-{"-".join(masks)}'
     else:
         masks = ''
-    filename = f'{sat}_{source}_{algo}_{n}_{start_date}_{end_date}_{roi}_{res}{params}{masks}.nc'
+    filename = f'{sat}_{source}_{roi}_{algo}_{n}_{start_date}_{end_date}{params}{masks}.nc'
     return filename
 
 
@@ -157,7 +170,8 @@ def extract_info_from_input_product(input_product, product_type,
     elif product_type == 'L8_USGS_L1C1':
         if input_product.suffix in ('.tgz', '.gz'):
             with tarfile.open(input_product) as archive:
-                tmp = str([_ for _ in archive.getnames() if _.endswith('MTL.txt')][0]).split('_')
+                tmp = str([_ for _ in archive.getnames()
+                           if _.endswith('MTL.txt')][0]).split('_')
         else:
             tmp = str(list(input_product.glob('*MTL.txt'))[0]).split('_')
         code_image = f'LC8{tmp[2]}{tmp[3]}'
@@ -181,7 +195,7 @@ def extract_info_from_input_product(input_product, product_type,
         code_image = f'LC8{landsat_scene_id[3:9]}{date_acquired}'
         sat = 'LC8'
         tile = landsat_scene_id[3:9]
-    elif 'S2_ESA' in product_type:
+    elif 'S2_ESA' in product_type or product_type == 'S2_C2RCC':
         tmp = input_product.name.split('_')
         code_image = f'{tmp[0]}{tmp[5][1:]}{tmp[2][:8]}'
         sat = 'S2'

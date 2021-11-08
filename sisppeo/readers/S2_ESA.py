@@ -16,7 +16,7 @@
 
 This reader is dedicated to extract data from both S2_ESA_L1C and S2_ESA_L2A.
 
-    Typical usage example:
+Example::
 
     reader = S2ESAReader(**config)
     reader.extract_bands()
@@ -25,6 +25,7 @@ This reader is dedicated to extract data from both S2_ESA_L1C and S2_ESA_L2A.
 """
 
 import warnings
+from collections import namedtuple
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
@@ -37,13 +38,16 @@ from pyproj import CRS
 from rasterio.windows import Window
 from tqdm import tqdm
 
-from sisppeo.readers.reader import Reader
+from sisppeo.readers.reader import Reader, Inputs
 from sisppeo.utils.exceptions import InputError
 from sisppeo.utils.readers import (get_ij_bbox, decode_data,
                                    resample_band_array,
                                    resize_and_resample_band_array)
 
 warnings.filterwarnings('ignore', category=rasterio.errors.NotGeoreferencedWarning)
+
+S2ESAInputs = namedtuple('S2ESAInputs',
+                         Inputs._fields + ('out_resolution',))
 
 
 def format_zippath(path: Path) -> str:
@@ -72,22 +76,22 @@ class S2ESAReader(Reader):
         super().__init__(input_product, requested_bands, geom)
         if out_resolution not in (None, 10, 20, 60):
             raise InputError('"out_resolution" must be in (10, 20, 60)')
-        self._inputs['out_resolution'] = out_resolution
+        self._inputs = S2ESAInputs(*self._inputs, out_resolution)
 
     def extract_bands(self) -> None:
         """See base class."""
         # Load data
-        if self._inputs['input_product'].suffix == '.zip':
-            with ZipFile(self._inputs['input_product']) as archive:
+        if self._inputs.input_product.suffix == '.zip':
+            with ZipFile(self._inputs.input_product) as archive:
                 xml_path = [_ for _ in archive.namelist()
-                            if _.lstrip(f'{self._inputs["input_product"].stem}'
+                            if _.lstrip(f'{self._inputs.input_product.stem}'
                                         '.SAFE').startswith('/MTD_MSI')][0]
             dataset = rasterio.open(
-                format_zippath(self._inputs['input_product']) + xml_path
+                format_zippath(self._inputs.input_product) + xml_path
             )
         else:
             dataset = rasterio.open(
-                list(self._inputs['input_product'].glob('MTD_MSI*.xml'))[0]
+                list(self._inputs.input_product.glob('MTD_MSI*.xml'))[0]
             )
 
         # Load metadata
@@ -100,7 +104,7 @@ class S2ESAReader(Reader):
                 bands = [
                     (i + 1, band) for i, band in enumerate(
                         [_.split(', ')[0] for _ in subdataset.descriptions]
-                    ) if band in self._inputs['requested_bands']
+                    ) if band in self._inputs.requested_bands
                 ]
                 if bands:
                     requested_bands.append((path, bands))
@@ -111,10 +115,11 @@ class S2ESAReader(Reader):
             with rasterio.open(path) as subdataset:
                 for i, band in tqdm(bands, unit='bands'):
                     # Set the default resolution
-                    if self._inputs['out_resolution'] is None:
-                        self._inputs['out_resolution'] = subdataset.res[0]
+                    if self._inputs.out_resolution is None:
+                        self._inputs = self._inputs._replace(
+                            out_resolution=subdataset.res[0])
                     if self._intermediate_data['x'] is None:
-                        if ((out_res := self._inputs['out_resolution'])
+                        if ((out_res := self._inputs.out_resolution)
                                 > (in_res := subdataset.res[0])):
                             msg = (f'"out_resolution" must be <= {in_res} ; '
                                    f'here, out_resolution={out_res}')
@@ -175,13 +180,13 @@ class S2ESAReader(Reader):
         self.dataset = ds
 
     def _compute_x_coords(self, x0, x1):
-        out_res = self._inputs['out_resolution']
+        out_res = self._inputs.out_resolution
         x_start = x0 + out_res / 2
         x_stop = x1 - out_res / 2
         self._intermediate_data['x'] = np.arange(x_start, x_stop + 1, out_res)
 
     def _compute_y_coords(self, y0, y1):
-        out_res = self._inputs['out_resolution']
+        out_res = self._inputs.out_resolution
         y_start = y0 - out_res / 2
         y_stop = y1 + out_res / 2
         self._intermediate_data['y'] = np.arange(y_start, y_stop - 1, -out_res)
@@ -189,7 +194,7 @@ class S2ESAReader(Reader):
     # pylint: disable=too-many-locals
     # False positive.
     def _extract_first_band(self, subdataset, i):
-        if self._inputs['geom'] is not None:
+        if self._inputs.ROI is not None:
             self._reproject_geom()
             row_start, col_start, row_stop, col_stop = get_ij_bbox(
                 subdataset,
@@ -214,7 +219,7 @@ class S2ESAReader(Reader):
         fill_value = float(subdataset.tags()['SPECIAL_VALUE_NODATA'])
         # Decode extracted data
         band_array = decode_data(arr, scale_factor, fill_value)
-        if (out_res := self._inputs['out_resolution']) != subdataset.res[0]:
+        if (out_res := self._inputs.out_resolution) != subdataset.res[0]:
             band_array = resample_band_array(band_array, subdataset.res[0],
                                              out_res)
         # Compute projected coordinates
@@ -244,7 +249,7 @@ class S2ESAReader(Reader):
         # Decode extracted data
         band_array = decode_data(arr, scale_factor, fill_value)
         ij_bbox = [row_start, col_start, row_stop, col_stop]
-        if (out_res := self._inputs['out_resolution']) != subdataset.res[0]:
+        if (out_res := self._inputs.out_resolution) != subdataset.res[0]:
             band_array = resize_and_resample_band_array(band_array, ij_bbox,
                                                         subdataset.res[0],
                                                         out_res)

@@ -22,10 +22,10 @@ def readme():
 
 setup(
     name='SISPPEO',
-    version='1.0.0',
+    version='1.1.0',
     description='Satellite Imagery & Signal Processing Packages for Earth Observation',
     long_description=readme(),
-    url='https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo',
+    url='https://github.com/inrae/SISPPEO',
     author='A. Coqué',
     author_email='arthur.coque@inrae.fr',
     license='Apache 2.0',
@@ -45,6 +45,7 @@ setup(
         'pillow',
         'plotly',
         'psutil',
+        'pvlib',
         'pyproj',
         'pyyaml',
         'rasterio',

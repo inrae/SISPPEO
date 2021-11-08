@@ -12,24 +12,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""In this module are defined object factories containing algos, masks and readers."""
+"""Defines dicts containing algos, masks and readers."""
 
-from sisppeo.object_factory import ObjectFactory
-from sisppeo.readers import (GRSReader, L8USGSL1C1Reader, L8USGSL2Reader,
-                             S2ESAReader, S2THEIAReader)
+from sisppeo.readers import (C2RCCReader, GRSReader, L8USGSL1C1Reader,
+                             L8USGSL2Reader, S2ESAReader, S2THEIAReader)
 from sisppeo.utils.registration import (register_algos, register_masks)
 
-algo_catalog = ObjectFactory()
+algo_catalog = {}
 register_algos(algo_catalog)
 
-mask_catalog = ObjectFactory()
+mask_catalog = {}
 register_masks(mask_catalog)
 
-reader_catalog = ObjectFactory()
-reader_catalog.register_builder('S2_ESA_L1C', S2ESAReader)
-reader_catalog.register_builder('S2_ESA_L2A', S2ESAReader)
-reader_catalog.register_builder('S2_THEIA', S2THEIAReader)
-reader_catalog.register_builder('L8_GRS', GRSReader)
-reader_catalog.register_builder('S2_GRS', GRSReader)
-reader_catalog.register_builder('L8_USGS_L1C1', L8USGSL1C1Reader)
-reader_catalog.register_builder('L8_USGS_L2', L8USGSL2Reader)
+reader_catalog = {
+    'S2_ESA_L1C': S2ESAReader,
+    'S2_ESA_L2A': S2ESAReader,
+    'S2_THEIA': S2THEIAReader,
+    'L4_GRS': GRSReader,
+    'L5_GRS': GRSReader,
+    'L7_GRS': GRSReader,
+    'L8_GRS': GRSReader,
+    'S2_GRS': GRSReader,
+    'S2_C2RCC': C2RCCReader,
+    'L8_C2RCC': C2RCCReader,
+    'L8_USGS_L1C1': L8USGSL1C1Reader,
+    'L8_USGS_L2': L8USGSL2Reader
+}
+
+sat_products = reader_catalog.keys()
+theia_masks_names = ('CLM', 'MG2', 'SAT')

@@ -21,6 +21,7 @@ perform resampling operations. There is a reader for each 'product_type'.
 """
 
 from abc import ABC, abstractmethod
+from collections import namedtuple
 from pathlib import Path
 from typing import List, Optional
 
@@ -29,6 +30,9 @@ from pyproj import CRS, Transformer
 from shapely.geometry import shape
 from shapely.ops import transform
 from shapely.wkt import loads
+
+Inputs = namedtuple('Inputs', 'input_product requested_bands ROI')
+ROI = namedtuple('ROI', 'geom srid')
 
 
 class Reader(ABC):
@@ -49,16 +53,9 @@ class Reader(ABC):
                 ROI. 4 keys: geom (a shapely.geom object), shp (a path to an
                 ESRI shapefile), wkt (a path to a wkt file) and srid (an EPSG
                 code).
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
-        self._inputs = {
-            'input_product': input_product,
-            'requested_bands': requested_bands,
-            'geom': _load_geom(geom)
-        }
-        """
-        geom.keys() = ('geometry', 'shp', 'wkt', 'srid')
-        """
+        self._inputs = Inputs(input_product, requested_bands, _load_geom(geom))
         self._intermediate_data = {
             'data': None,
             'metadata': None,
@@ -77,13 +74,13 @@ class Reader(ABC):
 
     def _reproject_geom(self) -> None:
         transformer = Transformer.from_crs(
-            self._inputs['geom']['srid'],
+            self._inputs.ROI.srid,
             self._intermediate_data['crs'].to_epsg(),
             always_xy=True
         )
         self._intermediate_data['geom'] = transform(
             transformer.transform,
-            self._inputs['geom']['geom']
+            self._inputs.ROI.geom
         )
 
 
@@ -105,4 +102,4 @@ def _load_geom(geom_dict):
             srid = CRS.from_wkt(collection.crs_wkt).to_epsg()
     else:
         return None
-    return {'geom': geom, 'srid': srid}
+    return ROI(geom, srid)

@@ -22,14 +22,14 @@ Before its utilisation, an algorithm has to be instantiate with specific
 settings like the product_type of further input products, the calibration
 used, the band used (if needed), etc.
 
-  Typical usage example:
+Example::
 
-  algo = NDVI('L8_GRS')
-  out_array = algo(input_array1, input_array2)
+    algo = NDVI('L8_GRS')
+    out_array = algo(input_array1, input_array2)
 """
 
 from pathlib import Path
-from typing import Dict, Tuple, Union
+from typing import Union
 
 from xarray import DataArray
 
@@ -54,6 +54,7 @@ class Ndvi:
           L3AlgoBuilder and that you must provide in config or when using
           the CLI.
         requested_bands: A list of bands further used by the algorithm.
+        meta: A dict of metadata (calibration name, model coefficients, etc).
     """
     name = 'ndvi'
 
@@ -63,7 +64,7 @@ class Ndvi:
         Args:
             product_type: The type of the input satellite product (e.g.
               S2_ESA_L2A or L8_USGS_L1GT)
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         try:
             self.requested_bands = algo_config[self.name][
@@ -71,10 +72,11 @@ class Ndvi:
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with {self.name}'
             raise InputError(msg) from invalid_product
+        self.meta = {}
 
     def __call__(self, red: DataArray,
                  nir: DataArray,
-                 **_ignored) -> Tuple[DataArray, Dict[str, N]]:
+                 **_ignored) -> DataArray:
         """Runs the algorithm on input arrays (red and nir).
 
         Args:
@@ -84,12 +86,10 @@ class Ndvi:
               of the spectrum (B8 @ 833 nm for S2, B5 @ 865 nm for L8).
 
         Returns:
-            A tuple of:
-              - an array (dimension 1 * N * M) of NDVI values.
-              - an empty dict.
+            A list composed of an array (dimension 1 * N * M) of NDVI values.
         """
         ndvi = (nir - red) / (nir + red)
-        return ndvi, {}
+        return ndvi
 
 
 class Nbr:
@@ -103,6 +103,7 @@ class Nbr:
           L3AlgoBuilder and that you must provide in config or when using
           the CLI.
         requested_bands: A list of bands further used by the algorithm.
+        meta: A dict of metadata (calibration name, model coefficients, etc).
     """
     name = 'nbr'
 
@@ -112,7 +113,7 @@ class Nbr:
         Args:
             product_type: The type of the input satellite product (e.g.
               S2_ESA_L2A or L8_USGS_L1GT)
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         try:
             self.requested_bands = algo_config[self.name][
@@ -120,10 +121,11 @@ class Nbr:
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with {self.name}'
             raise InputError(msg) from invalid_product
+        self.meta = {}
 
     def __call__(self, swir: DataArray,
                  nir: DataArray,
-                 **_ignored) -> Tuple[DataArray, Dict[str, N]]:
+                 **_ignored) -> DataArray:
         """Runs the algorithm on input arrays (nir and swir).
 
         Args:
@@ -132,9 +134,7 @@ class Nbr:
             swir: An array (dimension 1 * N * M) of reflectance in the swir part
               of the spectrum (B12 @ 2202 nm for S2, B7 @ 2200 nm for L8)
         Returns:
-            A tuple of:
-              - an array (dimension 1 * N * M) of NBR values.
-              - an empty dict.
+            An array (dimension 1 * N * M) of NBR values.
         """
         nbr = (nir - swir) / (nir + swir)
-        return nbr, {}
+        return nbr

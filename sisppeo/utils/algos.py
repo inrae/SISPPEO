@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module contains various useful functions used by algorithms."""
+"""Contains various useful functions used by algorithms."""
 
 from pathlib import Path
 from typing import Tuple, Union
@@ -29,24 +29,24 @@ P = Union[str, Path]
 def load_calib(calibration: P,
                default_calibration_file: Path,
                default_calibration_name: str) -> Tuple[dict, str]:
-    """Loads parameters corresponding to those of a given calibration name/file.
+    """Loads parameters for a given calibration name/file.
 
     Args:
         calibration: calibration name or path.
-          1. If 'calibration' is a string, it refers to a calibration included
-          in SISPPEO (this calibration name is an entry of the
-          'default_calibration_file').
-          2. If 'calibration' is a path, it refers to a calibration given by
-          the user, embedded in a standalone file (see the docs for the
-          detailed structure of this file).
-        default_calibration_file: path of the default calibration file (for a
-          given algorithm).
-        default_calibration_name: name of the default calibration (for a given
-          algorithm).
+            1. If 'calibration' is a string, it refers to a calibration
+            included in SISPPEO (this calibration name is an entry of
+            the 'default_calibration_file').
+            2. If 'calibration' is a path, it refers to a calibration
+            given by the user, embedded in a standalone file
+            (see the docs for the detailed structure of this file).
+        default_calibration_file: path of the default calibration file
+            (for a given algorithm).
+        default_calibration_name: name of the default calibration
+            (for a given algorithm).
 
     Returns:
-        A dict of parameters (model coefficients) and the name of the chosen
-        calibration.
+        A dict of parameters (model coefficients) and the name of
+        the chosen calibration.
     """
     if calibration is None:
         with open(default_calibration_file, 'r') as f:
@@ -66,11 +66,11 @@ def load_calib(calibration: P,
 
 
 def producttype_to_sat(product_type: str) -> str:
-    """Returns the name of the satellite corresponding to the given product.
+    """Returns the satellite for the given product_type.
 
     Args:
-        product_type: The type of the input satellite product (e.g.
-              S2_ESA_L2A or L8_USGS_L1)
+        product_type: The type of the input satellite product
+            (e.g. S2_ESA_L2A or L8_USGS_L1)
 
     Returns:
         The name of the satellite that matches the input product_type.

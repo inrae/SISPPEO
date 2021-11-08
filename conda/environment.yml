@@ -1,6 +1,9 @@
 name: sisppeo
+
 channels:
   - conda-forge
+  - defaults
+  
 dependencies:
   - python=3.8
   - pip
@@ -10,16 +13,18 @@ dependencies:
   - datashader
   - fiona
   - lxml
-  - matplotlib
+  - matplotlib-base
   - netcdf4
   - numpy
   - pandas
   - pillow
   - plotly
   - psutil
+  - pvlib-python
   - pyproj
   - pyyaml
   - rasterio
+  - ray-core
   - s2cloudless
   - scikit-image
   - scikit-learn
@@ -28,5 +33,3 @@ dependencies:
   - tqdm
   - xarray
 
-  - pip:
-    - ray

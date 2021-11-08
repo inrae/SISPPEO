@@ -1,6 +1,6 @@
 package:
   name: sisppeo
-  version: 1.0.0
+  version: 1.1.0
 
 source:
   path: ..
@@ -8,32 +8,34 @@ source:
 build:
   noarch: python
   number: 0
-  skip: True # [py<38]
+  script: "python -m pip install . -vv"
   entry_points:
     - sisppeo = sisppeo.cli:cli
 
 requirements:
   host:
-    - python
+    - python >=3.8
     - pip
   run:
-    - python
+    - python >=3.8
     - affine
     - click
     - colorcet
     - datashader
     - fiona
     - lxml
-    - matplotlib
+    - matplotlib-base
     - netcdf4
     - numpy
     - pandas
     - pillow
     - plotly
     - psutil
+    - pvlib-python
     - pyproj
     - pyyaml
     - rasterio
+    - ray-core
     - s2cloudless
     - scikit-image
     - scikit-learn
@@ -42,16 +44,22 @@ requirements:
     - tqdm
     - xarray
 
+  test:
+    imports:
+      - sisppeo
+
 about:
-  home: https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo
-  license: Apache Licence 2.0
-  license_family: APACHE
+  home: https://github.com/inrae/SISPPEO
+  license: Apache-2.0
   license_file: LICENSE
   summary: 'Satellite Imagery & Signal Processing Packages for Earth Observation'
   description: |
-    SISPPEO is a Python package (with a CLI) allowing one to extract synthetic information useful for Earth observation
-    (Water and Land) from satellite optical imagery (e.g, Sentinel-2/MSI, Sentinel-3/OLCI, Landsat 8/OLI...).
+    SISPPEO is an open source project and Python package (with a CLI)
+    allowing one to extract synthetic information useful for Earth observation
+    (Water and Land) from satellite optical imagery (e.g, Sentinel-2/MSI,
+    Sentinel-3/OLCI, Landsat 8/OLI…).
   dev_url: https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo/-/tree/dev
+  doc_url: https://inrae.github.io/SISPPEO
 
 extra:
   recipe-maintainers:

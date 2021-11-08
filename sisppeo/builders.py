@@ -12,33 +12,38 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module the ProductBuilder class.
+"""Contains the ProductBuilder class.
 
 The builder pattern organizes object construction into a set of steps
-(extract_data, apply_algos, get_products, etc). To create an object, you
-execute a series of these steps on a builder object (here, a ProductBuilder
-instance). The important part is that you don’t need to call all of the steps.
-You can call only the steps that are necessary for producing a particular
-configuration of an object.
+(extract_data, apply_algos, get_products, etc). To create an object,
+you execute a series of these steps on a builder object (here,
+a ProductBuilder instance). The important part is that you don’t need
+to call all of the steps. You can call only the steps that are necessary
+for producing a particular configuration of an object.
 
-If the client code needs to assemble a special, fine-tuned L3 or L4 product, it
-can work with the builder directly. On the other hand, the client can delegate
-the assembly to the generate method (or dictely one of the recipes), which
-knows how to use a builder to construct several of the most standard products
-(e.g., L3AlgoProduct, L3MaskProduct, TimeSeries, Matchup, etc).
+If the client code needs to assemble a special, fine-tuned L3
+or L4 product, it can work with the builder directly.
+Otherwise, the user can delegate the assembly to the generate method
+(or dictely one of the recipes), which knows how to use a builder
+to construct several of the most standard products (e.g., L3AlgoProduct,
+L3MaskProduct, TimeSeries, Matchup, etc).
 """
 
 import copy
+from collections import namedtuple
 from datetime import date
 from pathlib import Path
 from typing import List, Optional, Tuple, Union
 
 import numpy as np
 import xarray as xr
+from pyproj import CRS
+
 from sisppeo._version import __version__
 from sisppeo.catalogs import algo_catalog, mask_catalog, reader_catalog
 from sisppeo.products import mask_product, L3AlgoProduct, L3MaskProduct
 from sisppeo.utils.algos import producttype_to_sat
+from sisppeo.utils.builders import get_variables
 from sisppeo.utils.config import (land_algo_config, mask_config,
                                   user_algo_config, user_mask_config,
                                   wc_algo_config)
@@ -52,9 +57,12 @@ mask_config = {**mask_config, **user_mask_config}
 class ProductBuilder:
     """The builder used to create L3 and L4 objects.
 
-    It specifies methods for creating the different parts (/building steps) of
-    the product objects (and provides their implementations).
+    It specifies methods for creating the different parts (or
+    building steps) of the product objects, and provides
+    their implementations.
     """
+    __slots__ = ('_algos', '_masks', '_product_type', '_requested_bands',
+                 '_out_resolution', '_extracted_ds', '_results', '_products')
 
     def __init__(self):
         self._algos = None
@@ -63,7 +71,7 @@ class ProductBuilder:
         self._requested_bands = None
         self._out_resolution = None
         self._extracted_ds = None
-        self._data_vars = None
+        self._results = None
         self._products = None
 
     def set_algos(self,
@@ -78,12 +86,12 @@ class ProductBuilder:
             lst_algo: A list of algorithms to use.
             product_type: The type of the input satellite product (e.g.
                 S2_ESA_L2A or L8_USGS_L1GT).
-            lst_band: A list of "requested_band" args (a param used by some
-                algorithms).
-            lst_calib: A list of "calibration" args (a param used by some
-                algorithms).
-            lst_design: A list of "design" args (a param used by some
-                algorithms).
+            lst_band: A list of "requested_band" args (a param used
+                by some algorithms).
+            lst_calib: A list of "calibration" args (a param used
+                by some algorithms).
+            lst_design: A list of "design" args (a param used
+                by some algorithms).
         """
         algos = []
         requested_bands = set()
@@ -95,39 +103,30 @@ class ProductBuilder:
                 config['calibration'] = lst_calib[i]
             if lst_design is not None and lst_design[i] is not None:
                 config['design'] = lst_design[i]
-            algo = algo_catalog.create(algo_name, product_type=product_type,
-                                       **config)
+            algo = algo_catalog[algo_name](product_type=product_type, **config)
             algos.append(algo)
             requested_bands = requested_bands.union(algo.requested_bands)
-        self._algos = algos
-        self._requested_bands = list(requested_bands)
+        self._algos = tuple(algos)
+        self._requested_bands = tuple(requested_bands)
 
     def set_masks(self, lst_masks: List[str], product_type: str) -> None:
         """Creates mask objects.
 
         Args:
             lst_masks: A list of masks to use.
-            product_type: The type of the input satellite product (e.g.
-                S2_ESA_L1C).
+            product_type: The type of the input satellite product
+                (e.g. S2_ESA_L1C).
         """
         masks = []
         requested_bands = set()
         for mask_name in lst_masks:
-            mask_func = mask_catalog.serve(mask_name)
+            mask_func = mask_catalog[mask_name]
             masks.append((mask_name, mask_func))
             requested_bands = requested_bands.union(
                 mask_config[mask_name][producttype_to_sat(product_type)])
-        self._masks = masks
+        self._masks = tuple(masks)
         self._product_type = product_type
-        self._requested_bands = list(requested_bands)
-
-    def set_bands(self, requested_bands: List[str]):
-        """Stores the bands to be used (when creating matchups).
-
-        Args:
-            requested_bands: A list of bands to be extracted.
-        """
-        self._requested_bands = requested_bands
+        self._requested_bands = tuple(requested_bands)
 
     @staticmethod
     def _set_resolution(product_type: str,
@@ -188,18 +187,19 @@ class ProductBuilder:
                      geom: Optional[dict] = None, **kwargs) -> None:
         """Extracts (meta)data from the input product.
 
-        Selects the right Reader and use it to extract the needed bands and
-        metadata. Then, creates and returns a xr.Dataset containing these
-        information.
+        Selects the right Reader and use it to extract the needed bands
+        and metadata. Then, creates and returns a xr.Dataset containing
+        these information.
 
         Args:
-            product_type: The type of the input satellite product (e.g.
-                "S2_ESA_L2A" or "L8_USGS_L1").
+            product_type: The type of the input satellite product
+                (e.g. "S2_ESA_L2A" or "L8_USGS_L1").
             input_product: The path of the input product (multispectral
                 spaceborne imagery).
-            geom: Optional; A dict containing geographical information that
-                define the ROI. 4 keys: geom (a shapely.geom object), shp (a
-                path to an ESRI shapefile), wkt (a path to a wkt file) and srid
+            geom: Optional; A dict containing geographical information
+                that define the ROI.
+                4 keys: geom (a shapely.geom object), shp (a path to
+                an ESRI shapefile), wkt (a path to a wkt file) and srid
                 (an EPSG code).
             kwargs: Args specific to the selected Reader.
         """
@@ -212,12 +212,12 @@ class ProductBuilder:
             kwargs.pop('processing_resolution', None)
         )
         self._out_resolution = o_res
-        reader = reader_catalog.create(product_type,
-                                       input_product=input_product,
-                                       requested_bands=requested_bands,
-                                       geom=geom,
-                                       out_resolution=p_res,
-                                       **kwargs)
+        reader = reader_catalog[product_type](input_product=input_product,
+                                              product_type=product_type,
+                                              requested_bands=requested_bands,
+                                              geom=geom,
+                                              out_resolution=p_res,
+                                              **kwargs)
         reader.extract_bands()
         reader.create_ds()
         self._extracted_ds = reader.dataset
@@ -225,30 +225,37 @@ class ProductBuilder:
     @staticmethod
     def _compute_algo(algo,
                       input_dataarrays: List[xr.DataArray],
-                      data_type: str) -> Tuple[xr.DataArray, dict]:
-        out_dataarray = algo(*input_dataarrays, data_type=data_type)
-        np.nan_to_num(out_dataarray, False, np.nan, np.nan, np.nan)
-        long_name = algo_config[algo.name]['long_name']
-        out_dataarray.attrs.update({
-            'grid_mapping': 'crs',
-            'long_name': long_name,
-            **algo.meta
-        })
-        out_dataarray.name = algo.name
-        return out_dataarray
+                      data_type: str,
+                      epsg_code: int) -> xr.Dataset:
+        output = algo(*input_dataarrays, data_type=data_type,
+                      epsg_code=epsg_code)
+        variables, long_names = get_variables(algo_config, algo.name)
+        if len(variables) == 1:
+            output = [output]
+        out_dataarrays = {}
+        for out_dataarray, variable, long_name in zip(output, variables,
+                                                      long_names):
+            np.nan_to_num(out_dataarray, False, np.nan, np.nan, np.nan)
+            out_dataarray.attrs.update({
+                'grid_mapping': 'crs',
+                'long_name': long_name,
+                **algo.meta
+            })
+            out_dataarray.name = variable
+            out_dataarrays[variable] = out_dataarray
+        return xr.Dataset(out_dataarrays)
 
     def compute_algos(self) -> None:
         """Runs every algorithms using extracted data and stores the results."""
-        res = []
+        out_algos = {}
         data_type = self._extracted_ds.attrs['data_type']
+        epsg_code = CRS.from_cf(self._extracted_ds.crs.attrs).to_epsg()
         for algo in self._algos:
             input_dataarrays = [self._extracted_ds[band].copy()
                                 for band in algo.requested_bands]
-            res.append(self._compute_algo(algo, input_dataarrays, data_type))
-        data_vars = {}
-        for out_dataarray in res:
-            data_vars[out_dataarray.name] = out_dataarray
-        self._data_vars = data_vars
+            out_algos[algo.name] = self._compute_algo(algo, input_dataarrays,
+                                                      data_type, epsg_code)
+        self._results = out_algos
 
     @staticmethod
     def _compute_mask(mask_func,
@@ -266,16 +273,17 @@ class ProductBuilder:
         """Runs every masks using extracted data and stores the results."""
         ds_res = (self._extracted_ds.x.values[1]
                   - self._extracted_ds.x.values[0])
-        res = []
+        out_masks = []
         for mask_name, mask_func in self._masks:
             input_dataarrays = [
-                copy.deepcopy(self._extracted_ds[band])
-                for band in mask_config[mask_name][producttype_to_sat(self._product_type)]
+                copy.deepcopy(self._extracted_ds[band]) for band
+                in mask_config[mask_name][producttype_to_sat(self._product_type)]
             ]
-            res.append(self._compute_mask(mask_func, input_dataarrays,
-                                          ds_res, self._out_resolution))
-        data_vars = {}
-        for (mask_name, _), (out_ndarray, params) in zip(self._masks, res):
+            out_masks.append(self._compute_mask(mask_func, input_dataarrays,
+                                                ds_res, self._out_resolution))
+        datasets = {}
+        for (mask_name, _), (out_ndarray, params) in zip(self._masks,
+                                                         out_masks):
             if self._out_resolution is None or self._out_resolution == ds_res:
                 out_dataarray = self._extracted_ds[self._requested_bands[0]].copy(data=out_ndarray)
             else:
@@ -300,18 +308,27 @@ class ProductBuilder:
             })
             out_dataarray.attrs.update(params)
             if self._out_resolution is not None and ds_res != self._out_resolution:
-                out_dataarray.attrs['processing_resolution'] = f'{ds_res}m'
+                out_dataarray.attrs['processing_resolution'] = f'{int(ds_res)}m'
             out_dataarray.name = mask_name
-            data_vars[mask_name] = out_dataarray
-        self._data_vars = data_vars
+            datasets[mask_name] = xr.Dataset({mask_name: out_dataarray})
+        self._results = datasets
 
     def create_l3products(self, product_type: str) -> None:
         """Creates the wanted products and stores them.
 
         Args:
-            product_type: The type of the input satellite product (e.g.
-                "S2_ESA_L2A" or "L8_USGS_L1").
+            product_type: The type of the input satellite product
+                (e.g. "S2_ESA_L2A" or "L8_USGS_L1").
         """
+        class Products(namedtuple('Products', (key.replace('-', '_')
+                                               for key in self._results))):
+            __slots__ = ()
+
+            def __repr__(self):
+                tmp = (f'{_}=<{str(self[i].__class__.mro()[0])[8:-2]}>'
+                       for i, _ in enumerate(self._fields))
+                return f'Products({", ".join(tmp)})'
+                
         if self._algos is not None:
             product = L3AlgoProduct
         elif self._masks is not None:
@@ -320,19 +337,20 @@ class ProductBuilder:
             msg = 'You need to provide at least one algo or mask to use.'
             raise InputError(msg)
         products = []
-        for data_var in self._data_vars:
-            dataset = self._data_vars[data_var].to_dataset()
+        for algo in self._results:
+            dataset = self._results[algo]
             for key in ('crs', 'product_metadata'):
                 dataset[key] = self._extracted_ds[key]
             dataset.attrs = {
                 'Convention': 'CF-1.8',
-                'title': f'{data_var} from {product_type}',
-                'history': f'created with SISPPEO (v{__version__}) on {date.today().isoformat()}'
+                'title': f'{algo} from {product_type}',
+                'history': f'created with SISPPEO (v{__version__}) on '
+                           + date.today().isoformat()
             }
             dataset.attrs.update(self._extracted_ds.attrs)
             dataset.attrs.pop('data_type', None)
             products.append(product(dataset))
-        self._products = products
+        self._products = Products(*products)
 
     def mask_l3algosproduct(self,
                             masks_types: List[str],
@@ -341,18 +359,28 @@ class ProductBuilder:
         """Masks the previously generated products.
 
         Args:
-            masks_types: The list of the type of the masks to use. Values can
-                either be "IN" (area to include) or "OUT" (area to exclude).
+            masks_types: The list of the type of the masks to use.
+                Values can either be "IN" (area to include) or "OUT"
+                (area to exclude).
             masks: Optional; A list of masks to use.
-            masks_paths: Optional; A list of paths (of L3MaskProducts) to use.
+            masks_paths: Optional; A list of paths (of L3MaskProducts)
+                to use.
         """
         if masks_paths is not None:
             masks = [L3MaskProduct.from_file(path) for path in masks_paths]
         for l3_algo in self._products:
             mask_product(l3_algo, masks, masks_types, True)
 
-    def get_products(self) -> List:
+    def get_products(self) -> namedtuple:
         """Returns products and resets itself."""
         products = self._products
-        self.__dict__ = {}
+        # Reset attributes
+        self._algos = None
+        self._masks = None
+        self._product_type = None
+        self._requested_bands = None
+        self._out_resolution = None
+        self._extracted_ds = None
+        self._results = None
+        self._products = None
         return products

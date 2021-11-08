@@ -22,7 +22,7 @@ Before its utilisation, an algorithm has to be instantiate with specific
 settings like the product_type of further input products, the calibration
 used, the band used (if needed), etc.
 
-    Typical usage example:
+Example:
 
     algo = ACDOMBrezonik('S2_GRS', 'Brezonik_2015')
     out_array = algo(input_array, 'rrs')
@@ -75,7 +75,7 @@ class ACDOMBrezonik:
                 S2_ESA_L2A or L8_USGS_L1GT)
             calibration: The calibration (set of parameters) used by the
                 algorithm (default=_default_calibration_name).
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         try:
             self.requested_bands = algo_config[self.name][

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module contains custom exceptions used in other parts of the code."""
+"""Contains custom exceptions used in other parts of the code."""
 
 
 class GeometryError(Exception):

@@ -22,7 +22,7 @@ Before its utilisation, an algorithm has to be instantiate with specific
 settings like the product_type of further input products, the calibration
 used, the band used (if needed), etc.
 
-    Typical usage example:
+Example:
 
     algo1 = CHLAGons('S2_GRS', 'Gons_2004')
     out_array1 = algo1(red_array, rededge_array, nir_array, 'rho')
@@ -77,7 +77,7 @@ class CHLAGons:
                 S2_ESA_L2A or L8_USGS_L1GT)
             calibration: Optional; The calibration (set of parameters) used by
                 the algorithm (default=_default_calibration_name).
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         try:
             self.requested_bands = algo_config[self.name][
@@ -143,7 +143,7 @@ class CHLAGons:
 
 
 class CHLAGitelson:
-    """Chlorophyll-a concentration (in mg/m-3) from 3 red bands after Gitelson et al., 2008
+    """Chlorophyll-a concentration (in mg/m3) from 3 red bands after Gitelson et al., 2008
 
     Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from
     surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
@@ -174,7 +174,7 @@ class CHLAGitelson:
                 S2_ESA_L2A or L8_USGS_L1GT)
             calibration: The calibration (set of parameters) used by the
                 algorithm (default=_default_calibration_name).
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         self._design = design
         try:
@@ -275,7 +275,7 @@ class CHLAGurlin:
                 S2_ESA_L2A or L8_USGS_L1GT)
             calibration: The calibration (set of parameters) used by the
                 algorithm (default=_default_calibration_name).
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         try:
             self.requested_bands = algo_config[self.name][
@@ -359,7 +359,7 @@ class CHLAOC:
                 S2_ESA_L2A or L8_USGS_L1GT)
             calibration: The calibration (set of parameters) used by the
                 algorithm (default=_default_calibration_name).
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         try:
             self.requested_bands = algo_config[self.name][
@@ -429,7 +429,7 @@ class CHLAOC:
 
 
 class CHLALins:
-    """Chlorophyll-a concentration (in mg/m-3) from NIR/Red bands ratio after Lins et al., 2017
+    """Chlorophyll-a concentration (in mg/m3) from NIR/Red bands ratio after Lins et al., 2017
 
     Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from
     surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
@@ -458,7 +458,7 @@ class CHLALins:
                 S2_ESA_L2A or L8_USGS_L1GT)
             calibration: The calibration (set of parameters) used by the
                 algorithm (default=_default_calibration_name).
-            **_ignored: Unused kwargs send to trash.
+            **_ignored: Unused kwargs sent to trash.
         """
         try:
             self.requested_bands = algo_config[self.name][
@@ -507,3 +507,57 @@ class CHLALins:
         chla = self.p * (ref_rededge / ref_red) + self.q
         chla = chla.where((chla >= 0) & (chla <= self._valid_limit))
         return chla
+
+
+class NDCI:
+    """Normalized Difference Chlorophyll Index
+
+    NDCI from surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
+    in sr-1) at 665nm B4 MSI, 704nm B5 MSI
+
+    Attributes:
+        name: The name of the algorithm used. This is the key used by
+            L3AlgoBuilder and that you must provide in config or when using
+            the CLI.
+        requested_bands: A list of bands further used by the algorithm.
+        meta: An empty dict, since there is no parametrisation for NDWI.
+    """
+    name = 'ndci'
+
+    def __init__(self, product_type: str, **_ignored) -> None:
+        """Inits an 'Ndci' instance for a given 'product_type'.
+
+        Args:
+            product_type: The type of the input satellite product (e.g.
+              S2_ESA_L2A or L8_USGS_L1GT)
+            **_ignored: Unused kwargs send to trash.
+        """
+        try:
+            self.requested_bands = algo_config[self.name][
+                producttype_to_sat(product_type)]
+        except KeyError as unvalid_product:
+            msg = f'{product_type} is not allowed with {self.name}'
+            raise InputError(msg) from unvalid_product
+        self.meta = {}
+
+    def __call__(self,
+                 ref_red: xr.DataArray,
+                 ref_nir: xr.DataArray,
+                 **_ignored) -> xr.DataArray:
+        """Runs the algorithm on the input array ('ref').
+
+        Args:
+            ref_red: An array (dimension 1 * N * M) of 'data_type'.
+            ref_nir: An array (dimension 1 * N * M) of 'data_type'.
+            data_type: Either 'rho' or 'rrs' (respectively surface reflectance
+                and remote sensing reflectance).
+            **_ignored: Unused kwargs sent to trash.
+
+        Returns:
+            An array (dimension 1 * N * M) of NDCI values.
+        """
+        np.warnings.filterwarnings('ignore')
+        red = ref_red.where(ref_red >= 0)
+        nir = ref_nir.where(ref_nir >= 0)
+
+        return (nir - red) / (nir + red)

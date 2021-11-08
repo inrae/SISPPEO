@@ -15,24 +15,25 @@
 """This module contains the TimeSeries class.
 
 A TimeSeries object is a new kind of product, made from either L1, L2, or L3
-products, and allowing one to build a time series.
-Masks can be used to clip data.
-Basic statistics can be calculated.
-Generic plots can easily be made.
+products, and allowing one to build a time series:
 
-    Typical usage example:
+* Masks can be used to clip data.
+* Basic statistics can be calculated.
+* Generic plots can easily be made.
+
+Example::
 
     paths = [<first S2_ESA_L2A product>, <second S2_ESA_L2A product>, ...,
            <n-th S2_ESA_L2A product>]
     mask_paths = [
-      [<first water_mask>, <second water_mask>, ..., <n-th water_mask>],
-      [<first mask2>
+        [<first water_mask>, <second water_mask>, ..., <n-th water_mask>],
+        [<first mask2>
     config = {
-      'paths': paths,
-      'product_type': 'S2_ESA_L2A',
-      'requested_bands': ['B2', 'B3', 'B4', 'B5', 'B6'],
-      'wkt': wkt,
-      'srid': 4326,
+        'paths': paths,
+        'product_type': 'S2_ESA_L2A',
+        'requested_bands': ['B2', 'B3', 'B4', 'B5', 'B6'],
+        'wkt': wkt,
+        'srid': 4326,
     }
     S2L2A_ts = factory.create('TS', **config)
     S2L2A_ts.compute_stats(<filename>)
@@ -41,8 +42,9 @@ Generic plots can easily be made.
 
 import warnings
 from copy import deepcopy
+from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Optional, Tuple, Union
+from typing import Iterable, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
@@ -50,13 +52,15 @@ import plotly.figure_factory as ff
 import plotly.graph_objects as go
 import plotly.io as pio
 import xarray as xr
+from PIL import Image, ImageDraw, ImageFont
 from plotly.subplots import make_subplots
-from pyproj import CRS, Transformer
-from skimage.draw import disk
 from tqdm import tqdm
 
+from sisppeo.utils.config import resources
 from sisppeo.utils.lazy_loader import LazyLoader
-from sisppeo.utils.products import get_grid, CoordinatesMixin, get_enc
+from sisppeo.utils.products import (get_grid, get_enc, normalize_arr,
+                                    CoordinatesMixin)
+from sisppeo.utils.readers import resample_band_array
 
 pio.templates.default = 'simple_white'
 warnings.filterwarnings('ignore', category=xr.SerializationWarning)
@@ -69,6 +73,7 @@ N = Union[int, float]
 P = Union[Path, str]
 
 
+@dataclass
 class TimeSeries(CoordinatesMixin):
     """A 'L4' product, made from either L1, L2, or L3 products.
 
@@ -79,25 +84,12 @@ class TimeSeries(CoordinatesMixin):
 
     Attributes:
         dataset: A dataset containing one or more 3D-dataarrays.
-        data_vars: List of names of dataarrays containing "interesting
-            information" (i.e., not the metadata and crs variables).
     """
+    __slots__ = 'dataset',
+    dataset: xr.Dataset
 
-    def __init__(self,
-                 dataset: xr.Dataset,
-                 data_vars: Optional[List[str]] = None) -> None:
-        """Inits TimeSeries with a dataset and a list of data_var.
-
-        Args:
-            dataset: A dataset containing one or more 3D-dataarrays.
-            data_vars: Optional; List of names of dataarrays containing "interesting
-                information" (i.e., not the metadata and crs variables).
-        """
-        self.dataset = dataset.sortby('time')
-        if data_vars is None:
-            data_vars = [data_var for data_var in self.dataset.data_vars
-                         if data_var not in ('crs', 'product_metadata')]
-        self.data_vars = data_vars
+    def __post_init__(self):
+        self.dataset = self.dataset.sortby('time')
 
     @classmethod
     def from_file(cls, filename: Path):
@@ -108,7 +100,7 @@ class TimeSeries(CoordinatesMixin):
 
         Returns:
             A TimeSeries object (i.e. a 3D dataset : time, x, y).
-            """
+        """
         return TimeSeries(xr.open_dataset(filename))
 
     @classmethod
@@ -123,12 +115,11 @@ class TimeSeries(CoordinatesMixin):
         """
         ts = xr.open_mfdataset(paths, concat_dim='time', combine='nested',
                                join='inner', data_vars='minimal',
-                               coords='minimal', compat='override',
-                               parallel=True)
+                               coords='minimal', compat='override')
         return TimeSeries(ts)
 
     @classmethod
-    def from_l3products(cls, lst: list):
+    def from_l3products(cls, lst: Iterable):
         """Load and merge a list of L3 products.
 
         Args:
@@ -147,6 +138,12 @@ class TimeSeries(CoordinatesMixin):
     def title(self) -> str:
         """Returns the title of the underlying dataset."""
         return self.dataset.attrs.get('title')
+
+    @property
+    def data_vars(self):
+        """Returns a list of DataArrays corresponding to variables."""
+        return [data_var for data_var in self.dataset.data_vars
+                if data_var not in ('crs', 'product_metadata')]
 
     @property
     def start_date(self) -> pd.Timestamp:
@@ -170,71 +167,6 @@ class TimeSeries(CoordinatesMixin):
         })
         self.dataset.to_netcdf(filename, encoding=enc)
 
-    def extract_point(self,
-                      data_var: xr.DataArray,
-                      coordinates: Tuple[N, N],
-                      buffer: Optional[int] = None,
-                      epsg: int = 4326,
-                      mode: str = 'xy') -> np.array:
-        """Returns value(s) at the given coordinates.
-
-        Args:
-            data_var: The DataArray of interest (e.g., a band, aCDOM, etc).
-            coordinates: A tuple of geographic or projected coordinates; see
-                "mode".
-            buffer: Optional; The radius (in pixels) of the circle (centered on
-                coordinates) to extract. Defaults to None.
-            epsg: Optional; The EPSG code. Defaults to 4326.
-            mode: Optional; Either 'xy' or 'latlon'. Defaults to 'xy'.
-        """
-        if mode == 'latlon' or epsg != 4326:
-            transformer = Transformer.from_crs(
-                CRS.from_epsg(epsg),
-                CRS.from_wkt(self.dataset.crs.attrs['crs_wkt'])
-            )
-            coordinates = transformer.transform(*coordinates)
-        i, j = self.index(*coordinates)
-        if buffer is None:
-            res = self.dataset[data_var].isel(y=i, x=j).values
-        else:
-            res = self.dataset[data_var].isel(
-                y=slice(i - buffer, i + buffer + 1),
-                x=slice(j - buffer, j + buffer + 1)
-            ).values
-            mask = np.zeros_like(res)
-            rr, cc = disk((buffer, buffer), buffer + 0.5)
-            mask[rr, cc] = 1
-            res *= mask
-        return res
-
-    def extract_points(self,
-                       data_var: xr.DataArray,
-                       lst_coordinates: List[Tuple[N, N]],
-                       buffer: Optional[int] = None,
-                       epsg: int = 4326,
-                       mode: str = 'xy') -> list:
-        """Returns value(s) at each tuple of coordinates of the given list.
-
-        Args:
-            data_var: The DataArray of interest (e.g., a band, aCDOM, etc).
-            lst_coordinates: A list of tuples of geographic or projected
-                coordinates; see "mode".
-            buffer: Optional; The radius (in pixels) of the circle (centered on
-                coordinates) to extract. Defaults to None.
-            epsg: Optional; The EPSG code. Defaults to 4326.
-            mode: Optional; Either 'xy' or 'latlon'. Defaults to 'xy'.
-        """
-        if mode == 'latlon' or epsg != 4326:
-            transformer = Transformer.from_crs(
-                CRS.from_epsg(epsg),
-                CRS.from_wkt(self.dataset.crs.attrs['crs_wkt'])
-            )
-            lst_coordinates = [transformer.transform(*coordinates)
-                               for coordinates in lst_coordinates]
-        res = [self.extract_point(data_var, coordinates, buffer)
-               for coordinates in lst_coordinates]
-        return res
-
     def compute_stats(self, filename: P, plot: bool = True) -> None:
         """Computes (and save on disk) statistics about embedded data at each date.
 
@@ -254,7 +186,7 @@ class TimeSeries(CoordinatesMixin):
                 q1 = float(
                     self.dataset[var].sel(time=str(date)).quantile(0.25)
                 )
-                median = float(self.dataset[var].sel(time=str(date)).median())
+                median = np.nanmedian(self.dataset[var].sel(time=str(date)).values)
                 q3 = float(
                     self.dataset[var].sel(time=str(date)).quantile(0.75)
                 )
@@ -268,10 +200,71 @@ class TimeSeries(CoordinatesMixin):
             df = pd.concat(lst_series, axis=1).transpose()
             if plot:
                 lst_df.append(df)
-            df.to_csv(f'{filename}_{var}', index_label='date')
+            df.to_csv(f'{filename}_{var}.csv', index_label='date')
         if plot:
             for df in lst_df:
                 print(df)
+
+    def _grayscale_timelapse(self, data_var: str, filename: P,
+                             out_res: Optional[int] = None, write_time: bool = True):
+        min_ = np.nanmin(self.dataset[data_var].values)
+        max_ = np.nanmax(self.dataset[data_var].values)
+        lst_img = [Image.fromarray(normalize_arr(
+            cond_resample(self.dataset[data_var].isel(time=i).values, self.res,
+                          out_res), min_, max_
+        ).astype(np.uint8)) for i in range(len(self.dataset.time))]
+        if write_time:
+            font = ImageFont.truetype(str(resources / 'fonts/Ubuntu-R.ttf'),
+                                      32)
+            for i, img in enumerate(lst_img):
+                draw = ImageDraw.Draw(img)
+                draw.text((10, img.height-10),
+                          self.dataset.get_index('time')[i].isoformat(),
+                          255, font, 'lb', stroke_width=2, stroke_fill=127)
+        lst_img[0].save(filename, save_all=True, append_images=lst_img[1:],
+                        duration=1500, optimize=True)
+
+    def _rgb_timelapse(self, data_vars: List[str], filename: P,
+                       out_res: Optional[int] = None, write_time: bool = True):
+        min_ = {data_var: np.nanmin(self.dataset[data_var].values)
+                for data_var in data_vars}
+        max_ = {data_var: np.nanmax(self.dataset[data_var].values)
+                for data_var in data_vars}
+        lst_img = [Image.fromarray(np.stack([normalize_arr(
+            cond_resample(self.dataset.isel(time=i)[data_var].values, self.res,
+                          out_res), min_[data_var], max_[data_var]
+        ).astype(np.uint8) for data_var in data_vars], axis=-1), mode='RGB')
+                   for i in range(len(self.dataset.time))]
+        if write_time:
+            font = ImageFont.truetype(str(resources / 'fonts/Ubuntu-R.ttf'),
+                                      32)
+            for i, img in enumerate(lst_img):
+                draw = ImageDraw.Draw(img)
+                draw.text(
+                    (10, img.height-10),
+                    self.dataset.get_index('time')[i].isoformat(),
+                    'yellow', font, 'lb', stroke_width=2, stroke_fill='red'
+                )
+        lst_img[0].save(filename, save_all=True, append_images=lst_img[1:],
+                        duration=1500, optimize=True)
+
+    def timelapse(self, data_vars: Union[str, List[str]], filename: P,
+                  out_res: Optional[int] = None, write_time: bool = True):
+        """Creates a timelapse and save it on disk (as a GIF file).
+
+        Args:
+            data_vars: The data_var(s) to plot; 1 for a grayscale image, and a
+                list of 3 for a RGB one.
+            filename: The path of the output gif.
+            out_res: The resolution of the timelapse; must be coarser than the
+                one of the time series.
+            write_time: If True, the corresponding date will be written on each
+                frame.
+        """
+        if isinstance(data_vars, str):
+            self._grayscale_timelapse(data_vars, filename, out_res, write_time)
+        else:
+            self._rgb_timelapse(data_vars, filename, out_res, write_time)
 
     def _plot_1d_1var(self, data_var, lst_coordinates, buffer=None, epsg=4326,
                       mode='xy'):
@@ -794,3 +787,11 @@ def mask_time_series(ts_algo: TimeSeries,
     if not inplace:
         return ts_algo
     return None
+
+
+def cond_resample(arr, in_res, out_res):
+    """See resample_band_array(...)."""
+    if out_res is None or in_res == out_res:
+        return arr
+    else:
+        return resample_band_array(arr, in_res, out_res, False)

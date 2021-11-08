@@ -14,7 +14,7 @@
 
 """This module contains a reader for L8_USGS_L1C1 products.
 
-    Typical usage example:
+Example::
 
     reader = L8USGSL1C1Reader(**config)
     reader.extract_bands()
@@ -54,7 +54,7 @@ class L8USGSL1C1Reader(Reader):
         """See base class."""
         # Check if data are compressed
         compressed = False
-        if self._inputs['input_product'].suffix in ('.tgz', '.gz'):
+        if self._inputs.input_product.suffix in ('.tgz', '.gz'):
             compressed = True
 
         # Load metadata
@@ -62,17 +62,17 @@ class L8USGSL1C1Reader(Reader):
 
         # Filter bands
         if compressed:
-            root_path = format_zippath(self._inputs['input_product'])
-            with tarfile.open(self._inputs['input_product']) as archive:
+            root_path = format_zippath(self._inputs.input_product)
+            with tarfile.open(self._inputs.input_product) as archive:
                 requested_bands = [
                     (root_path + [_ for _ in archive.getnames()
                                   if _.endswith(f'_{band}.TIF')][0], band)
-                    for band in self._inputs['requested_bands']
+                    for band in self._inputs.requested_bands
                 ]
         else:
             requested_bands = [
-                (list(self._inputs['input_product'].glob(f'*_{band}.TIF'))[0],
-                 band) for band in self._inputs['requested_bands']
+                (list(self._inputs.input_product.glob(f'*_{band}.TIF'))[0],
+                 band) for band in self._inputs.requested_bands
             ]
 
         # Extract data
@@ -150,13 +150,13 @@ class L8USGSL1C1Reader(Reader):
     # MTL is the name given by the USGS to the file containing metadata.
     def _load_metadata_from_MTL(self, compressed):
         if compressed:
-            with tarfile.open(self._inputs['input_product']) as archive:
+            with tarfile.open(self._inputs.input_product) as archive:
                 path = [_ for _ in archive.getnames()
                         if _.endswith('MTL.txt')][0]
                 with io.TextIOWrapper(archive.extractfile(path)) as f:
                     lines = f.readlines()
         else:
-            path = list(self._inputs['input_product'].glob('*MTL.txt'))[0]
+            path = list(self._inputs.input_product.glob('*MTL.txt'))[0]
             with open(path) as f:
                 lines = f.readlines()
         metadata = defaultdict(dict)
@@ -185,7 +185,7 @@ class L8USGSL1C1Reader(Reader):
     # pylint: disable=too-many-locals
     # More readable when creating an 'out_res' alias.
     def _extract_first_band(self, subdataset, rad_coefs):
-        if self._inputs['geom'] is not None:
+        if self._inputs.ROI is not None:
             self._reproject_geom()
             row_start, col_start, row_stop, col_stop = get_ij_bbox(
                 subdataset,
