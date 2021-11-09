@@ -9,9 +9,9 @@
   <img title="logos" src="assets/logo_merged.png" width="834">
 </div>
 
-[![Anaconda-Server Badge](https://anaconda.org/conda-forge/sisppeo/badges/version.svg)](https://anaconda.org/conda-forge/sisppeo)
-[![Anaconda-Server Badge](https://anaconda.org/conda-forge/sisppeo/badges/downloads.svg)](https://anaconda.org/conda-forge/sisppeo)
-[![Anaconda-Server Badge](https://anaconda.org/conda-forge/sisppeo/badges/license.svg)](https://anaconda.org/conda-forge/sisppeo)
+[![Conda (channel only)](https://img.shields.io/conda/vn/conda-forge/sisppeo)](https://anaconda.org/conda-forge/sisppeo)
+[![Conda](https://img.shields.io/conda/dn/conda-forge/sisppeo)](https://anaconda.org/conda-forge/sisppeo)
+[![Conda - License](https://img.shields.io/conda/l/conda-forge/sisppeo)](https://www.apache.org/licenses/LICENSE-2.0)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4639630.svg)](https://doi.org/10.5281/zenodo.4639630)
 
 ## Content
