@@ -30,7 +30,8 @@ import copy
 from collections import namedtuple
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
-
+from logging.handlers import RotatingFileHandler
+import logging
 import psutil
 import ray
 
@@ -56,6 +57,8 @@ def create_l3algoproducts(input_product: Path,
                           save: bool = False,
                           dirname: Optional[Path] = None,
                           filenames: Optional[List[Union[str, Path]]] = None,
+                          chain_version: Optional[str] = None,
+                          product_counter: Optional[str] = None,
                           **kwargs) -> Tuple[L3AlgoProduct]:
     """Returns a list of L3AlgoProducts (one per algo in lst_algo).
 
@@ -98,7 +101,7 @@ def create_l3algoproducts(input_product: Path,
             builder.mask_l3algosproduct(lst_l3mask_type,
                                         masks_paths=lst_l3mask_path)
         else:
-            print('You should provide a list of either L3MaskProducts or '
+            logging.info('You should provide a list of either L3MaskProducts or '
                   'paths to masks (in netCDF format).')
     products = builder.get_products()
 
@@ -108,9 +111,11 @@ def create_l3algoproducts(input_product: Path,
                 input_product, product_type,
                 kwargs.get('code_site', None), geom
             )
+            logging.info(product_counter)
             for product in products:
-                filename = generate_l3_filename(product, code_image, source,
-                                                roi)
+                filename = generate_l3_filename(product, code_image, source, roi,
+                                                chain_version, product_counter)
+                logging.info("The output dirname is : "+str(dirname))
                 if dirname is not None:
                     filename = dirname / filename
                 product.save(filename)
@@ -134,6 +139,8 @@ def _mp_l3algoproducts(input_product: Path,
                        flags: Optional[bool] = None,
                        geom: Optional[dict] = None,
                        out_res: Optional[int] = None,
+                       chain_version: Optional[str] = None,
+                       product_counter: Optional[str] = None,
                        **kwargs) -> Tuple[L3AlgoProduct]:
     suppl_config = {
         'theia_bands': theia_bands,
@@ -158,6 +165,8 @@ def create_l3maskproducts(input_product: Path,
                           save: bool = False,
                           dirname: Optional[Path] = None,
                           filenames: Optional[List[Union[str, Path]]] = None,
+                          chain_version: Optional[str] = None,
+                          product_r: Optional[str] = None,
                           **kwargs) -> Tuple[L3MaskProduct]:
     """Returns a list of L3MaskProducts (one per mask in lst_mask).
 
@@ -192,7 +201,7 @@ def create_l3maskproducts(input_product: Path,
             )
             for product in products:
                 filename = generate_l3_filename(product, code_image, source,
-                                                roi)
+                                                roi, chain_version, produduct_counter)
                 if dirname is not None:
                     filename = dirname / filename
                 product.save(filename)
@@ -214,6 +223,8 @@ def _mp_l3maskproducts(input_product: Path,
                        geom: dict = None,
                        out_res: Optional[int] = None,
                        proc_res: Optional[int] = None,
+                       chain_version: Optional[str] = None,
+                       product_counter: Optional[str] = None,
                        **kwargs) -> Tuple[L3MaskProduct]:
     suppl_config = {
         'theia_bands': theia_bands,
@@ -247,6 +258,8 @@ def create_batch_l3algoproducts(input_products: List[Path],
                                 save: bool = False,
                                 dirname: Optional[Path] = None,
                                 filenames: Optional[List[Union[str, Path]]] = None,
+                                chain_version: Optional[str] = None,
+                                product_counter: Optional[str] = None,
                                 **kwargs) -> Tuple[Tuple[L3AlgoProduct]]:
     """Returns a list of lists of L3AlgoProducts.
 
@@ -346,7 +359,7 @@ def create_batch_l3algoproducts(input_products: List[Path],
                 )
                 for product in products:
                     filename = generate_l3_filename(product, code_image,
-                                                    source, roi)
+                                                    source, roi, chain_version, product_counter)
                     if dirname is not None:
                         filename = dirname / filename
                     product.save(filename)
@@ -374,6 +387,8 @@ def create_batch_l3maskproducts(input_products: List[Path],
                                 save: bool = False,
                                 dirname: Optional[Path] = None,
                                 filenames: Optional[List[Union[str, Path]]] = None,
+                                chain_version: Optional[str] = None,
+                                product_counter: Optional[str] = None,
                                 **kwargs) -> Tuple[Tuple[L3MaskProduct]]:
     """Returns a list of lists of L3MaskProducts.
 
@@ -462,7 +477,7 @@ def create_batch_l3maskproducts(input_products: List[Path],
                 )
                 for product in products:
                     filename = generate_l3_filename(product, code_image,
-                                                    source, roi)
+                                                    source, roi, chain_version, produduct_counter)
                     if dirname is not None:
                         filename = dirname / filename
                     product.save(filename)
@@ -635,6 +650,33 @@ def generate(key: str, params: dict, save=False, parse_params_=True):
         parse_params_: If True, the params dict is checked (using
             the parse_params function).
     """
+
+    if parse_params_:
+        params = parse_params(key, params)
+
+    # init logger
+    logger = logging.getLogger()
+    log_level=params["log_level"]
+
+    level = logging.getLevelName(log_level)
+    logger.setLevel(level)
+
+    # file handle
+    log_file=params["log_file"]
+    file_handler = RotatingFileHandler(log_file, 'a', 1000000, 1)
+    formatter = logging.Formatter(fmt='%(asctime)s.%(msecs)03d    %(levelname)s:%(filename)s::%(funcName)s:%(message)s',
+                                  datefmt='%Y-%m-%dT%H:%M:%S')
+    file_handler.setLevel(level)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
+    # stream handler
+    stream_handler = logging.StreamHandler()
+    stream_handler.setLevel(level)
+    stream_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
+
+
     func = {
         'l3 algo': create_l3algoproducts,
         'l3 mask': create_l3maskproducts,
@@ -643,9 +685,8 @@ def generate(key: str, params: dict, save=False, parse_params_=True):
         'time series': create_algotimeseries,
         'time series (mask)': create_masktimeseries
     }
-    if parse_params_:
-        params = parse_params(key, params)
+
     params['save'] = save
-    print('\nparams: ', params, '\n')
+    logging.info(f'params: {params}')
     products = func[key](**params)
     return products

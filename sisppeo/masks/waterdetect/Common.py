@@ -2,7 +2,7 @@ import ast
 import configparser
 from importlib.resources import path
 from pathlib import Path
-
+import logging
 import numpy as np
 from sklearn.model_selection import train_test_split
 
@@ -41,7 +41,7 @@ class DWConfig:
 
         default_value = self._defaults[key]
 
-        print('Key {} not found in section {}: using default value {}'.format(key, section, default_value))
+        logging.info('Key {} not found in section {}: using default value {}'.format(key, section, default_value))
 
         return default_value
 
@@ -66,7 +66,7 @@ class DWConfig:
         if config_file:
             self._config_file = config_file
 
-        print('Loading configuration file {}'.format(self._config_file))
+        logging.info('Loading configuration file {}'.format(self._config_file))
 
         DWutils.check_path(self._config_file)
 
@@ -184,7 +184,7 @@ class DWutils:
             if not path.exists():
                 raise OSError('The specified file {} does not exist'.format(path_str))
 
-        print(('Folder' if is_dir else 'File') + ' {} verified.'.format(path_str))
+        logging.info(('Folder' if is_dir else 'File') + ' {} verified.'.format(path_str))
         return path
 
     @staticmethod

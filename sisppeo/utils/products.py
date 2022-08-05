@@ -16,7 +16,7 @@
 
 import bisect
 from typing import List, Optional, Tuple, Union
-
+import logging
 import numpy as np
 from pyproj import CRS, Transformer
 from skimage.draw import disk

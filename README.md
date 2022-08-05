@@ -33,7 +33,8 @@ Landsat 8/OLI…).
 **Author:** Arthur Coqué (arthur.coque@inrae.fr)
 
 **Contributors:** Guillaume Morin (guillaume.p.morin@inrae.fr), Nathalie Reynaud (nathalie.reynaud@inrae.fr), 
-Thierry Tormos (thierry.tormos@ofb.gouv.fr), Valentine Aubard (valentine.aubard@inrae.fr)
+Thierry Tormos (thierry.tormos@ofb.gouv.fr), Cécile Betmont (cecile.betmont@thalesgroup.com),
+Valentine Aubard (valentine.aubard@inrae.fr)
 
 ### Requirements
 
@@ -43,10 +44,10 @@ installed on the same system without any problems.
 ### Installation
 
 
-SISPPEO can be downloaded and installed using conda-forge:
+SISPPEO (CNES version) can be downloaded and installed using conda-forge:
 
 ```shell
-$ conda install sisppeo -c conda-forge
+$ conda install sisppeo -c conda-forge/label/cnes
 ```
 
 You can also install it from source. To do so, you will first have to clone the GitHub repository:
@@ -54,6 +55,7 @@ You can also install it from source. To do so, you will first have to clone the 
 ```shell
 $ git clone https://github.com/inrae/SISPPEO.git
 $ cd sisppeo
+$ git checkout cnes
 ```
 
 Then, you will need to create a virtual environment (optional, but strongly advised) and install SISPPEO.

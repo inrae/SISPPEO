@@ -41,6 +41,8 @@ from sisppeo.utils.algos import load_calib, producttype_to_sat
 from sisppeo.utils.config import wc_algo_config as algo_config, wc_calib
 from sisppeo.utils.exceptions import InputError
 
+import logging
+
 # pylint: disable=invalid-name
 # Ok for a custom type.
 P = Union[str, Path]
@@ -79,6 +81,7 @@ class CHLAGons:
                 the algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
+        logging.info("Launching chla-gons")
         try:
             self.requested_bands = algo_config[self.name][
                 producttype_to_sat(product_type)]
@@ -187,7 +190,7 @@ class CHLAGitelson:
             calibration,
             self._default_calibration_file,
             self._default_calibration_name
-        )
+	)
         self._valid_limit = calibration_dict['validity_limit']
         try:
             params = calibration_dict[producttype_to_sat(product_type)]
@@ -229,15 +232,15 @@ class CHLAGitelson:
         ref_red = ref_red.where(ref_red >= 0)
         ref_rededge = ref_rededge.where(ref_red >= 0)
         ref_nir = ref_red.where(ref_nir >= 0)
-        print(self._design, self._valid_limit)
+        logging.info(str(self._design) + str(self._valid_limit))
         if self._design == '3_bands':
-            print('3 bands selected')
+            logging.info('3 bands selected')
             # pylint: disable=no-member
             # Loaded in __init__ whit "__dict__.update".
             chla = self.a_3bands + self.b_3bands \
                 * (1 / ref_red - 1 / ref_rededge) * ref_nir
         else:
-            print('2 bands selected')
+            logging.info('2 bands selected')
             # pylint: disable=no-member
             # Loaded in __init__ whit "__dict__.update".
             chla = self.a_2bands + self.b_2bands * (1 / ref_red) * ref_nir
@@ -411,12 +414,12 @@ class CHLAOC:
             ref_green = ref_green / np.pi
 
         if self._version == 'OC3':
-            print(f'{self._version} is used')
+            logging.info(f'{self._version} is used')
             max_ratio = np.log(np.maximum(ref_violet.values, ref_blue.values)
                                / ref_green)
             # np.log(max(Rrs_B1, Rrs_B2) / Rrs_B3))
         else:   # self._version == 'OC2'
-            print(f'{self._version} is used')
+            logging.info(f'{self._version} is used')
             max_ratio = np.log(ref_blue.values / ref_green)
         # pylint: disable=no-member
         # Loaded in __init__ whit "__dict__.update".

@@ -16,7 +16,7 @@
 
 from pathlib import Path
 from typing import Optional
-
+import logging
 import click
 import pandas as pd
 from shapely.wkt import loads

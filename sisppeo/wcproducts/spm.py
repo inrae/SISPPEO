@@ -40,6 +40,7 @@ import xarray as xr
 from sisppeo.utils.algos import load_calib, producttype_to_sat
 from sisppeo.utils.config import wc_algo_config as algo_config, wc_calib
 from sisppeo.utils.exceptions import InputError
+import logging 
 
 # pylint: disable=invalid-name
 # Ok for a custom type.
@@ -206,7 +207,7 @@ class SPMHan:
         """
         if data_type == 'rho':
             refl_red = refl_red / np.pi
-            print(data_type)
+            logging.info(data_type)
 
         np.warnings.filterwarnings('ignore')
         rrs_red = refl_red.where(refl_red >= 0)

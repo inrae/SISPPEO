@@ -26,7 +26,7 @@ from typing import List, Tuple
 import numpy as np
 import s2cloudless
 from xarray import DataArray
-
+import logging
 
 def overlay_cloud_mask(image, mask, figsize=(15, 15)):
     """Utility function for plotting RGB images with binary mask overlayed."""
@@ -49,7 +49,7 @@ def cloud_detector(bands: List[DataArray],
     Returns:
         A DataArray (dimension 1 * N * M) of flagged clouds.
     """
-    print('Generating mask...')
+    logging.info('Generating mask...')
     # Initialize the cloud detector
     cloud_detector_ = s2cloudless.S2PixelCloudDetector(threshold=0.4,
                                                        average_over=4,
@@ -64,9 +64,9 @@ def cloud_detector(bands: List[DataArray],
     if plot:
         band8 = bands[4][0, :, :]
         overlay_cloud_mask(band8, cloud_masks[0])
-        print(cloud_masks)
+        logging.info(cloud_masks)
 
-    print('Done.')
+    logging.info('Done.')
     meta = {'version': f'v{s2cloudless.__version__}', 'threshold': 0.4,
             'average_over': 4, 'dilation_size': 2}
     return cloud_masks.astype(np.uint8), meta

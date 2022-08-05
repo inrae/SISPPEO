@@ -15,7 +15,7 @@
 """Contains various useful functions used by readers."""
 
 from typing import List, Union
-
+import logging
 import numpy as np
 from PIL import Image
 from tqdm import tqdm
@@ -85,7 +85,7 @@ def resample_band_array(arr: np.ndarray,
     if tqdm_:
         tqdm.write(msg)
     else:
-        print(msg)
+        logging.info(msg)
     im = Image.fromarray(arr)
     im_new = im.resize(
         (int(im.width * scale_factor), int(im.height * scale_factor)),
@@ -119,7 +119,7 @@ def resize_and_resample_band_array(arr: np.ndarray,
     if _tqdm:
         tqdm.write(msg)
     else:
-        print(msg)
+        logging.info(msg)
     im = Image.fromarray(arr)
     im_new = im.resize(
         (int((col_stop - col_start + 1) * scale_factor),

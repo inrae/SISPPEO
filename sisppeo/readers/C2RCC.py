@@ -28,7 +28,7 @@ from collections import namedtuple
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Tuple, Union
-
+import logging
 import numpy as np
 import xarray as xr
 from pyproj import CRS, Transformer
@@ -108,7 +108,6 @@ class C2RCCReader(Reader):
             band_name = f'rhown_{band}'
             band_array = _extract_band(dataset, band_name, ij_bbox)
             data[band] = band_array.reshape(1, *band_array.shape)
-        print('')
 
         dataset.close()
 

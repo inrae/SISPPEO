@@ -38,6 +38,7 @@ from typing import List, Optional, Tuple, Union
 import numpy as np
 import xarray as xr
 from pyproj import CRS
+import logging 
 
 from sisppeo._version import __version__
 from sisppeo.catalogs import algo_catalog, mask_catalog, reader_catalog
@@ -148,7 +149,7 @@ class ProductBuilder:
             else:
                 if (processing_resolution is None or
                         processing_resolution < out_resolution):
-                    print(
+                    logging.info(
                         f'"processing_resolution" must be >= {out_resolution}'
                         'm ("out_resolution"); here, "processing_resolution"='
                         f'{processing_resolution}m. Therefore, it will be '
@@ -169,7 +170,7 @@ class ProductBuilder:
             else:
                 if (processing_resolution is None or
                         processing_resolution < out_resolution):
-                    print(
+                    logging.info(
                         f'"processing_resolution" must be >= {out_resolution}'
                         'm ("out_resolution"); here, "processing_resolution"='
                         f'{processing_resolution}m. Therefore, it will be '
@@ -178,7 +179,7 @@ class ProductBuilder:
                     processing_resolution = out_resolution
         else:
             if out_resolution is not None or processing_resolution is not None:
-                print('Both "out_resolution" and "processing_resolution" '
+                logging.info('Both "out_resolution" and "processing_resolution" '
                       'parameters can only be used with S2_ESA and S2_THEIA '
                       'products. Therefore, they will be ignored.')
         return out_resolution, processing_resolution

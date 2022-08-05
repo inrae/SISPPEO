@@ -16,7 +16,7 @@
 
 import io
 import tarfile
-
+import logging
 import fiona
 from shapely.geometry import shape
 
@@ -89,7 +89,7 @@ def geom_to_str(geom_dict):
     return topleftlatlon_from_wkt(wkt_str)
 
 
-def generate_l3_filename(l3prod, code_image, source, roi):
+def generate_l3_filename(l3prod, code_image, source, roi, chain_version=None, product_counter=None):
     """Returns a filename for a L3 product based on the provided arguments."""
     algo = l3prod.title.split(' ', 1)[0]
     if algo in mask_types:
@@ -121,7 +121,12 @@ def generate_l3_filename(l3prod, code_image, source, roi):
         masks = f'_masks-{"-".join(masks)}'
     else:
         masks = ''
-    filename = f'{code_image}_{source}_{roi}_{algo}{params}{masks}.nc'
+    if chain_version is None:
+        chain_version=''
+    if product_counter is None:
+        product_counter=''
+    filename = f'S2B_MSIL2B_{code_image}_{roi}_{source}_{algo}{params}{masks}_{chain_version}_{product_counter}.nc'
+    logging.info(f'{filename} will be saved')
     return filename
 
 
@@ -153,7 +158,10 @@ def generate_ts_filename(ts, sat, source, roi):
         masks = f'_masks-{"-".join(masks)}'
     else:
         masks = ''
-    filename = f'{sat}_{source}_{roi}_{algo}_{n}_{start_date}_{end_date}{params}{masks}.nc'
+    if roi == "":
+        filename = f'{sat}_{source}_{roi}_{algo}_{n}_{start_date}_{end_date}{params}{masks}.nc'
+    else:
+        filename = f'{sat}_{source}_{algo}_{n}_{start_date}_{end_date}{params}{masks}.nc'
     return filename
 
 
@@ -161,12 +169,12 @@ def extract_info_from_input_product(input_product, product_type,
                                     code_site=None, geom=None):
     """Extracts some information from the given input product."""
     if 'GRS' in product_type:
-        code_image = input_product.name.split('_')[0]
+        code_image = "_".join(input_product.name.split('_')[2:7])
         if product_type == 'S2_GRS':
             sat = 'S2'
         else:   # product_type == 'L8_GRS'
             sat = 'LC8'
-        tile = code_image[3:8]
+        tile = input_product.name.split('_')[5]
     elif product_type == 'L8_USGS_L1C1':
         if input_product.suffix in ('.tgz', '.gz'):
             with tarfile.open(input_product) as archive:
@@ -214,4 +222,6 @@ def extract_info_from_input_product(input_product, product_type,
         roi = code_site
     else:
         roi = geom_to_str(geom)
+    if product_type == 'S2_GRS':
+        roi = ""
     return code_image, sat, source, roi

@@ -29,7 +29,7 @@ from collections import namedtuple
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
-
+import logging
 import numpy as np
 import xarray as xr
 from affine import Affine
@@ -125,7 +125,6 @@ class GRSReader(Reader):
             band_name = f'{self._inputs.grs_bands}_{_band}'
             band_array = _extract_band(dataset, band_name, ij_bbox)
             data[band] = band_array.reshape(1, *band_array.shape)
-        print('')
 
         # Mask data
         if self._inputs.flags:

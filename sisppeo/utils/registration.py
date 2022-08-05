@@ -17,7 +17,7 @@
 import importlib.util
 import sys
 from inspect import getmembers, isclass, isfunction
-
+import logging
 import sisppeo.landproducts as land_algos
 import sisppeo.masks as masks
 import sisppeo.wcproducts as wc_algos
@@ -51,13 +51,13 @@ if user_folder is not None:
                               + wc_algo_classes]
         for algo in [e for _ in user_algo_classes if (e := _[1].name)
                      in vanilla_algo_names]:
-            print(f'An algorithm with a similar name ("{algo}") is already '
+            logging.info(f'An algorithm with a similar name ("{algo}") is already '
                   'provided with SISPPEO. Please, rename your algorithm to be '
                   'able to use it.')
         user_algo_classes = [_ for _ in user_algo_classes if _[1].name
                              not in vanilla_algo_names]
     except FileNotFoundError:
-        print('Custom algorithms must be put in the '
+        logging.info('Custom algorithms must be put in the '
               '"<user_folder>/custom_algorithms" package.')
         raise
     try:
@@ -67,13 +67,13 @@ if user_folder is not None:
         vanilla_mask_names = [_[0] for _ in mask_functions]
         for mask in [e for _ in user_mask_functions if (e := _[0])
                      in vanilla_mask_names]:
-            print(f'A mask with a similar name ("{mask}") is already '
+            logging.info(f'A mask with a similar name ("{mask}") is already '
                   'provided with SISPPEO. Please, rename your mask to be able '
                   'to use it.')
         user_mask_functions = [_ for _ in user_mask_functions if _[0]
                                not in vanilla_mask_names]
     except FileNotFoundError:
-        print('Custom masks must be put in the "<user_folder>/custom_masks" '
+        logging.info('Custom masks must be put in the "<user_folder>/custom_masks" '
               'package.')
         raise
 
@@ -83,22 +83,22 @@ def check_algoconfig() -> None:
     unregistered_land_algo = [e for _ in land_algo_classes if (e := _[1].name)
                               not in land_algo_config]
     for algo in unregistered_land_algo:
-        print(f'{algo} must be registered in "land_algo_config.yaml"')
+        logging.info(f'{algo} must be registered in "land_algo_config.yaml"')
     if len(unregistered_land_algo) == 0:
-        print('All land algorithms are correctly registered.')
+        logging.info('All land algorithms are correctly registered.')
     unregistered_wc_algo = [e for _ in wc_algo_classes if (e := _[1].name)
                             not in wc_algo_config]
     for algo in unregistered_wc_algo:
-        print(f'{algo} must be registered in "wc_algo_config.yaml"')
+        logging.info(f'{algo} must be registered in "wc_algo_config.yaml"')
     if len(unregistered_wc_algo) == 0:
-        print('All water colour algorithms are correctly registered.')
+        logging.info('All water colour algorithms are correctly registered.')
     if user_folder is not None:
         unregistered_user_algo = [e for _ in user_algo_classes
                                   if (e := _[1].name) not in user_algo_config]
         for algo in unregistered_user_algo:
-            print(f'{algo} must be registered in "algo_config.yaml"')
+            logging.info(f'{algo} must be registered in "algo_config.yaml"')
         if len(unregistered_user_algo) == 0:
-            print('All custom algorithms are correctly registered.')
+            logging.info('All custom algorithms are correctly registered.')
 
 
 def register_algos(catalog: dict) -> None:

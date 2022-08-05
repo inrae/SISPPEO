@@ -39,6 +39,7 @@ import xarray as xr
 from sisppeo.utils.algos import producttype_to_sat
 from sisppeo.utils.config import wc_algo_config as algo_config
 from sisppeo.utils.exceptions import InputError
+import logging
 
 # pylint: disable=invalid-name
 # Ok for a custom type.

@@ -1,0 +1,40 @@
+{
+
+    "algorithm": 'l3 algo',              # Required l3 algo, l3 mask, batch algo, batch mask, time series, time series (mask)
+    #'input_product': '/datalake/watcal/INPUT_TEST/SENTINEL2B_20190604-103902-224_L2A_T31TFJ_C_V2-2/',              # the filepath of your image
+    #'product_type': 'S2_THEIA',         # Required which type of product it is ({sat}_{atm_corr})
+    'input_product': '/datalake/watcal/OUTPUT_TEST/S2B_MSIl2grs_20180927T103019_N0206_R108_T31TGK_20180927T143835_1.0_3.nc',              # the filepath of your image
+    'product_type': 'S2_GRS',         # Required which type of product it is ({sat}_{atm_corr})
+    "chain_version" : '1.0',
+    "product_counter" : '003',
+    "log_level": "INFO",
+    "log_file" : "/tmp/log_sisppeo.txt",                     # niveau de log : info, debug, warning, error
+    "dirname": "/datalake/watcal/OUTPUT_TEST/cecile",     # répertoire où seront ecrits les produits générés
+
+    #if algo = l3 algo
+    'lst_algo': ['spm-nechad', 'chla-gons', 'chla-gitelson', 'spm-get', 'ndwi'],                  # Required lst_algo which algorithm to use; this one derives SPM
+    'glint_corrected': 'True',              #  [/lst_gc]
+    'flags': '',                        #  [/lst_flags]
+    'sensing_date': '',                 # aurait du avoir un "lst_sd" (mais les produits C2RCC sont rarement utilisés [/jamais sur HAL] + c'est un argument temporaire qui sert uniquement à pallier le fait que SNAP ne sauvegarde aucune métadonnée dans les produits C2RCC...)
+    'algo_band' : '',                   # / 'lst_band'
+    'algo_calib': '',                   # / 'lst_calib'
+    'lst_design': '',                   # aurait aussi pu avoir un raccourci "algo_design"
+
+    #if algo = l3 mask
+    'mask': '',                         # Required lst_mask
+    'processing_resolution': '',        # [/lst_proc_res]
+
+    #OPTIONAL
+    "water_mask": "",             
+    'l3mask' : '',                      # lst_l3mask | (l3mask_path / lst_l3mask_path)
+    'l3mask_type' : '',                 # lst_l3mask_type   
+    'save': '',
+    'filename': '',                     #/ 'filenames'
+    'theia_bands': '',                  # [/ 'lst_tb']
+    'theia_masks': '',                  #  [/'lst_tm']
+    'srid': '',                         # code EPSG
+    'code_site': '',                    #  [/lst_code_site] pas utile pour le CNES (est optionel + sert uniquement pour le nomage des produits dans la BDD d'Aix)
+    'out_resolution': '',               #       [/lst_res]
+    'num_cpus': ''                      # uniquement pour le multiproc
+
+}

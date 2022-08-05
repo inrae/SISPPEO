@@ -14,7 +14,7 @@
 
 """This module contains the Reader class.
 
-The Reader class is an abstract class (a blueprint) inherited by every readers.
+The Reader class is an abstract class (a bluelogging.info) inherited by every readers.
 A reader is an object used to extract bands (radiometric data) and metadata
 from satellite products (or a subset of products). It also allows one to
 perform resampling operations. There is a reader for each 'product_type'.

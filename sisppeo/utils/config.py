@@ -15,7 +15,7 @@
 """Contains paths and configs used in other parts of the code."""
 
 from pathlib import Path
-
+import logging
 import yaml
 
 root = Path(__file__).parent.parent.resolve()
@@ -44,7 +44,7 @@ with open(root / 'workspace.yaml', 'r') as f1:
     else:
         user_folder = Path(folder_str)
         if not user_folder.exists():
-            print(f'The registered workspace ({folder_str}) does not exist.')
+            logging.info(f'The registered workspace ({folder_str}) does not exist.')
             user_folder = None
             user_algo_config = {}
             user_mask_config = {}

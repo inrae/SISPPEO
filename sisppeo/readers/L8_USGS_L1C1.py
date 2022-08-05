@@ -93,7 +93,7 @@ class L8USGSL1C1Reader(Reader):
                     band_array = _extract_nth_band(subdataset, xy_bbox,
                                                    rad_coefs)
                 data[band] = band_array.reshape(1, *band_array.shape)
-        print('')
+        logging.info('')
 
         # Store outputs
         self._intermediate_data['data'] = data

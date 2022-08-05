@@ -203,7 +203,7 @@ class TimeSeries(CoordinatesMixin):
             df.to_csv(f'{filename}_{var}.csv', index_label='date')
         if plot:
             for df in lst_df:
-                print(df)
+                logging.info(df)
 
     def _grayscale_timelapse(self, data_var: str, filename: P,
                              out_res: Optional[int] = None, write_time: bool = True):

@@ -2,7 +2,7 @@ import numpy as np
 from sklearn import cluster
 from sklearn import metrics
 from sklearn.naive_bayes import GaussianNB
-
+import logging
 from .Common import DWConfig, DWutils
 
 
@@ -142,14 +142,14 @@ class DWImageClustering:
         max_k = self.config.max_clusters
 
         if min_k == max_k:
-            print('Same number for minimum and maximum clusters: k = {}'.format(min_k))
+            logging.info('Same number for minimum and maximum clusters: k = {}'.format(min_k))
             self.best_k = min_k
             return self.best_k
 
         if self.config.score_index == 'silhouette':
-            print('Selection of best number of clusters using Silhouete Index:')
+            logging.info('Selection of best number of clusters using Silhouete Index:')
         else:
-            print('Selection of best number of clusters using Calinski-Harabasz Index:')
+            logging.info('Selection of best number of clusters using Calinski-Harabasz Index:')
 
         computed_metrics = []
 
@@ -161,11 +161,11 @@ class DWImageClustering:
 
             if self.config.score_index == 'silhouette':
                 computed_metrics.append(metrics.silhouette_score(data, labels))
-                print('k={} :Silhouete index={}'.format(num_k, computed_metrics[num_k - min_k]))
+                logging.info('k={} :Silhouete index={}'.format(num_k, computed_metrics[num_k - min_k]))
 
             else:
                 computed_metrics.append(metrics.calinski_harabasz_score(data, labels))
-                print('k={} :Calinski_harabaz index={}'.format(num_k, computed_metrics[num_k - min_k]))
+                logging.info('k={} :Calinski_harabaz index={}'.format(num_k, computed_metrics[num_k - min_k]))
 
         # the best solution is the one with higher index
         self.best_k = computed_metrics.index(max(computed_metrics)) + min_k
@@ -292,8 +292,8 @@ class DWImageClustering:
         # train a NB classifier with the data and labels provided
         model = GaussianNB()
 
-        print('Applying clusters based naive bayes classifier')
-        # print('Cross_val_score:{}'.format(cross_val_score(model, clusters_data, clusters_labels)))
+        logging.info('Applying clusters based naive bayes classifier')
+        # logging.info('Cross_val_score:{}'.format(cross_val_score(model, clusters_data, clusters_labels)))
 
         model.fit(clusters_data, clusters_labels)
 
@@ -323,7 +323,7 @@ class DWImageClustering:
         matrice_cluster[indices_array[0][self.clusters_labels == self.water_cluster['clusterid']],
                         indices_array[1][self.clusters_labels == self.water_cluster['clusterid']]] = 1
 
-        print('Assgnin 1 to cluster_id {}'.format(self.water_cluster['clusterid']))
+        logging.info('Assgnin 1 to cluster_id {}'.format(self.water_cluster['clusterid']))
 
         # loop through the remaining labels and apply value >= 3
         new_label = 2
@@ -334,18 +334,18 @@ class DWImageClustering:
                 # if self.verify_cluster(self.clusters_params, label_i) == 'water':
                 #     matrice_cluster[indices_array[0][self.clusters_labels == label_i],
                 #                     indices_array[1][self.clusters_labels == label_i]] = 1
-                #     print('Cluster {} = water'.format(label_i))
+                #     logging.info('Cluster {} = water'.format(label_i))
                 # else:
                 #     matrice_cluster[indices_array[0][self.clusters_labels == label_i],
                 #                     indices_array[1][self.clusters_labels == label_i]] = new_label
-                #     print('Cluster {} receiving label {}'.format(label_i, new_label))
+                #     logging.info('Cluster {} receiving label {}'.format(label_i, new_label))
                 #
                 matrice_cluster[indices_array[0][self.clusters_labels == label_i],
                                 indices_array[1][self.clusters_labels == label_i]] = new_label
 
                 new_label += 1
             else:
-                print('Skipping cluster_id {}'.format(label_i))
+                logging.info('Skipping cluster_id {}'.format(label_i))
 
         return matrice_cluster
 
@@ -381,8 +381,8 @@ class DWImageClustering:
                                   high_threshold=(0.999 - correction), mask=~self.invalid_mask)
             # mask= (im != 0))
             condition = (np.count_nonzero(edges) < 10000)
-            print('Correction: ', correction)
-            print("Canny edges pixels: ", np.count_nonzero(edges))
+            logging.info('Correction: ', correction)
+            logging.info("Canny edges pixels: ", np.count_nonzero(edges))
             correction = correction + 0.004
             if correction > 1:
                 raise Exception
@@ -392,7 +392,7 @@ class DWImageClustering:
         img = self.bands[canny_band]
         threshold = threshold_otsu(img[dilated_edges & (img != -9999)])
 
-        print('Canny threshold on {} band = {}'.format(canny_band, threshold))
+        logging.info('Canny threshold on {} band = {}'.format(canny_band, threshold))
 
         # create an empty matrix
         matrice_cluster = np.zeros_like(list(self.bands.values())[0])
@@ -416,7 +416,7 @@ class DWImageClustering:
 
         threshold = threshold_otsu(otsu_data)
 
-        print('OTSU threshold on {} band = {}'.format(otsu_band, threshold))
+        logging.info('OTSU threshold on {} band = {}'.format(otsu_band, threshold))
 
         # create an empty matrix
         matrice_cluster = np.zeros_like(list(self.bands.values())[0])

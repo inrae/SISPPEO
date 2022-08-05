@@ -38,6 +38,7 @@ from lxml import etree
 from pyproj import CRS
 from rasterio.windows import Window
 from tqdm import tqdm
+import logging
 
 from sisppeo.readers.reader import Reader, Inputs
 from sisppeo.utils.exceptions import InputError, ProductError
@@ -166,7 +167,6 @@ class S2THEIAReader(Reader):
                         subdataset, xy_bbox, quantification_value, nodata
                     )
                 data[band] = band_array.reshape(1, *band_array.shape)
-        print('')
 
         # Mask data
         if self._inputs.theia_masks is not None:

@@ -25,7 +25,7 @@ from typing import List, Tuple
 
 import numpy as np
 from xarray import DataArray
-
+import logging
 import sisppeo.masks.waterdetect as wd
 
 
@@ -50,7 +50,7 @@ def water_detector(bands: List[DataArray],
     Returns:
         An DataArray (dimension 1 * N * M) of flagged water surface.
     """
-    print('Generating mask...')
+    logging.info('Generating mask...')
 
     img = np.stack([band[0] for band in bands], axis=-1)
     mask = np.where(np.isnan(bands[0][0]), True, False)
@@ -63,9 +63,9 @@ def water_detector(bands: List[DataArray],
     if plot:
         b8 = bands[2][0, :, :]
         overlay_water_mask(b8, water_mask)
-        print(water_mask)
+        logging.info(water_mask)
 
-    print('Done.')
+    logging.info('Done.')
     meta = {'version': f'v{wd.__version__}', 'bands_keys': 'mndwi, ndwi, Mir2'}
     return water_mask.astype(np.uint8).reshape((1, *water_mask.shape)), meta
 

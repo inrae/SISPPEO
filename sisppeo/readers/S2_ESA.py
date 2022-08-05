@@ -37,6 +37,7 @@ import xarray as xr
 from pyproj import CRS
 from rasterio.windows import Window
 from tqdm import tqdm
+import logging
 
 from sisppeo.readers.reader import Reader, Inputs
 from sisppeo.utils.exceptions import InputError
@@ -136,7 +137,6 @@ class S2ESAReader(Reader):
                                                             xy_bbox)
                     data[band] = band_array.reshape(1, *band_array.shape)
         dataset.close()
-        print('')
 
         # Store outputs
         self._intermediate_data['data'] = data

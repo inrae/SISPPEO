@@ -32,7 +32,7 @@ from pathlib import Path
 from typing import Union
 
 from xarray import DataArray
-
+import logging
 from sisppeo.utils.algos import producttype_to_sat
 from sisppeo.utils.config import land_algo_config as algo_config
 from sisppeo.utils.exceptions import InputError
