@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This module contains the Reader class.
 
 The Reader class is an abstract class (a blueprint) inherited by every readers.
@@ -19,7 +19,6 @@ A reader is an object used to extract bands (radiometric data) and metadata
 from satellite products (or a subset of products). It also allows one to
 perform resampling operations. There is a reader for each 'product_type'.
 """
-
 from abc import ABC, abstractmethod
 from collections import namedtuple
 from pathlib import Path
@@ -31,16 +30,20 @@ from shapely.geometry import shape
 from shapely.ops import transform
 from shapely.wkt import loads
 
+from sisppeo.utils.exceptions import InputError
+from sisppeo.utils.main import make_path
+from sisppeo.utils.naming import verify_bands
+
 Inputs = namedtuple('Inputs', 'input_product requested_bands ROI')
 ROI = namedtuple('ROI', 'geom srid')
 
 
 class Reader(ABC):
     """Abstract class inherited by every specific reader."""
-
     def __init__(self,
                  input_product: Path,
                  requested_bands: List[str],
+                 names_dict: dict = None,
                  geom: Optional[dict] = None,
                  **_ignored) -> None:
         """Inits Reader with specific settings.
@@ -55,7 +58,17 @@ class Reader(ABC):
                 code).
             **_ignored: Unused kwargs sent to trash.
         """
-        self._inputs = Inputs(input_product, requested_bands, _load_geom(geom))
+        # Verify truth of inputs
+        input_product = make_path(input_product)
+        if names_dict is not None:
+            if _requested_bands := verify_bands(requested_bands, names_dict):  # is True or not
+                pass
+            else:
+                msg = f"{requested_bands} not found in {names_dict.values()}"
+                raise InputError(msg)
+        else:
+            _requested_bands = requested_bands
+        self._inputs = Inputs(input_product, _requested_bands, _load_geom(geom))
         self._intermediate_data = {
             'data': None,
             'metadata': None,

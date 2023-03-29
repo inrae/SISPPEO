@@ -1,0 +1,14 @@
+Ho_2019:
+  validity_limit: [0, 0.1]
+  L4:
+    cloud_mask_values: [752, 756, 760, 764]
+  L5:
+    cloud_mask_values: [752, 756, 760, 764]
+  L7:
+    cloud_mask_values: [752]
+  L8L2CDR:
+    cloud_mask_values: [2800, 6896]
+  L8L2CDRC1:
+    cloud_mask_values: [2800, 6896]
+  L8L2THEIA:
+    cloud_mask_values: [2800, 6896]

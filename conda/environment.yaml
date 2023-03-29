@@ -3,7 +3,7 @@ name: sisppeo
 channels:
   - conda-forge
   - defaults
-  
+
 dependencies:
   - python=3.8
   - pip
@@ -25,6 +25,7 @@ dependencies:
   - pyyaml
   - rasterio
   - ray-core
+  - rioxarray
   - s2cloudless
   - scikit-image
   - scikit-learn
@@ -32,4 +33,4 @@ dependencies:
   - shapely
   - tqdm
   - xarray
-
+  - xesmf 0.7.*

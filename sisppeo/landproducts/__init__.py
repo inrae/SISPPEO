@@ -12,5 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from sisppeo.landproducts.algos import Nbr
 from sisppeo.landproducts.algos import Ndvi  # flake8: noqa: F401
+from sisppeo.landproducts.algos import Nbr

@@ -25,7 +25,6 @@ in a particular sequence (while the builder provides the implementation
 for those steps). Strictly speaking, these recipes are optionals, since
 the client can control the builder directly.
 """
-
 import copy
 from collections import namedtuple
 from pathlib import Path
@@ -35,12 +34,104 @@ import psutil
 import ray
 
 from sisppeo.builders import ProductBuilder
-from sisppeo.catalogs import sat_products, theia_masks_names
-from sisppeo.products import (mask_time_series, L3AlgoProduct, L3MaskProduct,
-                              TimeSeries)
+from sisppeo.products import (L3AlgoProduct, L3MaskProduct, TimeSeries,
+                              mask_time_series)
 from sisppeo.utils.main import parse_params, series_to_batch
 from sisppeo.utils.naming import (extract_info_from_input_product,
                                   generate_l3_filename, generate_ts_filename)
+
+
+def create_readerproducts(input_product: Path,
+                          product_type: str,
+                          geom: Optional[dict] = None,
+                          lst_bands: Optional[List[str]] = None,
+                          save: bool = False,
+                          dirname: Optional[Path] = None,
+                          filenames: Optional[List[Union[str, Path]]] = None,
+                          **kwargs) -> Tuple[L3AlgoProduct]:
+    """Returns a list of L3AlgoProducts (one per algo in lst_algo).
+
+    Args:
+        input_product: The path of the input product (multispectral
+            spaceborne imagery).
+        product_type: The type of the input satellite product
+            (e.g. "S2_ESA_L2A" or "L8_USGS_L1GT").
+        geom: A dict containing geographical information that define
+            the ROI. 4 keys: geom (a shapely.geom object), shp (a path
+            to an ESRI shapefile), wkt (a path to a wkt file) and srid
+            (an EPSG code).
+        lst_bands: A list of "requested_band" args (a param used by some
+            algorithms).
+        save: If True, write output products on disk.
+        dirname: The path of the directory in which output products
+            will be written (using automatically generated names).
+        filenames: A list of wanted paths for output products.
+        **kwargs: Args specific to the Reader that will be used.
+
+    Returns:
+        L3ReaderProduct: Directly.
+
+    Example:
+        import sisppeo
+        sisppeo.check_algoconfig()
+        params = {
+            'input_product': "LC08_L1TP_197030_20210406_20210416_01_T1.tar.gz",
+            'product_type': 'L8_USGS_L1C1',
+            'lst_bands': ['B2', 'B3', 'B4'],
+            'glint_corrected': False,
+        }
+        algo = sisppeo.generate(key='reader', params=params)[0]
+    """
+    # b581bb41 to revert the previous version of those ifs/elifs
+    builder = ProductBuilder()
+    builder.set_reader(lst_band=lst_bands)
+    builder.extract_data(input_product=input_product, product_type=product_type, geom=geom, **kwargs)
+    builder.compute_reader()
+    builder.create_l3products(product_type=product_type)
+    products = builder.get_products()
+
+    if save:
+        if filenames is None:
+            code_image, _, source, roi = extract_info_from_input_product(
+                input_product, product_type,
+                kwargs.get('code_site', None), geom
+            )
+            for product in products:
+                filename = generate_l3_filename(product, code_image, source,
+                                                roi)
+                if dirname is not None:
+                    filename = dirname / filename
+                product.save(filename)
+        else:
+            for product, filename in zip(products, filenames):
+                product.save(filename)
+    return products
+
+
+@ray.remote
+def _mp_readerproducts(input_product: Path,
+                       product_type: str,
+                       lst_bands: List[str],
+                       theia_bands: str = None,
+                       theia_masks: Optional[Dict[str, Optional[List[int]]]] = None,
+                       glint_corrected: Optional[bool] = None,
+                       flags: Optional[bool] = None,
+                       geom: Optional[dict] = None,
+                       out_res: Optional[int] = None,
+                       **kwargs) -> Tuple[L3AlgoProduct]:
+    suppl_config = {
+        'theia_bands': theia_bands,
+        'theia_masks': theia_masks,
+        'glint_corrected': glint_corrected,
+        'flags': flags,
+        'geom': geom,
+        'out_resolution': out_res,
+    }
+    config = kwargs.copy()
+    config.update({key: val for key, val in suppl_config.items()
+                   if val is not None})
+    config.pop('save', None)
+    return create_readerproducts(input_product=input_product, product_type=product_type, lst_bands=lst_bands, **config)
 
 
 def create_l3algoproducts(input_product: Path,
@@ -85,9 +176,24 @@ def create_l3algoproducts(input_product: Path,
             will be written (using automatically generated names).
         filenames: A list of wanted paths for output products.
         **kwargs: Args specific to the Reader that will be used.
+
+    Returns:
+        L3AlgoProduct: Either directly if only one algorithm is specified or embedded as a list in a Product object.
+
+    Example:
+        import sisppeo
+        sisppeo.check_algoconfig()
+        params = {
+            'input_product': "LC08_L1TP_197030_20210406_20210416_01_T1.tar.gz",
+            'product_type': 'L8_USGS_L1C1',
+            'lst_algo': ['bloom-ho', 'ndwi'],
+            'glint_corrected': False,
+        }
+        algo = sisppeo.generate(key='l3 algo', params=params)
     """
     builder = ProductBuilder()
-    builder.set_algos(lst_algo, product_type, lst_band, lst_calib, lst_design)
+    builder.set_algos(product_type=product_type, lst_algo=lst_algo, lst_band=lst_band,
+                      lst_calib=lst_calib, lst_design=lst_design)
     builder.extract_data(product_type, input_product, geom, **kwargs)
     builder.compute_algos()
     builder.create_l3products(product_type)
@@ -146,6 +252,7 @@ def _mp_l3algoproducts(input_product: Path,
     config = kwargs.copy()
     config.update({key: val for key, val in suppl_config.items()
                    if val is not None})
+    config.pop('save', None)
     return create_l3algoproducts(input_product, product_type, lst_algo,
                                  lst_l3mask, lst_l3mask_path, lst_l3mask_type,
                                  **config)
@@ -155,6 +262,7 @@ def create_l3maskproducts(input_product: Path,
                           product_type: str,
                           lst_mask: List[str],
                           geom: Optional[dict] = None,
+                          lst_calib: Optional[List[Union[str, Path]]] = None,
                           save: bool = False,
                           dirname: Optional[Path] = None,
                           filenames: Optional[List[Union[str, Path]]] = None,
@@ -171,14 +279,30 @@ def create_l3maskproducts(input_product: Path,
             the ROI. 4 keys: geom (a shapely.geom object), shp (a path
             to an ESRI shapefile), wkt (a path to a wkt file) and srid
             (an EPSG code).
+        lst_calib: A list of "calibration" args (a param used by some
+            algorithms).
         save: If True, write output products on disk.
         dirname: The path of the directory in which output products
             will be written (using automatically generated names).
         filenames: A list of wanted paths for output products.
         **kwargs: Args specific to the Reader that will be used.
+
+    Returns:
+        L3MaskProduct: Either directly if only one mask is specified or embedded as a list in a Product object.
+
+    Example:
+        import sisppeo
+        sisppeo.check_algoconfig()
+        params = {
+            'input_product': "S2A_MSIL1C_20150802T104026_N0204_R008_T31TEJ_20150802T104020.zip",
+            'product_type': 'S2_ESA_L1C',
+            'lst_mask': ['s2cloudless'],
+            'glint_corrected': False,
+        }
+        algo = sisppeo.generate(key='l3 mask', params=params)[0]
     """
     builder = ProductBuilder()
-    builder.set_masks(lst_mask, product_type)
+    builder.set_masks(lst_mask, product_type, lst_calib)
     builder.extract_data(product_type, input_product, geom, **kwargs)
     builder.compute_masks()
     builder.create_l3products(product_type)
@@ -191,15 +315,13 @@ def create_l3maskproducts(input_product: Path,
                 kwargs.get('code_site', None), geom
             )
             for product in products:
-                filename = generate_l3_filename(product, code_image, source,
-                                                roi)
+                filename = generate_l3_filename(product, code_image, source, roi)
                 if dirname is not None:
                     filename = dirname / filename
                 product.save(filename)
         else:
             for product, filename in zip(products, filenames):
                 product.save(filename)
-
     return products
 
 
@@ -227,6 +349,7 @@ def _mp_l3maskproducts(input_product: Path,
     config = kwargs.copy()
     config.update({key: val for key, val in suppl_config.items()
                    if val is not None})
+    config.pop('save', None)
     return create_l3maskproducts(input_product, product_type, lst_mask,
                                  **config)
 
@@ -360,6 +483,150 @@ def create_batch_l3algoproducts(input_products: List[Path],
     return res
 
 
+@ray.remote
+def _mp_cli_l3algoproducts(input_product: Path,
+                           product_type: str,
+                           lst_algo: List[str],
+                           lst_l3mask: Optional[List[L3MaskProduct]] = None,
+                           lst_l3mask_path: Optional[List[Path]] = None,
+                           lst_l3mask_type: Optional[List[str]] = None,
+                           theia_bands: str = None,
+                           theia_masks: Optional[Dict[str, Optional[List[int]]]] = None,
+                           glint_corrected: Optional[bool] = None,
+                           flags: Optional[bool] = None,
+                           geom: Optional[dict] = None,
+                           out_res: Optional[int] = None,
+                           dirname: Optional[Path] = None,
+                           code_site: Optional[str] = None,
+                           **kwargs):
+    suppl_config = {
+        'theia_bands': theia_bands,
+        'theia_masks': theia_masks,
+        'glint_corrected': glint_corrected,
+        'flags': flags,
+        'geom': geom,
+        'out_resolution': out_res,
+    }
+    config = kwargs.copy()
+    config.update({key: val for key, val in suppl_config.items()
+                   if val is not None})
+    config.pop('save', None)
+    products = create_l3algoproducts(input_product, product_type, lst_algo,
+                                     lst_l3mask, lst_l3mask_path, lst_l3mask_type,
+                                     **config)
+
+    code_image, _, source, roi = extract_info_from_input_product(
+        input_product, product_type, code_site, geom
+    )
+    for product in products:
+        filename = generate_l3_filename(product, code_image,
+                                        source, roi)
+        if dirname is not None:
+            filename = dirname / filename
+        print(f'writing {filename}')
+        product.save(filename)
+
+
+def cli_create_batch_l3algoproducts(input_products: List[Path],
+                                    product_types: List[str],
+                                    lst_algo: List[str],
+                                    lst_l3masks: Optional[List[List[L3MaskProduct]]] = None,
+                                    lst_l3masks_paths: Optional[List[List[Path]]] = None,
+                                    lst_l3masks_types: Optional[List[str]] = None,
+                                    num_cpus: Optional[int] = None,
+                                    lst_tb: Optional[List[Optional[str]]] = None,
+                                    lst_tm: Optional[List[Optional[dict]]] = None,
+                                    lst_gc: Optional[List[Optional[bool]]] = None,
+                                    lst_flags: Optional[List[Optional[bool]]] = None,
+                                    lst_geom: Optional[List[Optional[dict]]] = None,
+                                    lst_res: Optional[List[Optional[int]]] = None,
+                                    dirname: Optional[Path] = None,
+                                    **kwargs):
+    """Computes and writes on disk a batch of L3AlgoProducts.
+
+    Args:
+        input_products: The list of paths of input products
+            (multispectral spaceborne imagery).
+        product_types: The list of types of input satellite products
+            (e.g., ["S2_ESA_L2A", "L8_USGS_L1GT"]).
+        lst_algo: A list of algorithms to use.
+        lst_l3masks: A list of lists of masks (L3MaskProduct) to use.
+        lst_l3masks_paths: A list of lists of paths (of L3MaskProducts)
+            to use.
+        lst_l3masks_types: The list of lists of the type of the masks
+            to use. Values can either be "IN" (area to include) or "OUT"
+            (area to exclude).
+        num_cpus: The number of central processing units to use.
+        lst_tb: A list of "theia_bands" args (one per input product).
+            See S2THEIAReader.
+        lst_tm: A list of "theia_masks" args (one per input product).
+            See S2THEIAReader.
+        lst_gc: A list of "glint_corrected" args (one per input
+            product). See GRSReader.
+        lst_flags: A list of "flags" args (one per input product).
+            See GRSReader.
+        lst_geom: A list of "geom" args (one per input product).
+            See Reader.
+        lst_res: A list of "out_resolution" args (one per input
+            product). See either S2ESAREader or S2THEIAReader.
+        dirname: The path of the directory in which output products
+            will be written (using automatically generated names).
+        **kwargs: Args specific to Readers that will be used.
+
+    Returns:
+        A list of lists of L3AlgoProducts. Each list corresponds to one
+        input product.
+
+        input_products = [<path1>, <path2>]
+        lst_algo = [<algo1>, <algo2>, <algo3>]
+        -> [[res_p1_a1, ..., res_p1_a3], [res_p2_a1, ..., res_p2_a3]]
+    """
+    cpus = [psutil.cpu_count(logical=False), len(input_products), num_cpus]
+    num_cpus = min(val for val in cpus if val is not None)
+    if ray.is_initialized():
+        ray.shutdown()
+    ray.init(num_cpus=num_cpus)
+
+    if lst_l3masks is None:
+        lst_l3masks = [None for _ in input_products]
+    if lst_l3masks_paths is None:
+        lst_l3masks_paths = [None for _ in input_products]
+    if lst_l3masks_types is None:
+        lst_l3masks_types = [None for _ in input_products]
+    if lst_tb is None:
+        lst_tb = [None for _ in input_products]
+    if lst_tm is None:
+        lst_tm = [None for _ in input_products]
+    if lst_gc is None:
+        lst_gc = [None for _ in input_products]
+    if lst_flags is None:
+        lst_flags = [None for _ in input_products]
+    if lst_geom is None:
+        lst_geom = [None for _ in input_products]
+    if lst_res is None:
+        lst_res = [None for _ in input_products]
+    lst_code_site = kwargs.get('lst_code_site')
+    if lst_code_site is None:
+        lst_code_site = [None for _ in input_products]
+    futures = []
+    for (product_type, input_product, lst_l3mask, lst_l3mask_path,
+         lst_l3mask_type, tb, tm, gc, flags, geom, res, code_site)\
+        in zip(product_types, input_products, lst_l3masks, lst_l3masks_paths,
+               lst_l3masks_types, lst_tb, lst_tm, lst_gc, lst_flags, lst_geom,
+               lst_res, lst_code_site):
+        futures.append(_mp_cli_l3algoproducts.remote(
+            input_product, product_type, copy.copy(lst_algo),
+            copy.copy(lst_l3mask), lst_l3mask_path, lst_l3mask_type, tb, tm,
+            gc, flags, geom, res, dirname, code_site, **copy.copy(kwargs)
+        ))
+
+    ready, remaining = ray.wait(futures)
+    print(f'remaining: {len(remaining)} products x {len(lst_algo)} algo(s)')
+    while len(remaining) > 0:
+        ready, remaining = ray.wait(remaining)
+        print(f'remaining: {len(remaining)} products x {len(lst_algo)} algo(s)')
+
+
 def create_batch_l3maskproducts(input_products: List[Path],
                                 product_types: List[str],
                                 lst_mask: List[str],
@@ -474,6 +741,136 @@ def create_batch_l3maskproducts(input_products: List[Path],
                     i += 1
 
     return res
+
+
+@ray.remote
+def _mp_cli_l3maskproducts(input_product: Path,
+                           product_type: str,
+                           lst_mask: List[str],
+                           theia_bands: str = None,
+                           theia_masks: Optional[Dict[str, Optional[List[int]]]] = None,
+                           glint_corrected: Optional[bool] = None,
+                           flags: Optional[bool] = None,
+                           geom: dict = None,
+                           out_res: Optional[int] = None,
+                           proc_res: Optional[int] = None,
+                           dirname: Optional[Path] = None,
+                           code_site: Optional[str] = None,
+                           **kwargs):
+    suppl_config = {
+        'theia_bands': theia_bands,
+        'theia_masks': theia_masks,
+        'glint_corrected': glint_corrected,
+        'flags': flags,
+        'geom': geom,
+        'out_resolution': out_res,
+        'processing_resolution': proc_res,
+    }
+    config = kwargs.copy()
+    config.update({key: val for key, val in suppl_config.items()
+                   if val is not None})
+    config.pop('save', None)
+    products = create_l3maskproducts(input_product, product_type, lst_mask,
+                                     **config)
+
+    code_image, _, source, roi = extract_info_from_input_product(
+        input_product, product_type, code_site, geom
+    )
+    for product in products:
+        filename = generate_l3_filename(product, code_image,
+                                        source, roi)
+        if dirname is not None:
+            filename = dirname / filename
+        print(f'writing {filename}')
+        product.save(filename)
+
+
+def cli_create_batch_l3maskproducts(input_products: List[Path],
+                                    product_types: List[str],
+                                    lst_mask: List[str],
+                                    num_cpus: Optional[int] = None,
+                                    lst_tb: Optional[List[Optional[str]]] = None,
+                                    lst_tm: Optional[List[Optional[dict]]] = None,
+                                    lst_gc: Optional[List[Optional[bool]]] = None,
+                                    lst_flags: Optional[List[Optional[bool]]] = None,
+                                    lst_geom: Optional[List[Optional[dict]]] = None,
+                                    lst_res: Optional[List[Optional[int]]] = None,
+                                    lst_proc_res: Optional[List[Optional[int]]] = None,
+                                    dirname: Optional[Path] = None,
+                                    **kwargs):
+    """Returns a list of lists of L3MaskProducts.
+
+    Args:
+        input_products: The list of paths of input products
+            (multispectral spaceborne imagery).
+        product_types: The list of types of input satellite producs
+            (e.g., ["S2_ESA_L1C", "S2_GRS"]).
+        lst_mask: A list of masks to use.
+        num_cpus: The number of central processing units to use.
+        lst_tb: A list of "theia_bands" args (one per input product).
+            See S2THEIAReader.
+        lst_tm: A list of "theia_masks" args (one per input product).
+            See S2THEIAReader.
+        lst_gc: A list of "glint_corrected" args (one per input product).
+            See GRSReader.
+        lst_flags: A list of "flags" args (one per input product).
+            See GRSReader.
+        lst_geom: A list of "geom" args (one per input product).
+            See Reader.
+        lst_res: A list of "out_resolution" args (one per input
+            product). See either S2ESAREader or S2THEIAReader.
+        lst_proc_res: A list of "proc_res" args (one per input product).
+            See ProductBuilder.compute_masks.
+        dirname: The path of the directory in which output products
+            will be written (using automatically generated names).
+        **kwargs: Args specific to Readers that will be used.
+
+    Returns:
+        A list of lists of L3AlgoMasks. Each list corresponds to one
+        input product.
+
+        input_products = [<path1>, <path2>]
+        lst_mask = [<mask1>, <mask2>, <mask3>]
+        -> [[res_p1_m1, ..., res_p1_m3], [res_p2_m1, ..., res_p2_m3]]
+    """
+    cpus = [psutil.cpu_count(logical=False), len(input_products), num_cpus]
+    num_cpus = min(val for val in cpus if val is not None)
+    if ray.is_initialized():
+        ray.shutdown()
+    ray.init(num_cpus=num_cpus)
+
+    if lst_tb is None:
+        lst_tb = [None for _ in input_products]
+    if lst_tm is None:
+        lst_tm = [None for _ in input_products]
+    if lst_gc is None:
+        lst_gc = [None for _ in input_products]
+    if lst_flags is None:
+        lst_flags = [None for _ in input_products]
+    if lst_geom is None:
+        lst_geom = [None for _ in input_products]
+    if lst_res is None:
+        lst_res = [None for _ in input_products]
+    if lst_proc_res is None:
+        lst_proc_res = [None for _ in input_products]
+    lst_code_site = kwargs.get('lst_code_site')
+    if lst_code_site is None:
+        lst_code_site = [None for _ in input_products]
+    futures = []
+    for product_type, input_product, tb, tm, gc, flags, geom, out_res, \
+        proc_res, code_site in zip(product_types, input_products, lst_tb,
+                                   lst_tm, lst_gc, lst_flags, lst_geom,
+                                   lst_res, lst_proc_res, lst_code_site):
+        futures.append(_mp_cli_l3maskproducts.remote(
+            input_product, product_type, copy.copy(lst_mask), tb, tm, gc,
+            flags, geom, out_res, proc_res, dirname, code_site, **copy.copy(kwargs)
+        ))
+
+    ready, remaining = ray.wait(futures)
+    print(f'remaining: {len(remaining)} products x {len(lst_mask)} mask(s)')
+    while len(remaining) > 0:
+        ready, remaining = ray.wait(remaining)
+        print(f'remaining: {len(remaining)} products x {len(lst_mask)} mask(s)')
 
 
 def create_algotimeseries(input_products: List[Path],
@@ -636,12 +1033,15 @@ def generate(key: str, params: dict, save=False, parse_params_=True):
             the parse_params function).
     """
     func = {
+        'reader': create_readerproducts,
         'l3 algo': create_l3algoproducts,
         'l3 mask': create_l3maskproducts,
         'batch algo': create_batch_l3algoproducts,
         'batch mask': create_batch_l3maskproducts,
         'time series': create_algotimeseries,
-        'time series (mask)': create_masktimeseries
+        'time series (mask)': create_masktimeseries,
+        'batch algo cli': cli_create_batch_l3algoproducts,
+        'batch mask cli': cli_create_batch_l3maskproducts,
     }
     if parse_params_:
         params = parse_params(key, params)

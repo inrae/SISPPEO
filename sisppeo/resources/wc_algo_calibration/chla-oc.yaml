@@ -1,4 +1,4 @@
-OC3:
+OReilly_2019_OC3:
   validity_limit: 30
   S2:
     a0: 0.2424
@@ -12,7 +12,7 @@ OC3:
     a2: 1.28932
     a3: 0.52802
     a4: -1.33825
-OC2:
+OReilly_2019_OC2:
   validity_limit: 30
   S2:
     a0: 0.2389
@@ -26,4 +26,28 @@ OC2:
     a2: 1.9743
     a3: -2.5635
     a4: -0.7218
+Neil_2020_N_Clus_OC2:
+  validity_limit: 30
+  S2:
+    a0: 0.0536
+    a1: 7.308
+    a2: 116.2
+    a3: 412.4
+    a4: 463.5
+Neil_2020_M_Clus_OC3:
+  validity_limit: 30
+  S2:
+    a0: 0.1098
+    a1: -0.755
+    a2: -14.12
+    a3: -117
+    a4: -17.76
+Neil_2020_M_Clus_OC2:
+  validity_limit: 30
+  S2:
+    a0: -5020
+    a1: 29000
+    a2: -61000
+    a3: -57490
+    a4: -20260
 

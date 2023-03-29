@@ -1,6 +1,6 @@
 package:
   name: sisppeo
-  version: 1.1.0
+  version: 1.3.1
 
 source:
   path: ..
@@ -14,10 +14,10 @@ build:
 
 requirements:
   host:
-    - python >=3.8
+    - python=3.8
     - pip
   run:
-    - python >=3.8
+    - python=3.8
     - affine
     - click
     - colorcet
@@ -36,6 +36,7 @@ requirements:
     - pyyaml
     - rasterio
     - ray-core
+    - rioxarray
     - s2cloudless
     - scikit-image
     - scikit-learn
@@ -43,13 +44,14 @@ requirements:
     - shapely
     - tqdm
     - xarray
+    - xesmf
 
-  test:
-    imports:
-      - sisppeo
+test:
+  imports:
+    - sisppeo
 
 about:
-  home: https://github.com/inrae/SISPPEO
+  home: https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo
   license: Apache-2.0
   license_file: LICENSE
   summary: 'Satellite Imagery & Signal Processing Packages for Earth Observation'
@@ -59,8 +61,8 @@ about:
     (Water and Land) from satellite optical imagery (e.g, Sentinel-2/MSI,
     Sentinel-3/OLCI, Landsat 8/OLI…).
   dev_url: https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo/-/tree/dev
-  doc_url: https://inrae.github.io/SISPPEO
+  doc_url: https://telquel-obs2co.gitlab.irstea.page/satellite/sisppeo/
 
 extra:
   recipe-maintainers:
-    - COQUE Arthur
+    - A. Coqué

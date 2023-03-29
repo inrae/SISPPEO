@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,27 +40,31 @@ Example::
     S2L2A_ts.compute_stats(<filename>)
     S2L2A_ts.plot()
 """
-
+import copy
 import warnings
-from copy import deepcopy
+from collections import namedtuple
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, List, Optional, Tuple, Union
+from typing import AnyStr, Iterable, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
 import plotly.io as pio
+import psutil
+import ray
+import shapely.wkt
 import xarray as xr
 from PIL import Image, ImageDraw, ImageFont
 from plotly.subplots import make_subplots
 from tqdm import tqdm
 
+import sisppeo.main  # circular import => _mp_readerproducts
 from sisppeo.utils.config import resources
 from sisppeo.utils.lazy_loader import LazyLoader
-from sisppeo.utils.products import (get_grid, get_enc, normalize_arr,
-                                    CoordinatesMixin)
+from sisppeo.utils.products import (CoordinatesMixin, get_enc, get_grid,
+                                    normalize_arr)
 from sisppeo.utils.readers import resample_band_array
 
 pio.templates.default = 'simple_white'
@@ -119,6 +124,66 @@ class TimeSeries(CoordinatesMixin):
         return TimeSeries(ts)
 
     @classmethod
+    def from_reader(cls, lst_paths,
+                    product_type: AnyStr,
+                    lst_bands: Iterable,
+                    geom: AnyStr = None):
+        """Load and merge a list of L3 products.
+
+        Args:
+            lst_paths: A list of l3 products's paths
+            product_type: Yes
+            lst_bands: Yes
+            geom: A wkt geometry
+
+        Returns:
+            A TimeSeries object (i.e. a 3D Dataset: time, x, y).
+
+        Example:
+            from sisppeo.products.timeseries import TimeSeries
+            lst_bands = ['B2', 'B3', 'B4']
+            lst_data_zip = ["/nfs/DD/S2/L2/THEIA/SENTINEL2A_20151130-105641-486_L2A_T31TCJ_D.zip",
+                            "/nfs/DD/S2/L2/THEIA/SENTINEL2A_20151203-110846-328_L2A_T31TCJ_D.zip",
+                            "/nfs/DD/S2/L2/THEIA/SENTINEL2A_20151223-110915-322_L2A_T31TCJ_D.zip",
+                            "/nfs/DD/S2/L2/THEIA/SENTINEL2A_20151230-105153-392_L2A_T31TCJ_D.zip"]
+            ts = TimeSeries.from_reader(lst_paths=lst_data_zip, product_type=''S2_THEIA', lst_bands=lst_bands)
+        """
+        # verify inputs integrity
+        # If geom load as shapely geom
+        if geom is not None:
+            geom = shapely.wkt.loads(geom)
+
+        # Multiprocessing setup
+        Collection = namedtuple(
+            'Collection',
+            (Path(ip).name.split('.')[0].replace('-', '_') for ip in lst_paths)
+        )
+
+        num_cpus = psutil.cpu_count(logical=False)
+        cpus = [psutil.cpu_count(logical=False), len(lst_paths), num_cpus]
+        num_cpus = min(val for val in cpus if val is not None)
+
+        if ray.is_initialized():
+            ray.shutdown()
+        ray.init(num_cpus=num_cpus)
+
+        # Reconstruct list of functions with parameters to process
+        futures = []
+        for i in lst_paths:
+            futures.append(
+                sisppeo.main._mp_readerproducts.remote(input_product=i, product_type=product_type,
+                                                       lst_bands=lst_bands, geom={'geom': geom})
+                           )
+        # execute the processes parrallelized
+        products = ray.get(futures)
+        ray.shutdown()
+        products = Collection(*products)
+        # Retrieve list of datasets
+        lst_datasets = [products[i].bands.dataset for i in range(len(products))]
+        ts = xr.concat(objs=lst_datasets, dim='time')
+        return TimeSeries(ts)
+
+    @classmethod
     def from_l3products(cls, lst: Iterable):
         """Load and merge a list of L3 products.
 
@@ -166,6 +231,39 @@ class TimeSeries(CoordinatesMixin):
             'y': get_enc(self.dataset.y.values, 0.1)
         })
         self.dataset.to_netcdf(filename, encoding=enc)
+
+    def extract_by_geoms(self,
+                         data_var: Union[List, Tuple, AnyStr] = None,
+                         list_geom: list = None,
+                         epsg: int = 4326,
+                         buffer: int = None):
+        """Extract statistics from a xarray masked by WKT or SHP geom.
+
+        Args:
+            data_var: The name of the variable/DataArray of interest (e.g., a
+                band, aCDOM, etc).
+            list_geom: A list of geometries that must be Point/MultiPoint/ or Polygon/MultiPolygon
+                given as a WKT (well-known-text) or a path to a SHP (shapefile)
+                and both having a single entity which could have several parts.
+                The CRS for the WKT must be EPSG:4326 but don't need to be
+                specified for the SHP.
+            epsg: The CRS used when the geom given as an input can't be found.
+            buffer: Optional; The distance of the buffer in units of the CRS of the dataset.
+                A positive value means the buffer will be inside the polygon while a negative
+                value means the buffer will be outside the polygon.
+        Returns:
+            A list of dictionaries containing:
+                - the result of the mask as a xr.DataArray
+                - another dictionary of the computed statistics
+        Example:
+            from sisppeo.products import TimeSeries
+            ts = TimeSeries.from_files(list_paths)
+            ets = ts.extract_by_geoms(data_var='ndvi', list_geom=[wkt])
+        """
+        return TimeSeries(self._extract_by_geoms(data_var=data_var,
+                                                 list_geom=list_geom,
+                                                 epsg=epsg,
+                                                 buffer=buffer))
 
     def compute_stats(self, filename: P, plot: bool = True) -> None:
         """Computes (and save on disk) statistics about embedded data at each date.
@@ -732,7 +830,7 @@ def mask_time_series(ts_algo: TimeSeries,
         A masked TimeSeries.
     """
     if not inplace:
-        ts_algo = deepcopy(ts_algo)
+        ts_algo = copy.deepcopy(ts_algo)
     if isinstance(ts_masks, TimeSeries):
         ts_masks = [ts_masks]
     if isinstance(lst_mask_type, str):
@@ -778,8 +876,13 @@ def mask_time_series(ts_algo: TimeSeries,
     for ts_mask, mask_type in zip(ts_masks, lst_mask_type):
         mask = ts_mask.title.split(' ', 1)[0]
         if mask in ('s2cloudless', 'waterdetect'):
-            version = ts_mask.dataset[mask].attrs['version']
-            ts_algo.dataset.attrs[dico[mask]] = f'{mask} ({version}) [{mask_type}]'
+            # TODO debug mask version issue
+            try:
+                ts_mask.dataset[mask].attrs['version']
+                version = ts_mask.dataset[mask].attrs['version']
+                ts_algo.dataset.attrs[dico[mask]] = f'{mask} ({version}) [{mask_type}]'
+            except KeyError:
+                print('No mask product version key available to copy to product metadata')
         else:
             masks.append(f'{mask} [{mask_type}]')
     if masks:

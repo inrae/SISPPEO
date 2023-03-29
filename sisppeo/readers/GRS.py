@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,20 +12,18 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This module contains a reader for GRS products.
 
 This reader is dedicated to extract data from S2_GRS, L4_GRS, L5_GRS, L7_GRS
 and L8_GRS products.
 
-Example::
+    Typical usage example:
 
     reader = GRSReader(**config)
     reader.extract_bands()
     reader.create_ds()
     extracted_dataset = reader.dataset
 """
-
 from collections import namedtuple
 from datetime import datetime
 from pathlib import Path
@@ -36,26 +35,11 @@ from affine import Affine
 from pyproj import CRS
 from tqdm import tqdm
 
-from sisppeo.readers.reader import Reader, Inputs
+from sisppeo.readers.reader import Inputs, Reader
 from sisppeo.utils.exceptions import GeometryError
+from sisppeo.utils.naming import names_dict_GRS
 
-GRSInputs = namedtuple('GRSInputs',
-                       Inputs._fields + ('product_type', 'flags', 'grs_bands'))
-
-names_dict_l8 = {'B1': 'coastal_aerosol',
-                 'B2': 'blue',
-                 'B3': 'green',
-                 'B4': 'red',
-                 'B5': 'near_infrared',
-                 'B6': 'swir_1',
-                 'B7': 'swir_2'}
-
-names_dict_l457 = {'B1': 'radiance_1',
-                   'B2': 'radiance_2',
-                   'B3': 'radiance_3',
-                   'B4': 'radiance_4',
-                   'B5': 'radiance_5',
-                   'B7': 'radiance_7'}
+GRSInputs = namedtuple('GRSInputs', Inputs._fields + ('product_type', 'flags', 'grs_bands'))
 
 
 class GRSReader(Reader):
@@ -65,7 +49,6 @@ class GRSReader(Reader):
     Attributes:
         dataset: A dataset containing extracted data.
     """
-
     # pylint: disable=too-many-arguments
     # Six is reasonable in this case.
     def __init__(self,
@@ -86,10 +69,19 @@ class GRSReader(Reader):
                 mask named "flags" (="Flags for aquatic color purposes"),
                 useful for extracting water surfaces.
         """
-        super().__init__(input_product, requested_bands, geom)
+        if 'S2' in product_type:
+            from sisppeo.utils.naming import names_dict_s2 as names_dict
+            self._res = 20
+        elif 'L8' in product_type:
+            from sisppeo.utils.naming import names_dict_l8_GRS as names_dict
+            self._res = 30
+        else:
+            from sisppeo.utils.naming import names_dict_l457 as names_dict
+            self._res = 30
+        names_dict.update(names_dict_GRS)
+        super().__init__(input_product=input_product, requested_bands=requested_bands, names_dict=names_dict, geom=geom)
         self._inputs = GRSInputs(*self._inputs, product_type, flags,
                                  'Rrs' if glint_corrected else 'Rrs_g')
-        self._res = 20 if 'S2' in product_type else 30
 
     # pylint: disable=too-many-locals
     # More readable if geotransform is defined.
@@ -116,13 +108,10 @@ class GRSReader(Reader):
         data = {}
         ij_bbox = self._extract_ROI(xy_bbox, len(dataset.x), len(dataset.y))
         for band in tqdm(self._inputs.requested_bands, unit='bands'):
-            if 'S2' in self._inputs.product_type:
-                _band = band
-            elif 'L8' in self._inputs.product_type:
-                _band = names_dict_l8[band]
+            if band not in names_dict_GRS.values():
+                band_name = f'{self._inputs.grs_bands}_{band}'
             else:
-                _band = names_dict_l457[band]
-            band_name = f'{self._inputs.grs_bands}_{_band}'
+                band_name = band
             band_array = _extract_band(dataset, band_name, ij_bbox)
             data[band] = band_array.reshape(1, *band_array.shape)
         print('')

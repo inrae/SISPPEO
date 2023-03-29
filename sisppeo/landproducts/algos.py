@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This module gathers algorithms for land cover remote sensing.
 
 Each class of this module correspond to one algorithm. An algorithm can have
@@ -27,14 +27,13 @@ Example::
     algo = NDVI('L8_GRS')
     out_array = algo(input_array1, input_array2)
 """
-
 from pathlib import Path
 from typing import Union
 
 from xarray import DataArray
 
-from sisppeo.utils.algos import producttype_to_sat
-from sisppeo.utils.config import land_algo_config as algo_config
+from sisppeo.utils.config import land_algo_config
+from sisppeo.utils.naming import get_requested_bands
 from sisppeo.utils.exceptions import InputError
 
 # pylint: disable=invalid-name
@@ -66,12 +65,9 @@ class Ndvi:
               S2_ESA_L2A or L8_USGS_L1GT)
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=land_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         self.meta = {}
 
     def __call__(self, red: DataArray,
@@ -115,12 +111,9 @@ class Nbr:
               S2_ESA_L2A or L8_USGS_L1GT)
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=land_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         self.meta = {}
 
     def __call__(self, swir: DataArray,

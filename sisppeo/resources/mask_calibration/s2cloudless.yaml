@@ -1,0 +1,8 @@
+default:
+  threshold: 0.4
+  average_over: 1
+  dilation_size: 1
+sentinel_hub_example:
+  threshold: 0.4
+  average_over: 4
+  dilation_size: 2

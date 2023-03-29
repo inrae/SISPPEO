@@ -13,6 +13,6 @@
 # limitations under the License.
 
 # flake8: noqa: F401
-from sisppeo.products.l3 import (mask_product, L3Product, L3AlgoProduct,
-                                 L3MaskProduct)
-from sisppeo.products.timeseries import mask_time_series, TimeSeries
+from sisppeo.products.l3 import (L3AlgoProduct, L3MaskProduct, L3Product,
+                                 L3ReaderProduct, mask_product)
+from sisppeo.products.timeseries import TimeSeries, mask_time_series

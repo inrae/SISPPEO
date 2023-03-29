@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,9 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Contains various useful functions used by algorithms."""
-
 from pathlib import Path
 from typing import Tuple, Union
 
@@ -65,7 +64,7 @@ def load_calib(calibration: P,
     return params, name
 
 
-def producttype_to_sat(product_type: str) -> str:
+def producttype_to_sat(product_type: str, mode: str) -> str:
     """Returns the satellite for the given product_type.
 
     Args:
@@ -75,4 +74,41 @@ def producttype_to_sat(product_type: str) -> str:
     Returns:
         The name of the satellite that matches the input product_type.
     """
-    return product_type.split('_')[0]
+    modes = ['specific', 'common']
+    if mode not in modes:
+        msg = f"{mode} isn't a valid parameter. Please use of the following: {modes}"
+        raise InputError(msg)
+
+    if mode == 'specific':
+        return product_type.replace('_USGS_', '')
+    else:
+        return product_type.split('_')[0]
+
+
+def get_sat_name(metadata: dict, product_type: str) -> str:
+    """Returns the satellite name (e.g., 'S2A') for the given couple (metadata|product_type).
+
+    Args:
+        metadata: The dictionary in which metadata of the input
+            satellite product are stored ("product_metadata.attrs").
+        product_type: The type of the input satellite product
+            (e.g. S2_ESA_L2A or L8_USGS_L1)
+    """
+    s2_names = {'Sentinel-2A': 'S2A', 'Sentinel-2B': 'S2B'}
+    if product_type in ('S2_ESA_L1C', 'S2_ESA_L2A'):
+        sat_name = s2_names[metadata['DATATAKE_1_SPACECRAFT_NAME']]
+    elif product_type == 'S2_GRS':
+        sat_name = s2_names[metadata['Level-1C_User_Product:General_Info:Product_Info:Datatake:SPACECRAFT_NAME']]
+    elif product_type == 'L8_GRS':
+        sat_name = producttype_to_sat(product_type)
+    elif product_type == 'L7_GRS':
+        sat_name = producttype_to_sat(product_type)
+    elif product_type == 'L5_GRS':
+        sat_name = producttype_to_sat(product_type)
+    elif product_type == 'L4_GRS':
+        sat_name = producttype_to_sat(product_type)
+    # TODO add L4-5-7 retrieval
+    else:
+        print('not implemented yet')
+        sat_name = None
+    return sat_name

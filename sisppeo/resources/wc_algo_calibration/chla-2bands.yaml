@@ -1,0 +1,18 @@
+Moses_2012:
+  validity_limit: 120
+  S2:
+    a: -19.3
+    b: 35.75
+    c: 1.124
+Neil_2020_E_Org:
+  validity_limit: 120
+  S2:
+    a: -19.3
+    b: 35.75
+    c: 1.124
+Neil_2020_A_Clus:
+  validity_limit: 120
+  S2:
+    a: -30.08
+    b: 53.29
+    c: 1

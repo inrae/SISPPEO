@@ -48,6 +48,19 @@ turbi-dogliotti:
   S2:
     - B4
     - B8
+chla-2bands:
+  long_name: Chlo-a (mg/m3) from 2 bands algorithm
+  output: chla
+  S2:
+    - B4
+    - B5
+chla-3bands:
+  long_name: Chlo-a (mg/m3) from 3 bands algorithm
+  output: chla
+  S2:
+    - B4
+    - B5
+    - B6
 chla-gons:
   long_name: Chlo-a (mg/m3) from Gons et al., 1999, 2002, 2004
   output: chla
@@ -85,6 +98,24 @@ chla-oc:
     - B1
     - B2
     - B3
+chla-ndcipoly:
+  long_name: Chlo-a (mg/m3) from Mishra et al., 2012 and updates
+  output: chla-ndcipoly
+  S2:
+    - B4
+    - B5
+  L8:
+    - B4
+    - B5
+  L7:
+    - B3
+    - B4
+  L5:
+    - B3
+    - B4
+  L4:
+    - B3
+    - B4
 ndci:
   long_name: Normalized Difference Chlorophyll Index
   output: ndci
@@ -115,3 +146,191 @@ acdom-brezonik:
   S3:
     - B5
     - B12
+qaa-lee:
+  long_name:
+    - Absorption coefficient of non water constituents anw (m-1) at 440 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Absorption coefficient of non water constituents anw (m-1) at 490 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Absorption coefficient of non water constituents anw (m-1) at 550 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Absorption coefficient of non water constituents anw (m-1) at 660 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Backscattering coefficient bb (m-1) at 440 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Backscattering coefficient bb (m-1) (m-1) at 490 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Backscattering coefficient bb (m-1) (m-1) at 550 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Backscattering coefficient bb (m-1) (m-1) at 660 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Backscattering coefficient of non water constituents bbp (m-1) at 440 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Backscattering coefficient of non water constituents bbp (m-1) at 490 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Backscattering coefficient of non water constituents bbp (m-1) at 550 nm from Lee et al., 2002, 2005, 2009, 2014
+    - Backscattering coefficient of non water constituents bbp (m-1) at 660 nm from Lee et al., 2002, 2005, 2009, 2014
+  output: [anw_440, anw_490, anw_550, anw_660, bb_440, bb_490, bb_550, bb_660, bbp_440, bbp_490, bbp_550, bbp_660]
+  S2:
+    - B1
+    - B2
+    - B3
+    - B4
+  L8:
+    - B1
+    - B2
+    - B3
+    - B4
+qaa-rgb:
+  long_name:
+    - Absorption coefficient of non water constituents anw (m-1) at the blue band from Pitarch et al., 2021
+    - Absorption coefficient of non water constituents anw (m-1) at the green band from Pitarch et al., 2021
+    - Absorption coefficient of non water constituents anw (m-1) at the red band from Pitarch et al., 2021
+    - Backscattering coefficient bb (m-1) at the blue band from Pitarch et al., 2021
+    - Backscattering coefficient bb (m-1) at the greenband from Pitarch et al., 2021
+    - Backscattering coefficient bb (m-1) at the red band from Pitarch et al., 2021
+    - Backscattering coefficient of non water constituents coefficient bbp (m-1) at the blue band from Pitarch et al., 2021
+    - Backscattering coefficient of non water constituents coefficient bbp (m-1) at the green band from Pitarch et al., 2021
+    - Backscattering coefficient of non water constituents coefficient bbp (m-1) at the red band from Pitarch et al., 2021
+  output: [anw_B, anw_G, anw_R, bb_B, bb_G, bb_R, bbp_B, bbp_G, bbp_R]
+  S2:
+    - B2
+    - B3
+    - B4
+  L8:
+    - B2
+    - B3
+    - B4
+  L7:
+    - B1
+    - B2
+    - B3
+  L5:
+    - B1
+    - B2
+    - B3
+  L4:
+    - B1
+    - B2
+    - B3
+kd-lee:
+  long_name:
+    - Diffuse attenuation coefficient Kd of downwelling irradiance (m-1) at 440 nm from Lee et al., 2013
+    - Diffuse attenuation coefficient Kd of downwelling irradiance (m-1) at 490 nm from Lee et al., 2013
+    - Diffuse attenuation coefficient Kd of downwelling irradiance (m-1) at 550 nm from Lee et al., 2013
+    - Diffuse attenuation coefficient Kd of downwelling irradiance (m-1) at 660 nm from Lee et al., 2013
+  output: [kd_440, kd_490, kd_550, kd_660]
+  S2:
+    - B1
+    - B2
+    - B3
+    - B4
+  L8:
+    - B1
+    - B2
+    - B3
+    - B4
+kd-rgb:
+  long_name:
+    - Diffuse attenuation coefficient Kd of downwelling irradiance (m-1) at the blue band from Lee et al., 2013 with QAArgb from Pitarch et al., 2021
+    - Diffuse attenuation coefficient Kd of downwelling irradiance (m-1) at the green band from Lee et al., 2013 with QAArgb from Pitarch et al., 2021
+    - Diffuse attenuation coefficient Kd of downwelling irradiance (m-1) at the red band from Lee et al., 2013 with QAArgb from Pitarch et al., 2021
+  output: [kd_B, kd_G, kd_R]
+  S2:
+    - B2
+    - B3
+    - B4
+  L8:
+    - B2
+    - B3
+    - B4
+  L7:
+    - B1
+    - B2
+    - B3
+  L5:
+    - B1
+    - B2
+    - B3
+  L4:
+    - B1
+    - B2
+    - B3
+zsd-lee:
+  long_name:
+    - Secchi disk depth Zsd (m) from Lee et al., 2015
+  output: zsd
+  S2:
+    - B1
+    - B2
+    - B3
+    - B4
+  L8:
+    - B1
+    - B2
+    - B3
+    - B4
+zsd-rgb:
+  long_name:
+    - Secchi disk depth Zsd (m) from Pitarch et al., 2021
+  output: zsd
+  S2:
+    - B2
+    - B3
+    - B4
+  L8:
+    - B2
+    - B3
+    - B4
+  L7:
+    - B1
+    - B2
+    - B3
+  L5:
+    - B1
+    - B2
+    - B3
+  L4:
+    - B1
+    - B2
+    - B3
+bloom-ho:
+  long_name: Widespread global increase in intense lake phytoplankton blooms since the 1980s from Ho et al., 2019
+  output: bloom
+  L4:
+    - B1
+    - B2
+    - B3
+    - B4
+    - B5
+    - BQA
+  L5:
+    - B1
+    - B2
+    - B3
+    - B4
+    - B5
+    - BQA
+  L7:
+    - B1
+    - B2
+    - B3
+    - B4
+    - B5
+    - BQA
+  L8L2CDR:
+    - B2
+    - B3
+    - B4
+    - B5
+    - B6
+    - CLOUD
+  L8L2CDRC1:
+    - B2
+    - B3
+    - B4
+    - B5
+    - B6
+    - PIXEL
+  L8L2THEIA:
+    - FB2
+    - FB3
+    - FB4
+    - FB5
+    - FB6
+  S2:
+    - B2
+    - B3
+    - B4
+    - B8
+    - B11

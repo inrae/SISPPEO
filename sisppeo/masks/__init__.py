@@ -13,5 +13,5 @@
 # limitations under the License.
 
 # flake8: noqa: F401
-from sisppeo.masks.obs2co_s2wm import water_detector as waterdetect
-from sisppeo.masks.sh_s2cloudless import cloud_detector as s2cloudless
+from sisppeo.masks.obs2co_s2wm import WaterDetect
+from sisppeo.masks.sh_s2cloudless import S2Cloudless

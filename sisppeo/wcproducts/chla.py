@@ -1,4 +1,5 @@
-# Copyright 2020 Arthur Coqué, Guillaume Morin, Pôle OFB-INRAE ECLA, UR RECOVER
+# -*- coding: utf-8 -*-
+# Copyright 2020 Guillaume Morin, Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This module gathers wc algorithms used for estimating Chl-a concentrations.
 
 Each class of this module correspond to one algorithm. An algorithm can have
@@ -30,15 +30,15 @@ Example:
     algo2 = CHLAGittelson('L8_GRS', '3_bands', 'Gitelson_2008')
     out_array2 = algo2(red_array, rededge_array, nir_array, 'rrs')
 """
-
 from pathlib import Path
 from typing import Optional, Union
 
 import numpy as np
 import xarray as xr
 
-from sisppeo.utils.algos import load_calib, producttype_to_sat
-from sisppeo.utils.config import wc_algo_config as algo_config, wc_calib
+from sisppeo.utils.algos import load_calib
+from sisppeo.utils.naming import get_requested_bands
+from sisppeo.utils.config import wc_algo_config, wc_calib
 from sisppeo.utils.exceptions import InputError
 
 # pylint: disable=invalid-name
@@ -48,7 +48,7 @@ N = Union[int, float]
 
 
 class CHLAGons:
-    """Chlorophyll-a concentration (in mg/m3) from 3 red bands after Gons et al., 1999, 2002, 2004
+    """Chlorophyll-a concentration (in mg/m3) from SAA 3 bands red rededge 1 and nir 1  after Gons et al., 1999, 2002, 2004
 
     Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from
     surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
@@ -79,12 +79,9 @@ class CHLAGons:
                 the algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         calibration_dict, calibration_name = load_calib(
             calibration,
             self._default_calibration_file,
@@ -92,7 +89,7 @@ class CHLAGons:
         )
         self._valid_limit = calibration_dict['validity_limit']
         try:
-            params = calibration_dict[producttype_to_sat(product_type)]
+            params = calibration_dict[prod]
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with this calibration'
             raise InputError(msg) from invalid_product
@@ -103,16 +100,16 @@ class CHLAGons:
 
     def __call__(self,
                  ref_red: xr.DataArray,
-                 ref_rededge: xr.DataArray,
-                 ref_nir: xr.DataArray,
+                 ref_rededge1: xr.DataArray,
+                 ref_nir1: xr.DataArray,
                  data_type: str,
                  **_ignored) -> xr.DataArray:
         """Runs the algorithm on the input array ('ref').
 
         Args:
             ref_red: An array (dimension 1 * N * M) of 'data_type'.
-            ref_redegde: An array (dimension 1 * N * M) of 'data_type'.
-            ref_nir: An array (dimension 1 * N * M) of 'data_type'.
+            ref_redegde1: An array (dimension 1 * N * M) of 'data_type'.
+            ref_nir1: An array (dimension 1 * N * M) of 'data_type'.
             data_type: Either 'ref' or 'rrs' (respectively surface reflectance
                 and remote sensing reflectance).
             **_ignored: Unused kwargs sent to trash.
@@ -123,20 +120,19 @@ class CHLAGons:
 
         if data_type == 'rho':
             ref_red = ref_red / np.pi
-            ref_rededge = ref_rededge / np.pi
-            ref_nir = ref_nir / np.pi
+            ref_rededge1 = ref_rededge1 / np.pi
+            ref_nir = ref_nir1 / np.pi
 
         np.warnings.filterwarnings('ignore')
         ref_red = ref_red.where(ref_red >= 0)
-        ref_rededge = ref_rededge.where(ref_red >= 0)
-        ref_nir = ref_red.where(ref_nir >= 0)
+        ref_rededge1 = ref_rededge1.where(ref_red >= 0)
+        ref_nir = ref_red.where(ref_nir1 >= 0)
 
         bb783 = ref_nir.where(ref_nir >= 0).copy()
         # pylint: disable=no-member
         # Loaded in __init__ whit "__dict__.update".
         bb783 = (self.a * bb783) / (0.082 - 0.6 * bb783)
-        aphy = ref_rededge / ref_red * (self.aw705 + bb783) - self.aw665 \
-            - np.power(bb783, self.p)
+        aphy = ref_rededge1 / ref_red * (self.aw705 + bb783) - self.aw665 - np.power(bb783, self.p)
         chla = aphy / self.aphy_star
         chla = chla.where((chla >= 0) & (chla <= self._valid_limit))
         return chla
@@ -177,12 +173,9 @@ class CHLAGitelson:
             **_ignored: Unused kwargs sent to trash.
         """
         self._design = design
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         calibration_dict, calibration_name = load_calib(
             calibration,
             self._default_calibration_file,
@@ -190,7 +183,7 @@ class CHLAGitelson:
         )
         self._valid_limit = calibration_dict['validity_limit']
         try:
-            params = calibration_dict[producttype_to_sat(product_type)]
+            params = calibration_dict[prod]
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with this calibration'
             raise InputError(msg) from invalid_product
@@ -245,13 +238,12 @@ class CHLAGitelson:
         return chla
 
 
-class CHLAGurlin:
-    """Chlorophyll-a concentration (in mg/m3) from 3 red bands after Gurlin et al., 2011
+class CHLA2Bands:
+    """Chlorophyll-a concentration (in mg/m3) from 2 bands rededge(705)/red(665) affine parameterization
 
     Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from
     surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
-    in sr-1) at 665nm B4 MSI, 704nm B5 MSI and 783nm B7 MSI.
-    This algorithm was published in Gons et al., 1999, 2002, 2004
+    in sr-1) at 665nm B4 MSI, 705nm B5 MSI.
 
     Attributes:
         name: The name of the algorithm used. This is the key used by
@@ -260,15 +252,15 @@ class CHLAGurlin:
         requested_bands: A list of bands further used by the algorithm.
         meta: A dict of metadata (calibration name, model coefficients, etc).
     """
-    _default_calibration_file = wc_calib / 'chla-gurlin.yaml'
-    _default_calibration_name = 'Gurlin_2011'
-    name = 'chla-gurlin'
+    _default_calibration_file = wc_calib / 'chla-2bands.yaml'
+    _default_calibration_name = 'Moses_2012'
+    name = 'chla-2bands'
 
     def __init__(self,
                  product_type: str,
                  calibration: Optional[P] = None,
                  **_ignored) -> None:
-        """Inits an 'CHLAGurlin' instance with specific settings.
+        """Inits an 'CHLA2Bands' instance with specific settings.
 
         Args:
             product_type: The type of the input satellite product (e.g.
@@ -277,12 +269,9 @@ class CHLAGurlin:
                 algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         calibration_dict, calibration_name = load_calib(
             calibration,
             self._default_calibration_file,
@@ -290,7 +279,7 @@ class CHLAGurlin:
         )
         self._valid_limit = calibration_dict['validity_limit']
         try:
-            params = calibration_dict[producttype_to_sat(product_type)]
+            params = calibration_dict[prod]
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with this calibration'
             raise InputError(msg) from invalid_product
@@ -316,13 +305,178 @@ class CHLAGurlin:
         Returns:
             An array (dimension 1 * N * M) of chl-a (in mg/m3).
         """
+
+        if data_type == 'rho':
+            ref_red = ref_red / np.pi
+            ref_rededge = ref_rededge / np.pi
+
         np.warnings.filterwarnings('ignore')
         ref_red = ref_red.where(ref_red >= 0)
         ref_rededge = ref_rededge.where(ref_red >= 0)
+        chla = np.power(self.a + self.b * (ref_rededge / ref_red), self.c)
+        chla = chla.where((chla >= 0) & (chla <= self._valid_limit))
+        return chla
+
+
+class CHLA3Bands:
+    """Chlorophyll-a concentration (in mg/m3) from 3 red bands after Moses et al., 2009 and Gitelson et al., 2008
+
+    Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from
+    surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
+    in sr-1) at 665nm B4 MSI, 705nm B5 MSI and 740nm B6 MSI.
+    This algorithm was published in Gitelson et al., 2008
+
+    Attributes:
+        name: The name of the algorithm used. This is the key used by
+            L3AlgoBuilder and that you must provide in config or when using
+            the CLI.
+        requested_bands: A list of bands further used by the algorithm.
+        meta: A dict of metadata (calibration name, model coefficients, etc).
+    """
+    _default_calibration_file = wc_calib / 'chla-3bands.yaml'
+    _default_calibration_name = 'Moses_2009'
+    name = 'chla-3bands'
+
+    def __init__(self,
+                 product_type: str,
+                 calibration: Optional[P] = None,
+                 **_ignored) -> None:
+        """Inits an 'CHLA3Bands instance with specific settings.
+
+        Args:
+            product_type: The type of the input satellite product (e.g.
+                S2_ESA_L2A or L8_USGS_L1GT)
+            calibration: The calibration (set of parameters) used by the
+                algorithm (default=_default_calibration_name).
+            **_ignored: Unused kwargs sent to trash.
+        """
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
+        calibration_dict, calibration_name = load_calib(
+            calibration,
+            self._default_calibration_file,
+            self._default_calibration_name
+        )
+        self._valid_limit = calibration_dict['validity_limit']
+        try:
+            params = calibration_dict[prod]
+        except KeyError as invalid_product:
+            msg = f'{product_type} is not allowed with this calibration'
+            raise InputError(msg) from invalid_product
+        self.__dict__.update(params)
+        self.meta = {'calibration': calibration_name,
+                     'validity_limit': self._valid_limit,
+                     **params}
+
+    def __call__(self,
+                 ref_red: xr.DataArray,
+                 ref_rededge: xr.DataArray,
+                 ref_nir: xr.DataArray,
+                 data_type: str,
+                 **_ignored) -> xr.DataArray:
+        """Runs the algorithm on the input array ('ref').
+
+        Args:
+            ref_red: An array (dimension 1 * N * M) of 'data_type'.
+            ref_redegde: An array (dimension 1 * N * M) of 'data_type'.
+            ref_nir: An array (dimension 1 * N * M) of 'data_type'.
+            data_type: Either 'rho' or 'rrs' (respectively surface reflectance
+                and remote sensing reflectance).
+            **_ignored: Unused kwargs sent to trash.
+
+        Returns:
+            An array (dimension 1 * N * M) of chl-a (in mg/m3).
+        """
+
+        if data_type == 'rho':
+            ref_red = ref_red / np.pi
+            ref_rededge = ref_rededge / np.pi
+            ref_nir = ref_nir / np.pi
+
+        np.warnings.filterwarnings('ignore')
+        ref_red = ref_red.where(ref_red >= 0)
+        ref_rededge = ref_rededge.where(ref_red >= 0)
+        chla = np.power(self.a + self.b * (1 / ref_red - 1 / ref_rededge) * ref_nir, self.c)
+        chla = chla.where((chla >= 0) & (chla <= self._valid_limit))
+        return chla
+
+
+class CHLAGurlin:
+    """Chlorophyll-a concentration (in mg/m3) from 2 red rededge1 bands after Gurlin et al., 2011
+
+    Red edge 1 / red polynomial algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from
+    surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
+    in sr-1) at 665nm B4 MSI, 704nm B5 MSI.
+    This algorithm and parameterization was published in Gurlin et al., 2011
+
+    Attributes:
+        name: The name of the algorithm used. This is the key used by
+            L3AlgoBuilder and that you must provide in config or when using
+            the CLI.
+        requested_bands: A list of bands further used by the algorithm.
+        meta: A dict of metadata (calibration name, model coefficients, etc).
+    """
+    _default_calibration_file = wc_calib / 'chla-gurlin.yaml'
+    _default_calibration_name = 'Gurlin_2011'
+    name = 'chla-gurlin'
+
+    def __init__(self,
+                 product_type: str,
+                 calibration: Optional[P] = None,
+                 **_ignored) -> None:
+        """Inits an 'CHLAGurlin' instance with specific settings.
+
+        Args:
+            product_type: The type of the input satellite product (e.g.
+                S2_ESA_L2A or L8_USGS_L1GT)
+            calibration: The calibration (set of parameters) used by the
+                algorithm (default=_default_calibration_name).
+            **_ignored: Unused kwargs sent to trash.
+        """
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
+        calibration_dict, calibration_name = load_calib(
+            calibration,
+            self._default_calibration_file,
+            self._default_calibration_name
+        )
+        self._valid_limit = calibration_dict['validity_limit']
+        try:
+            params = calibration_dict[prod]
+        except KeyError as invalid_product:
+            msg = f'{product_type} is not allowed with this calibration'
+            raise InputError(msg) from invalid_product
+        self.__dict__.update(params)
+        self.meta = {'calibration': calibration_name,
+                     'validity_limit': self._valid_limit,
+                     **params}
+
+    def __call__(self,
+                 ref_red: xr.DataArray,
+                 ref_rededge1: xr.DataArray,
+                 data_type: str,
+                 **_ignored) -> xr.DataArray:
+        """Runs the algorithm on the input array ('ref').
+
+        Args:
+            ref_red: An array (dimension 1 * N * M) of 'data_type'.
+            ref_redegde: An array (dimension 1 * N * M) of 'data_type'.
+            data_type: Either 'rho' or 'rrs' (respectively surface reflectance
+                and remote sensing reflectance).
+            **_ignored: Unused kwargs sent to trash.
+
+        Returns:
+            An array (dimension 1 * N * M) of chl-a (in mg/m3).
+        """
+        np.warnings.filterwarnings('ignore')
+        ref_red = ref_red.where(ref_red >= 0)
+        ref_rededge1 = ref_rededge1.where(ref_red >= 0)
         # pylint: disable=no-member
         # Loaded in __init__ whit "__dict__.update".
-        chla = self.a * pow(ref_rededge / ref_red, 2) + self.b \
-            * (ref_rededge / ref_red) + self.c
+        chla = self.a * pow(ref_rededge1 / ref_red, 2) + self.b \
+            * (ref_rededge1 / ref_red) + self.c
         chla = chla.where((chla >= 0) & (chla <= self._valid_limit))
         return chla
 
@@ -345,7 +499,7 @@ class CHLAOC:
         meta: A dict of metadata (calibration name, model coefficients, etc).
     """
     _default_calibration_file = wc_calib / 'chla-oc.yaml'
-    _default_calibration_name = 'OC3'
+    _default_calibration_name = 'OReilly_2019_OC3'
     name = 'chla-oc'
 
     def __init__(self,
@@ -361,12 +515,9 @@ class CHLAOC:
                 algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         calibration_dict, calibration_name = load_calib(
             calibration,
             self._default_calibration_file,
@@ -375,7 +526,7 @@ class CHLAOC:
         self._valid_limit = calibration_dict['validity_limit']
         self._version = calibration_name
         try:
-            params = calibration_dict[producttype_to_sat(product_type)]
+            params = calibration_dict[prod]
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with this calibration'
             raise InputError(msg) from invalid_product
@@ -410,31 +561,31 @@ class CHLAOC:
             ref_blue = ref_blue / np.pi
             ref_green = ref_green / np.pi
 
-        if self._version == 'OC3':
-            print(f'{self._version} is used')
-            max_ratio = np.log(np.maximum(ref_violet.values, ref_blue.values)
-                               / ref_green)
+        if 'OC3' in self.meta['calibration']:
+            print(f"3 bands V>B/G ratio version is used with calibration: {self.meta['calibration']}")
+            max_ratio = np.log10(np.maximum(ref_violet.values, ref_blue.values) / ref_green)
+            #print(max_ratio)
             # np.log(max(Rrs_B1, Rrs_B2) / Rrs_B3))
         else:   # self._version == 'OC2'
-            print(f'{self._version} is used')
-            max_ratio = np.log(ref_blue.values / ref_green)
+            print(f"2 bands B/G ratio version is used with calibration: {self.meta['calibration']}")
+            max_ratio = np.log10(ref_blue / ref_green)
+
         # pylint: disable=no-member
         # Loaded in __init__ whit "__dict__.update".
-        chla = np.power(10, self.a0 + self.a1 * max_ratio + self.a2
-                        * np.power(max_ratio, 2) + self.a3
-                        * np.power(max_ratio, 3) + self.a4
-                        * np.power(max_ratio, 4))
+        poly = self.a0 + self.a1 * max_ratio + self.a2 * np.power(max_ratio, 2) + self.a3 * np.power(max_ratio, 3) + self.a4 * np.power(max_ratio, 4)
+        poly.where(poly >= 0)
+        chla = np.power(10, poly)
         chla = chla.where((chla >= 0) & (chla <= self._valid_limit))
         return chla
 
 
 class CHLALins:
-    """Chlorophyll-a concentration (in mg/m3) from NIR/Red bands ratio after Lins et al., 2017
+    """Chlorophyll-a concentration (in mg/m3) from Rededge1/Red bands affine parameterization (CHLA2Bands) after Lins et al., 2017
 
     Red edge algorithm to retrieve Chlorophyll-a concentration (in mg/m3) from
     surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
     in sr-1) at 665nm B4 MSI, 705nm B5 MSI
-    This algorithm was published in Lins et al., 2017
+    This algorithm and parameterization was published in Lins et al., 2017
 
     Attributes:
         name: The name of the algorithm used. This is the key used by
@@ -460,12 +611,9 @@ class CHLALins:
                 algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         calibration_dict, calibration_name = load_calib(
             calibration,
             self._default_calibration_file,
@@ -473,7 +621,7 @@ class CHLALins:
         )
         self._valid_limit = calibration_dict['validity_limit']
         try:
-            params = calibration_dict[producttype_to_sat(product_type)]
+            params = calibration_dict[prod]
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with this calibration'
             raise InputError(msg) from invalid_product
@@ -484,14 +632,14 @@ class CHLALins:
 
     def __call__(self,
                  ref_red: xr.DataArray,
-                 ref_rededge: xr.DataArray,
+                 ref_rededge1: xr.DataArray,
                  data_type: str,
                  **_ignored) -> xr.DataArray:
         """Runs the algorithm on the input array ('ref').
 
         Args:
             ref_red: An array (dimension 1 * N * M) of 'data_type'.
-            ref_redegde: An array (dimension 1 * N * M) of 'data_type'.
+            ref_redegde1: An array (dimension 1 * N * M) of 'data_type'.
             data_type: Either 'rho' or 'rrs' (respectively surface reflectance
                 and remote sensing reflectance).
             **_ignored: Unused kwargs sent to trash.
@@ -501,10 +649,87 @@ class CHLALins:
         """
         np.warnings.filterwarnings('ignore')
         ref_red = ref_red.where(ref_red >= 0)
-        ref_rededge = ref_rededge.where(ref_red >= 0)
+        ref_rededge1 = ref_rededge1.where(ref_red >= 0)
         # pylint: disable=no-member
         # Loaded in __init__ whit "__dict__.update".
-        chla = self.p * (ref_rededge / ref_red) + self.q
+        chla = self.p * (ref_rededge1 / ref_red) + self.q
+        chla = chla.where((chla >= 0) & (chla <= self._valid_limit))
+        return chla
+
+
+class CHLANDCIpoly:
+    """Chlo-a  from Mishra's approach with polynomial Normalized Difference Chlorophyll Index
+
+    Mishra chlo-a NDCI from surface reflectances (rho, unitless) or remote sensing reflectances (Rrs,
+    in sr-1) at 665nm B4 MSI, 704nm B5 MSI
+
+    Attributes:
+        name: The name of the algorithm used. This is the key used by
+            L3AlgoBuilder and that you must provide in config or when using
+            the CLI.
+        requested_bands: A list of bands further used by the algorithm.
+        meta: An empty dict, since there is no parametrisation for NDWI.
+    """
+    _default_calibration_file = wc_calib / 'chla-ndcipoly.yaml'
+    _default_calibration_name = 'Mishra_2012'
+    name = 'chla-ndcipoly'
+
+    def __init__(self,
+                 product_type: str,
+                 calibration: Optional[P] = None,
+                 **_ignored) -> None:
+        """Inits an 'CHLALins' instance with specific settings.
+
+        Args:
+            product_type: The type of the input satellite product (e.g.
+                S2_ESA_L2A or L8_USGS_L1GT)
+            calibration: The calibration (set of parameters) used by the
+                algorithm (default=_default_calibration_name).
+            **_ignored: Unused kwargs sent to trash.
+        """
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
+        calibration_dict, calibration_name = load_calib(
+            calibration,
+            self._default_calibration_file,
+            self._default_calibration_name
+        )
+        self._valid_limit = calibration_dict['validity_limit']
+        try:
+            params = calibration_dict[prod]
+        except KeyError as invalid_product:
+            msg = f'{product_type} is not allowed with this calibration'
+            raise InputError(msg) from invalid_product
+        self.__dict__.update(params)
+        self.meta = {'calibration': calibration_name,
+                     'validity_limit': self._valid_limit,
+                     **params}
+
+    def __call__(self,
+                 ref_red: xr.DataArray,
+                 ref_rededge1: xr.DataArray,
+                 data_type: str,
+                 **_ignored) -> xr.DataArray:
+        """Runs the algorithm on the input array ('ref').
+
+        Args:
+            ref_red: An array (dimension 1 * N * M) of 'data_type'.
+            ref_redegde1: An array (dimension 1 * N * M) of 'data_type'.
+            data_type: Either 'rho' or 'rrs' (respectively surface reflectance
+                and remote sensing reflectance).
+            **_ignored: Unused kwargs sent to trash.
+
+        Returns:
+            An array (dimension 1 * N * M) of chl-a (in mg/m3).
+        """
+        np.warnings.filterwarnings('ignore')
+        ref_red = ref_red.where(ref_red >= 0)
+        ref_rededge1 = ref_rededge1.where(ref_red >= 0)
+        idx = (ref_rededge1 - ref_red) / (ref_rededge1 + ref_red)
+        # pylint: disable=no-member
+        # Loaded in __init__ whit "__dict__.update".
+        chla = self.a + self.b * idx + self.c * np.power(idx, 2)
         chla = chla.where((chla >= 0) & (chla <= self._valid_limit))
         return chla
 
@@ -532,12 +757,9 @@ class NDCI:
               S2_ESA_L2A or L8_USGS_L1GT)
             **_ignored: Unused kwargs send to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as unvalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from unvalid_product
+        self.requested_bands, _ = get_requested_bands(algo_config=wc_algo_config,
+                                                      product_type=product_type,
+                                                      name=self.name)
         self.meta = {}
 
     def __call__(self,

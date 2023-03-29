@@ -1,4 +1,5 @@
-# Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
+# -*- coding: utf-8 -*-
+# Copyright 2020 Guillaume Morin, Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,6 +16,13 @@
 # flake8: noqa: F401
 from sisppeo.wcproducts.acdom import ACDOMBrezonik
 from sisppeo.wcproducts.algos import Ndwi
-from sisppeo.wcproducts.chla import (CHLAGitelson, CHLAGons, CHLAGurlin,
-                                     CHLALins, CHLAOC, NDCI)
+from sisppeo.wcproducts.bloom import BLOOM
+from sisppeo.wcproducts.chla import (CHLAOC, NDCI, CHLA2Bands, CHLA3Bands,
+                                     CHLAGitelson, CHLAGons, CHLAGurlin,
+                                     CHLALins, CHLANDCIpoly)
 from sisppeo.wcproducts.spm import SPMGet, SPMHan, SPMNechad, TURBIDogliotti
+from sisppeo.wcproducts.transparency import (KDLee, KDrgb, QAALee, QAArgb,
+                                             ZSDLee, ZSDrgb)
+
+# TODO uncomment when finished
+# from sisppeo.wcproducts.classifiers import KMeansClassifier

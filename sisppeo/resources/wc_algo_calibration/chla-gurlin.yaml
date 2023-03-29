@@ -4,3 +4,9 @@ Gurlin_2011:
     a: 25.28
     b: 14.85
     c: -15.1
+Neil_2020_C_Clus:
+  validity_limit: 200
+  S2:
+    a: 86.09
+    b: -517.5
+    c: 886.7

@@ -21,11 +21,18 @@ Example::
     out_array = cloud_detector([input_arrays])
 """
 
-from typing import List, Tuple
+from pathlib import Path
+from typing import List, Tuple, Union
 
 import numpy as np
 import s2cloudless
 from xarray import DataArray
+
+from sisppeo.utils.algos import load_calib, producttype_to_sat
+from sisppeo.utils.config import mask_calib, mask_config
+from sisppeo.utils.exceptions import InputError
+
+P = Union[str, Path]
 
 
 def overlay_cloud_mask(image, mask, figsize=(15, 15)):
@@ -37,39 +44,65 @@ def overlay_cloud_mask(image, mask, figsize=(15, 15)):
     plt.show()
 
 
-def cloud_detector(bands: List[DataArray],
-                   plot: bool = False) -> Tuple[np.ndarray, dict]:
-    """Compute the s2cloudless cloud mask.
+class S2Cloudless:
+    """s2cloudless algorithm (Sentinel Hub).
 
-    Args:
-        bands: List of extracted bands (from S2_GRS or L8_GRS).
-        plot: A boolean flag that indicates if a figure should be plotted or
-            not.
+    Algorithm to detect cloud in Sentinel-2 imagery.
 
-    Returns:
-        A DataArray (dimension 1 * N * M) of flagged clouds.
+    Attributes:
+        name: The name of the algorithm used. This is the key used by
+          L3AlgoBuilder and that you must provide in config or when using
+          the CLI.
+        requested_bands: A list of bands further used by the algorithm.
+        meta: A dict of metadata (calibration name, model coefficients, etc).
     """
-    print('Generating mask...')
-    # Initialize the cloud detector
-    cloud_detector_ = s2cloudless.S2PixelCloudDetector(threshold=0.4,
-                                                       average_over=4,
-                                                       dilation_size=2)
+    _default_calibration_file = mask_calib / 's2cloudless.yaml'
+    _default_calibration_name = 'sentinel-hub_example'
+    name = 's2cloudless'
 
-    # Run the classification
-    img = np.stack([band[0, :, :] for band in bands], axis=-1)
-    img.resize((1, *img.shape))
-    cloud_masks = cloud_detector_.get_cloud_masks(img)
-    # cloud_probs = cloud_detector.get_cloud_probability_maps(img)
+    def __init__(self, product_type: str, calibration: P = _default_calibration_name, **_ignored) -> None:
+        """Inits a 'S2Cloudless' instance with specific settings.
 
-    if plot:
-        band8 = bands[4][0, :, :]
-        overlay_cloud_mask(band8, cloud_masks[0])
-        print(cloud_masks)
+        Args:
+            product_type: The type of the input satellite product
+                (must be S2_ESA_L1C).
+            **_ignored: Unused kwargs sent to trash.
+        """
+        try:
+            self.requested_bands = mask_config[self.name][
+                producttype_to_sat(product_type)]
+        except KeyError as invalid_product:
+            msg = f'{product_type} is not allowed with {self.name}'
+            raise InputError(msg) from invalid_product
+        calibration_dict, calibration_name = load_calib(
+            calibration,
+            self._default_calibration_file,
+            self._default_calibration_name
+        )
+        self.__dict__.update(calibration_dict)
+        self.meta = {'version': f'v{s2cloudless.__version__}', 'calibration': calibration_name, **calibration_dict}
+        # Initialize the cloud detector
+        self.cloud_detector = s2cloudless.S2PixelCloudDetector(threshold=self.threshold,
+                                                               average_over=self.average_over,
+                                                               dilation_size=self.dilation_size,
+                                                               all_bands=False)
 
-    print('Done.')
-    meta = {'version': f'v{s2cloudless.__version__}', 'threshold': 0.4,
-            'average_over': 4, 'dilation_size': 2}
-    return cloud_masks.astype(np.uint8), meta
+    def __call__(self, bands: List[DataArray], **_ignored) -> Tuple[np.ndarray]:
+        """Compute the s2cloudless cloud mask.
 
+        Args:
+            bands: List of extracted bands (from satellite products).
+            **_ignored: Unused kwargs sent to trash.
 
-setattr(cloud_detector, 'version', f'v{s2cloudless.__version__}')
+        Returns:
+            Two DataArrays (dimension 1 * N * M) of flagged clouds and cloud
+            probabilities.
+        """
+        print('Generating mask...')
+        # Run the classification
+        img = np.stack([band[0, :, :] for band in bands], axis=-1)
+        img.resize((1, *img.shape))
+        cloud_masks = self.cloud_detector.get_cloud_masks(img)
+        cloud_probs = self.cloud_detector.get_cloud_probability_maps(img)
+        print('Done.')
+        return cloud_masks.astype(np.uint8), cloud_probs

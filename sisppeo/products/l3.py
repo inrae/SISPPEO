@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,13 +28,12 @@ Example::
     s2cloudless_mask = L3MaskProduct(dataset)
     s2cloudless_mask.save(path_to_file)
 """
-
 import warnings
 from abc import ABC, abstractmethod
 from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Optional, Union
+from typing import AnyStr, List, Optional, Tuple, Union
 
 import numpy as np
 import xarray as xr
@@ -85,6 +85,45 @@ class L3Product(ABC, CoordinatesMixin):
         return [data_var for data_var in self.dataset.data_vars
                 if data_var not in ('crs', 'product_metadata')]
 
+    def extract_by_geoms(self,
+                         data_var: Union[List, Tuple, AnyStr] = None,
+                         list_geom: list = None,
+                         epsg: int = 4326,
+                         buffer: int = None):
+        """Extract statistics from a xarray masked by WKT or SHP geom.
+
+        Args:
+            data_var: The name of the variable/DataArray of interest (e.g., a
+                band, aCDOM, etc).
+            list_geom: A list of geometries that must be Point/MultiPoint/ or Polygon/MultiPolygon
+                given as a WKT (well-known-text) or a path to a SHP (shapefile)
+                and both having a single entity which could have several parts.
+                The CRS for the WKT must be EPSG:4326 but don't need to be
+                specified for the SHP.
+            epsg: The CRS used when the geom given as an input can't be found.
+            buffer: Optional; The distance of the buffer in units of the CRS of the dataset.
+                A positive value means the buffer will be inside the polygon while a negative
+                value means the buffer will be outside the polygon.
+        Returns:
+            A list of dictionaries containing:
+                - the result of the mask as a xr.DataArray
+                - another dictionary of the computed statistics
+        Example:
+            import sisppeo
+            sisppeo.check_algoconfig()
+            params = {
+                'input_product': "/path/to/SENTINEL2A_PRODUCT.SAFE",
+                'product_type': 'S2_ESA_L1C',
+                'algo': 'ndvi',
+            }
+            algo = sisppeo.generate(key='l3 algo', params=params)[0]
+            ea = algo.extract_by_geoms(data_var='ndvi, list_geom=[], buffer=-500)
+        """
+        return self._extract_by_geoms(data_var=data_var,
+                                      list_geom=list_geom,
+                                      epsg=epsg,
+                                      buffer=buffer)
+
     def plot(self, data_var) -> None:
         """Plots a given variable.
 
@@ -98,13 +137,40 @@ class L3Product(ABC, CoordinatesMixin):
         self.dataset[data_var].plot()
         plt.show()
 
-    @abstractmethod
     def save(self, filename: P) -> None:
         """Saves this product into a netCDF file.
 
         Args:
             filename: Path of the output file.
         """
+        enc = {data_var: get_enc(self.dataset[data_var].values, 0.001, True)
+               for data_var in self.data_vars}
+        enc.update({
+            'crs': {'dtype': 'byte'},
+            'product_metadata': {'dtype': 'byte'},
+            'x': get_enc(self.dataset.x.values, 0.1),
+            'y': get_enc(self.dataset.y.values, 0.1)
+        })
+        self.dataset.to_netcdf(filename, encoding=enc)
+
+
+@dataclass
+class L3ReaderProduct(L3Product):
+    """An L3Product embedding data obtained by using band extraction.
+
+    Attributes:
+        dataset: A dataset containing processed data.
+    """
+    __slots__ = ()
+
+    @classmethod
+    def from_file(cls, filename):
+        return L3ReaderProduct(xr.open_dataset(filename))
+
+    @property
+    def algo(self) -> str:
+        """Returns the name of the algorithm used to get this dataset."""
+        return self.title.split(' ', 1)[0]
 
 
 @dataclass
@@ -125,18 +191,6 @@ class L3AlgoProduct(L3Product):
         """Returns the name of the algorithm used to get this dataset."""
         return self.title.split(' ', 1)[0]
 
-    def save(self, filename: P) -> None:
-        """See base class."""
-        enc = {data_var: get_enc(self.dataset[data_var].values, 0.001, True)
-               for data_var in self.data_vars}
-        enc.update({
-            'crs': {'dtype': 'byte'},
-            'product_metadata': {'dtype': 'byte'},
-            'x': get_enc(self.dataset.x.values, 0.1),
-            'y': get_enc(self.dataset.y.values, 0.1)
-        })
-        self.dataset.to_netcdf(filename, encoding=enc)
-
 
 @dataclass
 class L3MaskProduct(L3Product):
@@ -155,16 +209,6 @@ class L3MaskProduct(L3Product):
     def mask(self):
         """Returns the name of the mask used to get this dataset."""
         return self.title.split(' ', 1)[0]
-
-    def save(self, filename: Union[Path, str]) -> None:
-        """See base class."""
-        self.dataset.to_netcdf(filename, encoding={
-                self.mask: {'dtype': 'bool'},
-                'crs': {'dtype': 'byte'},
-                'product_metadata': {'dtype': 'byte'},
-                'x': {'dtype': 'int32'},
-                'y': {'dtype': 'int32'}
-            })
 
 
 def mask_product(l3_algo: L3AlgoProduct,

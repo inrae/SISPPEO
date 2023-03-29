@@ -1,0 +1,14 @@
+Lee_2015_QAAv5:
+  kd_version: Lee_2013_QAAv5
+  validity_limit: 999
+  S2:
+    wl: [443, 492, 560, 665]
+  L8:
+    wl: [443, 482, 560, 655]
+Lee_2015_QAAv6:
+  kd_version: Lee_2013_QAAv6
+  validity_limit: 999
+  S2:
+    wl: [443, 492, 560, 665]
+  L8:
+    wl: [443, 482, 560, 655]

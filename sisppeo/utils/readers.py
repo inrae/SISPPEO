@@ -11,13 +11,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Contains various useful functions used by readers."""
-
 from typing import List, Union
 
 import numpy as np
 from PIL import Image
+from rasterio.windows import Window
 from tqdm import tqdm
 
 # pylint: disable=invalid-name
@@ -41,6 +40,23 @@ def get_ij_bbox(subdataset, geom) -> List[int]:
     row_stop = min(subdataset.height - 1, row_stop)
     col_stop = min(subdataset.width - 1, col_stop)
     return [row_start, col_start, row_stop, col_stop]
+
+
+def get_ij_bbox_from_ds(ds, geom):
+    """Clips the subdataset with the geometry.
+
+    Args:
+        subdataset: A xarray dataset.
+        geom: A shapley geometry object.
+
+    Returns:
+        The corresponding bbox."""
+    x_min, y_min, x_max, y_max = geom.bounds
+    row_start = float(ds.sel(x=x_min, method='nearest').x.values)
+    col_start = float(ds.sel(y=y_max, method='nearest').y.values)
+    row_stop = float(ds.sel(x=x_max, method='nearest').x.values)
+    col_stop = float(ds.sel(y=y_min, method='nearest').y.values)
+    return [row_start, row_stop, col_start, col_stop]
 
 
 def decode_data(arr: np.ndarray,
@@ -127,3 +143,34 @@ def resize_and_resample_band_array(arr: np.ndarray,
         resample=resampling_filter
     )
     return np.array(im_new)
+
+
+def _extract_nth_band(subdataset, xy_bbox):
+    x0, y0, x1, y1 = xy_bbox
+    row_start, col_start = subdataset.index(x0, y0)
+    row_stop, col_stop = subdataset.index(x1, y1)
+    arr = subdataset.read(1, window=Window.from_slices((row_start, row_stop + 1), (col_start, col_stop + 1)))
+    return arr
+
+
+def _extract_rad_coefs(metadata, band):
+    # pylint: disable=invalid-name
+    # M_rho is the name of a physical coefficients.
+    M_rho = float(metadata['RADIOMETRIC_RESCALING'][f'REFLECTANCE_MULT_BAND_{band[1:]}'])
+    # pylint: disable=invalid-name
+    # A_rho is the name of a physical coefficients.
+    A_rho = float(metadata['RADIOMETRIC_RESCALING'][f'REFLECTANCE_ADD_BAND_{band[1:]}'])
+    # pylint: disable=invalid-name
+    # theta_SE is the name of a physical coefficients.
+    theta_SE = float(metadata['IMAGE_ATTRIBUTES']['SUN_ELEVATION'])
+    return M_rho, A_rho, theta_SE
+
+
+# pylint: disable=invalid-name
+# M_rho, A_rho and theta_SE are name of physical coefficients.
+def _digital_number_to_reflectance(arr, M_rho, A_rho, theta_SE):
+    """Turn DNs into TOA Reflectances (corrected for the sun angle)"""
+    nan_arr = np.where(arr == 0, np.nan, arr)
+    rho_prime = M_rho * nan_arr + A_rho
+    rho = rho_prime / np.sin(theta_SE * np.pi / 180)
+    return rho

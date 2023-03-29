@@ -11,9 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Contains paths and configs used in other parts of the code."""
-
 from pathlib import Path
 
 import yaml
@@ -30,6 +28,7 @@ wc_calib = resources / 'wc_algo_calibration'
 with open(resources / 'wc_algo_config.yaml', 'r') as f:
     wc_algo_config = yaml.full_load(f)
 
+mask_calib = resources / 'mask_calibration'
 with open(resources / 'mask_config.yaml', 'r') as f:
     mask_config = yaml.full_load(f)
 
