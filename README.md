@@ -27,8 +27,8 @@
 useful for Earth observation (Water and Land) from satellite optical imagery (e.g, Sentinel-2/MSI, Sentinel-3/OLCI,
 Landsat 8/OLI…).
 
-- **Documentation:** https://telquel-obs2co.gitlab.irstea.page/satellite/sisppeo/
-- **Source code:** https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo
+- **Documentation:** https://inrae.github.io/SISPPEO/
+- **Source code:** https://github.com/inrae/SISPPEO
 
 **Author:** Arthur Coqué (arthur.coque@inrae.fr)
 
@@ -50,10 +50,10 @@ SISPPEO can be downloaded and installed using conda-forge:
 $ conda install sisppeo -c conda-forge
 ```
 
-You can also install it from source. To do so, you will first have to clone the GitLab repository:
+You can also install it from source. To do so, you will first have to clone the repository:
 
 ```shell
-$ git clone https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo.git
+$ git clone https://github.com/inrae/SISPPEO.git
 $ cd sisppeo
 ```
 

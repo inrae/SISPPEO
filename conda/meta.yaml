@@ -51,7 +51,7 @@ test:
     - sisppeo
 
 about:
-  home: https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo
+  home: https://github.com/inrae/SISPPEO
   license: Apache-2.0
   license_file: LICENSE
   summary: 'Satellite Imagery & Signal Processing Packages for Earth Observation'
@@ -61,7 +61,7 @@ about:
     (Water and Land) from satellite optical imagery (e.g, Sentinel-2/MSI,
     Sentinel-3/OLCI, Landsat 8/OLI…).
   dev_url: https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo/-/tree/dev
-  doc_url: https://telquel-obs2co.gitlab.irstea.page/satellite/sisppeo/
+  doc_url: https://inrae.github.io/SISPPEO/
 
 extra:
   recipe-maintainers:
