@@ -1,5 +1,8 @@
 s2cloudless:
-  long_name: Sentinel Hub's cloud detector for Sentinel-2 imagery
+  long_name:
+    - Cloud mask (Sentinel Hub's cloud detector for Sentinel-2 imagery)
+    - Cloud probabilities (Sentinel Hub's cloud detector for Sentinel-2 imagery)
+  output: [clm, clp]
   S2:
     - B1
     - B2
@@ -12,7 +15,8 @@ s2cloudless:
     - B11
     - B12
 waterdetect:
-  long_name: OOBS2CO's water detector for satellite imagery
+  long_name: Water mask (WaterDetect; OBS2CO) from Cordeiro, Martinez and Peña-Luque (2021).
+  output: wm
   L8:
     - B3
     - B5

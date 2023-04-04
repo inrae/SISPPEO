@@ -14,3 +14,11 @@ Gernez_2017:
     aw705: 0.7
     p: 1.02
     aphy_star: 0.0133
+Neil_2020_H_org:
+  validity_limit: 200
+  S2:
+    a: 1.56
+    aw665: 0.4
+    aw705: 0.7
+    p: 0.016
+    aphy_star: 0.0133

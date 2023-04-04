@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Guillaume Morin, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This module gathers algorithms for water optics and water color remote sensing.
 
 Each class of this module correspond to one algorithm. An algorithm can have
@@ -30,15 +30,13 @@ Example:
     algo2 = QAA(**config)
     out_array2 = algo2(*input_arrays, 'rrs')
 """
-
 from pathlib import Path
 from typing import Union
 
 import xarray as xr
 
-from sisppeo.utils.algos import producttype_to_sat
-from sisppeo.utils.config import wc_algo_config as algo_config
-from sisppeo.utils.exceptions import InputError
+from sisppeo.utils.config import wc_algo_config
+from sisppeo.utils.naming import get_requested_bands
 
 # pylint: disable=invalid-name
 # Ok for a custom type.
@@ -63,19 +61,16 @@ class Ndwi:
     name = 'ndwi'
 
     def __init__(self, product_type, **_ignored) -> None:
-        """Inits an 'Ndwi' instance for a given 'product_type'.
+        """Inits a 'Ndwi' instance for a given 'product_type'.
 
         Args:
             product_type: The type of the input satellite product (e.g.
-                S2_ESA_L2A or L8_USGS_L1GT)
+                S2_ESA_L2A or L8_USGS_L1GT).
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         self.meta = {}
 
     def __call__(self,

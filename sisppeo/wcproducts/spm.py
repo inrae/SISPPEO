@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Guillaume Morin, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This module gathers wc algorithms used for estimating SPM concentrations.
 
 Each class of this module correspond to one algorithm. An algorithm can have
@@ -30,15 +30,15 @@ Example:
     algo2 = SPMGet('L8_GRS', 'GET_2018')
     out_array2 = algo2(red_array, nir_array, 'rrs')
 """
-
 from pathlib import Path
 from typing import Optional, Union
 
 import numpy as np
 import xarray as xr
 
-from sisppeo.utils.algos import load_calib, producttype_to_sat
-from sisppeo.utils.config import wc_algo_config as algo_config, wc_calib
+from sisppeo.utils.algos import load_calib
+from sisppeo.utils.naming import get_requested_bands
+from sisppeo.utils.config import wc_algo_config, wc_calib
 from sisppeo.utils.exceptions import InputError
 
 # pylint: disable=invalid-name
@@ -88,6 +88,9 @@ class SPMNechad:
                 algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
+        _, prod = get_requested_bands(algo_config=wc_algo_config,
+                                      product_type=product_type,
+                                      name=self.name)
         self.requested_bands = [requested_band]
         calibration_dict, calibration_name = load_calib(
             calibration,
@@ -96,7 +99,7 @@ class SPMNechad:
         )
         self._valid_limit = calibration_dict['validity_limit']
         try:
-            params = calibration_dict[producttype_to_sat(product_type)][
+            params = calibration_dict[prod][
                 requested_band]
         except KeyError as invalid_input:
             msg = (f'{product_type} or {requested_band} is not allowed with '
@@ -167,12 +170,9 @@ class SPMHan:
                 algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         calibration_dict, calibration_name = load_calib(
             calibration,
             self._default_calibration_file,
@@ -180,7 +180,7 @@ class SPMHan:
         )
         self._valid_limit = calibration_dict['validity_limit']
         try:
-            params = calibration_dict[producttype_to_sat(product_type)]
+            params = calibration_dict[prod]
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with this calibration'
             raise InputError(msg) from invalid_product
@@ -259,12 +259,9 @@ class SPMGet:
                 algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         calibration_dict, calibration_name = load_calib(
             calibration,
             self._default_calibration_file,
@@ -274,7 +271,7 @@ class SPMGet:
         self._switch_sup = calibration_dict['switch_sup']
         self._valid_limit = calibration_dict['validity_limit']
         try:
-            params = calibration_dict[producttype_to_sat(product_type)]
+            params = calibration_dict[prod]
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with this calibration'
             raise InputError(msg) from invalid_product
@@ -358,12 +355,9 @@ class TURBIDogliotti:
                 algorithm (default=_default_calibration_name).
             **_ignored: Unused kwargs sent to trash.
         """
-        try:
-            self.requested_bands = algo_config[self.name][
-                producttype_to_sat(product_type)]
-        except KeyError as invalid_product:
-            msg = f'{product_type} is not allowed with {self.name}'
-            raise InputError(msg) from invalid_product
+        self.requested_bands, prod = get_requested_bands(algo_config=wc_algo_config,
+                                                         product_type=product_type,
+                                                         name=self.name)
         calibration_dict, calibration_name = load_calib(
             calibration,
             self._default_calibration_file,
@@ -373,7 +367,7 @@ class TURBIDogliotti:
         self._switch_sup = calibration_dict['switch_sup']
         self._valid_limit = calibration_dict['validity_limit']
         try:
-            params = calibration_dict[producttype_to_sat(product_type)]
+            params = calibration_dict[prod]
         except KeyError as invalid_product:
             msg = f'{product_type} is not allowed with this calibration'
             raise InputError(msg) from invalid_product

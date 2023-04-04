@@ -16,7 +16,7 @@
 
 import importlib.util
 import sys
-from inspect import getmembers, isclass, isfunction
+from inspect import getmembers, isclass
 
 import sisppeo.landproducts as land_algos
 import sisppeo.masks as masks
@@ -27,7 +27,7 @@ from sisppeo.utils.config import (land_algo_config, mask_config,
 
 land_algo_classes = getmembers(land_algos, isclass)
 wc_algo_classes = getmembers(wc_algos, isclass)
-mask_functions = getmembers(masks, isfunction)
+mask_classes = getmembers(masks, isclass)
 
 
 def _import_from_sourcefile(modname, dirname, filename):
@@ -41,7 +41,7 @@ def _import_from_sourcefile(modname, dirname, filename):
 
 
 user_algo_classes = []
-user_mask_functions = []
+user_mask_classes = []
 if user_folder is not None:
     try:
         user_algos = _import_from_sourcefile('user_algos', user_folder,
@@ -63,15 +63,15 @@ if user_folder is not None:
     try:
         user_masks = _import_from_sourcefile('user_masks', user_folder,
                                              'custom_masks')
-        user_mask_functions = getmembers(user_masks, isfunction)
-        vanilla_mask_names = [_[0] for _ in mask_functions]
-        for mask in [e for _ in user_mask_functions if (e := _[0])
+        user_mask_classes = getmembers(user_masks, isclass)
+        vanilla_mask_names = [_[1].name for _ in mask_classes]
+        for mask in [e for _ in user_mask_classes if (e := _[1].name)
                      in vanilla_mask_names]:
             print(f'A mask with a similar name ("{mask}") is already '
                   'provided with SISPPEO. Please, rename your mask to be able '
                   'to use it.')
-        user_mask_functions = [_ for _ in user_mask_functions if _[0]
-                               not in vanilla_mask_names]
+        user_mask_classes = [_ for _ in user_mask_classes if _[1].name
+                             not in vanilla_mask_names]
     except FileNotFoundError:
         print('Custom masks must be put in the "<user_folder>/custom_masks" '
               'package.')
@@ -92,6 +92,12 @@ def check_algoconfig() -> None:
         print(f'{algo} must be registered in "wc_algo_config.yaml"')
     if len(unregistered_wc_algo) == 0:
         print('All water colour algorithms are correctly registered.')
+    unregistered_mask = [e for _ in mask_classes if (e := _[1].name)
+                         not in mask_config]
+    for mask in unregistered_mask:
+        print(f'{mask} must be registered in "mask_config.yaml"')
+    if len(unregistered_mask) == 0:
+        print('All masks are correctly registered.')
     if user_folder is not None:
         unregistered_user_algo = [e for _ in user_algo_classes
                                   if (e := _[1].name) not in user_algo_config]
@@ -99,6 +105,12 @@ def check_algoconfig() -> None:
             print(f'{algo} must be registered in "algo_config.yaml"')
         if len(unregistered_user_algo) == 0:
             print('All custom algorithms are correctly registered.')
+        unregistered_user_mask = [e for _ in user_mask_classes
+                                  if (e := _[1].name) not in user_mask_config]
+        for mask in unregistered_user_mask:
+            print(f'{mask} must be registered in "mask_config.yaml"')
+        if len(unregistered_user_mask) == 0:
+            print('All custom masks are correctly registered.')
 
 
 def register_algos(catalog: dict) -> None:
@@ -125,10 +137,10 @@ def register_masks(catalog: dict) -> None:
     Args:
         catalog: the dictionary in which will be stored masks.
     """
-    for mask_name, mask_func in [(e, _[1]) for _ in mask_functions
-                                 if (e := _[0]) in mask_config]:
-        catalog[mask_name] = mask_func
+    for mask_name, mask_class in [(e, _[1]) for _ in mask_classes
+                                  if (e := _[1].name) in mask_config]:
+        catalog[mask_name] = mask_class
     if user_folder is not None and user_mask_config:
-        for mask_name, mask_func in [(e, _[1]) for _ in user_mask_functions
-                                     if (e := _[0]) in user_mask_config]:
-            catalog[mask_name] = mask_func
+        for mask_name, mask_class in [(e, _[1]) for _ in user_mask_classes
+                                      if (e := _[1].name) in user_mask_config]:
+            catalog[mask_name] = mask_class

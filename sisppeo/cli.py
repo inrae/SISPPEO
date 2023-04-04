@@ -20,19 +20,19 @@ import click
 import yaml
 from shapely.wkt import loads
 
-from sisppeo.main import generate, sat_products, theia_masks_names
-from sisppeo.products.l3 import mask_product
-from sisppeo.utils.cli import (PathPath, Mutex, Mutin, read_products_list,
-                               read_algos_list, read_masks_list)
+from sisppeo.catalogs import sat_products, theia_masks_names
+from sisppeo.main import generate
+from sisppeo.utils.cli import (Mutex, Mutin, PathPath, read_algos_list,
+                               read_masks_list, read_products_list)
 from sisppeo.utils.config import dict_workspace, root
 from sisppeo.utils.exceptions import InputError
-from sisppeo.utils.registration import (check_algoconfig, mask_functions,
-                                        land_algo_classes, user_algo_classes,
-                                        user_mask_functions, wc_algo_classes)
+from sisppeo.utils.registration import (check_algoconfig, land_algo_classes,
+                                        mask_classes, user_algo_classes,
+                                        user_mask_classes, wc_algo_classes)
 
 algo_names = [_[1].name for _ in land_algo_classes + wc_algo_classes
               + user_algo_classes]
-mask_names = [_[0] for _ in mask_functions + user_mask_functions]
+mask_names = [_[1].name for _ in mask_classes + user_mask_classes]
 
 
 @click.group()
@@ -63,11 +63,11 @@ def masks():
     """Returns the list of masks that can be created."""
     click.secho('AVAILABLE MASKS\n', bold=True, reverse=True)
     str_ = click.style('Standard masks:', underline=True)
-    click.echo(f'{str_} {", ".join([_[0] for _ in mask_functions])}.\n')
+    click.echo(f'{str_} {", ".join([_[1].name for _ in mask_classes])}.\n')
 
-    if user_mask_functions:
+    if user_mask_classes:
         str_ = click.style('Custom masks:', underline=True)
-        click.echo(f'{str_} {", ".join([_[0] for _ in user_mask_functions])}.\n')
+        click.echo(f'{str_} {", ".join([_[1].name for _ in user_mask_classes])}.\n')
 
 
 @cli.command()
@@ -171,8 +171,15 @@ def show_user_workspace():
                     'doc'))
 @click.option('--mask', '-m', type=click.Choice(mask_names),
               cls=Mutin, required_if=('input_product_mask', 'product_type',
-              'out_resolution'),multiple=True,
+              'out_resolution'), multiple=True,
               help='the mask to use')
+@click.option('--mask_calib', nargs=2, multiple=True,
+              help=('the calibration (set of parameters) used by the '
+                    'mask, e.g. "s2cloudless sentinel-hub_example"'))
+@click.option('--mask_custom_calib', nargs=2, type=(str, PathPath()),
+              multiple=True,
+              help=('the custom calibration (set of parameters) used by the '
+                    'mask, e.g. "s2cloudless path/to/custom/calib"'))
 @click.option('--output_dir', type=PathPath(exists=True),
               cls=Mutex, not_required_if=('out_product',),
               help=('the path of the directory in which output product(s) '
@@ -201,9 +208,9 @@ def show_user_workspace():
 def create_l3(input_product, product_type, input_product_mask,
               product_type_mask, theia_bands, theia_masks, glint_corrected,
               flags, algo, algo_band, algo_calib, algo_custom_calib,
-              algo_design, algos_list, mask, output_dir, out_product,
-              shp, wkt, wkt_file, srid, code_site, out_resolution,
-              processing_resolution, sensing_date):
+              algo_design, algos_list, mask, mask_calib, mask_custom_calib,
+              output_dir, out_product, shp, wkt, wkt_file, srid, code_site,
+              out_resolution, processing_resolution, sensing_date):
     """Creates masked (opt.) L3 products (one per algo) from a L1-2 one."""
     if mask:
         config_mask = {
@@ -217,6 +224,9 @@ def create_l3(input_product, product_type, input_product_mask,
             'out_resolution': out_resolution,
             'processing_resolution': processing_resolution
         }
+        if lst_mask_calib := list(mask_calib) + list(mask_custom_calib):
+            config_mask['lst_calib'] = [dict(lst_mask_calib).get(key, None)
+                                        for key in config_mask['lst_mask']]
         config_mask = {key: val for key, val in config_mask.items() if val is not None}
         if theia_masks:
             dd = {}
@@ -462,6 +472,13 @@ def create_l3algo(input_product, product_type, theia_bands, theia_masks,
 @click.option('--mask', '-m', type=click.Choice(mask_names),
               required=True, multiple=True,
               help='the mask to use')
+@click.option('--mask_calib', nargs=2, multiple=True,
+              help=('the calibration (set of parameters) used by the '
+                    'mask, e.g. "s2cloudless sentinel-hub_example"'))
+@click.option('--mask_custom_calib', nargs=2, type=(str, PathPath()),
+              multiple=True,
+              help=('the custom calibration (set of parameters) used by the '
+                    'mask, e.g. "s2cloudless path/to/custom/calib"'))
 @click.option('--output_dir', type=PathPath(exists=True),
               cls=Mutex, not_required_if=('out_product',),
               help=('the path of the directory in which output product(s) '
@@ -488,9 +505,9 @@ def create_l3algo(input_product, product_type, theia_bands, theia_masks,
               help=('the resolution used when processing mask(s); must be '
                     'coarser than the one of the output product'))
 def create_l3mask(input_product, product_type, theia_bands, theia_masks,
-                  glint_corrected, flags, mask, output_dir, out_product, shp,
-                  wkt, wkt_file, srid, code_site, out_resolution,
-                  processing_resolution):
+                  glint_corrected, flags, mask, mask_calib, mask_custom_calib,
+                  output_dir, out_product, shp, wkt, wkt_file, srid, code_site,
+                  out_resolution, processing_resolution):
     """Creates mask(s) from a L1-2 product (depending of the chosen masks)."""
     config = {
         'input_product': input_product,
@@ -503,6 +520,9 @@ def create_l3mask(input_product, product_type, theia_bands, theia_masks,
         'out_resolution': out_resolution,
         'processing_resolution': processing_resolution
     }
+    if lst_mask_calib := list(mask_calib) + list(mask_custom_calib):
+        config['lst_calib'] = [dict(lst_mask_calib).get(key, None)
+                               for key in config['lst_mask']]
     config = {key: val for key, val in config.items() if val is not None}
     if theia_masks:
         dd = {}
@@ -691,7 +711,7 @@ def create_batch_l3algo(input_product, product_type, products_list,
     if not ('lst_res' in config and out_resolution is None):
         config['out_resolution'] = out_resolution
 
-    _ = generate('batch algo', config, True)
+    _ = generate('batch algo cli', config, True)
 
 
 @cli.command()
@@ -809,7 +829,7 @@ def create_batch_l3mask(input_product, product_type, products_list,
     if not ('lst_proc_res' in config or processing_resolution is None):
         config['processing_resolution'] = processing_resolution
 
-    _ = generate('batch mask', config, True)
+    _ = generate('batch mask cli', config, True)
 
 
 @cli.command()

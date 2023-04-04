@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,15 +12,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Contains various useful functions used for naming products."""
-
 import io
 import tarfile
 
 import fiona
 from shapely.geometry import shape
 
+from sisppeo.utils.algos import producttype_to_sat
 from sisppeo.utils.exceptions import InputError
 
 product_type_to_source = {
@@ -29,6 +29,9 @@ product_type_to_source = {
     'S2_ESA_L2A': 'Sen2Cor',
     'L8_GRS': 'GRS',
     'S2_GRS': 'GRS',
+    'L7_GRS': 'GRS',
+    'L5_GRS': 'GRS',
+    'L4_GRS': 'GRS',
     'S2_THEIA': 'MAIA',
     'S2_C2RCC': 'C2RCC'
 }
@@ -50,6 +53,178 @@ algoparams_to_args = {
     'calibration': 'calib',
     'design': 'design'
 }
+# Custom
+names_dict_GRS = {'BRDFg': 'BRDFg',
+                  'aot550': 'aot550',
+                  'solar_zenith': 'SZA',
+                  'sensor_zenith': 'VZA',
+                  'AZI': 'AZI',
+                  'elevation': 'elevation',
+                  'crs': 'crs',
+                  'nodata': 'mask_nodata_mask',
+                  'negative': 'mask_negative_mask',
+                  'ndwi': 'mask_ndwi_mask',
+                  'ndwi_corr': 'mask_ndwi_corr_mask',
+                  'high_nir': 'mask_high_nir_mask',
+                  'hicld': 'mask_hicld_mask',
+                  'cloud': 'mask_L1_cloud_mask',
+                  'cirrus': 'mask_L1_cirrus_mask',
+                  'shadow': 'mask_L1_shadow_mask'
+                  }
+
+names_dict_l8_GRS = {'AERO': 'coastal_aerosol',
+                     'B1': 'blue',
+                     'B2': 'green',
+                     'B3': 'panchromatic',
+                     'B4': 'red',
+                     'B5': 'near_infrared',
+                     'B6': 'swir_1',
+                     'B7': 'swir_2',
+                     }
+
+# Sentinel
+names_dict_s2 = {'B1': 'B1',
+                 'B2': 'B2',
+                 'B3': 'B3',
+                 'B4': 'B4',
+                 'B5': 'B5',
+                 'B6': 'B6',
+                 'B7': 'B7',
+                 'B8': 'B8',
+                 'B8A': 'B8A',
+                 'B9': 'B9',
+                 'B10': 'B10',
+                 'B11': 'B11',
+                 'B12': 'B12',
+                 }
+# Landsat
+# https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products
+names_dict_ll2 = {'MASK': 'cf_mask',  # CDR
+                  'MASKCONF': 'cf_mask_conf',  # CDR
+                  'ATMOS': 'sr_atmos_opacity',  # L7/5
+                  'AERO': 'sr_aerosol',  # L8 CDRC1
+                  'CLOUD': 'sr_cloud',  # L8 CDR
+                  'CLOUDQA': 'sr_cloud_qa',  # L7/5
+                  'CLOUDSHADOWQA': 'sr_cloud_shadow_qa',  # L7/5 CDRC1
+                  'ACLOUDQA': 'sr_adjacent_cloud_qa',  # L7/5 CDR
+                  'PIXEL': 'pixel_qa',  # CDRC1
+                  'RADSAT': 'radsat_qa',  # CDRC1
+                  'DDV': 'sr_ddv_qa',  # L7/5 CDR
+                  'FILL': 'sr_fill_qa',  # L7/5 CDR
+                  'LW': 'sr_land_water_qa',  # L7/5 CDR
+                  'SNOW': 'sr_snow_qa',  # L7/5 CDR
+                  'B1': 'sr_band1',
+                  'B2': 'sr_band2',
+                  'B3': 'sr_band3',
+                  'B4': 'sr_band4',
+                  'SZA': 'b4_solar_zenith',  # L8 CDRC1
+                  'SAA': 'b4_solar_azimuth',  # L8 CDRC1
+                  'VZA': 'b4_sensor_zenith',  # L8 CDRC1
+                  'VAA': 'b4_sensor_azimuth',  # L8 CDRC1
+                  'B5': 'sr_band5',
+                  'B6': 'sr_band6',  # CDR L8
+                  'TOAB6': 'toa_band6',  # L7/5 CDR
+                  'TOAB6QA': 'toa_band6_qa',  # L7/5 CDR
+                  'BT6': 'bt_band6',  # L7/5 CDRC1
+                  'B7': 'sr_band7',
+                  'TOAB10': 'toa_band10',  # L8 CDR
+                  'TOAB11': 'toa_band11',  # L8 CDR
+                  'B10': 'bt_band10',  # L8 CDRC1
+                  'B11': 'bt_band11',  # L8 CDRC1
+                  }
+
+names_dict_ll2theia = {'FB1': 'FRE_B1',
+                       'FB2': 'FRE_B2',
+                       'FB3': 'FRE_B3',
+                       'FB4': 'FRE_B4',
+                       'FB5': 'FRE_B5',
+                       'FB6': 'FRE_B6',
+                       'FB7': 'FRE_B7',
+                       'SB1': 'SRE_B1',
+                       'SB2': 'SRE_B2',
+                       'SB3': 'SRE_B3',
+                       'SB4': 'SRE_B4',
+                       'SB5': 'SRE_B5',
+                       'SB6': 'SRE_B6',
+                       'SB7': 'SRE_B7',
+                       }
+
+
+names_dict_l8l1c1 = {'B1': 'B1',
+                     'B2': 'B2',
+                     'B3': 'B3',
+                     'B4': 'B4',
+                     'B5': 'B5',
+                     'B6': 'B6',
+                     'B7': 'B7',
+                     'B8': 'B8',
+                     'B9': 'B9',
+                     'B10': 'B10',
+                     'B11': 'B11',
+                     'B12': 'B12',
+                     'SZA': 'SOLAR_ZENITH_BAND4',
+                     'SAA': 'SOLAR_AZIMUTH_BAND4',
+                     'VZA': 'SENSOR_ZENITH_BAND4',
+                     'VAA': 'SENSOR_AZIMUTH_BAND4',
+                     'PIXEL': 'PIXEL_QA',
+                     'BQA': 'BQA',
+                     }
+
+names_dict_l457l1c1 = {'B1': 'B1',
+                       'B2': 'B2',
+                       'B3': 'B3',
+                       'B4': 'B4',
+                       'B5': 'B5',
+                       'B6': 'B6',
+                       'B61': 'B61',  # L7
+                       'B62': 'B62',  # L7
+                       'VCID1': 'B6_VCID_1',  # L7
+                       'VCID2': 'B6_VCID_2',  # L7
+                       'B7': 'B7',
+                       'B8': 'B8',
+                       'BQA': 'BQA',
+                       'PIXEL': 'PIXEL_QA',
+                       }
+
+# TODO D'où ça vient ?
+names_dict_l457 = {'B1': 'radiance_1',
+                   'B2': 'radiance_2',
+                   'B3': 'radiance_3',
+                   'B4': 'radiance_4',
+                   'B5': 'radiance_5',
+                   'B7': 'radiance_7'
+                   }
+
+
+def verify_bands(requested_bands, available_bands):
+    result = list()
+    for rb in requested_bands:
+        for ab in available_bands:
+            if (rb in ab) or (rb == available_bands[ab]):
+                result.append(available_bands[ab])
+                break
+        else:
+            return False
+    return result
+
+
+def get_requested_bands(algo_config, product_type, name):
+    err = 0
+    for mode in ['common', 'specific']:
+        try:
+            prod = producttype_to_sat(product_type, mode)
+            requested_bands = algo_config[name][prod]
+            break
+        except KeyError as invalid_product:
+            err += 1
+            if err == 1:
+                prod = None
+                requested_bands = None
+                pass
+            else:
+                msg = f'{product_type} is not allowed with {name}'
+                raise InputError(msg) from invalid_product
+    return requested_bands, prod
 
 
 def topleftlatlon_from_wkt(wkt_string):
@@ -83,7 +258,7 @@ def geom_to_str(geom_dict):
     elif (shp_file := geom_dict.get('shp')) is not None:
         with fiona.open(shp_file) as collection:
             geom = shape(collection[0]['geometry'])
-        wkt_str = geom.to_wkt()
+        wkt_str = geom.wkt
     else:
         raise InputError('wrong geom')
     return topleftlatlon_from_wkt(wkt_str)
@@ -115,7 +290,7 @@ def generate_l3_filename(l3prod, code_image, source, roi):
     masks = []
     for mask in masks_to_args:
         if mask in l3prod.dataset.attrs:
-            masks.append(f'{masks_to_args[mask]}'
+            masks.append(f'{masks_to_args[mask]}'+'='
                          + l3prod.dataset.attrs[mask].split(" ")[0])
     if masks:
         masks = f'_masks-{"-".join(masks)}'
@@ -164,9 +339,17 @@ def extract_info_from_input_product(input_product, product_type,
         code_image = input_product.name.split('_')[0]
         if product_type == 'S2_GRS':
             sat = 'S2'
-        else:   # product_type == 'L8_GRS'
-            sat = 'LC8'
-        tile = code_image[3:8]
+            tile = code_image[3:8]
+        else:
+            if product_type == 'L8_GRS':
+                sat = 'LC8'
+            elif product_type == 'L7_GRS':
+                sat = 'LE7'
+            elif product_type == 'L5_GRS':
+                sat = 'LT5'
+            elif product_type == 'L4_GRS':
+                sat = 'LT4'
+            tile = code_image[3:9]
     elif product_type == 'L8_USGS_L1C1':
         if input_product.suffix in ('.tgz', '.gz'):
             with tarfile.open(input_product) as archive:

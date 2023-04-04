@@ -27,13 +27,14 @@
 useful for Earth observation (Water and Land) from satellite optical imagery (e.g, Sentinel-2/MSI, Sentinel-3/OLCI,
 Landsat 8/OLI…).
 
-- **Documentation:** https://inrae.github.io/SISPPEO
+- **Documentation:** https://inrae.github.io/SISPPEO/
 - **Source code:** https://github.com/inrae/SISPPEO
 
 **Author:** Arthur Coqué (arthur.coque@inrae.fr)
 
-**Contributors:** Guillaume Morin (guillaume.p.morin@inrae.fr), Nathalie Reynaud (nathalie.reynaud@inrae.fr), 
-Thierry Tormos (thierry.tormos@ofb.gouv.fr), Valentine Aubard (valentine.aubard@inrae.fr)
+**Contributors:** Guillaume Morin (guillaume.p.morin@inrae.fr), Pierre Manchon (pierre.manchon@inrae.fr),
+Nathalie Reynaud (nathalie.reynaud@inrae.fr), Thierry Tormos (thierry.tormos@ofb.gouv.fr),
+Valentine Aubard (valentine.aubard@inrae.fr)
 
 ### Requirements
 
@@ -49,14 +50,15 @@ SISPPEO can be downloaded and installed using conda-forge:
 $ conda install sisppeo -c conda-forge
 ```
 
-You can also install it from source. To do so, you will first have to clone the GitHub repository:
+You can also install it from source. To do so, you will first have to clone the repository:
 
 ```shell
 $ git clone https://github.com/inrae/SISPPEO.git
 $ cd sisppeo
 ```
 
-Then, you will need to create a virtual environment (optional, but strongly advised) and install SISPPEO.
+Then, you will need to create a virtual environment (optional, but strongly
+advised) and install SISPPEO.
 
 - using conda (recommended):
 
@@ -77,5 +79,5 @@ $ pip install -U .
 Finally, you can use SISPPEO as a Python package (it's kind of like a toolbox) or through its CLI:
 
 ```shell
-$ sippeo <your_cmd>
+$ sisppeo <your_cmd>
 ```

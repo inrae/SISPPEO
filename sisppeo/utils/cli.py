@@ -11,9 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Contains various useful functions and classes used in the CLI."""
-
 from pathlib import Path
 from typing import Optional
 
@@ -81,7 +79,6 @@ class Mutin(click.Option):
                            f'if "{self.name}" is used.')
                     raise click.UsageError(msg)
         return super().handle_parse_result(ctx, opts, args)
-
 
 
 def _read_optional_column(df, key):
@@ -158,7 +155,7 @@ def _read_calib(df: pd.DataFrame, key: str) -> list:
     return [None for _ in range(len(df))]
 
 
-def _get_path(elem: Optional[str]) -> Path:
+def _get_path(elem: Optional[str]) -> Optional[Path]:
     if pd.isna(elem):
         return None
     return Path(elem)

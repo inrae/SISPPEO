@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +29,6 @@ Otherwise, the user can delegate the assembly to the generate method
 to construct several of the most standard products (e.g., L3AlgoProduct,
 L3MaskProduct, TimeSeries, Matchup, etc).
 """
-
 import copy
 from collections import namedtuple
 from datetime import date
@@ -41,8 +41,8 @@ from pyproj import CRS
 
 from sisppeo._version import __version__
 from sisppeo.catalogs import algo_catalog, mask_catalog, reader_catalog
-from sisppeo.products import mask_product, L3AlgoProduct, L3MaskProduct
-from sisppeo.utils.algos import producttype_to_sat
+from sisppeo.products import (L3AlgoProduct, L3MaskProduct, L3ReaderProduct,
+                              mask_product)
 from sisppeo.utils.builders import get_variables
 from sisppeo.utils.config import (land_algo_config, mask_config,
                                   user_algo_config, user_mask_config,
@@ -61,10 +61,11 @@ class ProductBuilder:
     building steps) of the product objects, and provides
     their implementations.
     """
-    __slots__ = ('_algos', '_masks', '_product_type', '_requested_bands',
+    __slots__ = ('_bands', '_algos', '_masks', '_product_type', '_requested_bands',
                  '_out_resolution', '_extracted_ds', '_results', '_products')
 
     def __init__(self):
+        self._bands = None
         self._algos = None
         self._masks = None
         self._product_type = None
@@ -74,9 +75,21 @@ class ProductBuilder:
         self._results = None
         self._products = None
 
+    def set_reader(self, lst_band: Optional[List[str]] = None) -> None:
+        """Creates and inits algo objects.
+
+        Args:
+            lst_band: A list of "requested_band" args (a param used
+                by some algorithms).
+        Returns:
+            None
+        """
+        self._bands = tuple(lst_band)
+        self._requested_bands = tuple(lst_band)
+
     def set_algos(self,
-                  lst_algo: List[str],
                   product_type: str,
+                  lst_algo: Optional[List[str]] = None,
                   lst_band: Optional[List[str]] = None,
                   lst_calib: Optional[List[Union[str, Path]]] = None,
                   lst_design: Optional[List[str]] = None) -> None:
@@ -109,23 +122,29 @@ class ProductBuilder:
         self._algos = tuple(algos)
         self._requested_bands = tuple(requested_bands)
 
-    def set_masks(self, lst_masks: List[str], product_type: str) -> None:
-        """Creates mask objects.
+    def set_masks(self,
+                  lst_masks: List[str],
+                  product_type: str,
+                  lst_calib: Optional[List[Union[str, Path]]] = None) -> None:
+        """Creates and inits mask objects.
 
         Args:
             lst_masks: A list of masks to use.
             product_type: The type of the input satellite product
                 (e.g. S2_ESA_L1C).
+            lst_calib: A list of "calibration" args (a param used
+                by some algorithms).
         """
         masks = []
         requested_bands = set()
-        for mask_name in lst_masks:
-            mask_func = mask_catalog[mask_name]
-            masks.append((mask_name, mask_func))
-            requested_bands = requested_bands.union(
-                mask_config[mask_name][producttype_to_sat(product_type)])
+        for i, mask_name in enumerate(lst_masks):
+            config = {}
+            if lst_calib is not None and lst_calib[i] is not None:
+                config['calibration'] = lst_calib[i]
+            mask = mask_catalog[mask_name](product_type=product_type, **config)
+            masks.append(mask)
+            requested_bands = requested_bands.union(mask.requested_bands)
         self._masks = tuple(masks)
-        self._product_type = product_type
         self._requested_bands = tuple(requested_bands)
 
     @staticmethod
@@ -203,6 +222,7 @@ class ProductBuilder:
                 (an EPSG code).
             kwargs: Args specific to the selected Reader.
         """
+        # In case of "custom" bands parameters, this wont have to change because it'll be taken care of in set_readers
         if self._requested_bands is not None:
             requested_bands = self._requested_bands
         else:
@@ -220,15 +240,23 @@ class ProductBuilder:
                                               **kwargs)
         reader.extract_bands()
         reader.create_ds()
+        # requested_bands = B1, B2... reader._inputs.requested_bands = sr_band1, sr_band2...
+        for reqb, reab in zip(requested_bands, reader._inputs.requested_bands):
+            reader.dataset = reader.dataset.rename({reab: reqb})
         self._extracted_ds = reader.dataset
+
+    def compute_reader(self) -> None:
+        """Runs every algorithms using extracted data and stores the results."""
+        self._results = {'bands': xr.Dataset(self._extracted_ds)}
 
     @staticmethod
     def _compute_algo(algo,
                       input_dataarrays: List[xr.DataArray],
                       data_type: str,
-                      epsg_code: int) -> xr.Dataset:
+                      epsg_code: int,
+                      product_metadata: Optional[dict] = None) -> xr.Dataset:
         output = algo(*input_dataarrays, data_type=data_type,
-                      epsg_code=epsg_code)
+                      epsg_code=epsg_code, product_metadata=product_metadata)
         variables, long_names = get_variables(algo_config, algo.name)
         if len(variables) == 1:
             output = [output]
@@ -253,65 +281,71 @@ class ProductBuilder:
         for algo in self._algos:
             input_dataarrays = [self._extracted_ds[band].copy()
                                 for band in algo.requested_bands]
-            out_algos[algo.name] = self._compute_algo(algo, input_dataarrays,
-                                                      data_type, epsg_code)
+            out_algos[algo.name] = self._compute_algo(
+                algo, input_dataarrays, data_type, epsg_code,
+                self._extracted_ds['product_metadata'].attrs
+            )
         self._results = out_algos
 
-    @staticmethod
-    def _compute_mask(mask_func,
+    def _compute_mask(self,
+                      mask,
                       input_dataarrays: List[xr.DataArray],
-                      in_res: Optional[int] = None,
-                      out_res: Optional[int] = None
-                      ) -> Tuple[np.ndarray, dict]:
-        out_ndarray, params = mask_func(input_dataarrays)
-        if out_res is not None and out_res != in_res:
-            arr = resample_band_array(out_ndarray[0], in_res, out_res, False)
-            out_ndarray = arr.reshape((1, *arr.shape))
-        return out_ndarray, params
+                      in_res: Optional[int] = None
+                      ) -> xr.Dataset:
+        output1 = mask(input_dataarrays)
+        variables, long_names = get_variables(mask_config, mask.name)
+        if len(variables) == 1:
+            output1 = [output1]
+        if self._out_resolution is not None and self._out_resolution != in_res:
+            for i, arr in enumerate(output1):
+                output1[i] = resample_band_array(arr, in_res, self._out_resolution, False).reshape((1, *arr.shape))
+
+        if self._out_resolution is None or self._out_resolution == in_res:
+            output2 = [self._extracted_ds[self._requested_bands[0]].copy(data=arr)
+                       for arr in output1]
+        else:
+            offset = (self._out_resolution - in_res) / 2
+            x = np.arange(self._extracted_ds.x.values[0] + offset,
+                          self._extracted_ds.x.values[-1] - offset + 1,
+                          self._out_resolution)
+            y = np.arange(self._extracted_ds.y.values[0] - offset,
+                          self._extracted_ds.y.values[-1] + offset - 1,
+                          -self._out_resolution)
+            output2 = []
+            for arr in output1:
+                dataarray = xr.DataArray(
+                    arr,
+                    coords=[self._extracted_ds.time, y, x],
+                    dims=['time', 'y', 'x']
+                )
+                dataarray.x.attrs = copy.copy(self._extracted_ds.x.attrs)
+                dataarray.y.attrs = copy.copy(self._extracted_ds.y.attrs)
+                dataarray.time.attrs = copy.copy(self._extracted_ds.time.attrs)
+                dataarray.attrs['processing_resolution'] = f'{int(in_res)}m'
+                output2.append(dataarray)
+        out_dataarrays = {}
+        for out_dataarray, variable, long_name in zip(output2, variables, long_names):
+            out_dataarray.attrs.update({
+                'grid_mapping': 'crs',
+                'long_name': long_name,
+                **mask.meta
+            })
+            out_dataarray.name = variable
+            out_dataarrays[variable] = out_dataarray
+        return xr.Dataset(out_dataarrays)
 
     def compute_masks(self) -> None:
         """Runs every masks using extracted data and stores the results."""
         ds_res = (self._extracted_ds.x.values[1]
                   - self._extracted_ds.x.values[0])
-        out_masks = []
-        for mask_name, mask_func in self._masks:
-            input_dataarrays = [
-                copy.deepcopy(self._extracted_ds[band]) for band
-                in mask_config[mask_name][producttype_to_sat(self._product_type)]
-            ]
-            out_masks.append(self._compute_mask(mask_func, input_dataarrays,
-                                                ds_res, self._out_resolution))
-        datasets = {}
-        for (mask_name, _), (out_ndarray, params) in zip(self._masks,
-                                                         out_masks):
-            if self._out_resolution is None or self._out_resolution == ds_res:
-                out_dataarray = self._extracted_ds[self._requested_bands[0]].copy(data=out_ndarray)
-            else:
-                offset = (self._out_resolution - ds_res) / 2
-                x = np.arange(self._extracted_ds.x.values[0] + offset,
-                              self._extracted_ds.x.values[-1] - offset + 1,
-                              self._out_resolution)
-                y = np.arange(self._extracted_ds.y.values[0] - offset,
-                              self._extracted_ds.y.values[-1] + offset - 1,
-                              -self._out_resolution)
-                out_dataarray = xr.DataArray(
-                    out_ndarray,
-                    coords=[self._extracted_ds.time, y, x],
-                    dims=['time', 'y', 'x']
-                )
-                out_dataarray.x.attrs = copy.copy(self._extracted_ds.x.attrs)
-                out_dataarray.y.attrs = copy.copy(self._extracted_ds.y.attrs)
-                out_dataarray.time.attrs = copy.copy(self._extracted_ds.time.attrs)
-            out_dataarray.attrs.update({
-                'grid_mapping': 'crs',
-                'long_name': mask_config[mask_name]['long_name']
-            })
-            out_dataarray.attrs.update(params)
-            if self._out_resolution is not None and ds_res != self._out_resolution:
-                out_dataarray.attrs['processing_resolution'] = f'{int(ds_res)}m'
-            out_dataarray.name = mask_name
-            datasets[mask_name] = xr.Dataset({mask_name: out_dataarray})
-        self._results = datasets
+        out_masks = {}
+        for mask in self._masks:
+            input_dataarrays = [self._extracted_ds[band].copy()
+                                for band in mask.requested_bands]
+            out_masks[mask.name] = self._compute_mask(
+                mask, input_dataarrays, ds_res
+            )
+        self._results = out_masks
 
     def create_l3products(self, product_type: str) -> None:
         """Creates the wanted products and stores them.
@@ -328,22 +362,24 @@ class ProductBuilder:
                 tmp = (f'{_}=<{str(self[i].__class__.mro()[0])[8:-2]}>'
                        for i, _ in enumerate(self._fields))
                 return f'Products({", ".join(tmp)})'
-                
+
         if self._algos is not None:
             product = L3AlgoProduct
         elif self._masks is not None:
             product = L3MaskProduct
+        elif self._bands is not None:
+            product = L3ReaderProduct
         else:
-            msg = 'You need to provide at least one algo or mask to use.'
+            msg = 'You need to provide at least one algo or mask or band to use.'
             raise InputError(msg)
         products = []
-        for algo in self._results:
-            dataset = self._results[algo]
+        for res in self._results:
+            dataset = self._results[res]
             for key in ('crs', 'product_metadata'):
                 dataset[key] = self._extracted_ds[key]
             dataset.attrs = {
                 'Convention': 'CF-1.8',
-                'title': f'{algo} from {product_type}',
+                'title': f'{res} from {product_type}',
                 'history': f'created with SISPPEO (v{__version__}) on '
                            + date.today().isoformat()
             }
@@ -375,6 +411,7 @@ class ProductBuilder:
         """Returns products and resets itself."""
         products = self._products
         # Reset attributes
+        self._bands = None
         self._algos = None
         self._masks = None
         self._product_type = None

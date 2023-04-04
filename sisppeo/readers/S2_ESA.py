@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,9 +39,9 @@ from pyproj import CRS
 from rasterio.windows import Window
 from tqdm import tqdm
 
-from sisppeo.readers.reader import Reader, Inputs
+from sisppeo.readers.reader import Inputs, Reader
 from sisppeo.utils.exceptions import InputError
-from sisppeo.utils.readers import (get_ij_bbox, decode_data,
+from sisppeo.utils.readers import (decode_data, get_ij_bbox,
                                    resample_band_array,
                                    resize_and_resample_band_array)
 
@@ -48,10 +49,6 @@ warnings.filterwarnings('ignore', category=rasterio.errors.NotGeoreferencedWarni
 
 S2ESAInputs = namedtuple('S2ESAInputs',
                          Inputs._fields + ('out_resolution',))
-
-
-def format_zippath(path: Path) -> str:
-    return f'zip://{str(path.resolve())}!/'
 
 
 class S2ESAReader(Reader):
@@ -73,7 +70,7 @@ class S2ESAReader(Reader):
             out_resolution: The wanted resolution of the output product. Used
               when performing resampling operations.
         """
-        super().__init__(input_product, requested_bands, geom)
+        super().__init__(input_product=input_product, requested_bands=requested_bands, geom=geom)
         if out_resolution not in (None, 10, 20, 60):
             raise InputError('"out_resolution" must be in (10, 20, 60)')
         self._inputs = S2ESAInputs(*self._inputs, out_resolution)
@@ -87,7 +84,7 @@ class S2ESAReader(Reader):
                             if _.lstrip(f'{self._inputs.input_product.stem}'
                                         '.SAFE').startswith('/MTD_MSI')][0]
             dataset = rasterio.open(
-                format_zippath(self._inputs.input_product) + xml_path
+                f'zip://{str(self._inputs.input_product.resolve())}!/' + xml_path
             )
         else:
             dataset = rasterio.open(

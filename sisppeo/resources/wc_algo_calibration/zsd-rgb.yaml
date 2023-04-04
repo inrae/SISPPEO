@@ -1,0 +1,13 @@
+Pitarch_2021_QAArgb:
+  kd_version: Lee_2013_QAArgb
+  validity_limit: 999
+  S2:
+    imager: MSI_Sentinel_2
+  L8:
+    imager: OLI_Landsat_8
+  L7:
+    imager: ETM_Landsat_7
+  L5:
+    imager: TM_Landsat_5
+  L4:
+    imager: TM_Landsat_4

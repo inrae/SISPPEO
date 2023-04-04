@@ -1,0 +1,18 @@
+Mishra_2012:
+  validity_limit: 200
+  S2:
+    a: 14.039
+    b: 86.115
+    c: 194.33
+Neil_2020_J_Cal:
+  validity_limit: 200
+  S2:
+    a: 18.44
+    b: 149.2
+    c: 374.9
+Neil_2020_K_Org:
+  validity_limit: 200
+  S2:
+    a: 14.039
+    b: 86.115
+    c: 194.33

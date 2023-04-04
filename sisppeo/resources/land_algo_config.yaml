@@ -1,6 +1,15 @@
 ndvi:
   long_name: Normalized Difference Vegetation Index
   output: ndvi
+  L4:
+    - B3
+    - B4
+  L5:
+    - B3
+    - B4
+  L7:
+    - B3
+    - B4
   L8:
     - B4
     - B5

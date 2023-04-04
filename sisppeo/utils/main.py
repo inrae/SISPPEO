@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,25 +14,37 @@
 # limitations under the License.
 
 """Contains various useful functions used in main.py."""
-
 from pathlib import Path
+
+import numpy as np
+import xarray as xr
 
 from sisppeo.utils.exceptions import InputError
 
 
-def str_to_path(path_str, exists=True):
-    """Converts a path string to a pathlib.Path object.
-
-    Args:
-        path_str: a path string.
-        exists: a boolean whether to check if this path exists or not.
-    """
-    if isinstance(path_str, str):
-        path = Path(path_str)
+def _make_path(input_path, exists):
+    if isinstance(input_path, str):
+        path = Path(input_path)
+    elif isinstance(input_path, Path):
+        path = input_path
     else:
-        path = path_str
+        raise InputError(f'Unknown path type')
     if exists and not path.exists():
         raise InputError(f'"{str(path)}" does not exist')
+    return path
+
+
+def make_path(input_path, exists=True):
+    """Converts a path string or list to a pathlib.Path object.
+
+    Args:
+        input_path: a path string.
+        exists: a boolean whether to check if this path exists or not.
+    """
+    if isinstance(input_path, (list, tuple)):
+        path = [_make_path(input_path=x, exists=exists) for x in input_path]
+    else:
+        path = _make_path(input_path=input_path, exists=exists)
     return path
 
 
@@ -43,11 +56,11 @@ def parse_params(key, params):
         params['product_types'] = [product_type for _
                                    in range(len(params['input_products']))]
     if 'dirname' in params:
-        params['dirname'] = str_to_path(params['dirname'])
+        params['dirname'] = make_path(params['dirname'])
     if 'filename' in params:
-        params['filenames'] = [str_to_path(params.pop('filename'), False)]
+        params['filenames'] = [make_path(params.pop('filename'), False)]
     elif 'filenames' in params:
-        params['filenames'] = [str_to_path(p, False)
+        params['filenames'] = [make_path(p, False)
                                for p in params['filenames']]
     if 'algo' in params:
         params['lst_algo'] = [params.pop('algo')]
@@ -90,23 +103,23 @@ def parse_params(key, params):
 
     # module + CLI
     if 'input_product' in params:
-        params['input_product'] = str_to_path(params.pop('input_product'))
+        params['input_product'] = make_path(params.pop('input_product'))
     elif 'input_products' in params:
-        params['input_products'] = [str_to_path(product) for product
+        params['input_products'] = [make_path(product) for product
                                     in params.pop('input_products')]
     else:
         msg = 'You must provide at least one input product.'
         raise InputError(msg)
     if 'lst_l3mask_path' in params:   # l3algo / match up
-        params['lst_l3mask_path'] = [str_to_path(l3mask_path) for l3mask_path
+        params['lst_l3mask_path'] = [make_path(l3mask_path) for l3mask_path
                                      in params['lst_l3mask_path']]
     if 'lst_l3masks_paths' in params:     # time series / batch
         params['lst_l3masks_paths'] = [
-            [str_to_path(l3mask_path) for l3mask_path in lst_l3mask_path]
+            [make_path(l3mask_path) for l3mask_path in lst_l3mask_path]
             for lst_l3mask_path in params['lst_l3masks_paths']
         ]
     if 'lst_tsmask_path' in params:
-        params['lst_tsmask_path'] = [str_to_path(tsmask_path) for tsmask_path
+        params['lst_tsmask_path'] = [make_path(tsmask_path) for tsmask_path
                                      in params['lst_tsmask_path']]
 
     if 'theia_bands' in params and ('time series' in key
@@ -155,3 +168,16 @@ def series_to_batch(args, n):
     if geom is not None:
         args['lst_geom'] = [geom for _ in range(n)]
     return args
+
+
+def zonal_stats(data: xr.DataArray, round_val: int = 6) -> dict:
+    """Compute statistics from a xr.DataArray"""
+    result = dict(mean=round(np.nanmean(data), round_val),
+                  std=round(np.nanstd(data), round_val),
+                  min=round(np.nanmin(data), round_val),
+                  med=round(np.nanmedian(data), round_val),
+                  max=round(np.nanmax(data), round_val),
+                  sum=round(np.nansum(data), round_val),
+                  var=round(np.nanvar(data), round_val),
+                  count=int(np.count_nonzero(~np.isnan(data))))  # https://stackoverflow.com/a/21778195
+    return result

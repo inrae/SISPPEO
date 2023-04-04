@@ -18,7 +18,7 @@ copyright = '2020-%s Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER' % datetime
 author = 'Arthur Coqué'
 
 # The full version, including alpha/beta/rc tags
-release = '1.1.0'
+release = '1.0.0'
 
 root_doc = 'index'
 

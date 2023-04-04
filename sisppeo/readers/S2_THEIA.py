@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Valentine Aubard, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,19 +12,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This module contains a reader for S2_THEIA products.
 
 This reader is dedicated to extract data from S2_THEIA_L2A.
 
-Example::
+    Typical usage example:
 
     reader = S2THEIAReader(**config)
     reader.extract_bands()
     reader.create_ds()
     extracted_dataset = reader.dataset
 """
-
 import warnings
 from collections import defaultdict, namedtuple
 from datetime import datetime
@@ -39,9 +38,9 @@ from pyproj import CRS
 from rasterio.windows import Window
 from tqdm import tqdm
 
-from sisppeo.readers.reader import Reader, Inputs
+from sisppeo.readers.reader import Inputs, Reader
 from sisppeo.utils.exceptions import InputError, ProductError
-from sisppeo.utils.readers import (get_ij_bbox, decode_data,
+from sisppeo.utils.readers import (decode_data, get_ij_bbox,
                                    resample_band_array,
                                    resize_and_resample_band_array)
 
@@ -49,10 +48,6 @@ warnings.filterwarnings('ignore', category=rasterio.errors.NotGeoreferencedWarni
 
 S2THEIAInputs = namedtuple('S2THEIAInputs', Inputs._fields
                            + ('out_resolution', 'theia_bands', 'theia_masks'))
-
-
-def format_zippath(path: Path) -> str:
-    return f'zip://{str(path.resolve())}!/'
 
 
 class S2THEIAReader(Reader):
@@ -85,7 +80,7 @@ class S2THEIAReader(Reader):
                 use (e.g., [0, 1, 2] ; if None, all bits will be used for the
                 corresponding mask).
         """
-        super().__init__(input_product, requested_bands, geom)
+        super().__init__(input_product=input_product, requested_bands=requested_bands, geom=geom)
         if out_resolution not in (None, 10, 20):
             raise InputError('"out_resolution" must be in (10, 20)')
         if theia_bands not in ('FRE', 'SRE'):
@@ -107,7 +102,7 @@ class S2THEIAReader(Reader):
         # Filter bands
         if compressed:
             with ZipFile(self._inputs.input_product) as archive:
-                root_path = format_zippath(self._inputs.input_product)
+                root_path = f'zip://{str(self._inputs.input_product.resolve())}!/'
                 try:
                     requested_bands = [
                         (root_path + [_ for _ in archive.namelist() if _.endswith(

@@ -1,6 +1,5 @@
 import numpy as np
-from sklearn import cluster
-from sklearn import metrics
+from sklearn import cluster, metrics
 from sklearn.naive_bayes import GaussianNB
 
 from .Common import DWConfig, DWutils

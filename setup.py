@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 
 def readme():
@@ -22,10 +22,11 @@ def readme():
 
 setup(
     name='SISPPEO',
-    version='1.1.0',
+    version='1.3.1',
     description='Satellite Imagery & Signal Processing Packages for Earth Observation',
     long_description=readme(),
-    url='https://github.com/inrae/SISPPEO',
+    long_description_content_type="text/markdown",
+    url='https://gitlab.irstea.fr/telquel-obs2co/satellite/sisppeo',
     author='A. Coqué',
     author_email='arthur.coque@inrae.fr',
     license='Apache 2.0',
@@ -57,6 +58,7 @@ setup(
         'shapely',
         'tqdm',
         'xarray',
+        'rioxarray',
     ],
     python_requires='>=3.8',
     entry_points='''

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,19 +12,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """This module contains a reader for C2RCC products.
 
 This reader is dedicated to extract data from C2RCC products.
 
-Example::
+    Typical usage example:
 
     reader = C2RCCReader(**config)
     reader.extract_bands()
     reader.create_ds()
     extracted_dataset = reader.dataset
 """
-
 from collections import namedtuple
 from datetime import datetime
 from pathlib import Path
@@ -36,7 +35,7 @@ from pyproj.aoi import AreaOfInterest
 from pyproj.database import query_utm_crs_info
 from tqdm import tqdm
 
-from sisppeo.readers.reader import Reader, Inputs
+from sisppeo.readers.reader import Inputs, Reader
 from sisppeo.utils.exceptions import GeometryError, InputError, ProductError
 
 C2RCCInputs = namedtuple('C2RCCInputs', Inputs._fields + ('sensing_date',))
@@ -60,7 +59,7 @@ class C2RCCReader(Reader):
         Args:
             sensing_date: The sensing date (in UTC time) of the product.
         """
-        super().__init__(input_product, requested_bands, geom)
+        super().__init__(input_product=input_product, requested_bands=requested_bands, geom=geom)
         if sensing_date is None:
             raise InputError('"sensing_date" is missing!')
         for band in requested_bands:

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Copyright 2020 Arthur Coqué, Pôle OFB-INRAE ECLA, UR RECOVER
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,12 +12,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 """Defines dicts containing algos, masks and readers."""
-
-from sisppeo.readers import (C2RCCReader, GRSReader, L8USGSL1C1Reader,
-                             L8USGSL2Reader, S2ESAReader, S2THEIAReader)
-from sisppeo.utils.registration import (register_algos, register_masks)
+from sisppeo.readers import (C2RCCReader, GRSReader, L4USGSL1C1Reader,
+                             L5USGSL1C1Reader, L7USGSL1C1Reader,
+                             L8USGSL1C1Reader, LXUSGSL2Reader, S2ESAReader,
+                             S2THEIAReader)
+from sisppeo.utils.registration import register_algos, register_masks
 
 algo_catalog = {}
 register_algos(algo_catalog)
@@ -35,8 +36,17 @@ reader_catalog = {
     'S2_GRS': GRSReader,
     'S2_C2RCC': C2RCCReader,
     'L8_C2RCC': C2RCCReader,
+    'L4_USGS_L1C1': L4USGSL1C1Reader,
+    'L5_USGS_L1C1': L5USGSL1C1Reader,
+    'L7_USGS_L1C1': L7USGSL1C1Reader,
     'L8_USGS_L1C1': L8USGSL1C1Reader,
-    'L8_USGS_L2': L8USGSL2Reader
+    'L4_USGS_L2': LXUSGSL2Reader,
+    'L5_USGS_L2': LXUSGSL2Reader,
+    'L7_USGS_L2': LXUSGSL2Reader,
+    'L8_USGS_L2': LXUSGSL2Reader,
+    'L8_USGS_L2CDRC1': LXUSGSL2Reader,
+    'L8_USGS_L2CDR': LXUSGSL2Reader,
+    'L8_USGS_L2THEIA': LXUSGSL2Reader,
 }
 
 sat_products = reader_catalog.keys()
