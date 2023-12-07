@@ -256,8 +256,11 @@ class S2THEIAReader(Reader):
         metadata = defaultdict(dict)
         for elem in root:
             for subelem in elem:
-                if subelem.text.strip():
-                    metadata[subelem.tag] = subelem.text
+                try:
+                    if subelem.text.strip():
+                        metadata[subelem.tag] = subelem.text
+                except AttributeError:
+                    pass # Done in the next two lines
                 for att in subelem.attrib:
                     metadata[':'.join([subelem.tag, att])] = subelem.attrib.get(att)
         for elem in root.iter('Horizontal_Coordinate_System'):

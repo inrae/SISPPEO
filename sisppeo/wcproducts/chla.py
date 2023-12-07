@@ -412,12 +412,12 @@ class CHLAOC:
 
         if self._version == 'OC3':
             print(f'{self._version} is used')
-            max_ratio = np.log(np.maximum(ref_violet.values, ref_blue.values)
+            max_ratio = np.log10(np.maximum(ref_violet.values, ref_blue.values)
                                / ref_green)
             # np.log(max(Rrs_B1, Rrs_B2) / Rrs_B3))
         else:   # self._version == 'OC2'
             print(f'{self._version} is used')
-            max_ratio = np.log(ref_blue.values / ref_green)
+            max_ratio = np.log10(ref_blue.values / ref_green)
         # pylint: disable=no-member
         # Loaded in __init__ whit "__dict__.update".
         chla = np.power(10, self.a0 + self.a1 * max_ratio + self.a2
