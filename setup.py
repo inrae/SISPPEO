@@ -22,7 +22,7 @@ def readme():
 
 setup(
     name='SISPPEO',
-    version='1.1.1',
+    version='1.1.2',
     description='Satellite Imagery & Signal Processing Packages for Earth Observation',
     long_description=readme(),
     url='https://github.com/inrae/SISPPEO',
